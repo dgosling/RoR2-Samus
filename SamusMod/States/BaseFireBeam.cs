@@ -25,7 +25,7 @@ namespace SamusMod.States
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
             ChildLocator childLocator = base.GetModelChildLocator();
-            Transform transform = childLocator.FindChild("gunCon");
+            Transform transform = childLocator.FindChild("Base");
             guncon = transform.gameObject;
 
               
