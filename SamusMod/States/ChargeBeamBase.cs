@@ -46,7 +46,7 @@ namespace SamusMod.States
             }
 
 
-            base.PlayAnimation("Gesture, Override", "chargeStart", "Charge.playbackRate", this.duration*0.4f);
+            base.PlayAnimation("Gesture, Override", "chargeLoop", "Charge.playbackRate", this.duration*0.1f);
             this.loopSoundInstanceId = Util.PlayScaledSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
 
@@ -56,10 +56,10 @@ namespace SamusMod.States
             }
             base.StartAimMode(this.duration + 2f, false);
         }
-    public virtual float GetCharge()
-        {
-            return this.calcCharge();
-        }
+    //public virtual float GetCharge()
+    //    {
+    //        return this.calcCharge();
+    //    }
 
         public override void OnExit()
         {

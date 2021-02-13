@@ -42,15 +42,25 @@ namespace SamusMod.Modules
 
             #region beam
             beam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusBeam", true);
-            GameObject beamGhost = Assets.beam.InstantiateClone("SamusBeamGhost", false);
+            GameObject beamGhost = Assets.cbeam.InstantiateClone("SamusBeamGhost", false);
             beamGhost.AddComponent<ProjectileGhostController>();
 
             beam.GetComponent<ProjectileController>().ghostPrefab = beamGhost;
             beam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
-            beam.GetComponent<ProjectileImpactExplosion>().blastRadius = 1;
+            beam.GetComponent<ProjectileImpactExplosion>().blastRadius = 2;
             beam.GetComponent<ProjectileSimple>().velocity = 120;
             beam.GetComponent<Rigidbody>().useGravity = false;
-            //beam.GetComponent<Transform>().localScale = new Vector3(.1f, .1f, .1f);
+            beam.GetComponent<ProjectileSimple>().lifetime = 10f;
+            beam.GetComponent<ProjectileImpactExplosion>().lifetime = 3f;
+            beam.GetComponent<ProjectileController>().procCoefficient = 1f;
+            beam.GetComponent<ProjectileDamage>().damage = 10;
+            beam.GetComponent<SphereCollider>().radius = 1;
+
+
+            //SamusPlugin.Destroy(beam.GetComponent<AntiGravityForce>());
+            //SamusPlugin.Destroy(beam.GetComponent<ProjectileProximityBeamController>());
+
+            beam.GetComponent<Transform>().localScale = new Vector3(1f, 1f, 1f);
             #endregion
 
             ProjectileCatalog.getAdditionalEntries += list =>

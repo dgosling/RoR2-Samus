@@ -1,25 +1,28 @@
 ﻿using SamusMod.States;
+using UnityEngine;
 namespace SamusMod.States
 {
     public class FireBeam : BaseFireBeam
     {
+        public Vector3 sizes;
+        
+
+
+
+
+
         public override void OnEnter()
         {
-            this.baseDuration = .5f;
+            this.baseDuration = .8f;
 
             this.force = 5f;
             this.maxDamageCoefficient = StaticValues.cshootDamageCoefficient;
             this.minDamageCoefficient = StaticValues.shootDamageCoefficient;
+            this.selfForce = 0f;
             //this.muzzleflashEffectPrefab
             this.projectilePrefab = Modules.Projectiles.beam;
-            if (ChargeBeamBase.size.x == 1)
-            {
-                this.speed = StaticValues.cbeamSpeed;
-            }
-            else
-            {
-                this.speed = StaticValues.beamSpeed;
-            }
+            this.speed = 200f;
+            
             base.OnEnter();
         }
 

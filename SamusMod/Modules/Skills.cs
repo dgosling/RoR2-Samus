@@ -45,7 +45,7 @@ namespace SamusMod.Modules
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 0f;
-            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.beginSkillCooldownOnSkillEnd = false;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
@@ -55,7 +55,7 @@ namespace SamusMod.Modules
             mySkillDef.noSprint = false;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = .1f;
+            mySkillDef.shootDelay = .01f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon1;
             mySkillDef.skillDescriptionToken = "SAMUS_PRIMARY_BEAM_DESCRIPTION";

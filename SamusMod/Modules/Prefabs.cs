@@ -196,7 +196,7 @@ namespace SamusMod.Modules
             modelTransform.parent = modelBase.transform;
             modelTransform.localPosition = Vector3.zero;
             modelTransform.localRotation = Quaternion.identity;
-            modelTransform.localScale = new Vector3(.1f, .1f, .1f);
+
 
             return modelBase.transform;
         }
