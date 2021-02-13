@@ -6,6 +6,7 @@ namespace SamusMod.States
     {
         private GameObject chargeEffect;
         private Vector3 originalScale;
+        public static Vector3 newSize;
        
       
         public override void OnEnter()
@@ -23,22 +24,27 @@ namespace SamusMod.States
 
 
         }
-
-        public override float GetCharge()
+        public static Vector3 getSize()
         {
-            return base.GetCharge();
+            Vector3 vector3 = newSize;
+            return vector3;
         }
+        //public override float GetCharge()
+        //{
+        //    return base.GetCharge();
+        //}
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            
+            newSize = new Vector3(originalScale.x + (calcCharge() - .01f), originalScale.y + (calcCharge() - .01f), originalScale.z + (calcCharge() - .01f));
 
-            
-            
-            this.chargeEffectInstance.transform.localScale = originalScale + (new Vector3 (this.calcCharge(),this.calcCharge(),this.calcCharge()) - new Vector3(.1f, .1f, .1f));
+            this.chargeEffectInstance.transform.localScale = newSize;
         }
         public override void OnExit()
         {
+            
             base.OnExit();
             
 

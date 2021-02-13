@@ -60,7 +60,7 @@ public static class Assets
 
             #region ProjectileGhosts
             beam = mainAssetBundle.LoadAsset<GameObject>("beamproj");
-            //cbeam = mainAssetBundle.LoadAsset<GameObject>("cbeamproj");
+            cbeam = mainAssetBundle.LoadAsset<GameObject>("cbeamproj");
             missile = mainAssetBundle.LoadAsset<GameObject>("missilePref");
             smissile = mainAssetBundle.LoadAsset<GameObject>("supermissilePref");
             #endregion

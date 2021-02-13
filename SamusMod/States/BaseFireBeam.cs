@@ -16,30 +16,35 @@ namespace SamusMod.States
         public float maxDamageCoefficient;
         public float force;
         private float duration;
+        public float selfForce;
         public float charge;
         public float speed;
         private GameObject guncon;
+        public Vector3 size;
+        public Vector3 csize;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            Debug.Log(charge);
             this.duration = this.baseDuration / this.attackSpeedStat;
             ChildLocator childLocator = base.GetModelChildLocator();
-            Transform transform = childLocator.FindChild("Base");
+            Transform transform = childLocator.FindChild("gunCon");
             guncon = transform.gameObject;
-
+            this.csize = this.projectilePrefab.gameObject.transform.localScale;
+            Debug.Log(csize);
               
-            if (charge == 1)
-            {
-                base.PlayAnimation("Gesture, Override", "chargeMaxShoot", "Shoot.playbackRate", this.duration);
+         //   if (charge == 1)
+          //  {
+          //      base.PlayAnimation("Gesture, Override", "chargeMaxShoot", "Shoot.playbackRate", this.duration);
 
 
 
-            }
-            else
-            {
+         //   }
+          //  else
+          //  {
                 base.PlayAnimation("Gesture, Override", "Beam", "Shoot.playbackRate", this.duration);
-            }
+            //}
             if (this.muzzleflashEffectPrefab)
             {
                 EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "gunCon", false);
@@ -61,6 +66,9 @@ namespace SamusMod.States
 
         public override void OnExit()
         {
+            this.projectilePrefab.gameObject.transform.localScale = Vector3.one;
+            this.csize = Vector3.zero;
+            this.size = Vector3.zero;
             base.OnExit();
 
             
@@ -73,7 +81,8 @@ namespace SamusMod.States
                 Ray aimRay = base.GetAimRay();
                 if(this.projectilePrefab != null)
                 {
-                    projectilePrefab.transform.localScale = SamusMod.States.ChargeBeamBase.size * 100;
+                    this.projectilePrefab.gameObject.transform.localScale = this.csize * this.charge;
+                    Debug.Log(projectilePrefab.gameObject.transform.localScale);
                 }
                 if(this.projectilePrefab != null)
                 {
@@ -85,21 +94,22 @@ namespace SamusMod.States
                         projectilePrefab = this.projectilePrefab,
                         position = aimRay.origin,
                         rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
-                        owner = this.guncon,
+                        owner = base.gameObject,
                         damage = this.damageStat * num,
                         force = num2,
                         crit = base.RollCrit(),
                         speedOverride = this.speed,
                         
                         
+                        
                     };
 
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
-                if (base.characterMotor)
-                {
-                    base.characterMotor.ApplyForce(aimRay.direction * (this.charge), false, false);
-                }
+                //if (base.characterMotor)
+                //{
+                //    base.characterMotor.ApplyForce(aimRay.direction * (-this.selfForce * this.charge), false, false);
+                //}
             }
         }
 
