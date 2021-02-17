@@ -114,7 +114,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;C:\Users\danie_000\AppData\Roaming\r2modmanPlus-local\mods\profiles\Modding\BepInEx\plugins&quot;" />
+    <Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;C:\Users\danie_000\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Modding\BepInEx\plugins&quot;" />
   </Target>
 
 </Project>

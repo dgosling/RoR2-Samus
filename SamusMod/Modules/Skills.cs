@@ -23,8 +23,12 @@ namespace SamusMod.Modules
             SkillLocator = bodyPrefab.GetComponent<SkillLocator>();
 
             PassiveSetup();
+            Debug.Log("Setup passive skills");
             PrimarySetup(bodyPrefab);
-            //SecondarySetup(bodyPrefab);
+            Debug.Log("setup primary skills");
+            SecondarySetup(bodyPrefab);
+            Debug.Log("Setup secondary skills");    
+
             //UtilitySetup(bodyPrefab);
             //SpecialSetup(bodyPrefab);
         }
@@ -81,6 +85,52 @@ namespace SamusMod.Modules
                 unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+        }
+
+        private static void SecondarySetup(GameObject bodyPrefab)
+        {
+            SkillDef skillDef = ScriptableObject.CreateInstance<SkillDef>();
+            skillDef.activationState = new SerializableEntityStateType(typeof(SamusMod.States.Missile));
+            skillDef.activationStateMachineName = "Weapon";
+            skillDef.baseMaxStock = 5;
+            skillDef.baseRechargeInterval = 5f;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+            skillDef.canceledFromSprinting = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.interruptPriority = InterruptPriority.Any;
+            skillDef.isBullets = false;
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+            skillDef.noSprint = false;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.shootDelay = .5f;
+            skillDef.stockToConsume = 1;
+            skillDef.icon = Assets.icon2;
+            skillDef.skillDescriptionToken = "SAMUS_SECONDARY_MISSILE_DESCRIPTION";
+            skillDef.skillName = "SAMUS_SECONDARY_MISSILE_NAME";
+            skillDef.skillNameToken = "SAMUS_SECONDARY_MISSILE_NAME";
+            skillDef.keywordTokens = new string[]
+            {
+                "KEYWORD_AGILE"
+            };
+
+            LoadoutAPI.AddSkillDef(skillDef);
+
+            SkillLocator.secondary = bodyPrefab.AddComponent<GenericSkill>();
+            SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            newFamily.variants = new SkillFamily.Variant[1];
+            LoadoutAPI.AddSkillFamily(newFamily);
+            SkillLocator.secondary._skillFamily = newFamily;
+            SkillFamily skillFamily = SkillLocator.secondary.skillFamily;
+
+            skillFamily.variants[0] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
+            };
+                
         }
     }
 }

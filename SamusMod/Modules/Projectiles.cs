@@ -21,13 +21,18 @@ namespace SamusMod.Modules
         public static void RegisterProjectiles()
         {
             #region missile
-            missile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/ToolbotGrenadeLauncherProjectile"), "SamusMissile", true);
+            missile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MissileProjectile"), "SamusMissile", true);
             GameObject missileGhost = Assets.missile.InstantiateClone("SamusMissileGhost", false);
             missileGhost.AddComponent<ProjectileGhostController>();
             missile.GetComponent<ProjectileController>().ghostPrefab = missileGhost;
             missile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
-            missile.GetComponent<ProjectileImpactExplosion>().blastRadius = 5;
-            missile.GetComponent<Rigidbody>().useGravity = false;
+            missile.GetComponent<MissileController>().maxSeekDistance = 100f;
+            missile.GetComponent<MissileController>().acceleration = 5f;
+            missile.GetComponent<MissileController>().giveupTimer = 3f;
+            missile.GetComponent<MissileController>().maxVelocity = 50f;
+            missile.GetComponent<MissileController>().delayTimer = 0f;
+            
+            //missile.GetComponent<Rigidbody>().useGravity = false;
             #endregion
 
             #region smissile
@@ -60,8 +65,11 @@ namespace SamusMod.Modules
             //SamusPlugin.Destroy(beam.GetComponent<AntiGravityForce>());
             //SamusPlugin.Destroy(beam.GetComponent<ProjectileProximityBeamController>());
 
-            beam.GetComponent<Transform>().localScale = new Vector3(1f, 1f, 1f);
+            beam.GetComponent<Transform>().localScale = Vector3.one;
+            beam.GetComponent<ProjectileController>().ghostPrefab.transform.localScale = Vector3.one;
             #endregion
+
+
 
             ProjectileCatalog.getAdditionalEntries += list =>
             {
@@ -70,5 +78,36 @@ namespace SamusMod.Modules
                 list.Add(beam);
             };
         }
+
+        //public static void RegisterChargeBeam(GameObject gameObject)
+        //{
+        //   GameObject cbeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusChargeBeam", true);
+        //    GameObject cbeamGhost = Assets.cbeam.InstantiateClone("SamusChargeBeamGhost", false);
+        //    cbeamGhost.AddComponent<ProjectileGhostController>();
+
+        //    cbeam.GetComponent<ProjectileController>().ghostPrefab = gameObject;
+        //    cbeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+        //    cbeam.GetComponent<ProjectileImpactExplosion>().blastRadius = 2;
+        //    cbeam.GetComponent<ProjectileSimple>().velocity = 120;
+        //    cbeam.GetComponent<Rigidbody>().useGravity = false;
+        //    cbeam.GetComponent<ProjectileSimple>().lifetime = 10f;
+        //    cbeam.GetComponent<ProjectileImpactExplosion>().lifetime = 3f;
+        //    cbeam.GetComponent<ProjectileController>().procCoefficient = 1f;
+        //    cbeam.GetComponent<ProjectileDamage>().damage = 10;
+        //    cbeam.GetComponent<SphereCollider>().radius = 1;
+
+        //    ProjectileCatalog.getAdditionalEntries += list =>
+        //    {
+        //        list.Add(cbeam);
+        //    };
+        //}
+
+        //public static void DestroyChargeBeam()
+        //{
+        //    ProjectileCatalog.getAdditionalEntries -= list =>
+        //    {
+
+        //    }
+        //}
     }
 }

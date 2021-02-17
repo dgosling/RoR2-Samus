@@ -32,7 +32,7 @@ namespace SamusMod.Modules
                 damage = StaticValues.baseDamage,
                 healthGrowth = 50,
                 healthRegen = 1.5f,
-                jumpCount = 1,
+                jumpCount = 2,
                 maxHealth = 200f,
                 subtitleNameToken = "SAMUS_SUBTITLE"
             }) ;
@@ -42,7 +42,7 @@ namespace SamusMod.Modules
                 new CustomRendererInfo
                 {
                     childName = "Body",
-                    material = Modules.Skins.CreateMaterial("matSamus")
+                    material = Modules.Skins.CreateMaterial("matSamus",1,Color.white,0)
                 }
 
             },0);
@@ -148,7 +148,7 @@ namespace SamusMod.Modules
 
             bodyComponent.baseJumpCount = bodyInfo.jumpCount;
 
-            bodyComponent.sprintingSpeedMultiplier = 1.45f;
+            bodyComponent.sprintingSpeedMultiplier = 2f;
 
             bodyComponent.hideCrosshair = false;
             bodyComponent.aimOriginTransform = modelBaseTransform.Find("AimOrigin");
@@ -168,7 +168,7 @@ namespace SamusMod.Modules
             SetupFootstepController(model);
             SetupRagdoll(model);
             SetupAimAnimator(newPrefab, model);
-
+            //SetupTracker(newPrefab);
             return newPrefab;
         }
 
@@ -219,6 +219,16 @@ namespace SamusMod.Modules
             characterDirection.modelAnimator = modelTransform.GetComponent<Animator>();
             characterDirection.driveFromRootRotation = false;
             characterDirection.turnSpeed = 720f;
+            
+        }
+
+        private static void SetupTracker(GameObject prefab)
+        {
+            HuntressTracker huntressTracker = prefab.AddComponent<HuntressTracker>();
+            huntressTracker.maxTrackingDistance = 100f;
+            huntressTracker.maxTrackingAngle = 45f;
+            huntressTracker.trackerUpdateFrequency = 10f; 
+            
         }
 
         private static void SetupCameraTargetParams(GameObject prefab)

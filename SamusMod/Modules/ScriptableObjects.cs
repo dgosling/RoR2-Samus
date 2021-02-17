@@ -23,7 +23,7 @@ public class BodyInfo
     public float moveSpeed = 7f;
     public float moveSpeedGrowth = 0f;
 
-    public float acceleration = 80f;
+    public float acceleration = 160f;
 
     public float jumpPower = 15f;
     public float jumpPowerGrowth = 0f;// jump power per level exists for some reason
@@ -39,7 +39,7 @@ public class BodyInfo
     public float crit = 1f;
     public float critGrowth = 0f;
 
-    public int jumpCount = 1;
+    public int jumpCount = 2;
 }
 
 // for simplifying rendererinfo creation

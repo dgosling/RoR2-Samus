@@ -1,10 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SamusMod.States;
 
 namespace SamusMod.States
 {
-    class Missile
+    public class Missile : BaseMissile
     {
+        public override void OnEnter()
+        {
+            this.baseDuration = .85f;
+            this.damageCoef = StaticValues.missileDamageCoefficient;
+            this.recoil = .5f;
+            this.projectilePrefab = SamusMod.Modules.Projectiles.missile;
+            base.OnEnter();
+        }
     }
 }
