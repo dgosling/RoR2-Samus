@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine.Networking;
 using RoR2;
 using RoR2.Projectile;
+using RoR2.Orbs;
 
 namespace SamusMod.Modules
 {
@@ -72,6 +73,13 @@ public static class Assets
            // InitCustomItems();
         }
 
+        //public static GameObject CreateCBeam(Vector3 vector3)
+        //{
+        //    GameObject Chargebeam = mainAssetBundle.LoadAsset<GameObject>("cbeamproj");
+        //    Chargebeam.GetComponent<Transform>().localScale = vector3;
+        //    return Chargebeam;
+        //}
+
         private static void InitCustomItems()
         {
 
@@ -104,6 +112,24 @@ public static class Assets
 
             newEffect.AddComponent<DestroyOnTimer>().duration = 12;
             newEffect.AddComponent<NetworkIdentity>();
+            newEffect.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
+            newEffect.AddComponent<OrbEffect>();
+            var effect = newEffect.AddComponent<EffectComponent>();
+            effect.applyScale = false;
+            effect.effectIndex = EffectIndex.Invalid;
+            effect.parentToReferencedTransform = true;
+            effect.positionAtReferencedTransform = true;
+            effect.soundName = soundName;
+
+            EffectAPI.AddEffect(newEffect);
+
+            return newEffect;
+        }
+
+        private static GameObject orbLoadEffect(string resourceName, string soundName)
+        {
+            GameObject newEffect = mainAssetBundle.LoadAsset<GameObject>(resourceName);
+
             newEffect.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
             var effect = newEffect.AddComponent<EffectComponent>();
             effect.applyScale = false;

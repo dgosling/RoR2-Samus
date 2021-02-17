@@ -1,5 +1,6 @@
 ﻿using SamusMod.States;
 using UnityEngine;
+using RoR2.Projectile;
 namespace SamusMod.States
 {
     public class FireBeam : BaseFireBeam
@@ -13,7 +14,7 @@ namespace SamusMod.States
 
         public override void OnEnter()
         {
-            this.baseDuration = .8f;
+            this.baseDuration = .5f;
 
             this.force = 5f;
             this.maxDamageCoefficient = StaticValues.cshootDamageCoefficient;
@@ -22,10 +23,19 @@ namespace SamusMod.States
             //this.muzzleflashEffectPrefab
             this.projectilePrefab = Modules.Projectiles.beam;
             this.speed = 200f;
-            
+            this.ResizeProjectile();
             base.OnEnter();
         }
 
-       
+
+        public override void OnExit()
+        {
+            this.projectilePrefab.transform.localScale = Vector3.one;
+            this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.transform.localScale = Vector3.one;
+            
+            base.OnExit();
+        }
+
+
     }
 }

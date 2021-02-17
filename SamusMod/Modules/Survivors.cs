@@ -19,7 +19,7 @@ namespace SamusMod.Modules
                 displayPrefab = Prefabs.samusDisplayPrefab,
                 outroFlavorToken = "SAMUS_OUTRO_FLAVOR"
             };
-
+            
             SurvivorAPI.AddSurvivor(survivorDef);
         }
     }
