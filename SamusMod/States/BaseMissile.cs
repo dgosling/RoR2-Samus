@@ -16,7 +16,7 @@ namespace SamusMod.States
         public float recoil;
         public GameObject projectilePrefab;
         public static GameObject muzzleEffectPrefab;
-
+       public static int secStock;
         private float duration;
         private float fireDuration;
         private bool hasFired;
@@ -33,11 +33,13 @@ namespace SamusMod.States
             this.muzzleString = "gunCon";
             this.PlayAnimation("Gesture, Override", "Missile", "Missile.playbackRate", this.duration);
             this.PlayAnimation("Gesture, Additive", "Missile", "Missile.playbackRate", this.duration);
-            
+            secStock = skillLocator.secondary.stock;
         }
 
         public override void OnExit()
         {
+          //  this.calculateSMissiles();
+           // base.skillLocator.special.RecalculateMaxStock();
             base.OnExit();
         }
 
@@ -88,6 +90,27 @@ namespace SamusMod.States
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;
+        }
+
+        public  void calculateSMissiles()
+        {
+            
+            int output = 0;
+            if (secStock % 5 == 0)
+            {
+                output = secStock / 5;
+            }
+
+            else if(secStock/5>1)
+            {
+                output = secStock / 5;
+            }
+                        else if (secStock < 1)
+            {
+                output = 0;
+            }
+
+            base.skillLocator.special.maxStock = output;
         }
 
 

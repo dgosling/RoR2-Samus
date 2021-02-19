@@ -36,13 +36,19 @@ namespace SamusMod.Modules
             #endregion
 
             #region smissile
-            smissile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/ToolbotGrenadeLauncherProjectile"), "SamusSuperMissile", true);
+            smissile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusSuperMissile", true);
             GameObject smissileGhost = Assets.smissile.InstantiateClone("SamusSuperMissileGhost", false);
             smissileGhost.AddComponent<ProjectileGhostController>();
             smissile.GetComponent<ProjectileController>().ghostPrefab = smissileGhost;
             smissile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
             smissile.GetComponent<ProjectileImpactExplosion>().blastRadius = 10;
             smissile.GetComponent<Rigidbody>().useGravity = false;
+            smissile.GetComponent<ProjectileImpactExplosion>().impactEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionVFX");
+            smissile.GetComponent<ProjectileSimple>().lifetime = 10f;
+            smissile.GetComponent<ProjectileSimple>().velocity = 20f;
+            smissile.GetComponent<ProjectileController>().procCoefficient = 1f;
+            smissile.GetComponent<ProjectileDamage>().damage = 25;
+            smissile.GetComponent<ProjectileImpactExplosion>().lifetime = 5f;
             #endregion
 
             #region beam

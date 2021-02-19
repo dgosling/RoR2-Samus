@@ -87,6 +87,10 @@ namespace SamusMod.States
         {
             if (base.isAuthority)
             {
+                if(charge <= .1f)
+                {
+                    projectilePrefab.GetComponent<SphereCollider>().radius = 2;
+                }
                 Ray aimRay = base.GetAimRay();
                 if(this.projectilePrefab != null)
                 {

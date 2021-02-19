@@ -46,7 +46,7 @@ namespace SamusMod.Modules
                 }
 
             },0);
-
+            //samusPrefab.AddComponent<Misc.SuperMissileController>();
             samusDisplayPrefab = CreateDisplayPrefab("samusDisplay", samusPrefab);
 
             //create hitbox
@@ -148,7 +148,7 @@ namespace SamusMod.Modules
 
             bodyComponent.baseJumpCount = bodyInfo.jumpCount;
 
-            bodyComponent.sprintingSpeedMultiplier = 2f;
+            bodyComponent.sprintingSpeedMultiplier = 1.6f;
 
             bodyComponent.hideCrosshair = false;
             bodyComponent.aimOriginTransform = modelBaseTransform.Find("AimOrigin");
@@ -324,10 +324,10 @@ namespace SamusMod.Modules
         {
             AimAnimator aimAnimator = model.AddComponent<AimAnimator>();
             aimAnimator.directionComponent = prefab.GetComponent<CharacterDirection>();
-            aimAnimator.pitchRangeMax = 60f;
-            aimAnimator.pitchRangeMin = -60f;
-            aimAnimator.yawRangeMax = 80f;
-            aimAnimator.yawRangeMin = -80f;
+            aimAnimator.pitchRangeMax = 95f;
+            aimAnimator.pitchRangeMin = -95;
+            aimAnimator.yawRangeMax = 95;
+            aimAnimator.yawRangeMin = -95;
             aimAnimator.pitchGiveupRange = 30f;
             aimAnimator.yawGiveupRange = 10f;
             aimAnimator.giveupDuration = 3f;
