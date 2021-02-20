@@ -111,7 +111,7 @@ namespace SamusMod
             On.RoR2.DotController.AddDot += (orig, vo, ao, duration, index, multiplier) =>
             {
 
-                if (ao.GetComponent<CharacterBody>().name == "dgoslingSamusBody")
+                if (ao.GetComponent<CharacterBody>().baseNameToken=="SAMUS_NAME")
                 {
                     index = DotController.DotIndex.PercentBurn;
                     duration = 0;
@@ -127,26 +127,14 @@ namespace SamusMod
         }
 
 
-        private void ModelLocator_UpdateModelTransform(On.RoR2.ModelLocator.orig_UpdateModelTransform orig, ModelLocator self, float deltaTime)
-        {
-            orig(self, deltaTime);
-            if (self.gameObject.GetComponent<SkillLocator>().secondary.stock >= 5)
-            {
-                Debug.Log("test");
-                self.gameObject.GetComponent<SkillLocator>().special.stock = 1;
-            }
-            else { 
-            self.gameObject.GetComponent<SkillLocator>().special.RemoveAllStocks();
-                Debug.Log("test2");
-            }
-        }
+
 
 
 
         private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
         {
             
-            if (self&&self.skillLocator.secondary&&self.skillLocator.special)
+            if (self&&self.skillLocator.secondary&&self.skillLocator.special&&self.baseNameToken=="SAMUS_NAME")
             {
                 if (self.skillLocator.secondary.stock >= 5)
                     self.skillLocator.special.stock = 1;
@@ -154,7 +142,7 @@ namespace SamusMod
                     self.skillLocator.special.RemoveAllStocks();
 
                 
-                Debug.Log("test");
+                //Debug.Log("test");
             }
 
             orig(self);
@@ -179,33 +167,7 @@ namespace SamusMod
 
         }
 
-        private void GenericSkill_RecalculateMaxStock(On.RoR2.GenericSkill.orig_RecalculateMaxStock orig, GenericSkill self)
-        {
-            if (self.skillDef.skillNameToken == "SAMUS_SPECIAL_MISSILE_NAME")
-            {
-                
-                self.gameObject.GetComponent<Misc.SuperMissileController>().Start();
-            }
-            orig(self);
-        }
 
-        private void recalculateSuperMissiles(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
-        {
-            orig(self);
-            if (self)
-            {
-                SkillLocator skillLocator = self.skillLocator;
-                int missiles = skillLocator.secondary.stock;
-                if (missiles > 5)
-                {
-                    skillLocator.special.stock = 1;
-                }
-                else
-                    skillLocator.special.stock = 0;
-
-            }
-
-        }
 
 
     }

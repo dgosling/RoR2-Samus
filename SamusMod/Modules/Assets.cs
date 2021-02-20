@@ -27,9 +27,12 @@ public static class Assets
         public static GameObject cbeam;
         public static GameObject missile;
         public static GameObject smissile;
+        public static GameObject beamTrail;
+        public static GameObject bomb;
 
         //skin meshes
         public static Mesh body;
+        public static Mesh ball;
 
 
         public static void PopulateAssets()
@@ -64,9 +67,12 @@ public static class Assets
             cbeam = mainAssetBundle.LoadAsset<GameObject>("cbeamproj");
             missile = mainAssetBundle.LoadAsset<GameObject>("missilePref");
             smissile = mainAssetBundle.LoadAsset<GameObject>("supermissilePref");
+            beamTrail = mainAssetBundle.LoadAsset<GameObject>("beamTrail");
+            bomb = mainAssetBundle.LoadAsset<GameObject>("bombproj");
             #endregion
             #region Meshes
             body = mainAssetBundle.LoadAsset<Mesh>("meshSamus");
+            ball = mainAssetBundle.LoadAsset<Mesh>("meshBall");
             
             #endregion
 
