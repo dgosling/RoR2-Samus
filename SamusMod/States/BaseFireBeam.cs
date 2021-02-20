@@ -89,14 +89,23 @@ namespace SamusMod.States
             {
                 if(charge <= .1f)
                 {
-                    projectilePrefab.GetComponent<SphereCollider>().radius = 2;
+                    foreach (SphereCollider i in this.projectilePrefab.GetComponentsInChildren<SphereCollider>())
+                    {
+                        var sphereCollider = i.radius;
+                        sphereCollider = 1;
+                    }
+                    //this.projectilePrefab.GetComponent<ProjectileDamageTrail>().trailPrefab.gameObject.GetComponent<TrailRenderer>().widthMultiplier = .1f;
+                    this.charge = .1f;
+                    //this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.gameObject.GetComponent<TrailRenderer>().widthMultiplier = .1f;
                 }
                 Ray aimRay = base.GetAimRay();
                 if(this.projectilePrefab != null)
                 {
-                   // this.ResizeProjectile();
+                    // this.ResizeProjectile();
+                    //var controller = this.projectilePrefab.GetComponent<ProjectileController>();
                     Debug.Log(this.projectilePrefab.transform.localScale);
                     Debug.Log(this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.transform.localScale);
+                   // controller.GetComponentInChildren<TrailRenderer>().widthMultiplier = this.charge * .75f;
                 }
                 if(this.projectilePrefab != null)
                 {

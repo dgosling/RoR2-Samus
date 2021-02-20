@@ -14,7 +14,7 @@ namespace SamusMod.States
 
         public override void OnEnter()
         {
-            this.baseDuration = .5f;
+            this.baseDuration = .1f;
 
             this.force = 5f;
             this.maxDamageCoefficient = StaticValues.cshootDamageCoefficient;

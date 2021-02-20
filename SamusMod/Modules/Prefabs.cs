@@ -43,9 +43,15 @@ namespace SamusMod.Modules
                 {
                     childName = "Body",
                     material = Modules.Skins.CreateMaterial("matSamus",1,Color.white,0)
+                },
+
+                new CustomRendererInfo
+                {
+                    childName = "Ball",
+                    material = Modules.Skins.CreateMaterial("matBall")
                 }
 
-            },0);
+            }, 0) ;
             //samusPrefab.AddComponent<Misc.SuperMissileController>();
             samusDisplayPrefab = CreateDisplayPrefab("samusDisplay", samusPrefab);
 
@@ -203,9 +209,9 @@ namespace SamusMod.Modules
 
         private static GameObject CreateModel(GameObject main,string modelName)
         {
-            SamusPlugin.Destroy(main.transform.Find("ModelBase").gameObject);
-            SamusPlugin.Destroy(main.transform.Find("CameraPivot").gameObject);
-            SamusPlugin.Destroy(main.transform.Find("AimOrigin").gameObject);
+            SamusPlugin.DestroyImmediate(main.transform.Find("ModelBase").gameObject);
+            SamusPlugin.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
+            SamusPlugin.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
 
             return Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName);
         }

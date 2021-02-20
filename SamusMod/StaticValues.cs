@@ -14,21 +14,22 @@
         public const float baseDamagePerLevel = baseDamage * 0.2f;
 
         //Beam
-        public const float shootDamageCoefficient = 1f;
-        public const float cshootDamageCoefficient = 7f;
+        public const float shootDamageCoefficient = .5f;
+        public const float cshootDamageCoefficient = 5f;
         public const float beamSpeed = 240f;
         public const float cbeamSpeed = 160f;
 
         //missile
-        public const float missileDamageCoefficient = 7f;
+        public const float missileDamageCoefficient = 5f;
         public const float missileSpeed = 200f;
 
         //smissile
-        public const float smissileDamageCoefficient = 35f;
+        public const float smissileDamageCoefficient = 25f;
         public const float smissileSpeed = 100f;
 
         //roll
         public const float dashDamageCoefficient = 3f;
-        public const float dashSpeed = 250f;
+        public const float rollSpeedCoefficientIni = 2f;
+        public const float rollSpeedCoefficientFin = 3f;
     }
 }

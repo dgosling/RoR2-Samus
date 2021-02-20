@@ -115,7 +115,14 @@ namespace SamusMod.Modules
                 {
                     mesh = Assets.body,
                     renderer = defaultRenderers[0].renderer
+                },
+
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.ball,
+                    renderer = defaultRenderers[1].renderer
                 }
+
             };
 
             skinDefs.Add(defaultSkin);

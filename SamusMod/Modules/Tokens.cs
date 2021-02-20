@@ -39,7 +39,7 @@ namespace SamusMod.Modules
 
             desc = "placeholder dash text";
 
-            LanguageAPI.Add("SAMUS_UTILITY_DASH_NAME", "Dash Attack");
+            LanguageAPI.Add("SAMUS_UTILITY_DASH_NAME", "Bomb Roll");
             LanguageAPI.Add("SAMUS_UTILITY_DASH_DESCRIPTION", desc);
 
             desc = "placeholder super missile text";

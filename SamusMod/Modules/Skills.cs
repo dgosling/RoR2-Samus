@@ -29,7 +29,7 @@ namespace SamusMod.Modules
             SecondarySetup(bodyPrefab);
             Debug.Log("Setup secondary skills");    
 
-            //UtilitySetup(bodyPrefab);
+            UtilitySetup(bodyPrefab);
             SpecialSetup(bodyPrefab);
         }
 
@@ -131,6 +131,47 @@ namespace SamusMod.Modules
                 viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
             };
                 
+        }
+
+        private static void UtilitySetup(GameObject bodyPrefab)
+        {
+            SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(SamusMod.States.Roll));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 5;
+            mySkillDef.beginSkillCooldownOnSkillEnd = false;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.Skill;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = true;
+            mySkillDef.noSprint = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 1;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Assets.icon3;
+            mySkillDef.skillDescriptionToken = "SAMUS_UTILITY_DASH_DESCRIPTION";
+            mySkillDef.skillName = "SAMUS_UTILITY_DASH_NAME";
+            mySkillDef.skillNameToken = "SAMUS_UTILITY_DASH_NAME";
+
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            SkillLocator.utility = bodyPrefab.AddComponent<GenericSkill>();
+            SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            newFamily.variants = new SkillFamily.Variant[1];
+            LoadoutAPI.AddSkillFamily(newFamily);
+            SkillLocator.utility._skillFamily = newFamily;
+            SkillFamily skillFamily = SkillLocator.utility.skillFamily;
+
+            skillFamily.variants[0] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
         }
 
         private static void SpecialSetup(GameObject bodyPrefab)

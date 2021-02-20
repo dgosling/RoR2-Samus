@@ -10,6 +10,7 @@ namespace SamusMod.Modules
         public static GameObject missile;
         public static GameObject smissile;
         public static GameObject beam;
+        public static GameObject bomb;
         //public static GameObject cbeam;
 
         public static void LateSetup()
@@ -30,7 +31,7 @@ namespace SamusMod.Modules
             missile.GetComponent<MissileController>().acceleration = 5f;
             missile.GetComponent<MissileController>().giveupTimer = 3f;
             missile.GetComponent<MissileController>().maxVelocity = 50f;
-            missile.GetComponent<MissileController>().delayTimer = 0f;
+            missile.GetComponent<MissileController>().delayTimer = .3f;
             
             //missile.GetComponent<Rigidbody>().useGravity = false;
             #endregion
@@ -55,18 +56,21 @@ namespace SamusMod.Modules
             beam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusBeam", true);
             GameObject beamGhost = Assets.cbeam.InstantiateClone("SamusBeamGhost", false);
             beamGhost.AddComponent<ProjectileGhostController>();
-
+            SamusPlugin.Destroy(beam.GetComponent<ProjectileImpactExplosion>());
+            beam.AddComponent<ProjectileSingleTargetImpact>();
+            //var beamSingleImpact = beam.GetComponent<ProjectileSingleTargetImpact>();
+            beam.GetComponent<ProjectileSingleTargetImpact>().destroyOnWorld = true;
             beam.GetComponent<ProjectileController>().ghostPrefab = beamGhost;
             beam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
-            beam.GetComponent<ProjectileImpactExplosion>().blastRadius = 2;
+            //beam.GetComponent<ProjectileImpactExplosion>().blastRadius = .5f;
             beam.GetComponent<ProjectileSimple>().velocity = 120;
             beam.GetComponent<Rigidbody>().useGravity = false;
             beam.GetComponent<ProjectileSimple>().lifetime = 10f;
-            beam.GetComponent<ProjectileImpactExplosion>().lifetime = 3f;
+            //beam.GetComponent<ProjectileImpactExplosion>().lifetime = 3f;
             beam.GetComponent<ProjectileController>().procCoefficient = 1f;
             beam.GetComponent<ProjectileDamage>().damage = 10;
             beam.GetComponent<SphereCollider>().radius = 1;
-
+            
 
             //SamusPlugin.Destroy(beam.GetComponent<AntiGravityForce>());
             //SamusPlugin.Destroy(beam.GetComponent<ProjectileProximityBeamController>());
@@ -74,7 +78,21 @@ namespace SamusMod.Modules
             beam.GetComponent<Transform>().localScale = Vector3.one;
             beam.GetComponent<ProjectileController>().ghostPrefab.transform.localScale = Vector3.one;
             #endregion
+            #region bomb
+            bomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"),"SamusBomb",true);
+            GameObject bombGhost = Assets.bomb.InstantiateClone("SamusBombGhost", false);
+            bombGhost.AddComponent<ProjectileGhostController>();
+            bomb.GetComponent<ProjectileController>().ghostPrefab = bombGhost;
+            var bombSimple = bomb.GetComponent<ProjectileSimple>();
+            var bombControl = bomb.GetComponent<ProjectileController>();
+            var bombExpl = bomb.GetComponent<ProjectileImpactExplosion>();
+            bombSimple.velocity = 0;
+            bombExpl.falloffModel = BlastAttack.FalloffModel.Linear;
+            bombExpl.lifetime = 5;
+            bombExpl.blastRadius = 5;
+            SamusPlugin.Destroy(bomb.GetComponent<PhysicsImpactSpeedModifier>());
 
+            #endregion
 
 
             ProjectileCatalog.getAdditionalEntries += list =>

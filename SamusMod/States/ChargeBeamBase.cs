@@ -89,6 +89,7 @@ namespace SamusMod.States
         {
             base.FixedUpdate();
 
+
             float charge = this.calcCharge();
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= ChargeBeamBase.minChargeDuration) || base.fixedAge >= this.duration))
             {
