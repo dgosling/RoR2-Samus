@@ -13,7 +13,7 @@ namespace SamusMod
 {
     [BepInDependency("com.bepis.r2api",BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID,"Samus","0.0.1")]
+    [BepInPlugin(MODUID,"Samus","0.1.0")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -108,28 +108,62 @@ namespace SamusMod
 
         private void Hook()
         {
-            On.RoR2.DotController.AddDot += (orig, vo, ao, duration, index, multiplier) =>
-            {
+            //On.RoR2.DotController.AddDot += (orig, vo, ao, duration, index, multiplier) =>
+            //{
 
-                if (ao.GetComponent<CharacterBody>().baseNameToken=="SAMUS_NAME")
-                {
-                    index = DotController.DotIndex.PercentBurn;
-                    duration = 0;
-                    multiplier = 0;
-                    
-                }
+            //   // if (ao.GetComponent<CharacterBody>().name == "dgoslingSamusBody")
+            //    //{
+            //        index = DotController.DotIndex.PercentBurn;
+            //        duration = 0;
+            //        multiplier = 0;
+            //        Debug.Log("PercentBurntest");
 
-                orig(vo, ao, duration, index, multiplier);
-            };
+            //    //}
 
+            //    orig(vo, ao, duration, index, multiplier);
+            //};
+           // On.RoR2.DotController.AddDot += DotController_AddDot;
+            //On.RoR2.CharacterBody.AddBuff += CharacterBody_AddBuff;
             //On.RoR2.CharacterBody.RecalculateStats += recalculateSuperMissiles;
             On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
+            //On.RoR2.DotController.InflictDot += DotController_InflictDot;
+            
         }
 
+        private void DotController_InflictDot(On.RoR2.DotController.orig_InflictDot orig, GameObject victimObject, GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier)
+        {
+            if ((victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "SAMUS_NAME"||attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken=="SAMUS_NAME") && dotIndex == DotController.DotIndex.PercentBurn)
+            {
+                duration = 0;
+                damageMultiplier = 0;
+                //Debug.Log("testing inflict");
+            }
+            orig(victimObject, attackerObject, dotIndex, duration, damageMultiplier);
+        }
 
+        private void CharacterBody_AddBuff(On.RoR2.CharacterBody.orig_AddBuff orig, CharacterBody self, BuffIndex buffType)
+        {
+           // if (self.gameObject.name == "mdlSamus" && buffType == BuffIndex.OnFire)
+           // {
+                buffType = BuffIndex.None;
+                //Debug.Log("test onfire buff");
+            //}
+            orig(self, buffType);
+        }
 
+        private void DotController_AddDot(On.RoR2.DotController.orig_AddDot orig, DotController self, GameObject attackerObject, float duration, DotController.DotIndex dotIndex, float damageMultiplier)
+        {
+           // if (attackerObject.GetComponent<CharacterBody>().name== "dgoslingSamusBody")
+           //{
+                dotIndex = DotController.DotIndex.Burn;
+                duration = 0;
+                damageMultiplier = 0;
+                //Debug.Log("BurnTest");
+            //}
 
-
+            orig(self, attackerObject, duration, dotIndex, damageMultiplier);
+        }
+        
 
         private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
         {

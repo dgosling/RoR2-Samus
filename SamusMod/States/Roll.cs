@@ -9,6 +9,7 @@ namespace SamusMod.States
             this.duration = .9f;
             this.projectilePrefab = Projectiles.bomb;
             this.dodgeFOV = 110;
+            this.damageCoefficient = StaticValues.dashDamageCoefficient;
             base.OnEnter();
         }
     }

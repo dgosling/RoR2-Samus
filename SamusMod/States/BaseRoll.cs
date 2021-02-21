@@ -13,6 +13,7 @@ namespace SamusMod.States
         public float finalSpeedCoefficient = StaticValues.rollSpeedCoefficientFin;
         public string dodgeSoundString;
         public GameObject projectilePrefab;
+        public float damageCoefficient;
         public float dodgeFOV;
         private float rollSpeed;
         private Vector3 forwardDirection;
@@ -92,9 +93,9 @@ namespace SamusMod.States
                     {
                         projectilePrefab = projectilePrefab,
                         owner = this.gameObject,
-                        position = aimRay.origin,
+                        position = aimRay.origin - new Vector3(0,2f,0),
                         rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
-                        damage = 0,
+                        damage = this.damageCoefficient * this.damageStat,
                         force = 0,
                         crit = this.RollCrit()
 
