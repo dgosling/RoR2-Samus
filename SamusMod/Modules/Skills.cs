@@ -23,11 +23,11 @@ namespace SamusMod.Modules
             SkillLocator = bodyPrefab.GetComponent<SkillLocator>();
 
             PassiveSetup();
-            Debug.Log("Setup passive skills");
+            //Debug.Log("Setup passive skills");
             PrimarySetup(bodyPrefab);
-            Debug.Log("setup primary skills");
+           // Debug.Log("setup primary skills");
             SecondarySetup(bodyPrefab);
-            Debug.Log("Setup secondary skills");    
+           // Debug.Log("Setup secondary skills");    
 
             UtilitySetup(bodyPrefab);
             SpecialSetup(bodyPrefab);
@@ -56,10 +56,10 @@ namespace SamusMod.Modules
             mySkillDef.isBullets = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = false;
+            mySkillDef.noSprint = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = .01f;
+            mySkillDef.shootDelay = .25f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon1;
             mySkillDef.skillDescriptionToken = "SAMUS_PRIMARY_BEAM_DESCRIPTION";

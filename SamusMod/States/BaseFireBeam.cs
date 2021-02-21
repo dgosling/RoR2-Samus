@@ -15,6 +15,9 @@ namespace SamusMod.States
         public float minDamageCoefficient;
         public float maxDamageCoefficient;
         public float force;
+        public string muzzleName;
+        public GameObject tracerPrefab;
+        public GameObject bulletHitEffect;
         private float duration;
         public float selfForce;
         public float charge;
@@ -27,11 +30,12 @@ namespace SamusMod.States
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log(charge);
+            //Debug.Log(this.charge);
             this.duration = this.baseDuration / this.attackSpeedStat;
             ChildLocator childLocator = base.GetModelChildLocator();
             Transform transform = childLocator.FindChild("gunCon");
             guncon = transform.gameObject;
+            
             //this.test.position = projectilePrefab.transform.position;
             //this.test.rotation = projectilePrefab.transform.rotation;
             //  this.test.localScale = projectilePrefab.transform.localScale * charge;
@@ -87,7 +91,7 @@ namespace SamusMod.States
         {
             if (base.isAuthority)
             {
-                if(charge <= .1f)
+                if (charge <= .1f)
                 {
                     foreach (SphereCollider i in this.projectilePrefab.GetComponentsInChildren<SphereCollider>())
                     {
@@ -99,15 +103,16 @@ namespace SamusMod.States
                     //this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.gameObject.GetComponent<TrailRenderer>().widthMultiplier = .1f;
                 }
                 Ray aimRay = base.GetAimRay();
-                if(this.projectilePrefab != null)
+                if (this.projectilePrefab != null)
                 {
                     // this.ResizeProjectile();
                     //var controller = this.projectilePrefab.GetComponent<ProjectileController>();
-                    Debug.Log(this.projectilePrefab.transform.localScale);
-                    Debug.Log(this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.transform.localScale);
-                   // controller.GetComponentInChildren<TrailRenderer>().widthMultiplier = this.charge * .75f;
+                   // Debug.Log(this.projectilePrefab.transform.localScale);
+                    //Debug.Log(this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.transform.localScale);
+                    // controller.GetComponentInChildren<TrailRenderer>().widthMultiplier = this.charge * .75f;
                 }
-                if(this.projectilePrefab != null)
+
+                if (this.projectilePrefab != null && this.charge > .1f)
                 {
                     float num = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                     float num2 = this.charge * this.force;
@@ -122,17 +127,44 @@ namespace SamusMod.States
                         force = num2,
                         crit = base.RollCrit(),
                         speedOverride = this.speed,
-                        
-                        
-                        
+
+
+
                     };
-                    
+
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
-                //if (base.characterMotor)
-                //{
-                //    base.characterMotor.ApplyForce(aimRay.direction * (-this.selfForce * this.charge), false, false);
-                //}
+
+                else
+                {
+                    if (base.isAuthority)
+                    {
+                        // Ray aimRay = this.GetAimRay();
+                        float num = Util.Remap(.1f, .1f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
+                        float num2 = this.charge * this.force;
+                        new BulletAttack()
+                        {
+                            owner = this.gameObject,
+                            weapon = this.gameObject,
+                            origin = aimRay.origin,
+                            aimVector = aimRay.direction,
+                            minSpread = 0,
+                            maxSpread = 0,
+                            damage = this.damageStat,
+                            force = num2,
+                            tracerEffectPrefab = this.tracerPrefab,
+                            muzzleName = this.muzzleName,
+                            hitEffectPrefab = this.bulletHitEffect,
+                            isCrit = this.RollCrit(),
+                            radius = .1f,
+                            smartCollision = true
+                        }.Fire();
+                    }
+                    //if (base.characterMotor)
+                    //{
+                    //    base.characterMotor.ApplyForce(aimRay.direction * (-this.selfForce * this.charge), false, false);
+                    //}
+                }
             }
         }
 

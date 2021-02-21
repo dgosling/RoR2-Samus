@@ -26,7 +26,7 @@ namespace SamusMod.Misc
             else
                 skillLocator.special.maxStock = 0;
             skillLocator.special.RecalculateMaxStock();
-            Debug.Log("calculated super missiles");
+            //Debug.Log("calculated super missiles");
         }
     }
 }

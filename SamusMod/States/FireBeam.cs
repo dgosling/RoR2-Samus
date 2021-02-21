@@ -24,6 +24,10 @@ namespace SamusMod.States
             this.projectilePrefab = Modules.Projectiles.beam;
             this.speed = 200f;
             this.ResizeProjectile();
+            this.tracerPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerNoSmoke");
+            this.muzzleName = "gunCon";
+            this.bulletHitEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/BulletImpactSoft");
+            //Debug.Log(this.charge);
             base.OnEnter();
         }
 

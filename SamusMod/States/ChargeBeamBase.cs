@@ -9,7 +9,7 @@ namespace SamusMod.States
         protected abstract BaseFireBeam GetNextState();
         public GameObject chargeEffectPrefab;
         public string chargeSoundString;
-        public float baseDuration = 2.3f;
+        public float baseDuration = 2.3f/2;
         public float minBloomRadius;
         public float maxBloomRadius;
         public GameObject crosshairOverridePrefab;
@@ -91,6 +91,7 @@ namespace SamusMod.States
 
 
             float charge = this.calcCharge();
+
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= ChargeBeamBase.minChargeDuration) || base.fixedAge >= this.duration))
             {
                 BaseFireBeam nextState = this.GetNextState();

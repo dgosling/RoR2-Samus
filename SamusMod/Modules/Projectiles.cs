@@ -90,6 +90,7 @@ namespace SamusMod.Modules
             bombExpl.falloffModel = BlastAttack.FalloffModel.Linear;
             bombExpl.lifetime = 5;
             bombExpl.blastRadius = 5;
+            bombExpl.blastDamageCoefficient = 2f;
             SamusPlugin.Destroy(bomb.GetComponent<PhysicsImpactSpeedModifier>());
 
             #endregion
@@ -100,6 +101,7 @@ namespace SamusMod.Modules
                 list.Add(missile);
                 list.Add(smissile);
                 list.Add(beam);
+                list.Add(bomb);
             };
         }
 
