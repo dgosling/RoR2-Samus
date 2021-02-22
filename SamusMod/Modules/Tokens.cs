@@ -25,7 +25,7 @@ namespace SamusMod.Modules
             LanguageAPI.Add("SAMUS_DEFAULT_SKIN_NAME", "Default");
 
             LanguageAPI.Add("SAMUS_PASSIVE_NAME", "Varia Suit");
-            LanguageAPI.Add("SAMUS_PASSIVE_DESCRIPTION", "Become <style=cIsUtility>Immune</style> to <style=cIsDamage>Burn Damage</style> <style=cSub>Not Implemented</style> and <style=cIsUtility>Gain a Second Jump.</style>");
+            LanguageAPI.Add("SAMUS_PASSIVE_DESCRIPTION", "Become <style=cIsUtility>Immune</style> to <style=cIsDamage>PercentBurn Damage</style> and <style=cIsUtility>Gain a Second Jump.</style>");
 
             desc = "Click to do <style=cIsDamage>"+StaticValues.baseDamage+"</style> and hold to charge a beam that does <style=cIsDamage>" + 100f * StaticValues.shootDamageCoefficient + "% to " + 100 * StaticValues.cshootDamageCoefficient + "% damage.</style>";
 

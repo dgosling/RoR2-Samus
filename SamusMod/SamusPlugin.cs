@@ -13,7 +13,7 @@ namespace SamusMod
 {
     [BepInDependency("com.bepis.r2api",BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID,"Samus","0.1.0")]
+    [BepInPlugin(MODUID,"Samus","0.1.1")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -127,8 +127,126 @@ namespace SamusMod
             //On.RoR2.CharacterBody.RecalculateStats += recalculateSuperMissiles;
             On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
             //On.RoR2.DotController.InflictDot += DotController_InflictDot;
-            
+            //On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.RoR2.GenericSkill.SetBonusStockFromBody += GenericSkill_SetBonusStockFromBody;
+            //On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.DamageTrail.DoDamage += DamageTrail_DoDamage;
+            On.RoR2.DotController.InflictDot += DotController_InflictDot;
         }
+
+        private void DamageTrail_DoDamage(On.RoR2.DamageTrail.orig_DoDamage orig, DamageTrail self)
+        {
+            if (self)
+            {
+                //CharacterBody characterBody;
+                //Array array = CharacterBody.instancesList.ToArray();
+                //for (int i = 0; i < array.Length; i++)
+                //{
+                //    string name = CharacterBody.instancesList[i].baseNameToken;
+
+                //    if (name == "SAMUS_NAME")
+                //    {
+                //        characterBody = CharacterBody.instancesList[i];
+                //        return;
+                //    }
+                //    else
+                //        return;
+                //}
+                //if (self.gameObject.name=="FireTrail"  /* CharacterBody.instancesList.Contains(characterBody)*/)
+               // {
+               if(self.segmentPrefab.name== "FireTrailSegment")
+                {
+                    //Debug.Log("test damagetrail");
+                    self.damagePerSecond = 0;
+                    return;
+                }
+                //Debug.Log(self.damagePerSecond);     
+               // }
+                orig(self);
+            }
+        }
+
+        //private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        //{
+        //    if (self!=null)
+        //    {
+        //        float origDam = damageInfo.damage;
+        //        DamageTrail reference = gameObject.GetComponent<DamageTrail>();
+        //        Debug.Log(damageInfo.damage);
+        //        if (damageInfo.attacker==reference/*&&gameObject.GetComponent<DamageTrail>().name=="FireTrail"*/ && self.body.baseNameToken == "SAMUS_NAME")
+        //        {
+        //            Debug.Log("test firetrail");
+        //            damageInfo.damage = 0;
+        //            orig(self, damageInfo);
+        //        }
+        //        else
+        //        {
+        //            damageInfo.damage = origDam;
+        //            Debug.Log(damageInfo.damage);
+        //        }
+        //        orig(self, damageInfo);
+                
+        //    }
+            
+        //}
+
+        private void GenericSkill_SetBonusStockFromBody(On.RoR2.GenericSkill.orig_SetBonusStockFromBody orig, GenericSkill self, int newBonusStockFromBody)
+        {
+            if (self)
+            {
+                if (self.characterBody.skillLocator.secondary == self && self.characterBody.baseNameToken == "SAMUS_NAME")
+                {
+                    newBonusStockFromBody *= 5;
+                    orig(self, newBonusStockFromBody);
+                }
+                else
+                    orig(self, newBonusStockFromBody);
+            }
+        }
+
+        //private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        //{
+        //    if (self)
+        //    {
+
+        //        if (self.baseNameToken == "SAMUS_NAME")
+        //        {
+        //            int missiles = self.skillLocator.secondary.maxStock;
+        //            int magazines = self.inventory.GetItemCount(ItemIndex.SecondarySkillMagazine);
+        //            Debug.Log(missiles);
+        //            Debug.Log(magazines);
+        //            if (missiles < magazines + 1 * 5)
+        //            {
+        //                missiles += 4;
+        //                self.skillLocator.secondary.SetBonusStockFromBody(missiles);
+
+        //                Debug.Log("added 4 missiles");
+        //                Debug.Log(self.skillLocator.secondary.maxStock);
+        //            }
+                        
+
+
+
+        //        }
+        //        orig(self);
+                
+        //    }
+        //}
+
+        //private void SkillLocator_ApplyAmmoPack(On.RoR2.SkillLocator.orig_ApplyAmmoPack orig, SkillLocator self)
+        //{
+        //    int missiles = self.secondary.maxStock;
+        //    Debug.Log("hooked");
+            
+        //    if (self.gameObject.GetComponent<CharacterBody>().baseNameToken == "SAMUS_BODY")
+        //    {
+        //        for (int i=0;missiles < missiles + 5; i++){
+        //            self.secondary.AddOneStock();
+        //            Debug.Log("added missile");
+        //        }
+        //    }
+        //    orig(self);
+        //}
 
         private void DotController_InflictDot(On.RoR2.DotController.orig_InflictDot orig, GameObject victimObject, GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier)
         {
@@ -141,28 +259,28 @@ namespace SamusMod
             orig(victimObject, attackerObject, dotIndex, duration, damageMultiplier);
         }
 
-        private void CharacterBody_AddBuff(On.RoR2.CharacterBody.orig_AddBuff orig, CharacterBody self, BuffIndex buffType)
-        {
-           // if (self.gameObject.name == "mdlSamus" && buffType == BuffIndex.OnFire)
-           // {
-                buffType = BuffIndex.None;
-                //Debug.Log("test onfire buff");
-            //}
-            orig(self, buffType);
-        }
+        //private void CharacterBody_AddBuff(On.RoR2.CharacterBody.orig_AddBuff orig, CharacterBody self, BuffIndex buffType)
+        //{
+        //   // if (self.gameObject.name == "mdlSamus" && buffType == BuffIndex.OnFire)
+        //   // {
+        //        buffType = BuffIndex.None;
+        //        //Debug.Log("test onfire buff");
+        //    //}
+        //    orig(self, buffType);
+        //}
 
-        private void DotController_AddDot(On.RoR2.DotController.orig_AddDot orig, DotController self, GameObject attackerObject, float duration, DotController.DotIndex dotIndex, float damageMultiplier)
-        {
-           // if (attackerObject.GetComponent<CharacterBody>().name== "dgoslingSamusBody")
-           //{
-                dotIndex = DotController.DotIndex.Burn;
-                duration = 0;
-                damageMultiplier = 0;
-                //Debug.Log("BurnTest");
-            //}
+        //private void DotController_AddDot(On.RoR2.DotController.orig_AddDot orig, DotController self, GameObject attackerObject, float duration, DotController.DotIndex dotIndex, float damageMultiplier)
+        //{
+        //   // if (attackerObject.GetComponent<CharacterBody>().name== "dgoslingSamusBody")
+        //   //{
+        //        dotIndex = DotController.DotIndex.Burn;
+        //        duration = 0;
+        //        damageMultiplier = 0;
+        //        //Debug.Log("BurnTest");
+        //    //}
 
-            orig(self, attackerObject, duration, dotIndex, damageMultiplier);
-        }
+        //    orig(self, attackerObject, duration, dotIndex, damageMultiplier);
+        //}
         
 
         private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
