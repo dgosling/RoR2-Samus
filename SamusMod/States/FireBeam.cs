@@ -20,13 +20,13 @@ namespace SamusMod.States
             this.maxDamageCoefficient = StaticValues.cshootDamageCoefficient;
             this.minDamageCoefficient = StaticValues.shootDamageCoefficient;
             this.selfForce = 0f;
-            //this.muzzleflashEffectPrefab
+            this.muzzleflashEffectPrefab = Modules.Assets.beamShootEffect;
             this.projectilePrefab = Modules.Projectiles.beam;
             this.speed = 200f;
             this.ResizeProjectile();
             this.tracerPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerNoSmoke");
             this.muzzleName = "gunCon";
-            this.bulletHitEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/BulletImpactSoft");
+            this.bulletHitEffect = Modules.Assets.beamImpactEffect;
             if (this.charge <= .4f)
             {
                 this.projSound = SamusMod.Modules.Sounds.cShoot25Sound;

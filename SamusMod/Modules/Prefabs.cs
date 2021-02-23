@@ -141,7 +141,7 @@ namespace SamusMod.Modules
             bodyComponent.levelJumpPower = bodyInfo.jumpPowerGrowth;
 
             bodyComponent.baseDamage = bodyInfo.damage;
-            bodyComponent.levelDamage = bodyComponent.baseDamage * 0.2f;
+            bodyComponent.levelDamage = bodyComponent.baseDamage * 0.3f;
 
             bodyComponent.baseAttackSpeed = bodyInfo.attackSpeed;
             bodyComponent.levelAttackSpeed = bodyInfo.attackSpeedGrowth;

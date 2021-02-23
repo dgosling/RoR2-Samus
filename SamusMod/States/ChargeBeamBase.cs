@@ -9,6 +9,7 @@ namespace SamusMod.States
         protected abstract BaseFireBeam GetNextState();
         public GameObject chargeEffectPrefab;
         public string chargeSoundString;
+        public GameObject chargeMuzzle;
         public float baseDuration = 2.3f/2;
         public float minBloomRadius;
         public float maxBloomRadius;
