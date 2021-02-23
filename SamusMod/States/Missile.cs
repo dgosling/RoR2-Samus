@@ -10,6 +10,7 @@ namespace SamusMod.States
             this.damageCoef = StaticValues.missileDamageCoefficient;
             this.recoil = .5f;
             this.projectilePrefab = SamusMod.Modules.Projectiles.missile;
+            this.Sound = SamusMod.Modules.Sounds.missileSound;
             base.OnEnter();
         }
     }

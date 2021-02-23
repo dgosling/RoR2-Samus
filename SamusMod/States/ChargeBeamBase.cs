@@ -24,7 +24,7 @@ namespace SamusMod.States
         private ChildLocator childLocator { get; set; }
 
         public GameObject chargeEffectInstance { get; set; }
-
+        private bool isPlayingSound;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -47,7 +47,7 @@ namespace SamusMod.States
 
 
             base.PlayAnimation("Gesture, Override", "chargeLoop", "Charge.playbackRate", this.duration);
-            this.loopSoundInstanceId = Util.PlayScaledSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
+            
             this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
 
             if (this.crosshairOverridePrefab)
@@ -91,14 +91,18 @@ namespace SamusMod.States
 
 
             float charge = this.calcCharge();
-
+            if(base.isAuthority && this.isPlayingSound==false && charge > .15)
+            {
+                this.loopSoundInstanceId = Util.PlayScaledSound(this.chargeSoundString, base.gameObject, this.duration-.15f);
+                this.isPlayingSound = true;
+            }
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= ChargeBeamBase.minChargeDuration) || base.fixedAge >= this.duration))
             {
                 BaseFireBeam nextState = this.GetNextState();
                 nextState.charge = charge;
                 this.outer.SetNextState(nextState);
             }
-
+            
 
         }
 

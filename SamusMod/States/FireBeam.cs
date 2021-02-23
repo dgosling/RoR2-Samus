@@ -27,6 +27,25 @@ namespace SamusMod.States
             this.tracerPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerNoSmoke");
             this.muzzleName = "gunCon";
             this.bulletHitEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/BulletImpactSoft");
+            if (this.charge <= .4f)
+            {
+                this.projSound = SamusMod.Modules.Sounds.cShoot25Sound;
+
+            }
+            else if (this.charge <= .7f)
+            {
+                this.projSound = SamusMod.Modules.Sounds.cShoot50Sound;
+            }
+            else if (this.charge <= .9f)
+            {
+                this.projSound = SamusMod.Modules.Sounds.cShoot75Sound;
+            }
+            else 
+            {
+                this.projSound = SamusMod.Modules.Sounds.cShootFullSound;
+            }
+
+            this.tracerSound = SamusMod.Modules.Sounds.beamSound;
             //Debug.Log(this.charge);
             base.OnEnter();
         }
