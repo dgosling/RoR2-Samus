@@ -29,6 +29,10 @@ public static class Assets
         public static GameObject smissile;
         public static GameObject beamTrail;
         public static GameObject bomb;
+        //public static GameObject chargeEffect;
+        public static GameObject beamShootEffect;
+        public static GameObject missileEffect;
+        public static GameObject beamImpactEffect;
 
         //skin meshes
         public static Mesh body;
@@ -73,10 +77,15 @@ public static class Assets
             #region Meshes
             body = mainAssetBundle.LoadAsset<Mesh>("meshSamus");
             ball = mainAssetBundle.LoadAsset<Mesh>("meshBall");
-            
-            #endregion
 
-           // InitCustomItems();
+            #endregion
+            #region effects
+            beamShootEffect = LoadEffect("beamFireMuzzle","");
+            //chargeEffect = LoadEffect("chargeMuzzle", "");
+            beamImpactEffect = LoadEffect("beamImpact", "");
+            missileEffect = LoadEffect("missileMuzzle", "");
+            #endregion
+            // InitCustomItems();
         }
 
         //public static GameObject CreateCBeam(Vector3 vector3)
@@ -119,7 +128,7 @@ public static class Assets
             newEffect.AddComponent<DestroyOnTimer>().duration = 12;
             newEffect.AddComponent<NetworkIdentity>();
             newEffect.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
-            newEffect.AddComponent<OrbEffect>();
+            
             var effect = newEffect.AddComponent<EffectComponent>();
             effect.applyScale = false;
             effect.effectIndex = EffectIndex.Invalid;

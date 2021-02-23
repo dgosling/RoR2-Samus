@@ -130,6 +130,7 @@ namespace SamusMod.States
                         crit = base.RollCrit(),
                         speedOverride = this.speed
                         
+                        
 
 
                     };
@@ -161,6 +162,7 @@ namespace SamusMod.States
                             isCrit = this.RollCrit(),
                             radius = .1f,
                             smartCollision = true
+                            
                             
                             
                         }.Fire();

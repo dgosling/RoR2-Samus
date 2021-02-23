@@ -36,6 +36,7 @@ namespace SamusMod.States
             this.PlayAnimation("Gesture, Override", "Missile", "Missile.playbackRate", this.duration);
             this.PlayAnimation("Gesture, Additive", "Missile", "Missile.playbackRate", this.duration);
             secStock = skillLocator.secondary.stock;
+            muzzleEffectPrefab = SamusMod.Modules.Assets.missileEffect;
         }
 
         public override void OnExit()

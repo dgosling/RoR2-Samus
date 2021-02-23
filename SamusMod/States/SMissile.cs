@@ -13,7 +13,7 @@ namespace SamusMod.States
             this.baseDuration = .85f;
             this.recoil = .5f;
             this.projectilePrefab = SamusMod.Modules.Projectiles.smissile;
-
+            
             this.Sound = SamusMod.Modules.Sounds.sMissileSound;
            // base.skillLocator.special.RecalculateMaxStock();
             

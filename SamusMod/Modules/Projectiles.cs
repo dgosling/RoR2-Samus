@@ -70,6 +70,7 @@ namespace SamusMod.Modules
             beam.GetComponent<ProjectileController>().procCoefficient = 1f;
             beam.GetComponent<ProjectileDamage>().damage = 10;
             beam.GetComponent<SphereCollider>().radius = 1;
+            beam.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Modules.Assets.beamImpactEffect;
             
 
             //SamusPlugin.Destroy(beam.GetComponent<AntiGravityForce>());

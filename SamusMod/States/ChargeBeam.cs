@@ -18,8 +18,14 @@ namespace SamusMod.States
             this.maxBloomRadius = .1f;
             this.minBloomRadius = 1f;
             this.originalScale = this.chargeEffectPrefab.transform.localScale;
-
+            
             base.OnEnter();
+            ChildLocator childLocator = base.GetModelChildLocator();
+            if (childLocator)
+            {
+                this.chargeEffect = childLocator.FindChild("chargeEffect").gameObject;
+                this.chargeEffect.SetActive(false);//temp
+            }
 
             
             
@@ -38,7 +44,10 @@ namespace SamusMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            
+            if (this.chargeEffect.activeSelf == false && this.calcCharge() > .15f)
+            {
+                this.chargeEffect.SetActive(true);
+            }
             newSize = new Vector3(originalScale.x + (calcCharge() - .01f), originalScale.y + (calcCharge() - .01f), originalScale.z + (calcCharge() - .01f));
 
             this.chargeEffectInstance.transform.localScale = newSize;
@@ -47,7 +56,10 @@ namespace SamusMod.States
         {
             
             base.OnExit();
-            
+            if (this.chargeEffect)
+            {
+                this.chargeEffect.SetActive(false);
+            }
 
             //this.chargeEffectPrefab.transform.localScale = new Vector3(.1f,.1f,.1f);
         }
