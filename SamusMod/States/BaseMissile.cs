@@ -17,11 +17,13 @@ namespace SamusMod.States
         public GameObject projectilePrefab;
         public static GameObject muzzleEffectPrefab;
        public static int secStock;
+        public string Sound;
         private float duration;
         private float fireDuration;
         private bool hasFired;
         private Animator animator;
         private string muzzleString;
+
 
         public override void OnEnter()
         {
@@ -48,7 +50,7 @@ namespace SamusMod.States
             if (!hasFired)
             {
                 this.hasFired = true;
-
+                Util.PlaySound(this.Sound, this.gameObject);
                 base.characterBody.AddSpreadBloom(.75f);
                 Ray aimRay = base.GetAimRay();
                 if (muzzleEffectPrefab != null)

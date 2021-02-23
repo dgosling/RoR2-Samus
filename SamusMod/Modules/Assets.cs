@@ -45,12 +45,12 @@ public static class Assets
                     var provider = new AssetBundleResourcesProvider("@Samus", mainAssetBundle);
                     ResourcesAPI.AddProvider(provider);
                 }
-                /*using(Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.SamusBank.bnk"))
+                using(Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.Samus.bnk"))
                 {
                     byte[] array = new byte[manifestResourceStream2.Length];
                     manifestResourceStream2.Read(array, 0, array.Length);
                     SoundAPI.SoundBanks.Add(array);
-                }*/
+                }
             }
             #region Icons
             charPortrait = mainAssetBundle.LoadAsset<Texture>("texSamusIcon");

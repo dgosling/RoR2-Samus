@@ -13,11 +13,12 @@ namespace SamusMod.States
         {
             this.baseDuration = base.baseDuration;
             this.chargeEffectPrefab = SamusMod.Modules.Assets.beam;
-            this.chargeSoundString = "";
+            this.chargeSoundString = SamusMod.Modules.Sounds.cBeamSound;
             this.crosshairOverridePrefab = Resources.Load<GameObject>("Prefabs/Crosshair/ToolbotGrenadeLauncherCrosshair");
             this.maxBloomRadius = .1f;
             this.minBloomRadius = 1f;
             this.originalScale = this.chargeEffectPrefab.transform.localScale;
+
             base.OnEnter();
 
             

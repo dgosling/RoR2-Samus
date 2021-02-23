@@ -12,6 +12,7 @@ namespace SamusMod.States
         public float initialSpeedCoefficient = StaticValues.rollSpeedCoefficientIni;
         public float finalSpeedCoefficient = StaticValues.rollSpeedCoefficientFin;
         public string dodgeSoundString;
+        public string bombSoundString;
         public GameObject projectilePrefab;
         public float damageCoefficient;
         public float dodgeFOV;
@@ -100,6 +101,8 @@ namespace SamusMod.States
                         crit = this.RollCrit()
 
                     };
+                    if (bombSoundString != null)
+                        Util.PlaySound(bombSoundString, this.gameObject);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                     hasFired = true;
                 }

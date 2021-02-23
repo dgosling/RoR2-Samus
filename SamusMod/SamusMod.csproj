@@ -5,11 +5,17 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
+    <None Remove="Samus.bnk" />
     <None Remove="samusbundle" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Samus.bnk" />
     <EmbeddedResource Include="samusbundle" />
   </ItemGroup>
 

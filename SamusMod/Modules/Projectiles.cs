@@ -91,6 +91,8 @@ namespace SamusMod.Modules
             bombExpl.lifetime = 5;
             bombExpl.blastRadius = 5;
             bombExpl.blastDamageCoefficient = 2f;
+
+
             SamusPlugin.Destroy(bomb.GetComponent<PhysicsImpactSpeedModifier>());
 
             #endregion

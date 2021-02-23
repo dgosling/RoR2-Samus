@@ -13,7 +13,7 @@ namespace SamusMod
 {
     [BepInDependency("com.bepis.r2api",BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID,"Samus","0.1.1")]
+    [BepInPlugin(MODUID,"Samus","0.5.0")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -40,6 +40,7 @@ namespace SamusMod
 
         public static event Action awake;
         public static event Action start;
+        public static float jumps;
 
         public static readonly Color characterColor = new Color(0f, 0f, 0f);
 
@@ -82,7 +83,7 @@ namespace SamusMod
                 return; 
             }
             awake();
-
+            
         }
 
         public void Start()
@@ -132,6 +133,60 @@ namespace SamusMod
             //On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.DamageTrail.DoDamage += DamageTrail_DoDamage;
             On.RoR2.DotController.InflictDot += DotController_InflictDot;
+            On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
+            On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
+            On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
+        }
+
+        private void CharacterMaster_OnBodyDamaged(On.RoR2.CharacterMaster.orig_OnBodyDamaged orig, CharacterMaster self, DamageReport damageReport)
+        {
+            if (self)
+            {
+                if (self.GetBody().baseNameToken == "SAMUS_NAME")
+                {
+                    Debug.Log("worked");
+                    Util.PlaySound(SamusMod.Modules.Sounds.hurtSound, self.bodyInstanceObject);
+                }
+                orig(self, damageReport);
+            }
+        }
+
+        private void CharacterMotor_OnLanded(On.RoR2.CharacterMotor.orig_OnLanded orig, CharacterMotor self)
+        {
+            if (self)
+            {
+                if (self.body.baseNameToken == "SAMUS_NAME" && jumps>0)
+                {
+                    jumps = 0;
+                }
+                orig(self);
+            }
+        }
+
+        private void CharacterMotor_FixedUpdate(On.RoR2.CharacterMotor.orig_FixedUpdate orig, CharacterMotor self)
+        {
+            if (self)
+            {
+                if (self.body.baseNameToken == "SAMUS_NAME")
+                {
+
+                    if (self.jumpCount == 1 && jumps == 0)
+                    {
+                        Debug.Log("jumped");
+                        jumps = 1;
+                        Util.PlaySound(SamusMod.Modules.Sounds.JumpSound, self.gameObject);
+                    }
+                    else if (self.jumpCount >= 2 && jumps+1==self.jumpCount)
+                    {
+                        Debug.Log("djump");
+                        jumps++;
+                        Util.PlaySound(SamusMod.Modules.Sounds.doubleJumpSound, self.gameObject);
+                    }
+
+                }
+                orig(self);
+                
+            }
         }
 
         private void DamageTrail_DoDamage(On.RoR2.DamageTrail.orig_DoDamage orig, DamageTrail self)

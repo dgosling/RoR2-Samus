@@ -29,7 +29,7 @@
 
         //roll
         public const float dashDamageCoefficient = 5f;
-        public const float rollSpeedCoefficientIni = 3f;
-        public const float rollSpeedCoefficientFin = 5f;
+        public const float rollSpeedCoefficientIni = 2.5f;
+        public const float rollSpeedCoefficientFin = 3.5f;
     }
 }

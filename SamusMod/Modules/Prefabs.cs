@@ -109,7 +109,7 @@ namespace SamusMod.Modules
             GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
-
+            SfxLocator sfxLocator = newPrefab.GetComponent<SfxLocator>();
             CharacterBody bodyComponent = newPrefab.GetComponent<CharacterBody>();
             //SetStateOnHurt stateOnHurt = newPrefab.GetComponent<SetStateOnHurt>();
 
@@ -163,7 +163,9 @@ namespace SamusMod.Modules
             bodyComponent.preferredPodPrefab = bodyInfo.podPrefab;
 
             bodyComponent.isChampion = false;
-            
+            sfxLocator.deathSound = SamusMod.Modules.Sounds.deathSound;
+            sfxLocator.barkSound = SamusMod.Modules.Sounds.hurtSound;
+
 
             SetupCharacterDirection(newPrefab, modelBaseTransform, model.transform);
             SetupCameraTargetParams(newPrefab);

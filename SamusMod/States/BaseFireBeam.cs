@@ -24,13 +24,15 @@ namespace SamusMod.States
         public float speed;
         private GameObject guncon;
         public Vector3 size;
+        public string tracerSound;
+        public string projSound;
         public Vector3 csize;
       //  private Transform test;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            //Debug.Log(this.charge);
+            Debug.Log(this.charge);
             this.duration = this.baseDuration / this.attackSpeedStat;
             ChildLocator childLocator = base.GetModelChildLocator();
             Transform transform = childLocator.FindChild("gunCon");
@@ -91,7 +93,7 @@ namespace SamusMod.States
         {
             if (base.isAuthority)
             {
-                if (charge <= .1f)
+                if (charge <= .15f)
                 {
                     foreach (SphereCollider i in this.projectilePrefab.GetComponentsInChildren<SphereCollider>())
                     {
@@ -112,11 +114,11 @@ namespace SamusMod.States
                     // controller.GetComponentInChildren<TrailRenderer>().widthMultiplier = this.charge * .75f;
                 }
 
-                if (this.projectilePrefab != null && this.charge > .1f)
+                if (this.projectilePrefab != null && this.charge > .15f)
                 {
                     float num = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                     float num2 = this.charge * this.force;
-
+                    Util.PlaySound(this.projSound, this.gameObject);
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
                         projectilePrefab = this.projectilePrefab,
@@ -126,8 +128,8 @@ namespace SamusMod.States
                         damage = this.damageStat * num,
                         force = num2,
                         crit = base.RollCrit(),
-                        speedOverride = this.speed,
-
+                        speedOverride = this.speed
+                        
 
 
                     };
@@ -142,6 +144,7 @@ namespace SamusMod.States
                         // Ray aimRay = this.GetAimRay();
                         float num = Util.Remap(.1f, .1f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                         float num2 = this.charge * this.force;
+                        Util.PlaySound(this.tracerSound, this.gameObject);
                         new BulletAttack()
                         {
                             owner = this.gameObject,
@@ -158,6 +161,8 @@ namespace SamusMod.States
                             isCrit = this.RollCrit(),
                             radius = .1f,
                             smartCollision = true
+                            
+                            
                         }.Fire();
                     }
                     //if (base.characterMotor)
