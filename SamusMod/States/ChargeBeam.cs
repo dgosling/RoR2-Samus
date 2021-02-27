@@ -48,7 +48,7 @@ namespace SamusMod.States
             {
                 this.chargeEffect.SetActive(true);
             }
-            newSize = new Vector3(originalScale.x + (calcCharge() - .01f), originalScale.y + (calcCharge() - .01f), originalScale.z + (calcCharge() - .01f));
+            newSize = new Vector3(calcCharge()*10,calcCharge()*10,calcCharge()*10);
 
             this.chargeEffectInstance.transform.localScale = newSize;
         }

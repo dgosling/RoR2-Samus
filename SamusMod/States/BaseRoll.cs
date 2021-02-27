@@ -110,10 +110,19 @@ namespace SamusMod.States
         }
         public override void OnExit()
         {
+            ChildLocator childLocator = this.animator.GetComponent<ChildLocator>();
             if (this.cameraTargetParams)
                 this.cameraTargetParams.fovOverride = -1f;
             if (hasFired == true)
                 hasFired = false;
+
+            //if (childLocator.FindChild("Ball").gameObject.activeSelf == true&&base.healthComponent.isInFrozenState==true)
+            //{
+
+            //    //childLocator.FindChild("Body").gameObject.SetActive(true);
+                
+            //    childLocator.FindChild("Ball").gameObject.SetActive(false);
+            //}
             base.OnExit();
         }
 

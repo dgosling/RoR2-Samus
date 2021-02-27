@@ -33,8 +33,8 @@ namespace SamusMod.States
             base.characterBody.SetAimTimer(2f);
             this.animator = base.GetModelAnimator();
             this.muzzleString = "gunCon";
+            //this.PlayAnimation("Gesture, Override", "Missile", "Missile.playbackRate", this.duration);
             this.PlayAnimation("Gesture, Override", "Missile", "Missile.playbackRate", this.duration);
-            this.PlayAnimation("Gesture, Additive", "Missile", "Missile.playbackRate", this.duration);
             secStock = skillLocator.secondary.stock;
             muzzleEffectPrefab = SamusMod.Modules.Assets.missileEffect;
         }

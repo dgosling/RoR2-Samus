@@ -63,6 +63,7 @@ namespace SamusMod
             Modules.Survivors.RegisterSurvivors();
             Modules.Skins.RegisterSkins();
             Modules.Projectiles.RegisterProjectiles();
+            //Modules.ItemDisplays.RegisterDisplays();
             Modules.Tokens.AddTokens();
 
             CreateDoppelganger();
@@ -136,13 +137,72 @@ namespace SamusMod
             On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
             On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
             On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
+           // On.EntityStates.FrozenState.OnExit += FrozenState_OnExit;
+        }
+
+        //private void FrozenState_OnExit(On.EntityStates.FrozenState.orig_OnExit orig, FrozenState self)
+        //{
+        //    if (self.GetModelChildLocator().FindChild("Ball").gameObject.activeSelf == true && self.characterBody.baseNameToken == "DG_SAMUS_NAME")
+        //    {
+        //        Debug.Log("hookd");
+        //        self.GetModelChildLocator().FindChild("Ball").gameObject.SetActive(false);
+        //        Debug.Log(self.GetModelChildLocator().FindChild("Body").gameObject.GetComponent<Material>().);
+        //        if (self.GetModelChildLocator().FindChild("Body").gameObject.activeSelf == false)
+        //        {
+        //            Debug.Log("body not active");
+                    
+        //            self.GetModelChildLocator().FindChild("Body").gameObject.SetActive(true);
+        //        }
+                    
+        //    }
+        //    orig(self);
+        //}
+
+        private void FrozenState_FixedUpdate(On.EntityStates.FrozenState.orig_FixedUpdate orig, FrozenState self)
+        {
+            if (self != null)
+            {
+                //string name="";
+                //AnimatorClipInfo[] animatorClipInfo = self.GetModelAnimator().GetCurrentAnimatorClipInfo(0);
+                //for (int i = 0; i < animatorClipInfo.Length; i++)
+                //{
+                //    if (animatorClipInfo[i].clip.name == "Roll")
+                //    {
+                //        name = animatorClipInfo[i].clip.name;
+                //        break;
+
+                //    }
+                //}
+                //if (self.modelAnimator.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME"&&name!="Roll")
+                {
+                    var child = self.GetModelChildLocator();
+                    
+                    if (child.FindChild("Ball").gameObject.activeSelf == true)
+                    {
+                        child.FindChild("Ball").gameObject.SetActive(false);
+                    }
+                }
+                
+            }
+            orig(self);
+        }
+
+        private void FrozenState_OnEnter(On.EntityStates.FrozenState.orig_OnEnter orig, FrozenState self)
+        {
+            if (self!=null)
+            {
+                if (self.modelAnimator.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME")
+                {
+
+                }
+            }
         }
 
         private void CharacterMaster_OnBodyDamaged(On.RoR2.CharacterMaster.orig_OnBodyDamaged orig, CharacterMaster self, DamageReport damageReport)
         {
             if (self)
             {
-                if (self.GetBody().baseNameToken == "SAMUS_NAME")
+                if (self.GetBody().baseNameToken == "DG_SAMUS_NAME")
                 {
                     Debug.Log("worked");
                     Util.PlaySound(SamusMod.Modules.Sounds.hurtSound, self.bodyInstanceObject);
@@ -155,7 +215,7 @@ namespace SamusMod
         {
             if (self)
             {
-                if (self.body.baseNameToken == "SAMUS_NAME" && jumps>0)
+                if (self.body.baseNameToken == "DG_SAMUS_NAME" && jumps>0)
                 {
                     jumps = 0;
                 }
@@ -167,7 +227,7 @@ namespace SamusMod
         {
             if (self)
             {
-                if (self.body.baseNameToken == "SAMUS_NAME")
+                if (self.body.baseNameToken == "DG_SAMUS_NAME")
                 {
 
                     if (self.jumpCount == 1 && jumps == 0)
@@ -199,7 +259,7 @@ namespace SamusMod
                 //{
                 //    string name = CharacterBody.instancesList[i].baseNameToken;
 
-                //    if (name == "SAMUS_NAME")
+                //    if (name == "DG_SAMUS_NAME")
                 //    {
                 //        characterBody = CharacterBody.instancesList[i];
                 //        return;
@@ -228,7 +288,7 @@ namespace SamusMod
         //        float origDam = damageInfo.damage;
         //        DamageTrail reference = gameObject.GetComponent<DamageTrail>();
         //        Debug.Log(damageInfo.damage);
-        //        if (damageInfo.attacker==reference/*&&gameObject.GetComponent<DamageTrail>().name=="FireTrail"*/ && self.body.baseNameToken == "SAMUS_NAME")
+        //        if (damageInfo.attacker==reference/*&&gameObject.GetComponent<DamageTrail>().name=="FireTrail"*/ && self.body.baseNameToken == "DG_SAMUS_NAME")
         //        {
         //            Debug.Log("test firetrail");
         //            damageInfo.damage = 0;
@@ -249,7 +309,7 @@ namespace SamusMod
         {
             if (self)
             {
-                if (self.characterBody.skillLocator.secondary == self && self.characterBody.baseNameToken == "SAMUS_NAME")
+                if (self.characterBody.skillLocator.secondary == self && self.characterBody.baseNameToken == "DG_SAMUS_NAME")
                 {
                     newBonusStockFromBody *= 5;
                     orig(self, newBonusStockFromBody);
@@ -264,7 +324,7 @@ namespace SamusMod
         //    if (self)
         //    {
 
-        //        if (self.baseNameToken == "SAMUS_NAME")
+        //        if (self.baseNameToken == "DG_SAMUS_NAME")
         //        {
         //            int missiles = self.skillLocator.secondary.maxStock;
         //            int magazines = self.inventory.GetItemCount(ItemIndex.SecondarySkillMagazine);
@@ -293,7 +353,7 @@ namespace SamusMod
         //    int missiles = self.secondary.maxStock;
         //    Debug.Log("hooked");
             
-        //    if (self.gameObject.GetComponent<CharacterBody>().baseNameToken == "SAMUS_BODY")
+        //    if (self.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_BODY")
         //    {
         //        for (int i=0;missiles < missiles + 5; i++){
         //            self.secondary.AddOneStock();
@@ -305,7 +365,7 @@ namespace SamusMod
 
         private void DotController_InflictDot(On.RoR2.DotController.orig_InflictDot orig, GameObject victimObject, GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier)
         {
-            if ((victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "SAMUS_NAME"||attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken=="SAMUS_NAME") && dotIndex == DotController.DotIndex.PercentBurn)
+            if ((victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME"||attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken=="DG_SAMUS_NAME") && dotIndex == DotController.DotIndex.PercentBurn)
             {
                 duration = 0;
                 damageMultiplier = 0;
@@ -341,7 +401,7 @@ namespace SamusMod
         private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
         {
             
-            if (self&&self.skillLocator.secondary&&self.skillLocator.special&&self.baseNameToken=="SAMUS_NAME")
+            if (self&&self.skillLocator.secondary&&self.skillLocator.special&&self.baseNameToken=="DG_SAMUS_NAME")
             {
                 if (self.skillLocator.secondary.stock >= 5)
                     self.skillLocator.special.stock = 1;

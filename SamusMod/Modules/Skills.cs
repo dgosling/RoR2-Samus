@@ -36,9 +36,9 @@ namespace SamusMod.Modules
         private static void PassiveSetup()
         {
             SkillLocator.passiveSkill.enabled = true;
-            SkillLocator.passiveSkill.skillNameToken = "SAMUS_PASSIVE_NAME";
-            SkillLocator.passiveSkill.skillDescriptionToken = "SAMUS_PASSIVE_DESCRIPTION";
-            SkillLocator.passiveSkill.skillDescriptionToken = "SAMUS_PASSIVE_DESCRIPTION";
+            SkillLocator.passiveSkill.skillNameToken = "DG_SAMUS_PASSIVE_NAME";
+            SkillLocator.passiveSkill.skillDescriptionToken = "DG_SAMUS_PASSIVE_DESCRIPTION";
+            SkillLocator.passiveSkill.skillDescriptionToken = "DG_SAMUS_PASSIVE_DESCRIPTION";
             SkillLocator.passiveSkill.icon = Assets.iconP;
         }
 
@@ -62,9 +62,9 @@ namespace SamusMod.Modules
             mySkillDef.shootDelay = .25f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon1;
-            mySkillDef.skillDescriptionToken = "SAMUS_PRIMARY_BEAM_DESCRIPTION";
-            mySkillDef.skillName = "SAMUS_PRIMARY_BEAM_NAME";
-            mySkillDef.skillNameToken = "SAMUS_PRIMARY_BEAM_NAME";
+            mySkillDef.skillDescriptionToken = "DG_SAMUS_PRIMARY_BEAM_DESCRIPTION";
+            mySkillDef.skillName = "DG_SAMUS_PRIMARY_BEAM_NAME";
+            mySkillDef.skillNameToken = "DG_SAMUS_PRIMARY_BEAM_NAME";
             mySkillDef.keywordTokens = new string[]
             {
                 "KEYWORD_AGILE"
@@ -107,9 +107,9 @@ namespace SamusMod.Modules
             skillDef.shootDelay = .5f;
             skillDef.stockToConsume = 1;
             skillDef.icon = Assets.icon2;
-            skillDef.skillDescriptionToken = "SAMUS_SECONDARY_MISSILE_DESCRIPTION";
-            skillDef.skillName = "SAMUS_SECONDARY_MISSILE_NAME";
-            skillDef.skillNameToken = "SAMUS_SECONDARY_MISSILE_NAME";
+            skillDef.skillDescriptionToken = "DG_SAMUS_SECONDARY_MISSILE_DESCRIPTION";
+            skillDef.skillName = "DG_SAMUS_SECONDARY_MISSILE_NAME";
+            skillDef.skillNameToken = "DG_SAMUS_SECONDARY_MISSILE_NAME";
             skillDef.keywordTokens = new string[]
             {
                 "KEYWORD_AGILE"
@@ -153,9 +153,9 @@ namespace SamusMod.Modules
             mySkillDef.shootDelay = 1;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon3;
-            mySkillDef.skillDescriptionToken = "SAMUS_UTILITY_DASH_DESCRIPTION";
-            mySkillDef.skillName = "SAMUS_UTILITY_DASH_NAME";
-            mySkillDef.skillNameToken = "SAMUS_UTILITY_DASH_NAME";
+            mySkillDef.skillDescriptionToken = "DG_SAMUS_UTILITY_DASH_DESCRIPTION";
+            mySkillDef.skillName = "DG_SAMUS_UTILITY_DASH_NAME";
+            mySkillDef.skillNameToken = "DG_SAMUS_UTILITY_DASH_NAME";
 
             LoadoutAPI.AddSkillDef(mySkillDef);
 
@@ -194,9 +194,9 @@ namespace SamusMod.Modules
             mySkillDef.shootDelay = 1f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon4;
-            mySkillDef.skillDescriptionToken = "SAMUS_SPECIAL_SMISSILE_DESCRIPTION";
-            mySkillDef.skillName = "SAMUS_SPECIAL_SMISSILE_NAME";
-            mySkillDef.skillNameToken = "SAMUS_SPECIAL_SMISSILE_NAME";
+            mySkillDef.skillDescriptionToken = "DG_SAMUS_SPECIAL_SMISSILE_DESCRIPTION";
+            mySkillDef.skillName = "DG_SAMUS_SPECIAL_SMISSILE_NAME";
+            mySkillDef.skillNameToken = "DG_SAMUS_SPECIAL_SMISSILE_NAME";
 
             LoadoutAPI.AddSkillDef(mySkillDef);
 

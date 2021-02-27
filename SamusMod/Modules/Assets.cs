@@ -75,8 +75,8 @@ public static class Assets
             bomb = mainAssetBundle.LoadAsset<GameObject>("bombproj");
             #endregion
             #region Meshes
-            body = mainAssetBundle.LoadAsset<Mesh>("meshSamus");
-            ball = mainAssetBundle.LoadAsset<Mesh>("meshBall");
+            body = mainAssetBundle.LoadAsset<Mesh>("meshDGSsamus");
+            ball = mainAssetBundle.LoadAsset<Mesh>("meshDGBall");
 
             #endregion
             #region effects
