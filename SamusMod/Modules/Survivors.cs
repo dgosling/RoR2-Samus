@@ -12,12 +12,12 @@ namespace SamusMod.Modules
 
             SurvivorDef survivorDef = new SurvivorDef
             {
-                name = "SAMUS_NAME",
-                descriptionToken = "SAMUS_DESCRIPTION",
+                name = "DG_SAMUS_NAME",
+                descriptionToken = "DG_SAMUS_DESCRIPTION",
                 primaryColor = SamusPlugin.characterColor,
                 bodyPrefab = Prefabs.samusPrefab,
                 displayPrefab = Prefabs.samusDisplayPrefab,
-                outroFlavorToken = "SAMUS_OUTRO_FLAVOR"
+                outroFlavorToken = "DG_SAMUS_OUTRO_FLAVOR"
             };
             
             SurvivorAPI.AddSurvivor(survivorDef);

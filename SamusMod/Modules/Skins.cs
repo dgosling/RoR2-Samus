@@ -108,7 +108,7 @@ namespace SamusMod.Modules
 
             #region DefaultSkin
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
-            SkinDef defaultSkin = CreateSkinDef("SAMUS_DEFAULT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), defaultRenderers, mainRenderer, model, "");
+            SkinDef defaultSkin = CreateSkinDef("DG_SAMUS_DEFAULT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), defaultRenderers, mainRenderer, model, "");
             defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement

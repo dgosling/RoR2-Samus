@@ -23,10 +23,10 @@ namespace SamusMod.Modules
         }
         private static void CreateSamus()
         {
-            samusPrefab = CreatePrefab("dgoslingSamusBody", "mdlSamus", new BodyInfo
+            samusPrefab = CreatePrefab("dgoslingSamusBody", "DGmdlSamus", new BodyInfo
             {
                 bodyName = "dgoslingSamusBody",
-                bodyNameToken = "SAMUS_NAME",
+                bodyNameToken = "DG_SAMUS_NAME",
                 characterPortrait = Assets.charPortrait,
                 crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = StaticValues.baseDamage,
@@ -34,7 +34,7 @@ namespace SamusMod.Modules
                 healthRegen = 1.5f,
                 jumpCount = 2,
                 maxHealth = 200f,
-                subtitleNameToken = "SAMUS_SUBTITLE"
+                subtitleNameToken = "DG_SAMUS_SUBTITLE"
             }) ;
 
             SetupCharacterModel(samusPrefab, new CustomRendererInfo[]
@@ -42,7 +42,8 @@ namespace SamusMod.Modules
                 new CustomRendererInfo
                 {
                     childName = "Body",
-                    material = Modules.Skins.CreateMaterial("matSamus",1,Color.white,0)
+                    material = Modules.Skins.CreateMaterial("matDGSamus",1,Color.white,0)
+                    
                 },
 
                 new CustomRendererInfo
@@ -51,9 +52,9 @@ namespace SamusMod.Modules
                     material = Modules.Skins.CreateMaterial("matBall")
                 }
 
-            }, 0) ;
+            }, 0); ;
             //samusPrefab.AddComponent<Misc.SuperMissileController>();
-            samusDisplayPrefab = CreateDisplayPrefab("samusDisplay", samusPrefab);
+            samusDisplayPrefab = CreateDisplayPrefab("DGdisplaySamus", samusPrefab);
 
             //create hitbox
 
@@ -204,6 +205,7 @@ namespace SamusMod.Modules
             modelTransform.parent = modelBase.transform;
             modelTransform.localPosition = Vector3.zero;
             modelTransform.localRotation = Quaternion.identity;
+            //modelTransform.localScale = new Vector3(.1f, .1f, .1f);
 
 
             return modelBase.transform;
