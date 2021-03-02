@@ -63,7 +63,7 @@ namespace SamusMod
             Modules.Survivors.RegisterSurvivors();
             Modules.Skins.RegisterSkins();
             Modules.Projectiles.RegisterProjectiles();
-            //Modules.ItemDisplays.RegisterDisplays();
+            Modules.ItemDisplays.RegisterDisplays();
             Modules.Tokens.AddTokens();
 
             CreateDoppelganger();
@@ -83,6 +83,7 @@ namespace SamusMod
             { 
                 return; 
             }
+            On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
             awake();
             
         }

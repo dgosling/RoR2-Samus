@@ -69,7 +69,11 @@ namespace SamusMod.Modules
             //beam.GetComponent<ProjectileImpactExplosion>().lifetime = 3f;
             beam.GetComponent<ProjectileController>().procCoefficient = 1f;
             beam.GetComponent<ProjectileDamage>().damage = 10;
-            beam.GetComponent<SphereCollider>().radius = 1;
+            foreach(SphereCollider i in beam.GetComponentsInChildren<SphereCollider>())
+            {
+                var sphere = i;
+                i.radius = .5f;
+            }
             beam.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Modules.Assets.beamImpactEffect;
             
 

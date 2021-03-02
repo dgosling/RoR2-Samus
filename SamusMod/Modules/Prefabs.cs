@@ -197,7 +197,7 @@ namespace SamusMod.Modules
 
             GameObject aimOrigin = new GameObject("AimOrigin");
             aimOrigin.transform.parent = modelBase.transform;
-            aimOrigin.transform.localPosition = new Vector3(0f, 2.2f, 0f);
+            aimOrigin.transform.localPosition = new Vector3(0f, 2.3f, 0f);
             aimOrigin.transform.localRotation = Quaternion.identity;
             aimOrigin.transform.localScale = Vector3.one;
             prefab.GetComponent<CharacterBody>().aimOriginTransform = aimOrigin.transform;
