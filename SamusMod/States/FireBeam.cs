@@ -46,6 +46,13 @@ namespace SamusMod.States
             }
 
             this.tracerSound = SamusMod.Modules.Sounds.beamSound;
+
+            if (this.charge > .5f)
+            {
+                this.projectilePrefab.GetComponent<SphereCollider>().radius = .4f;
+            }
+            
+            Debug.Log(this.projectilePrefab.GetComponent<SphereCollider>().radius);
             //Debug.Log(this.charge);
             base.OnEnter();
         }
@@ -55,6 +62,7 @@ namespace SamusMod.States
         {
             this.projectilePrefab.transform.localScale = Vector3.one;
             this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.transform.localScale = Vector3.one;
+            this.projectilePrefab.GetComponent<SphereCollider>().radius = .5f;
             
             base.OnExit();
         }
