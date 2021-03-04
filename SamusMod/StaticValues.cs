@@ -6,7 +6,7 @@
         public const string characterSubtitle = "Galatic Bounty Hunter";
         public const string characterOutro = "..and so she left, faith in her doctrine shaken.";
         public const string characterLore = "\nsample text";
-
+        
         //misc
 
         //Base stats

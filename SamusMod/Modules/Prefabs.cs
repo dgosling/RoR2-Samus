@@ -50,6 +50,11 @@ namespace SamusMod.Modules
                 {
                     childName = "Ball",
                     material = Modules.Skins.CreateMaterial("matBall")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "Ball2mesh",
+                    material = Modules.Skins.CreateMaterial("matBall")
                 }
 
             }, 0); ;

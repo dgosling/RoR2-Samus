@@ -32,7 +32,7 @@ namespace SamusMod.States
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log(this.charge);
+            //Debug.Log(this.charge);
             this.duration = this.baseDuration / this.attackSpeedStat;
             ChildLocator childLocator = base.GetModelChildLocator();
             Transform transform = childLocator.FindChild("gunCon");

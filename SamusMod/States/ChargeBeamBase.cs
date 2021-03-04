@@ -97,7 +97,7 @@ namespace SamusMod.States
                 this.loopSoundInstanceId = Util.PlayScaledSound(this.chargeSoundString, base.gameObject, this.duration-.15f);
                 this.isPlayingSound = true;
             }
-            if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= ChargeBeamBase.minChargeDuration) || base.fixedAge >= this.duration))
+            if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= ChargeBeamBase.minChargeDuration)))
             {
                 BaseFireBeam nextState = this.GetNextState();
                 nextState.charge = charge;

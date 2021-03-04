@@ -42,6 +42,10 @@ namespace SamusMod.Modules
             LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_NAME", "Morph Ball and Bomb");
             LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_DESCRIPTION", desc);
 
+            desc = "test";
+            LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_NAME", "Morph Ball Mode");
+            LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_DESCRIPTION", desc);
+
             desc = "Fire a large missile that shoots straight with a large explosion that does <style=cIsDamage>"+100f*StaticValues.smissileDamageCoefficient+"% damage.</style> <style=cSub>Consumes 5 Missiles</style>";
 
             LanguageAPI.Add("DG_SAMUS_SPECIAL_SMISSILE_NAME", "Super Missile");

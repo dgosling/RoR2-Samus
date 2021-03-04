@@ -37,6 +37,7 @@ public static class Assets
         //skin meshes
         public static Mesh body;
         public static Mesh ball;
+        public static Mesh ball2;
 
 
         public static void PopulateAssets()
@@ -77,6 +78,7 @@ public static class Assets
             #region Meshes
             body = mainAssetBundle.LoadAsset<Mesh>("meshDGSsamus");
             ball = mainAssetBundle.LoadAsset<Mesh>("meshDGBall");
+            ball2 = mainAssetBundle.LoadAsset<Mesh>("meshBall2");
 
             #endregion
             #region effects

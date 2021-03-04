@@ -83,7 +83,7 @@ namespace SamusMod
             { 
                 return; 
             }
-            On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
+            //On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
             awake();
             
         }
@@ -205,7 +205,7 @@ namespace SamusMod
             {
                 if (self.GetBody().baseNameToken == "DG_SAMUS_NAME")
                 {
-                    Debug.Log("worked");
+                    //Debug.Log("worked");
                     Util.PlaySound(SamusMod.Modules.Sounds.hurtSound, self.bodyInstanceObject);
                 }
                 orig(self, damageReport);
@@ -233,13 +233,13 @@ namespace SamusMod
 
                     if (self.jumpCount == 1 && jumps == 0)
                     {
-                        Debug.Log("jumped");
+                        //Debug.Log("jumped");
                         jumps = 1;
                         Util.PlaySound(SamusMod.Modules.Sounds.JumpSound, self.gameObject);
                     }
                     else if (self.jumpCount >= 2 && jumps+1==self.jumpCount)
                     {
-                        Debug.Log("djump");
+                        //Debug.Log("djump");
                         jumps++;
                         Util.PlaySound(SamusMod.Modules.Sounds.doubleJumpSound, self.gameObject);
                     }
