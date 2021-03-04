@@ -52,7 +52,7 @@ namespace SamusMod.States
                 this.projectilePrefab.GetComponent<SphereCollider>().radius = .4f;
             }
             
-            Debug.Log(this.projectilePrefab.GetComponent<SphereCollider>().radius);
+            //Debug.Log(this.projectilePrefab.GetComponent<SphereCollider>().radius);
             //Debug.Log(this.charge);
             base.OnEnter();
         }

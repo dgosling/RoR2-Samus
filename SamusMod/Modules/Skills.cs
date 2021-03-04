@@ -23,14 +23,17 @@ namespace SamusMod.Modules
             SkillLocator = bodyPrefab.GetComponent<SkillLocator>();
 
             PassiveSetup();
-            //Debug.Log("Setup passive skills");
+            Debug.Log("Setup passive skills");
             PrimarySetup(bodyPrefab);
-           // Debug.Log("setup primary skills");
+           Debug.Log("setup primary skills");
             SecondarySetup(bodyPrefab);
-           // Debug.Log("Setup secondary skills");    
+           Debug.Log("Setup secondary skills");    
 
             UtilitySetup(bodyPrefab);
+
+            Debug.Log("utility");
             SpecialSetup(bodyPrefab);
+            Debug.Log("special");
         }
 
         private static void PassiveSetup()
@@ -172,6 +175,42 @@ namespace SamusMod.Modules
                 unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(SamusMod.States.MorphBallTest));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 0f;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = false;
+            mySkillDef.mustKeyPress = true;
+            mySkillDef.noSprint = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 0;
+            mySkillDef.stockToConsume = 0;
+            mySkillDef.icon = Assets.icon3;
+            mySkillDef.skillDescriptionToken = "DG_SAMUS_UTILITY_MORPH_DESCRIPTION";
+            mySkillDef.skillName = "DG_SAMUS_UTILITY_MORPH_NAME";
+            mySkillDef.skillNameToken = "DG_SAMUS_UTILITY_MORPH_NAME";
+            mySkillDef.keywordTokens = new string[]
+            {
+                "KEYWORD_AGILE"
+            };
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
+
         }
 
         private static void SpecialSetup(GameObject bodyPrefab)
