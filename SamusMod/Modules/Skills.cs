@@ -189,10 +189,10 @@ namespace SamusMod.Modules
             mySkillDef.isCombatSkill = false;
             mySkillDef.mustKeyPress = true;
             mySkillDef.noSprint = true;
-            mySkillDef.rechargeStock = 1;
+            mySkillDef.rechargeStock = 0;
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0;
-            mySkillDef.stockToConsume = 0;
+            mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon3;
             mySkillDef.skillDescriptionToken = "DG_SAMUS_UTILITY_MORPH_DESCRIPTION";
             mySkillDef.skillName = "DG_SAMUS_UTILITY_MORPH_NAME";

@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using UnityEngine;
 using RoR2;
+
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -10,26 +11,45 @@ using KinematicCharacterController;
 
 namespace SamusMod.States
 {
-    public abstract class BaseMorphBall : EntityStates.BaseState
+    public abstract class BaseMorphBall : EntityStates.BaseSkillState
     {
         private ChildLocator ChildLocator;
         private bool onEnter;
         public float speedMult=1.2f;
+        private GameObject ball;
+        private GameObject armature;
+        private GameObject mesh;
+        private GameObject bone;
+        private float normalSpeed;
+        private Transform tran;
         public override void OnEnter()
         {
             base.OnEnter();
-            onEnter = true;
+            //if(this.bone.GetComponent<Misc.colision_test>()==null)
+            //    this.bone.AddComponent<Misc.colision_test>();
+            this.onEnter = true;
+            Debug.Log("onenter true");
+            
+            
             this.ChildLocator = base.GetModelChildLocator();
-           
+            this.characterBody.gameObject.GetComponent<Collider>().enabled = false;
+            this.ball = ChildLocator.FindChild("Ball2").gameObject;
+            this.armature = ChildLocator.FindChild("armature").gameObject;
+            this.mesh = ChildLocator.FindChild("Body").gameObject;
+            this.bone = ChildLocator.FindChild("Ball2Bone").gameObject;
+            this.tran = this.ball.transform.parent;
+            this.ball.transform.SetParent(base.modelLocator.modelBaseTransform);
+            normalSpeed = base.moveSpeedStat;
+            this.moveSpeedStat = normalSpeed * 2;
             if (NetworkServer.active)
             {
                 this.characterBody.AddBuff(BuffIndex.ArmorBoost);
             }
-            this.ChildLocator.FindChild("Ball2").gameObject.SetActive(true);
+            this.ball.SetActive(true);
             Debug.Log("isBall2Active " + this.ChildLocator.FindChild("Ball2").gameObject.activeSelf);
-            this.ChildLocator.FindChild("armature").gameObject.SetActive(false);
+            this.armature.SetActive(false);
             Debug.Log("isarmatureActive " + this.ChildLocator.FindChild("armature").gameObject.activeSelf);
-            this.ChildLocator.FindChild("Body").gameObject.SetActive(false);
+            this.mesh.SetActive(false);
 
 
         }
@@ -39,30 +59,65 @@ namespace SamusMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (this.fixedAge >= .1f && onEnter == true)
-            {
-                onEnter = false;
-            }
 
+            if (this.fixedAge >= .5f && this.onEnter == true)
+            {
+                this.onEnter = false;
+                Debug.Log("onenter false");
+            }
             if (this.inputBank && this.characterDirection)
             {
+                //Debug.Log(this.inputBank.moveVector);
                 //this.characterBody.rigidbody.isKinematic = false;
-                //this.characterBody.rigidbody.AddForce(this.inputBank.moveVector,ForceMode.Acceleration);
+                //this.characterBody.rigidbody.AddForce(this.inputBank.moveVector);
+
+                //this.rigidbody.AddForce(this.inputBank.moveVector);
                 //this.rigidbody.isKinematic = false;
                 //this.rigidbody.AddForce(this.inputBank.moveVector, ForceMode.Acceleration);
                 //this.ChildLocator.FindChild("Ball2").gameObject.GetComponentInChildren<Rigidbody>().isKinematic = false;
                 //this.ChildLocator.FindChild("Ball2").gameObject.GetComponentInChildren<Rigidbody>().AddForce(this.inputBank.moveVector, ForceMode.Acceleration);
+                //Quaternion quaternion = Quaternion.LookRotation();
+
+                //Vector3 vector3 = this.inputBank.moveVector;
+                //this.characterMotor.UpdateVelocity(ref vector3, Time.deltaTime);
+                //this.ball.transform.Rotate(Vector3.RotateTowards(this.ball.transform.forward, this.characterMotor.velocity, Time.deltaTime, 0f));
+                //this.characterMotor.Motor.RotateCharacter(Quaternion.Euler(this.characterMotor.rootMotion)); 
+                Collision collision;
+                Collider collider = this.bone.GetComponent<Collider>();
+                Rigidbody rigidbody = this.bone.GetComponent<Rigidbody>();
                 
-            //{
-            //    this.characterMotor.rootMotion += IdealVelocity()*Time.fixedDeltaTime;
+                //this.ball.GetComponent<Animator>().enabled = false;
+                collider.enabled = true;
+                rigidbody.isKinematic = false;
+                rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+                rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                // rigidbody.rotation.SetLookRotation(this.characterDirection.forward);
+                //rigidbody.MoveRotation(Quaternion.Euler(this.characterMotor.velocity + new Vector3(this.inputBank.moveVector.x*rigidbody.rotation.eulerAngles.x, this.inputBank.moveVector.y * rigidbody.rotation.eulerAngles.y, this.inputBank.moveVector.z * rigidbody.rotation.eulerAngles.z)));
+                
+                this.ball.transform.Rotate(this.characterMotor.velocity);
+                
+
+                //this.characterMotor.UpdateRotation(ref quaternion, Time.deltaTime);
+
+                //{
+                //    this.characterMotor.rootMotion += IdealVelocity()*Time.fixedDeltaTime;
             }
-            if (inputBank.skill3.down && onEnter == false)
+            if (base.IsKeyDownAuthority() && this.onEnter == false)
             {
                 this.outer.SetNextStateToMain();
             }
         }
 
-        public override void Update() => base.Update();
+
+
+
+
+        public override void Update()
+        {
+            base.Update();
+
+        }
 
         public override void OnExit()
         {
@@ -70,9 +125,21 @@ namespace SamusMod.States
             {
                 this.characterBody.RemoveBuff(BuffIndex.ArmorBoost);
             }
+            //SamusMain.Destroy(this.bone.GetComponent<Misc.colision_test>());
+            this.characterBody.gameObject.GetComponent<Collider>().enabled = true;
+            Collider collider = this.bone.GetComponent<Collider>();
+            Rigidbody rigidbody = this.bone.GetComponent<Rigidbody>();
+            //this.ball.GetComponent<Animator>().enabled = true;
+            this.ball.transform.SetParent(this.tran);
+            collider.enabled = false;
+            rigidbody.isKinematic = true;
+            rigidbody.interpolation = RigidbodyInterpolation.None;
+            rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
+            //this.characterBody.mainHurtBox.collider.enabled = true;
             this.ChildLocator.FindChild("Ball2").gameObject.SetActive(false);
             this.ChildLocator.FindChild("armature").gameObject.SetActive(true);
             this.ChildLocator.FindChild("Body").gameObject.SetActive(true);
+            //base.moveSpeedStat = normalSpeed;
             //IEnumerator enumerator = this.ChildLocator.FindChild("Body").GetEnumerator();
             //try
             //{
@@ -86,8 +153,9 @@ namespace SamusMod.States
             //    if (enumerator is IDisposable disposable)
             //        disposable.Dispose();
             //}
-
+            this.skillLocator.utility.AddOneStock();
             base.OnExit();
+
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

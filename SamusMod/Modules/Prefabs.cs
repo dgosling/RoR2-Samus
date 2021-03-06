@@ -57,8 +57,14 @@ namespace SamusMod.Modules
                     material = Modules.Skins.CreateMaterial("matBall")
                 }
 
-            }, 0); ;
+            }, 0);
             //samusPrefab.AddComponent<Misc.SuperMissileController>();
+            if (samusPrefab.GetComponentInChildren<ChildLocator>() != null)
+            {
+                GameObject bone = samusPrefab.GetComponentInChildren<ChildLocator>().FindChild("Ball2Bone").gameObject;
+                bone.AddComponent<Misc.colision_test>();
+            }
+
             samusDisplayPrefab = CreateDisplayPrefab("DGdisplaySamus", samusPrefab);
 
             //create hitbox
@@ -173,6 +179,7 @@ namespace SamusMod.Modules
             sfxLocator.barkSound = SamusMod.Modules.Sounds.hurtSound;
 
 
+
             SetupCharacterDirection(newPrefab, modelBaseTransform, model.transform);
             SetupCameraTargetParams(newPrefab);
             SetupModelLocator(newPrefab, modelBaseTransform, model.transform);
@@ -182,6 +189,7 @@ namespace SamusMod.Modules
             SetupFootstepController(model);
             SetupRagdoll(model);
             SetupAimAnimator(newPrefab, model);
+
             //SetupTracker(newPrefab);
             return newPrefab;
         }
