@@ -11,6 +11,8 @@ namespace SamusMod.Modules
         public static GameObject smissile;
         public static GameObject beam;
         public static GameObject bomb;
+        public static GameObject morphBomb;
+
         //public static GameObject cbeam;
 
         public static void LateSetup()
@@ -101,7 +103,30 @@ namespace SamusMod.Modules
             SamusPlugin.Destroy(bomb.GetComponent<PhysicsImpactSpeedModifier>());
 
             #endregion
+            #region morphBomb
+            morphBomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"), "SamusMorphBomb", true);
+            GameObject morphGhost = Assets.morphBomb.InstantiateClone("SamusMorphBombGhost", false);
+            morphGhost.AddComponent<ProjectileGhostController>();
+            morphBomb.GetComponent<ProjectileController>().ghostPrefab = morphGhost;
+            var morphSimple = morphBomb.GetComponent<ProjectileSimple>();
+            var morphControl = morphBomb.GetComponent<ProjectileController>();
+            morphSimple.lifetime = 3;
+            var morphExpl = morphBomb.GetComponent<ProjectileImpactExplosion>();
+            morphBomb.GetComponent<Rigidbody>().useGravity = false;
+            morphBomb.GetComponent<Rigidbody>().detectCollisions = false;
+            var morphTeam = morphBomb.GetComponent<TeamFilter>();
+            morphTeam.teamIndex = TeamIndex.Player;
+            morphSimple.velocity = 0;
+            morphExpl.falloffModel = BlastAttack.FalloffModel.Linear;
+            morphExpl.impactEffect = Assets.bombExplosion;
+            //morphExpl.blastAttackerFiltering = AttackerFiltering.NeverHit;
+            morphControl.startSound = Sounds.primeBomb;
+            morphExpl.lifetime = 2.5f;
+            morphExpl.blastRadius = 5;
+            morphExpl.blastDamageCoefficient = 1f;
 
+            SamusPlugin.Destroy(morphBomb.GetComponent<PhysicsImpactSpeedModifier>());
+            #endregion
 
             ProjectileCatalog.getAdditionalEntries += list =>
             {
@@ -109,6 +134,7 @@ namespace SamusMod.Modules
                 list.Add(smissile);
                 list.Add(beam);
                 list.Add(bomb);
+                list.Add(morphBomb);
             };
         }
 

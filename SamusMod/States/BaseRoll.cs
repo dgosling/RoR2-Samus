@@ -62,7 +62,7 @@ namespace SamusMod.States
             base.FixedUpdate();
             this.RecalculateRollSpeed();
             //Debug.Log(this.animator.ToString());
-            if(this.fixedAge >= this.duration/2&&hasFired==false)
+            if(this.fixedAge >= this.duration/2&&this.hasFired==false)
                 Fire();
 
 
@@ -88,11 +88,11 @@ namespace SamusMod.States
             if (this.isAuthority)
             {
                 Ray aimRay = this.GetAimRay();
-                if (projectilePrefab != null)
+                if (this.projectilePrefab != null)
                 {
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
-                        projectilePrefab = projectilePrefab,
+                        projectilePrefab = this.projectilePrefab,
                         owner = this.gameObject,
                         position = aimRay.origin - new Vector3(0,2f,0),
                         rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
@@ -101,10 +101,10 @@ namespace SamusMod.States
                         crit = this.RollCrit()
 
                     };
-                    if (bombSoundString != null)
-                        Util.PlaySound(bombSoundString, this.gameObject);
+                    if (this.bombSoundString != null)
+                        Util.PlaySound(this.bombSoundString, this.gameObject);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
-                    hasFired = true;
+                    this.hasFired = true;
                 }
             }
         }
@@ -113,8 +113,8 @@ namespace SamusMod.States
             ChildLocator childLocator = this.animator.GetComponent<ChildLocator>();
             if (this.cameraTargetParams)
                 this.cameraTargetParams.fovOverride = -1f;
-            if (hasFired == true)
-                hasFired = false;
+            if (this.hasFired == true)
+                this.hasFired = false;
 
             //if (childLocator.FindChild("Ball").gameObject.activeSelf == true&&base.healthComponent.isInFrozenState==true)
             //{

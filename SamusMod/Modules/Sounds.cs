@@ -23,5 +23,7 @@ namespace SamusMod.Modules
 
         public const string morphBomb = "Bomb";
         public const string rollSound = "Roll";
+        public const string bombExplode = "bombExplode";
+        public const string primeBomb = "morphBomb";
     }
 }

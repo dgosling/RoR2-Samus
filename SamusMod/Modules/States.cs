@@ -24,8 +24,10 @@ namespace SamusMod.Modules
             LoadoutAPI.AddSkill(typeof(SMissile));
             LoadoutAPI.AddSkill(typeof(Roll));
             Debug.Log("roll");
-            LoadoutAPI.AddSkill(typeof(MorphBallTest));
+            LoadoutAPI.AddSkill(typeof(morphBallEnter));
             Debug.Log("morph");
+            LoadoutAPI.AddSkill(typeof(ExitMorphBall));
+            LoadoutAPI.AddSkill(typeof(MorphBallBomb));
 
 
             EntityStateMachine samusStateMachine = Prefabs.samusPrefab.GetComponent<EntityStateMachine>();

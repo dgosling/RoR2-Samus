@@ -45,6 +45,11 @@ namespace SamusMod.Modules
             desc = "test";
             LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_NAME", "Morph Ball Mode");
             LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_DESCRIPTION", desc);
+            desc = "test";
+            LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_EXIT_NAME", "Exit Morph Ball Mode");
+            LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_EXIT_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_PRIMARY_MORPH_BOMB_NAME", "Morph Bomb");
+            LanguageAPI.Add("DG_SAMUS_PRIMARY_MORPH_BOMB_DESCRIPTION", desc);
 
             desc = "Fire a large missile that shoots straight with a large explosion that does <style=cIsDamage>"+100f*StaticValues.smissileDamageCoefficient+"% damage.</style> <style=cSub>Consumes 5 Missiles</style>";
 
