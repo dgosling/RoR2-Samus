@@ -1,0 +1,57 @@
+﻿using UnityEngine;
+using RoR2;
+using EntityStates;
+using UnityEngine.Networking;
+
+namespace SamusMod.States
+{
+     public class ExitMorphBall : BaseSkillState
+    {
+        public static float baseDuration = .433f;
+        private float duration;
+        private ChildLocator childLocator;
+        private GameObject ball;
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            this.duration = baseDuration / this.attackSpeedStat;
+            this.childLocator = base.GetModelChildLocator();
+            this.ball = this.childLocator.FindChild("Ball2").gameObject;
+            if (NetworkServer.active)
+            {
+                this.characterBody.RemoveBuff(BuffIndex.ArmorBoost);
+            }
+            this.characterBody.gameObject.GetComponent<Collider>().enabled = true;
+            Collider collider = this.ball.GetComponent<Collider>();
+            Rigidbody rigidbody = this.ball.GetComponent<Rigidbody>();
+            collider.enabled = false;
+            rigidbody.isKinematic = true;
+            rigidbody.interpolation = RigidbodyInterpolation.None;
+            rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
+            this.childLocator.FindChild("Ball2").gameObject.SetActive(false);
+            this.childLocator.FindChild("armature").gameObject.SetActive(true);
+            this.childLocator.FindChild("Body").gameObject.SetActive(true);
+            base.PlayAnimation("Body", "transformOut", "Roll.playbackRate", this.duration);
+        }
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if (this.fixedAge < this.duration || !this.isAuthority)
+                return;
+            this.outer.SetNextStateToMain();
+            
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
+            this.skillLocator.primary.UnsetSkillOverride(this.skillLocator.primary, morphBallEnter.bomb, GenericSkill.SkillOverridePriority.Contextual);
+            this.skillLocator.utility.UnsetSkillOverride(this.skillLocator.utility, morphBallEnter.exitMorph, GenericSkill.SkillOverridePriority.Contextual);
+            SamusMain.morphBall = false;
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Frozen;
+        }
+    }
+}

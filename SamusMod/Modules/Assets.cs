@@ -6,6 +6,9 @@ using UnityEngine.Networking;
 using RoR2;
 using RoR2.Projectile;
 using RoR2.Orbs;
+using RoR2.Networking;
+using RoR2.Audio;
+using System.Collections.Generic;
 
 namespace SamusMod.Modules
 {
@@ -33,6 +36,10 @@ public static class Assets
         public static GameObject beamShootEffect;
         public static GameObject missileEffect;
         public static GameObject beamImpactEffect;
+        public static GameObject morphBomb;
+        public static GameObject bombExplosion;
+
+        internal static NetworkSoundEventDef bombExplosionSound;
 
         //skin meshes
         public static Mesh body;
@@ -86,9 +93,28 @@ public static class Assets
             //chargeEffect = LoadEffect("chargeMuzzle", "");
             beamImpactEffect = LoadEffect("beamImpact", "");
             missileEffect = LoadEffect("missileMuzzle", "");
+            morphBomb = mainAssetBundle.LoadAsset<GameObject>("morphBomb");
+            bombExplosion = LoadEffect("bombExplosion", Sounds.bombExplode);
+
+            bombExplosionSound = CreateNetworkSoundEventDef(Sounds.bombExplode);
             #endregion
             // InitCustomItems();
         }
+
+        internal static NetworkSoundEventDef CreateNetworkSoundEventDef(string eventName)
+        {
+            NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            networkSoundEventDef.akId = AkSoundEngine.GetIDFromString(eventName);
+            networkSoundEventDef.eventName = eventName;
+
+            NetworkSoundEventCatalog.getSoundEventDefs += delegate (List<NetworkSoundEventDef> list)
+            {
+                list.Add(networkSoundEventDef);
+            };
+
+            return networkSoundEventDef;
+        }
+
 
         //public static GameObject CreateCBeam(Vector3 vector3)
         //{

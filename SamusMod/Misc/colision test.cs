@@ -10,12 +10,16 @@ namespace SamusMod.Misc
     {
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("collision started with "+collision.collider.name);
+            if(collision.gameObject.name== "SamusMorphBomb(Clone)")
+            {
+                gameObject.GetComponent<CharacterMotor>().velocity += new Vector3(0, gameObject.GetComponent<CharacterBody>().jumpPower * .8f, 0);
+                Debug.Log("test");
+            }
         }
 
         private void OnCollisionExit(Collision collision)
         {
-            Debug.Log("collision stopped with "+collision.collider.name);
+            
         }
     }
 }

@@ -12,6 +12,8 @@ namespace SamusMod.Modules
     public static class Skills
     {
         private static SkillLocator SkillLocator;
+        internal static SkillDef morphBallExit,morphBallBomb,morphBallPowerBomb;
+        
 
         public static void SetupSkills(GameObject bodyPrefab)
         {
@@ -27,15 +29,66 @@ namespace SamusMod.Modules
             PrimarySetup(bodyPrefab);
            Debug.Log("setup primary skills");
             SecondarySetup(bodyPrefab);
-           Debug.Log("Setup secondary skills");    
+           Debug.Log("Setup secondary skills");
+            morphBallExit = CreateSkillDef(new SkillDefInfo()
+            {
+                skillName = "DG_SAMUS_UTILITY_MORPH_EXIT_NAME",
+                skillNameToken = "DG_SAMUS_UTILITY_MORPH_EXIT_NAME",
+                skillDescriptionToken = "DG_SAMUS_UTILITY_MORPH_EXIT_DESCRIPTION",
+                skillIcon = Assets.icon3,
+                activationState = new SerializableEntityStateType(typeof(SamusMod.States.ExitMorphBall)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = InterruptPriority.Any,
+                isBullets = false,
+                isCombatSkill = false,
+                mustKeyPress = true,
+                noSprint = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                shootDelay = 0f,
+                stockToConsume = 1
 
+            }) ;
+            morphBallBomb = CreateSkillDef(new SkillDefInfo()
+            {
+                skillName = "DG_SAMUS_PRIMARY_MORPH_BOMB_NAME",
+                skillNameToken = "DG_SAMUS_PRIMARY_MORPH_BOMB_NAME",
+                skillDescriptionToken = "DG_SAMUS_PRIMARY_MORPH_BOMB_DESCRIPTION",
+                skillIcon = Assets.icon3,
+                activationState = new SerializableEntityStateType(typeof(SamusMod.States.MorphBallBomb)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 3,
+                baseRechargeInterval = 3,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                fullRestockOnAssign = true,
+                interruptPriority = InterruptPriority.PrioritySkill,
+                isBullets = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                noSprint = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                shootDelay = .4f,
+                stockToConsume = 1
+            });
+            //morphBallPowerBomb = CreateSkillDef(new SkillDefInfo()
+            //{
+
+            //});
             UtilitySetup(bodyPrefab);
 
             Debug.Log("utility");
             SpecialSetup(bodyPrefab);
             Debug.Log("special");
         }
-
+        
         private static void PassiveSetup()
         {
             SkillLocator.passiveSkill.enabled = true;
@@ -44,7 +97,34 @@ namespace SamusMod.Modules
             SkillLocator.passiveSkill.skillDescriptionToken = "DG_SAMUS_PASSIVE_DESCRIPTION";
             SkillLocator.passiveSkill.icon = Assets.iconP;
         }
-
+        internal static SkillDef CreateSkillDef(SkillDefInfo skillDefInfo)
+        {
+            SkillDef instance = ScriptableObject.CreateInstance<SkillDef>();
+            instance.skillName = skillDefInfo.skillName;
+            instance.skillNameToken = skillDefInfo.skillNameToken;
+            instance.skillDescriptionToken = skillDefInfo.skillDescriptionToken;
+            instance.icon = skillDefInfo.skillIcon;
+            instance.activationState = skillDefInfo.activationState;
+            instance.activationStateMachineName = skillDefInfo.activationStateMachineName;
+            instance.baseMaxStock = skillDefInfo.baseMaxStock;
+            instance.baseRechargeInterval = skillDefInfo.baseRechargeInterval;
+            instance.beginSkillCooldownOnSkillEnd = skillDefInfo.beginSkillCooldownOnSkillEnd;
+            instance.canceledFromSprinting = skillDefInfo.canceledFromSprinting;
+            instance.forceSprintDuringState = skillDefInfo.forceSprintDuringState;
+            instance.fullRestockOnAssign = skillDefInfo.fullRestockOnAssign;
+            instance.interruptPriority = skillDefInfo.interruptPriority;
+            instance.isBullets = skillDefInfo.isBullets;
+            instance.isCombatSkill = skillDefInfo.isCombatSkill;
+            instance.mustKeyPress = skillDefInfo.mustKeyPress;
+            instance.noSprint = skillDefInfo.noSprint;
+            instance.rechargeStock = skillDefInfo.rechargeStock;
+            instance.requiredStock = skillDefInfo.requiredStock;
+            instance.shootDelay = skillDefInfo.shootDelay;
+            instance.stockToConsume = skillDefInfo.stockToConsume;
+            instance.keywordTokens = skillDefInfo.keywordTokens;
+            LoadoutAPI.AddSkillDef(instance);
+            return instance;
+        }
         private static void PrimarySetup(GameObject bodyPrefab)
         {
             SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -78,10 +158,11 @@ namespace SamusMod.Modules
             SkillLocator.primary = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
             newFamily.variants = new SkillFamily.Variant[1];
+            
             LoadoutAPI.AddSkillFamily(newFamily);
             SkillLocator.primary._skillFamily = newFamily;
             SkillFamily skillFamily = SkillLocator.primary.skillFamily;
-
+            
             skillFamily.variants[0] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
@@ -177,11 +258,11 @@ namespace SamusMod.Modules
             };
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(SamusMod.States.MorphBallTest));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(SamusMod.States.morphBallEnter));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 0f;
-            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.beginSkillCooldownOnSkillEnd = false;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
@@ -189,7 +270,7 @@ namespace SamusMod.Modules
             mySkillDef.isCombatSkill = false;
             mySkillDef.mustKeyPress = true;
             mySkillDef.noSprint = true;
-            mySkillDef.rechargeStock = 0;
+            mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0;
             mySkillDef.stockToConsume = 1;

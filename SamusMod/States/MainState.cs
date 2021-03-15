@@ -9,11 +9,25 @@ namespace SamusMod.States
         private ChildLocator ChildLocator;
         private Animator Animator;
         private bool wasActive;
+        Collision collision;
+        private Collider collider;
+        private GameObject ball;
+        private Rigidbody rigidbody;
+        public static bool morphBall { get; set; }
+
 
         public override void OnEnter()
         {
+            this.ChildLocator = base.GetModelChildLocator();
+            this.ball = this.ChildLocator.FindChild("Ball2").gameObject;
+            this.collider = this.ball.GetComponent<Collider>();
+            this.rigidbody = this.ball.GetComponent<Rigidbody>();
             base.OnEnter();
-
+            //KinematicCharacterController.KinematicCharacterMotor kin = ball.AddComponent<KinematicCharacterController.KinematicCharacterMotor>();
+            //kin.CharacterController = this.characterMotor;
+            //kin.Rigidbody = ball.GetComponent<Rigidbody>();
+            //kin.Capsule = ball.GetComponent<CapsuleCollider>();
+            //kin.enabled = false;
         }
 
         public override void FixedUpdate()
@@ -26,10 +40,22 @@ namespace SamusMod.States
                 this.Animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
             }
 
-            if (base.healthComponent.isInFrozenState == true && (ChildLocator.FindChild("Ball").localScale != new Vector3(.5f,.5f,.5f)))
+            if (base.healthComponent.isInFrozenState == true && (this.ChildLocator.FindChild("Ball").localScale != new Vector3(.5f,.5f,.5f)))
             {
                 ChildLocator.FindChild("Ball").localScale = new Vector3(.5f, .5f, .5f);
             }
+
+            if (morphBall == true)
+            {
+                collider.enabled = true;
+                rigidbody.isKinematic = false;
+                rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+                rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                rigidbody.AddForce(this.characterMotor.velocity * 100, ForceMode.Force);
+            }
+            //if (base.healthComponent.TakeDamage())
+            //    Debug.Log("test");
         }
 
 

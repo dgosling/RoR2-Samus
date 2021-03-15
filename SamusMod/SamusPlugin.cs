@@ -141,6 +141,8 @@ namespace SamusMod
            // On.EntityStates.FrozenState.OnExit += FrozenState_OnExit;
         }
 
+
+
         //private void FrozenState_OnExit(On.EntityStates.FrozenState.orig_OnExit orig, FrozenState self)
         //{
         //    if (self.GetModelChildLocator().FindChild("Ball").gameObject.activeSelf == true && self.characterBody.baseNameToken == "DG_SAMUS_NAME")
@@ -151,10 +153,10 @@ namespace SamusMod
         //        if (self.GetModelChildLocator().FindChild("Body").gameObject.activeSelf == false)
         //        {
         //            Debug.Log("body not active");
-                    
+
         //            self.GetModelChildLocator().FindChild("Body").gameObject.SetActive(true);
         //        }
-                    
+
         //    }
         //    orig(self);
         //}

@@ -189,11 +189,25 @@ namespace SamusMod.Modules
             SetupFootstepController(model);
             SetupRagdoll(model);
             SetupAimAnimator(newPrefab, model);
-
+            //SetupBallKinCont(newPrefab);
             //SetupTracker(newPrefab);
             return newPrefab;
         }
+        private static void SetupBallKinCont(GameObject prefab)
+        {
+            ChildLocator childLocator = prefab.GetComponent<ChildLocator>();
+            GameObject ball2 = childLocator.FindChild("Ball2").gameObject;
+            
 
+            KinematicCharacterController.KinematicCharacterMotor kinematic = ball2.AddComponent<KinematicCharacterController.KinematicCharacterMotor>();
+            KinematicCharacterController.KinematicCharacterMotor kin = ball2.GetComponent<KinematicCharacterController.KinematicCharacterMotor>();
+            kin.CharacterController = prefab.GetComponent<CharacterMotor>();
+            kin.Rigidbody = ball2.GetComponent<Rigidbody>();
+            kin.Capsule = ball2.GetComponent<CapsuleCollider>();
+            kin.MaxStableSlopeAngle = 75;
+            kin.CollidableLayers = LayerMask.GetMask("World");
+            
+        }
         private static Transform SetupModel(GameObject prefab,Transform modelTransform)
         {
             GameObject modelBase = new GameObject("ModelBase");

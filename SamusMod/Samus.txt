@@ -1,6 +1,8 @@
 Event	ID	Name			Wwise Object Path	Notes
+	70120664	bombExplode			\Default Work Unit\bombExplode	
 	392504123	Missile			\Default Work Unit\Missile	
 	463334499	DJump			\Default Work Unit\DJump	
+	716258129	morphBomb			\Default Work Unit\morphBomb	
 	779278001	Death			\Default Work Unit\Death	
 	1190179400	beam			\Default Work Unit\beam	
 	1647524372	SMissile			\Default Work Unit\SMissile	
@@ -24,8 +26,10 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	114882551	smissile	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\smissile_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\smissile		14719
 	117584553	charge_full_shoot	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\charge_full_shoot_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\charge_full_shoot		19550
 	197519067	hurt1	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\hurt1_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Movement SFX\Hurt\hurt1		3993
+	234646512	prime_morph_bomb	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\prime_morph_bomb_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\prime_morph_bomb		8153
 	304426988	charge_loop	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\charge_loop_CB1F3167.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\charge test\charge_loop		13086
 	431272663	roll	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\roll_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Movement SFX\roll		5755
+	533000023	bomb_explode	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\bomb_explode_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\bomb_explode		6458
 	581771752	charge_50_shoot	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\charge_50_shoot_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\charge_50_shoot		9003
 	697968246	death	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\death_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Movement SFX\death		13342
 	752851236	charge_75_shoot	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\charge_75_shoot_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\charge_75_shoot		9338
