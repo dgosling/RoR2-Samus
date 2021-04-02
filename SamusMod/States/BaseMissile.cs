@@ -2,7 +2,7 @@
 using UnityEngine;
 using RoR2.Projectile;
 using EntityStates;
-using R2API;
+using EnigmaticThunder.Modules;
 
 namespace SamusMod.States
 {

@@ -94,7 +94,7 @@ namespace SamusMod.States
             float charge = this.calcCharge();
             if(base.isAuthority && this.isPlayingSound==false && charge > .15)
             {
-                this.loopSoundInstanceId = Util.PlayScaledSound(this.chargeSoundString, base.gameObject, this.duration-.15f);
+                this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.duration-.15f);
                 this.isPlayingSound = true;
             }
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= ChargeBeamBase.minChargeDuration)))

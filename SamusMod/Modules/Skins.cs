@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
-using R2API;
+using EnigmaticThunder.Modules;
 using RoR2;
-using R2API.Utils;
 using System.Collections.Generic;
+using EnigmaticThunder.Util;
 
 namespace SamusMod.Modules
 {
@@ -11,7 +11,7 @@ namespace SamusMod.Modules
     {
         public static SkinDef CreateSkinDef(string skinName,Sprite skinIcon,CharacterModel.RendererInfo[] rendererInfos,SkinnedMeshRenderer meshRenderer, GameObject root,string unlockName)
         {
-            LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo
+            Loadouts.SkinDefInfo skinDefInfo = new Loadouts.SkinDefInfo
             {
                 BaseSkins = Array.Empty<SkinDef>(),
                 GameObjectActivations = new SkinDef.GameObjectActivation[0],
@@ -26,14 +26,14 @@ namespace SamusMod.Modules
                 UnlockableName = unlockName
             };
 
-            SkinDef skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
+            SkinDef skin = Loadouts.CreateNewSkinDef(skinDefInfo);
 
             return skin;
         }
 
         public static SkinDef CreateSkinDef(string skinName,Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos,SkinnedMeshRenderer meshRenderer, GameObject root,string unlockName, Mesh skinMesh)
         {
-            LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo
+            Loadouts.SkinDefInfo skinDefInfo = new Loadouts.SkinDefInfo
             {
                 BaseSkins = Array.Empty<SkinDef>(),
                 GameObjectActivations = new SkinDef.GameObjectActivation[0],
@@ -55,7 +55,7 @@ namespace SamusMod.Modules
                 UnlockableName = unlockName
             };
 
-            SkinDef skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
+            SkinDef skin = Loadouts.CreateNewSkinDef(skinDefInfo);
             return skin;
         }
 
@@ -105,7 +105,7 @@ namespace SamusMod.Modules
             SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
             List<SkinDef> skinDefs = new List<SkinDef>();
-
+            
             #region DefaultSkin
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
             SkinDef defaultSkin = CreateSkinDef("DG_SAMUS_DEFAULT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), defaultRenderers, mainRenderer, model, "");
