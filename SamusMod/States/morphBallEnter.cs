@@ -64,7 +64,7 @@ namespace SamusMod.States
             this.moveSpeedStat = normalSpeed * 2;
             if (NetworkServer.active)
             {
-                this.characterBody.AddBuff(BuffIndex.ArmorBoost);
+                this.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
             }
             this.ball.SetActive(true);
             Debug.Log("isBall2Active " + this.ChildLocator.FindChild("Ball2").gameObject.activeSelf);

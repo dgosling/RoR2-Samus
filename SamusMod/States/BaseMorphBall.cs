@@ -1,7 +1,7 @@
 ﻿using EntityStates;
 using UnityEngine;
 using RoR2;
-
+using EnigmaticThunder.Modules;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -48,7 +48,7 @@ namespace SamusMod.States
             this.moveSpeedStat = normalSpeed * 2;
             if (NetworkServer.active)
             {
-                this.characterBody.AddBuff(BuffIndex.ArmorBoost);
+                this.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
             }
             this.ball.SetActive(true);
             Debug.Log("isBall2Active " + this.ChildLocator.FindChild("Ball2").gameObject.activeSelf);
@@ -136,7 +136,7 @@ namespace SamusMod.States
         {
             if (NetworkServer.active)
             {
-                this.characterBody.RemoveBuff(BuffIndex.ArmorBoost);
+                this.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
             //SamusMain.Destroy(this.bone.GetComponent<Misc.colision_test>());
             this.characterBody.gameObject.GetComponent<Collider>().enabled = true;

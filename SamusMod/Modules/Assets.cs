@@ -1,12 +1,11 @@
 ﻿using System.Reflection;
-using R2API;
+
 using UnityEngine;
 using System.IO;
 using UnityEngine.Networking;
 using RoR2;
-using RoR2.Projectile;
-using RoR2.Orbs;
-using RoR2.Networking;
+using EnigmaticThunder;
+using EnigmaticThunder.Modules;
 using RoR2.Audio;
 using System.Collections.Generic;
 
@@ -38,6 +37,7 @@ public static class Assets
         public static GameObject beamImpactEffect;
         public static GameObject morphBomb;
         public static GameObject bombExplosion;
+        public static GameObject powerbomb;
 
         internal static NetworkSoundEventDef bombExplosionSound;
 
@@ -46,6 +46,8 @@ public static class Assets
         public static Mesh ball;
         public static Mesh ball2;
 
+        internal static List<EffectDef> effectDefs = new List<EffectDef>();
+        internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
 
         public static void PopulateAssets()
         {
@@ -54,14 +56,13 @@ public static class Assets
                 using(var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusbundle"))
                 {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                    var provider = new AssetBundleResourcesProvider("@Samus", mainAssetBundle);
-                    ResourcesAPI.AddProvider(provider);
+
                 }
                 using(Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.Samus.bnk"))
                 {
                     byte[] array = new byte[manifestResourceStream2.Length];
                     manifestResourceStream2.Read(array, 0, array.Length);
-                    SoundAPI.SoundBanks.Add(array);
+                    EnigmaticThunder.Modules.Sounds.SoundBanks.Add(array);
                 }
             }
             #region Icons
@@ -81,6 +82,7 @@ public static class Assets
             smissile = mainAssetBundle.LoadAsset<GameObject>("supermissilePref");
             beamTrail = mainAssetBundle.LoadAsset<GameObject>("beamTrail");
             bomb = mainAssetBundle.LoadAsset<GameObject>("bombproj");
+            powerbomb = mainAssetBundle.LoadAsset<GameObject>("powerBombExplosion");
             #endregion
             #region Meshes
             body = mainAssetBundle.LoadAsset<Mesh>("meshDGSsamus");
@@ -107,10 +109,7 @@ public static class Assets
             networkSoundEventDef.akId = AkSoundEngine.GetIDFromString(eventName);
             networkSoundEventDef.eventName = eventName;
 
-            NetworkSoundEventCatalog.getSoundEventDefs += delegate (List<NetworkSoundEventDef> list)
-            {
-                list.Add(networkSoundEventDef);
-            };
+            NetworkSoundEvents.RegisterSoundDef(networkSoundEventDef);
 
             return networkSoundEventDef;
         }
@@ -164,27 +163,30 @@ public static class Assets
             effect.positionAtReferencedTransform = true;
             effect.soundName = soundName;
 
-            EffectAPI.AddEffect(newEffect);
+
+            EnigmaticThunder.Modules.Effects.RegisterEffect(EnigmaticThunder.Modules.Effects.CreateGenericEffectDef(newEffect));
 
             return newEffect;
         }
 
-        private static GameObject orbLoadEffect(string resourceName, string soundName)
+        private static void AddEffect(GameObject effectPrefab)
         {
-            GameObject newEffect = mainAssetBundle.LoadAsset<GameObject>(resourceName);
-
-            newEffect.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
-            var effect = newEffect.AddComponent<EffectComponent>();
-            effect.applyScale = false;
-            effect.effectIndex = EffectIndex.Invalid;
-            effect.parentToReferencedTransform = true;
-            effect.positionAtReferencedTransform = true;
-            effect.soundName = soundName;
-
-            EffectAPI.AddEffect(newEffect);
-
-            return newEffect;
+            AddEffect(effectPrefab, "");
         }
+
+        private static void AddEffect(GameObject effectPrefab,string soundName)
+        {
+            EffectDef newEffectDef = new EffectDef();
+            newEffectDef.prefab = effectPrefab;
+            newEffectDef.prefabEffectComponent = effectPrefab.GetComponent<EffectComponent>();
+            newEffectDef.prefabName = effectPrefab.name;
+            newEffectDef.prefabVfxAttributes = effectPrefab.GetComponent<VFXAttributes>();
+            newEffectDef.spawnSoundEventName = soundName;
+
+            effectDefs.Add(newEffectDef);
+        }
+
+
 
 
     }

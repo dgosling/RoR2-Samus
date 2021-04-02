@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using BepInEx;
-using R2API;
-using R2API.Utils;
+using EnigmaticThunder;
+using EnigmaticThunder.Modules;
+using EnigmaticThunder.Util;
 using EntityStates;
 using RoR2;
 using RoR2.Skills;
@@ -11,22 +12,22 @@ using System.Runtime.CompilerServices;
 
 namespace SamusMod
 {
-    [BepInDependency("com.bepis.r2api",BepInDependency.DependencyFlags.HardDependency)]
-    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID,"Samus","0.5.0")]
-    [R2APISubmoduleDependency(new string[]
-    {
-        "PrefabAPI",
-        "SurvivorAPI",
-        "LoadoutAPI",
-        "BuffAPI",
-        "LanguageAPI",
-        "SoundAPI",
-        "EffectAPI",
-        "UnlockablesAPI",
-        "ResourcesAPI"
+    [BepInDependency("com.EnigmaDev.EnigmaticThunder", BepInDependency.DependencyFlags.HardDependency)]
+    
+    [BepInPlugin(MODUID,"Samus","1.1.0")]
+    //[R2APISubmoduleDependency(new string[]
+    //{
+    //    "PrefabAPI",
+    //    "SurvivorAPI",
+    //    "LoadoutAPI",
+    //    "BuffAPI",
+    //    "LanguageAPI",
+    //    "SoundAPI",
+    //    "EffectAPI",
+    //    "UnlockablesAPI",
+    //    "ResourcesAPI"
 
-    })]
+    //})]
     public class SamusPlugin : BaseUnityPlugin
     {
         public const string MODUID = "com.dgosling.Samus";
@@ -63,11 +64,11 @@ namespace SamusMod
             Modules.Survivors.RegisterSurvivors();
             Modules.Skins.RegisterSkins();
             Modules.Projectiles.RegisterProjectiles();
-            Modules.ItemDisplays.RegisterDisplays();
+            Modules.ItemDisplays.InitializeItemDisplays();
             Modules.Tokens.AddTokens();
 
             CreateDoppelganger();
-
+            //new Modules.ContentPacks().CreateContentPack();
             Hook();
         }
 
@@ -100,13 +101,10 @@ namespace SamusMod
 
         private void CreateDoppelganger()
         {
-            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "SamusMonsterMaster");
+            doppelganger = Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "SamusMonsterMaster");
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = Modules.Prefabs.samusPrefab;
 
-            MasterCatalog.getAdditionalEntries += delegate (List<GameObject> list)
-            {
-                list.Add(doppelganger);
-            };
+            Masters.RegisterMaster(doppelganger);
         }
 
         private void Hook()
@@ -134,11 +132,23 @@ namespace SamusMod
             On.RoR2.GenericSkill.SetBonusStockFromBody += GenericSkill_SetBonusStockFromBody;
             //On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.DamageTrail.DoDamage += DamageTrail_DoDamage;
-            On.RoR2.DotController.InflictDot += DotController_InflictDot;
+            On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float;
+
             On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
             On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
             On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
            // On.EntityStates.FrozenState.OnExit += FrozenState_OnExit;
+        }
+
+        private void DotController_InflictDot_GameObject_GameObject_DotIndex_float_float(On.RoR2.DotController.orig_InflictDot_GameObject_GameObject_DotIndex_float_float orig, GameObject victimObject, GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier)
+        {
+            if ((victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME" || attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME") && dotIndex == DotController.DotIndex.PercentBurn)
+            {
+                duration = 0;
+                damageMultiplier = 0;
+                //Debug.Log("testing inflict");
+            }
+            orig(victimObject, attackerObject, dotIndex, duration, damageMultiplier);
         }
 
 
@@ -366,16 +376,7 @@ namespace SamusMod
         //    orig(self);
         //}
 
-        private void DotController_InflictDot(On.RoR2.DotController.orig_InflictDot orig, GameObject victimObject, GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier)
-        {
-            if ((victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME"||attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken=="DG_SAMUS_NAME") && dotIndex == DotController.DotIndex.PercentBurn)
-            {
-                duration = 0;
-                damageMultiplier = 0;
-                //Debug.Log("testing inflict");
-            }
-            orig(victimObject, attackerObject, dotIndex, duration, damageMultiplier);
-        }
+
 
         //private void CharacterBody_AddBuff(On.RoR2.CharacterBody.orig_AddBuff orig, CharacterBody self, BuffIndex buffType)
         //{

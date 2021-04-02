@@ -19,7 +19,7 @@ namespace SamusMod.States
             this.ball = this.childLocator.FindChild("Ball2").gameObject;
             if (NetworkServer.active)
             {
-                this.characterBody.RemoveBuff(BuffIndex.ArmorBoost);
+                this.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
             this.characterBody.gameObject.GetComponent<Collider>().enabled = true;
             Collider collider = this.ball.GetComponent<Collider>();

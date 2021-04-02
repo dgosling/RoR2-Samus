@@ -1,6 +1,8 @@
-﻿using R2API;
+﻿using EnigmaticThunder.Modules;
 using RoR2;
 using UnityEngine.Networking;
+using EntityStates;
+using UnityEngine;
 
 namespace SamusMod.Modules
 {
@@ -10,17 +12,20 @@ namespace SamusMod.Modules
         {
             Prefabs.samusDisplayPrefab.AddComponent<NetworkIdentity>();
 
-            SurvivorDef survivorDef = new SurvivorDef
-            {
-                name = "DG_SAMUS_NAME",
-                descriptionToken = "DG_SAMUS_DESCRIPTION",
-                primaryColor = SamusPlugin.characterColor,
-                bodyPrefab = Prefabs.samusPrefab,
-                displayPrefab = Prefabs.samusDisplayPrefab,
-                outroFlavorToken = "DG_SAMUS_OUTRO_FLAVOR"
-            };
+
+            SurvivorDef survivor = ScriptableObject.CreateInstance<SurvivorDef>();
+            survivor.bodyPrefab = Prefabs.samusPrefab;
+            survivor.displayPrefab = Prefabs.samusDisplayPrefab;
+            survivor.primaryColor = SamusPlugin.characterColor;
+            survivor.displayNameToken = "DG_SAMUS_NAME";
+            survivor.descriptionToken = "DG_SAMUS_DESCRIPTION";
+            survivor.outroFlavorToken = "DG_SAMUS_OUTRO_FLAVOR";
+            survivor.mainEndingEscapeFailureFlavorToken = "DG_SAMUS_OUTRO_FAILURE";
+            survivor.desiredSortPosition = 50f;
             
-            SurvivorAPI.AddSurvivor(survivorDef);
+
+
+            Loadouts.RegisterSurvivorDef(survivor);
         }
     }
 }

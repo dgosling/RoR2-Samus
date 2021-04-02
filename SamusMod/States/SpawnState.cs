@@ -18,7 +18,7 @@ namespace SamusMod.States
             this.animator = base.GetModelAnimator();
             this.modelTransform = base.GetModelTransform();
 
-            if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.HiddenInvincibility);
+            if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
 
             base.PlayAnimation("Body", "Spawn", "Spawn.playbackRate", SpawnState.duration);
             //Util.
@@ -62,7 +62,7 @@ namespace SamusMod.States
             {
                 this.animator.SetFloat(AnimationParameters.aimWeight, 1f);
             }
-            if (NetworkServer.active) base.characterBody.RemoveBuff(BuffIndex.HiddenInvincibility);
+            if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

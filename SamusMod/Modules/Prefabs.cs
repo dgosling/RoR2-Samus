@@ -1,4 +1,4 @@
-﻿using R2API;
+﻿
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,19 +12,22 @@ namespace SamusMod.Modules
 
         private static PhysicMaterial ragdollMaterial;
 
+        internal static List<SurvivorDef> survivorDefinitions = new List<SurvivorDef>();
+        internal static List<GameObject> bodyPrefabs = new List<GameObject>();
+        internal static List<GameObject> masterPrefabs = new List<GameObject>();
+        internal static List<GameObject> projectilePrefabs = new List<GameObject>();
+
         public static void CreatePrefabs()
         {
             CreateSamus();
 
-            BodyCatalog.getAdditionalEntries += delegate (List<GameObject> list)
-            {
-                list.Add(samusPrefab);
-            };
+
         }
         private static void CreateSamus()
         {
             samusPrefab = CreatePrefab("dgoslingSamusBody", "DGmdlSamus", new BodyInfo
             {
+
                 bodyName = "dgoslingSamusBody",
                 bodyNameToken = "DG_SAMUS_NAME",
                 characterPortrait = Assets.charPortrait,
@@ -34,8 +37,9 @@ namespace SamusMod.Modules
                 healthRegen = 1.5f,
                 jumpCount = 2,
                 maxHealth = 200f,
-                subtitleNameToken = "DG_SAMUS_SUBTITLE"
-            }) ;
+                subtitleNameToken = "DG_SAMUS_SUBTITLE",
+                bodyColor = SamusPlugin.characterColor
+            });
 
             SetupCharacterModel(samusPrefab, new CustomRendererInfo[]
             {
@@ -59,11 +63,16 @@ namespace SamusMod.Modules
 
             }, 0);
             //samusPrefab.AddComponent<Misc.SuperMissileController>();
-            if (samusPrefab.GetComponentInChildren<ChildLocator>() != null)
-            {
-                GameObject bone = samusPrefab.GetComponentInChildren<ChildLocator>().FindChild("Ball2Bone").gameObject;
-                bone.AddComponent<Misc.colision_test>();
-            }
+            CharacterCameraParams samusCameraParams = ScriptableObject.CreateInstance<CharacterCameraParams>();
+            samusCameraParams.name = "ccpSamus";
+            samusCameraParams.minPitch = -70f;
+            samusCameraParams.maxPitch = 70f;
+            samusCameraParams.wallCushion = .1f;
+            samusCameraParams.pivotVerticalOffset = 1.37f;
+            samusCameraParams.standardLocalCameraPos = new Vector3(0, .75f, -10.5f);
+
+            samusPrefab.GetComponent<CharacterBody>().sprintingSpeedMultiplier = 1.6f;
+            samusPrefab.GetComponent<CameraTargetParams>().cameraParams = samusCameraParams;
 
             samusDisplayPrefab = CreateDisplayPrefab("DGdisplaySamus", samusPrefab);
 
@@ -77,7 +86,7 @@ namespace SamusMod.Modules
 
         public static GameObject CreateDisplayPrefab(string modelName,GameObject prefab)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
+            GameObject newPrefab = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
 
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
@@ -118,14 +127,14 @@ namespace SamusMod.Modules
 
         public static GameObject CreatePrefab(string bodyName,string modelName,BodyInfo bodyInfo)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
+            GameObject newPrefab = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
             SfxLocator sfxLocator = newPrefab.GetComponent<SfxLocator>();
             CharacterBody bodyComponent = newPrefab.GetComponent<CharacterBody>();
             //SetStateOnHurt stateOnHurt = newPrefab.GetComponent<SetStateOnHurt>();
 
-            bodyComponent.bodyIndex = -1;
+            
             bodyComponent.name = bodyInfo.bodyName;
             bodyComponent.baseNameToken = bodyInfo.bodyNameToken;
             bodyComponent.subtitleNameToken = bodyInfo.subtitleNameToken;
@@ -189,25 +198,12 @@ namespace SamusMod.Modules
             SetupFootstepController(model);
             SetupRagdoll(model);
             SetupAimAnimator(newPrefab, model);
+            EnigmaticThunder.Modules.Bodies.RegisterBody(newPrefab);
             //SetupBallKinCont(newPrefab);
             //SetupTracker(newPrefab);
             return newPrefab;
         }
-        private static void SetupBallKinCont(GameObject prefab)
-        {
-            ChildLocator childLocator = prefab.GetComponent<ChildLocator>();
-            GameObject ball2 = childLocator.FindChild("Ball2").gameObject;
-            
 
-            KinematicCharacterController.KinematicCharacterMotor kinematic = ball2.AddComponent<KinematicCharacterController.KinematicCharacterMotor>();
-            KinematicCharacterController.KinematicCharacterMotor kin = ball2.GetComponent<KinematicCharacterController.KinematicCharacterMotor>();
-            kin.CharacterController = prefab.GetComponent<CharacterMotor>();
-            kin.Rigidbody = ball2.GetComponent<Rigidbody>();
-            kin.Capsule = ball2.GetComponent<CapsuleCollider>();
-            kin.MaxStableSlopeAngle = 75;
-            kin.CollidableLayers = LayerMask.GetMask("World");
-            
-        }
         private static Transform SetupModel(GameObject prefab,Transform modelTransform)
         {
             GameObject modelBase = new GameObject("ModelBase");

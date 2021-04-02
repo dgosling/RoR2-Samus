@@ -1,4 +1,4 @@
-﻿using R2API;
+﻿using EnigmaticThunder.Modules;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -24,7 +24,7 @@ namespace SamusMod.Modules
         public static void RegisterProjectiles()
         {
             #region missile
-            missile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MissileProjectile"), "SamusMissile", true);
+            missile = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MissileProjectile"), "SamusMissile", true);
             GameObject missileGhost = Assets.missile.InstantiateClone("SamusMissileGhost", false);
             missileGhost.AddComponent<ProjectileGhostController>();
             missile.GetComponent<ProjectileController>().ghostPrefab = missileGhost;
@@ -39,7 +39,7 @@ namespace SamusMod.Modules
             #endregion
 
             #region smissile
-            smissile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusSuperMissile", true);
+            smissile = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusSuperMissile", true);
             GameObject smissileGhost = Assets.smissile.InstantiateClone("SamusSuperMissileGhost", false);
             smissileGhost.AddComponent<ProjectileGhostController>();
             smissile.GetComponent<ProjectileController>().ghostPrefab = smissileGhost;
@@ -55,7 +55,7 @@ namespace SamusMod.Modules
             #endregion
 
             #region beam
-            beam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusBeam", true);
+            beam = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusBeam", true);
             GameObject beamGhost = Assets.cbeam.InstantiateClone("SamusBeamGhost", false);
             beamGhost.AddComponent<ProjectileGhostController>();
             SamusPlugin.Destroy(beam.GetComponent<ProjectileImpactExplosion>());
@@ -86,7 +86,7 @@ namespace SamusMod.Modules
             beam.GetComponent<ProjectileController>().ghostPrefab.transform.localScale = Vector3.one;
             #endregion
             #region bomb
-            bomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"),"SamusBomb",true);
+            bomb = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"),"SamusBomb",true);
             GameObject bombGhost = Assets.bomb.InstantiateClone("SamusBombGhost", false);
             bombGhost.AddComponent<ProjectileGhostController>();
             bomb.GetComponent<ProjectileController>().ghostPrefab = bombGhost;
@@ -104,7 +104,7 @@ namespace SamusMod.Modules
 
             #endregion
             #region morphBomb
-            morphBomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"), "SamusMorphBomb", true);
+            morphBomb = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"), "SamusMorphBomb", true);
             GameObject morphGhost = Assets.morphBomb.InstantiateClone("SamusMorphBombGhost", false);
             morphGhost.AddComponent<ProjectileGhostController>();
             morphBomb.GetComponent<ProjectileController>().ghostPrefab = morphGhost;
@@ -128,19 +128,18 @@ namespace SamusMod.Modules
             SamusPlugin.Destroy(morphBomb.GetComponent<PhysicsImpactSpeedModifier>());
             #endregion
 
-            ProjectileCatalog.getAdditionalEntries += list =>
-            {
-                list.Add(missile);
-                list.Add(smissile);
-                list.Add(beam);
-                list.Add(bomb);
-                list.Add(morphBomb);
-            };
+
+
+            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(missile);
+            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(smissile);
+            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(beam);
+            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(bomb);
+            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(morphBomb);
         }
 
         //public static void RegisterChargeBeam(GameObject gameObject)
         //{
-        //   GameObject cbeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusChargeBeam", true);
+        //   GameObject cbeam = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusChargeBeam", true);
         //    GameObject cbeamGhost = Assets.cbeam.InstantiateClone("SamusChargeBeamGhost", false);
         //    cbeamGhost.AddComponent<ProjectileGhostController>();
 
