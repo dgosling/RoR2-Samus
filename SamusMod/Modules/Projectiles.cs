@@ -1,4 +1,4 @@
-﻿using EnigmaticThunder.Modules;
+﻿using R2API;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -12,6 +12,7 @@ namespace SamusMod.Modules
         public static GameObject beam;
         public static GameObject bomb;
         public static GameObject morphBomb;
+        public static GameObject pMorphBomb;
 
         //public static GameObject cbeam;
 
@@ -24,7 +25,7 @@ namespace SamusMod.Modules
         public static void RegisterProjectiles()
         {
             #region missile
-            missile = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MissileProjectile"), "SamusMissile", true);
+            missile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MissileProjectile"), "SamusMissile", true);
             GameObject missileGhost = Assets.missile.InstantiateClone("SamusMissileGhost", false);
             missileGhost.AddComponent<ProjectileGhostController>();
             missile.GetComponent<ProjectileController>().ghostPrefab = missileGhost;
@@ -39,23 +40,25 @@ namespace SamusMod.Modules
             #endregion
 
             #region smissile
-            smissile = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusSuperMissile", true);
+            smissile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusSuperMissile", true);
             GameObject smissileGhost = Assets.smissile.InstantiateClone("SamusSuperMissileGhost", false);
             smissileGhost.AddComponent<ProjectileGhostController>();
             smissile.GetComponent<ProjectileController>().ghostPrefab = smissileGhost;
             smissile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            
             smissile.GetComponent<ProjectileImpactExplosion>().blastRadius = 10;
             smissile.GetComponent<Rigidbody>().useGravity = false;
             smissile.GetComponent<ProjectileImpactExplosion>().impactEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionVFX");
             smissile.GetComponent<ProjectileSimple>().lifetime = 10f;
-            smissile.GetComponent<ProjectileSimple>().velocity = 20f;
+            smissile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 20f;
             smissile.GetComponent<ProjectileController>().procCoefficient = 1f;
             smissile.GetComponent<ProjectileDamage>().damage = 25;
             smissile.GetComponent<ProjectileImpactExplosion>().lifetime = 5f;
+            smissile.GetComponent<ProjectileImpactExplosion>().fireChildren = false;
             #endregion
 
             #region beam
-            beam = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusBeam", true);
+            beam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusBeam", true);
             GameObject beamGhost = Assets.cbeam.InstantiateClone("SamusBeamGhost", false);
             beamGhost.AddComponent<ProjectileGhostController>();
             SamusPlugin.Destroy(beam.GetComponent<ProjectileImpactExplosion>());
@@ -65,7 +68,7 @@ namespace SamusMod.Modules
             beam.GetComponent<ProjectileController>().ghostPrefab = beamGhost;
             beam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
             //beam.GetComponent<ProjectileImpactExplosion>().blastRadius = .5f;
-            beam.GetComponent<ProjectileSimple>().velocity = 120;
+            beam.GetComponent<ProjectileSimple>().desiredForwardSpeed = 120;
             beam.GetComponent<Rigidbody>().useGravity = false;
             beam.GetComponent<ProjectileSimple>().lifetime = 10f;
             //beam.GetComponent<ProjectileImpactExplosion>().lifetime = 3f;
@@ -86,14 +89,14 @@ namespace SamusMod.Modules
             beam.GetComponent<ProjectileController>().ghostPrefab.transform.localScale = Vector3.one;
             #endregion
             #region bomb
-            bomb = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"),"SamusBomb",true);
+            bomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"),"SamusBomb",true);
             GameObject bombGhost = Assets.bomb.InstantiateClone("SamusBombGhost", false);
             bombGhost.AddComponent<ProjectileGhostController>();
             bomb.GetComponent<ProjectileController>().ghostPrefab = bombGhost;
             var bombSimple = bomb.GetComponent<ProjectileSimple>();
             var bombControl = bomb.GetComponent<ProjectileController>();
             var bombExpl = bomb.GetComponent<ProjectileImpactExplosion>();
-            bombSimple.velocity = 0;
+            bombSimple.desiredForwardSpeed = 0;
             bombExpl.falloffModel = BlastAttack.FalloffModel.Linear;
             bombExpl.lifetime = 5;
             bombExpl.blastRadius = 5;
@@ -104,42 +107,97 @@ namespace SamusMod.Modules
 
             #endregion
             #region morphBomb
-            morphBomb = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"), "SamusMorphBomb", true);
+            morphBomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"), "SamusMorphBomb", true);
             GameObject morphGhost = Assets.morphBomb.InstantiateClone("SamusMorphBombGhost", false);
             morphGhost.AddComponent<ProjectileGhostController>();
             morphBomb.GetComponent<ProjectileController>().ghostPrefab = morphGhost;
+            
             var morphSimple = morphBomb.GetComponent<ProjectileSimple>();
             var morphControl = morphBomb.GetComponent<ProjectileController>();
-            morphSimple.lifetime = 3;
+            morphSimple.lifetime = 1.2f;
             var morphExpl = morphBomb.GetComponent<ProjectileImpactExplosion>();
             morphBomb.GetComponent<Rigidbody>().useGravity = false;
             morphBomb.GetComponent<Rigidbody>().detectCollisions = false;
-            var morphTeam = morphBomb.GetComponent<TeamFilter>();
-            morphTeam.teamIndex = TeamIndex.Player;
-            morphSimple.velocity = 0;
+            //var morphTeam = morphBomb.GetComponent<TeamFilter>();
+            //morphTeam.teamIndex = TeamIndex.Player;
+            morphSimple.desiredForwardSpeed = 0;
             morphExpl.falloffModel = BlastAttack.FalloffModel.Linear;
             morphExpl.impactEffect = Assets.bombExplosion;
             //morphExpl.blastAttackerFiltering = AttackerFiltering.NeverHit;
             morphControl.startSound = Sounds.primeBomb;
-            morphExpl.lifetime = 2.5f;
+            morphExpl.lifetimeExpiredSound = null;
+            morphExpl.lifetime = 1.1f;
             morphExpl.blastRadius = 5;
             morphExpl.blastDamageCoefficient = 1f;
 
             SamusPlugin.Destroy(morphBomb.GetComponent<PhysicsImpactSpeedModifier>());
             #endregion
+            #region pMorphBomb
+            pMorphBomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"), "SamusPowerBomb", true);
+            //GameObject pmorphGhost = Assets.powerbomb.InstantiateClone("SamusPowerBombGhost", false);
+            //pmorphGhost.AddComponent<ProjectileGhostController>();
+            //pMorphBomb.GetComponent<ProjectileController>().ghostPrefab = pmorphGhost;
+            var pmorphSimple = pMorphBomb.GetComponent<ProjectileSimple>();
+            var pmorphControl = pMorphBomb.GetComponent<ProjectileController>();
+            var pmorphExpl = pMorphBomb.GetComponent<ProjectileImpactExplosion>();
+            InitializeImpactExplosion(pmorphExpl);
+            pmorphExpl.falloffModel = BlastAttack.FalloffModel.Linear;
+            pmorphExpl.impactEffect = Assets.powerbomb;
+            pmorphExpl.timerAfterImpact = true;
+            pmorphExpl.lifetimeAfterImpact = 8;
+            pmorphExpl.lifetimeExpiredSound = Assets.powerBombExplosionSound;
+            pmorphExpl.lifetime = 10;
+            pmorphExpl.blastRadius = 15;
+            pmorphExpl.blastDamageCoefficient = 1f;
+            pMorphBomb.GetComponent<Rigidbody>().useGravity = false;
+            pMorphBomb.GetComponent<Rigidbody>().detectCollisions = false;
+            pmorphSimple.lifetime = 1;
+            pmorphSimple.desiredForwardSpeed = 0;
+            
+            pmorphControl.startSound = null;
+
+            //pmorphExpl.lifetimeAfterImpact = 8;
+
+            SamusPlugin.Destroy(pMorphBomb.GetComponent<PhysicsImpactSpeedModifier>());
+
+            #endregion
 
 
 
-            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(missile);
-            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(smissile);
-            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(beam);
-            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(bomb);
-            EnigmaticThunder.Modules.Projectiles.RegisterProjectile(morphBomb);
+            ProjectileAPI.Add(missile);
+            ProjectileAPI.Add(smissile);
+            ProjectileAPI.Add(beam);
+            ProjectileAPI.Add(bomb);
+            ProjectileAPI.Add(morphBomb);
+            ProjectileAPI.Add(pMorphBomb);
         }
 
+        private static void InitializeImpactExplosion(ProjectileImpactExplosion projectileImpactExplosion)
+        {
+            projectileImpactExplosion.blastDamageCoefficient = 1f;
+            projectileImpactExplosion.blastProcCoefficient = 1f;
+            projectileImpactExplosion.blastRadius = 1f;
+            projectileImpactExplosion.bonusBlastForce = Vector3.zero;
+            projectileImpactExplosion.childrenCount = 0;
+            projectileImpactExplosion.childrenDamageCoefficient = 0f;
+            projectileImpactExplosion.childrenProjectilePrefab = null;
+            projectileImpactExplosion.destroyOnEnemy = false;
+            projectileImpactExplosion.destroyOnWorld = false;
+            projectileImpactExplosion.falloffModel = RoR2.BlastAttack.FalloffModel.None;
+            projectileImpactExplosion.fireChildren = false;
+            projectileImpactExplosion.impactEffect = null;
+            projectileImpactExplosion.lifetime = 0f;
+            projectileImpactExplosion.lifetimeAfterImpact = 0f;
+            projectileImpactExplosion.lifetimeExpiredSound = null;
+            projectileImpactExplosion.lifetimeRandomOffset = 0f;
+            projectileImpactExplosion.offsetForLifetimeExpiredSound = 0f;
+            projectileImpactExplosion.timerAfterImpact = false;
+
+            projectileImpactExplosion.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+        }
         //public static void RegisterChargeBeam(GameObject gameObject)
         //{
-        //   GameObject cbeam = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusChargeBeam", true);
+        //   GameObject cbeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusChargeBeam", true);
         //    GameObject cbeamGhost = Assets.cbeam.InstantiateClone("SamusChargeBeamGhost", false);
         //    cbeamGhost.AddComponent<ProjectileGhostController>();
 

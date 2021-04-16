@@ -24,16 +24,18 @@ namespace SamusMod.States
         public static SkillDef bomb = SamusMod.Modules.Skills.morphBallBomb;
         public static SkillDef powerBomb = SamusMod.Modules.Skills.morphBallPowerBomb;
         public static SkillDef exitMorph = SamusMod.Modules.Skills.morphBallExit;
+        
         public override void OnEnter()
         {
             base.OnEnter();
             //if(this.bone.GetComponent<Misc.colision_test>()==null)
             //    this.bone.AddComponent<Misc.colision_test>();
 
-            Debug.Log("onenter true");
+            //Debug.Log("onenter true");
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.skillLocator.primary.SetSkillOverride(this.skillLocator.primary, morphBallEnter.bomb, GenericSkill.SkillOverridePriority.Contextual);
             this.skillLocator.utility.SetSkillOverride(this.skillLocator.utility, morphBallEnter.exitMorph, GenericSkill.SkillOverridePriority.Contextual);
+            this.skillLocator.secondary.SetSkillOverride(this.skillLocator.secondary, morphBallEnter.powerBomb, GenericSkill.SkillOverridePriority.Contextual);
             this.ChildLocator = base.GetModelChildLocator();
 
             this.characterBody.gameObject.GetComponent<Collider>().enabled = false;
@@ -67,9 +69,9 @@ namespace SamusMod.States
                 this.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
             }
             this.ball.SetActive(true);
-            Debug.Log("isBall2Active " + this.ChildLocator.FindChild("Ball2").gameObject.activeSelf);
+            //Debug.Log("isBall2Active " + this.ChildLocator.FindChild("Ball2").gameObject.activeSelf);
             this.armature.SetActive(false);
-            Debug.Log("isarmatureActive " + this.ChildLocator.FindChild("armature").gameObject.activeSelf);
+            //Debug.Log("isarmatureActive " + this.ChildLocator.FindChild("armature").gameObject.activeSelf);
             this.mesh.SetActive(false);
             //this.ball.transform.rotation = (Quaternion.Euler(new Vector3(0, 0, 270)));
             SamusMain.morphBall = true;
