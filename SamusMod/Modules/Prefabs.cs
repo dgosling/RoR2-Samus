@@ -2,6 +2,7 @@
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
+using R2API;
 
 namespace SamusMod.Modules
 {
@@ -86,7 +87,7 @@ namespace SamusMod.Modules
 
         public static GameObject CreateDisplayPrefab(string modelName,GameObject prefab)
         {
-            GameObject newPrefab = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
+            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
 
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
@@ -127,7 +128,7 @@ namespace SamusMod.Modules
 
         public static GameObject CreatePrefab(string bodyName,string modelName,BodyInfo bodyInfo)
         {
-            GameObject newPrefab = EnigmaticThunder.Modules.Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
+            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
             SfxLocator sfxLocator = newPrefab.GetComponent<SfxLocator>();
@@ -198,7 +199,7 @@ namespace SamusMod.Modules
             SetupFootstepController(model);
             SetupRagdoll(model);
             SetupAimAnimator(newPrefab, model);
-            EnigmaticThunder.Modules.Bodies.RegisterBody(newPrefab);
+            bodyPrefabs.Add(newPrefab);
             //SetupBallKinCont(newPrefab);
             //SetupTracker(newPrefab);
             return newPrefab;

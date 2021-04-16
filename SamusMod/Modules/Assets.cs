@@ -4,8 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.Networking;
 using RoR2;
-using EnigmaticThunder;
-using EnigmaticThunder.Modules;
+using R2API;
 using RoR2.Audio;
 using System.Collections.Generic;
 
@@ -40,6 +39,7 @@ public static class Assets
         public static GameObject powerbomb;
 
         internal static NetworkSoundEventDef bombExplosionSound;
+        internal static NetworkSoundEventDef powerBombExplosionSound;
 
         //skin meshes
         public static Mesh body;
@@ -56,13 +56,15 @@ public static class Assets
                 using(var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusbundle"))
                 {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
+                    var provider = new AssetBundleResourcesProvider("@Samus", mainAssetBundle);
+                    ResourcesAPI.AddProvider(provider);
 
                 }
                 using(Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.Samus.bnk"))
                 {
                     byte[] array = new byte[manifestResourceStream2.Length];
                     manifestResourceStream2.Read(array, 0, array.Length);
-                    EnigmaticThunder.Modules.Sounds.SoundBanks.Add(array);
+                    SoundAPI.SoundBanks.Add(array);
                 }
             }
             #region Icons
@@ -82,7 +84,7 @@ public static class Assets
             smissile = mainAssetBundle.LoadAsset<GameObject>("supermissilePref");
             beamTrail = mainAssetBundle.LoadAsset<GameObject>("beamTrail");
             bomb = mainAssetBundle.LoadAsset<GameObject>("bombproj");
-            powerbomb = mainAssetBundle.LoadAsset<GameObject>("powerBombExplosion");
+            
             #endregion
             #region Meshes
             body = mainAssetBundle.LoadAsset<Mesh>("meshDGSsamus");
@@ -95,10 +97,14 @@ public static class Assets
             //chargeEffect = LoadEffect("chargeMuzzle", "");
             beamImpactEffect = LoadEffect("beamImpact", "");
             missileEffect = LoadEffect("missileMuzzle", "");
+            //powerbomb = mainAssetBundle.LoadAsset<GameObject>("powerBombExplosion");
+            powerbomb = LoadEffect("powerBombExplosion", Sounds.powerBomb);
             morphBomb = mainAssetBundle.LoadAsset<GameObject>("morphBomb");
             bombExplosion = LoadEffect("bombExplosion", Sounds.bombExplode);
+            
 
             bombExplosionSound = CreateNetworkSoundEventDef(Sounds.bombExplode);
+            powerBombExplosionSound = CreateNetworkSoundEventDef(Sounds.powerBomb);
             #endregion
             // InitCustomItems();
         }
@@ -109,7 +115,7 @@ public static class Assets
             networkSoundEventDef.akId = AkSoundEngine.GetIDFromString(eventName);
             networkSoundEventDef.eventName = eventName;
 
-            NetworkSoundEvents.RegisterSoundDef(networkSoundEventDef);
+            networkSoundEventDefs.Add(networkSoundEventDef);
 
             return networkSoundEventDef;
         }
@@ -164,7 +170,8 @@ public static class Assets
             effect.soundName = soundName;
 
 
-            EnigmaticThunder.Modules.Effects.RegisterEffect(EnigmaticThunder.Modules.Effects.CreateGenericEffectDef(newEffect));
+            EffectAPI.AddEffect(newEffect);
+
 
             return newEffect;
         }
@@ -183,7 +190,7 @@ public static class Assets
             newEffectDef.prefabVfxAttributes = effectPrefab.GetComponent<VFXAttributes>();
             newEffectDef.spawnSoundEventName = soundName;
 
-            effectDefs.Add(newEffectDef);
+            
         }
 
 

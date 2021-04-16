@@ -1,5 +1,5 @@
 ﻿using System;
-using EnigmaticThunder.Modules;
+using R2API;
 namespace SamusMod.Modules
 {
     public static class Tokens
@@ -16,48 +16,50 @@ namespace SamusMod.Modules
             string outro = StaticValues.characterOutro;
             string fail = StaticValues.characterOutroFail;
 
-            Languages.Add("DG_SAMUS_NAME", StaticValues.characterName);
-            Languages.Add("DG_SAMUS_DESCRIPTION", desc);
-            Languages.Add("DG_SAMUS_SUBTITLE", StaticValues.characterSubtitle);
-            Languages.Add("DG_SAMUS_LORE", StaticValues.characterLore);
-            Languages.Add("DG_SAMUS_OUTRO_FLAVOR", outro);
-            Languages.Add("DG_SAMUS_OUTRO_FAILURE", fail);
+            LanguageAPI.Add("DG_SAMUS_NAME", StaticValues.characterName);
+            LanguageAPI.Add("DG_SAMUS_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_SUBTITLE", StaticValues.characterSubtitle);
+            LanguageAPI.Add("DG_SAMUS_LORE", StaticValues.characterLore);
+            LanguageAPI.Add("DG_SAMUS_OUTRO_FLAVOR", outro);
+            LanguageAPI.Add("DG_SAMUS_OUTRO_FAILURE", fail);
 
-            Languages.Add("DG_SAMUS_DEFAULT_SKIN_NAME", "Default");
+            LanguageAPI.Add("DG_SAMUS_DEFAULT_SKIN_NAME", "Default");
 
-            Languages.Add("DG_SAMUS_PASSIVE_NAME", "Varia Suit");
-            Languages.Add("DG_SAMUS_PASSIVE_DESCRIPTION", "Become <style=cIsUtility>Immune</style> to <style=cIsDamage>PercentBurn Damage</style> and <style=cIsUtility>Gain a Second Jump.</style>");
+            LanguageAPI.Add("DG_SAMUS_PASSIVE_NAME", "Varia Suit");
+            LanguageAPI.Add("DG_SAMUS_PASSIVE_DESCRIPTION", "Become <style=cIsUtility>Immune</style> to <style=cIsDamage>PercentBurn Damage</style> and <style=cIsUtility>Gain a Second Jump.</style>");
 
             desc = "Click to do <style=cIsDamage>"+StaticValues.baseDamage+"</style> and hold to charge a beam that does <style=cIsDamage>" + 100f * StaticValues.shootDamageCoefficient + "% to " + 100 * StaticValues.cshootDamageCoefficient + "% damage.</style>";
 
-            Languages.Add("DG_SAMUS_PRIMARY_BEAM_NAME", "Power Beam");
-            Languages.Add("DG_SAMUS_PRIMARY_BEAM_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_PRIMARY_BEAM_NAME", "Power Beam");
+            LanguageAPI.Add("DG_SAMUS_PRIMARY_BEAM_DESCRIPTION", desc);
 
             desc = "Fire a Homing Missile that homes in on the nearest enemy and does <style=cIsDamage>"+100f*StaticValues.missileDamageCoefficient+"% damage.</style>";
 
-            Languages.Add("DG_SAMUS_SECONDARY_MISSILE_NAME", "Missile");
-            Languages.Add("DG_SAMUS_SECONDARY_MISSILE_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_SECONDARY_MISSILE_NAME", "Missile");
+            LanguageAPI.Add("DG_SAMUS_SECONDARY_MISSILE_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Dash</style> forward and drop a <style=cKeywordName>bomb</style> that does <style=cIsDamage>" + 100f * StaticValues.dashDamageCoefficient + "% damage</style> midway through.";
 
-            Languages.Add("DG_SAMUS_UTILITY_DASH_NAME", "Morph Ball and Bomb");
-            Languages.Add("DG_SAMUS_UTILITY_DASH_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_NAME", "Morph Ball and Bomb");
+            LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_DESCRIPTION", desc);
 
             desc = "test";
-            Languages.Add("DG_SAMUS_UTILITY_MORPH_NAME", "Morph Ball Mode");
-            Languages.Add("DG_SAMUS_UTILITY_MORPH_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_NAME", "Morph Ball Mode");
+            LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_DESCRIPTION", desc);
             desc = "test";
-            Languages.Add("DG_SAMUS_UTILITY_MORPH_EXIT_NAME", "Exit Morph Ball Mode");
-            Languages.Add("DG_SAMUS_UTILITY_MORPH_EXIT_DESCRIPTION", desc);
-            Languages.Add("DG_SAMUS_PRIMARY_MORPH_BOMB_NAME", "Morph Bomb");
-            Languages.Add("DG_SAMUS_PRIMARY_MORPH_BOMB_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_EXIT_NAME", "Exit Morph Ball Mode");
+            LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_EXIT_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_PRIMARY_MORPH_BOMB_NAME", "Morph Bomb");
+            LanguageAPI.Add("DG_SAMUS_PRIMARY_MORPH_BOMB_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_SECONDARY_MORPH_PBOMB_NAME", "Power Bomb");
+            LanguageAPI.Add("DG_SAMUS_SECONDARY_MORPH_PBOMB_DESCRIPTION", desc);
 
             desc = "Fire a large missile that shoots straight with a large explosion that does <style=cIsDamage>"+100f*StaticValues.smissileDamageCoefficient+"% damage.</style> <style=cSub>Consumes 5 Missiles</style>";
 
-            Languages.Add("DG_SAMUS_SPECIAL_SMISSILE_NAME", "Super Missile");
-            Languages.Add("DG_SAMUS_SPECIAL_SMISSILE_DESCRIPTION", desc);
+            LanguageAPI.Add("DG_SAMUS_SPECIAL_SMISSILE_NAME", "Super Missile");
+            LanguageAPI.Add("DG_SAMUS_SPECIAL_SMISSILE_DESCRIPTION", desc);
 
-            //Languages.Add("KEYWORD_BOOST", "<style=cKeywordName>Jet Boosted</style><style=cSub>Using the speed of your jets, you are temporarily <style=cIsUtility>invulnerable</style> and deal <style=cIsDamage>" + 100f * StaticValues.dashDamageCoefficient + "% damage</style> to anyone in your way.</style>");
+            //LanguageAPI.Add("KEYWORD_BOOST", "<style=cKeywordName>Jet Boosted</style><style=cSub>Using the speed of your jets, you are temporarily <style=cIsUtility>invulnerable</style> and deal <style=cIsDamage>" + 100f * StaticValues.dashDamageCoefficient + "% damage</style> to anyone in your way.</style>");
 
 
 

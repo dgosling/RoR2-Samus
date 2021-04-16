@@ -1,7 +1,6 @@
 ﻿using EntityStates;
 using UnityEngine;
 using RoR2;
-using EnigmaticThunder.Modules;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -32,7 +31,7 @@ namespace SamusMod.States
             //if(this.bone.GetComponent<Misc.colision_test>()==null)
             //    this.bone.AddComponent<Misc.colision_test>();
             this.onEnter = true;
-            Debug.Log("onenter true");
+            //Debug.Log("onenter true");
 
             this.skillLocator.utility.SetSkillOverride(this.skillLocator.utility, BaseMorphBall.exitMorph, GenericSkill.SkillOverridePriority.Contextual);
             this.ChildLocator = base.GetModelChildLocator();
@@ -51,9 +50,9 @@ namespace SamusMod.States
                 this.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
             }
             this.ball.SetActive(true);
-            Debug.Log("isBall2Active " + this.ChildLocator.FindChild("Ball2").gameObject.activeSelf);
+            //Debug.Log("isBall2Active " + this.ChildLocator.FindChild("Ball2").gameObject.activeSelf);
             this.armature.SetActive(false);
-            Debug.Log("isarmatureActive " + this.ChildLocator.FindChild("armature").gameObject.activeSelf);
+            //Debug.Log("isarmatureActive " + this.ChildLocator.FindChild("armature").gameObject.activeSelf);
             this.mesh.SetActive(false);
             //this.ball.transform.rotation = (Quaternion.Euler(new Vector3(0, 0, 270)));
 
@@ -68,7 +67,7 @@ namespace SamusMod.States
             if (this.fixedAge >= .5f && this.onEnter == true)
             {
                 this.onEnter = false;
-                Debug.Log("onenter false");
+                //Debug.Log("onenter false");
             }
             if (this.inputBank && this.characterDirection)
             {

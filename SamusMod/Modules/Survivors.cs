@@ -1,4 +1,4 @@
-﻿using EnigmaticThunder.Modules;
+﻿using R2API;
 using RoR2;
 using UnityEngine.Networking;
 using EntityStates;
@@ -25,7 +25,7 @@ namespace SamusMod.Modules
             
 
 
-            Loadouts.RegisterSurvivorDef(survivor);
+            SurvivorAPI.AddSurvivor(survivor);
         }
     }
 }

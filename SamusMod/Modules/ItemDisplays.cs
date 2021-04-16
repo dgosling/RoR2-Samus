@@ -1,5 +1,4 @@
-﻿using EnigmaticThunder;
-using EnigmaticThunder.Modules;
+﻿using R2API;
 using RoR2;
 using System.Collections.Generic;
 using System.Reflection;

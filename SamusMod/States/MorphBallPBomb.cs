@@ -1,40 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 using RoR2;
-using RoR2.Skills;
-using EntityStates;
-using UnityEngine;
 using RoR2.Projectile;
+using UnityEngine;
+using EntityStates;
 
 namespace SamusMod.States
 {
-    public class MorphBallBomb : BaseSkillState
+    public class MorphBallPBomb : BaseSkillState
     {
-        public float baseDuration = .25f;
+        public float baseDuration = .5f;
         public string bombSound;
         public GameObject projectilePrefab;
         private bool hasFired;
         private ChildLocator childLocator;
-        public float damageCoef = 3f;
+        public float damageCoef = 10f;
 
 
         public override void OnEnter()
         {
             base.OnEnter();
-            this.bombSound = SamusMod.Modules.Sounds.primeBomb;
+            this.bombSound = SamusMod.Modules.Sounds.powerBomb;
 
             childLocator = base.GetModelChildLocator();
-            this.projectilePrefab = SamusMod.Modules.Projectiles.morphBomb;
-            
+            this.projectilePrefab = SamusMod.Modules.Projectiles.pMorphBomb;
+
             this.hasFired = false;
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(this.hasFired==false)
-            Fire();
+            if (this.hasFired == false)
+                Fire();
 
 
             if (this.fixedAge < this.baseDuration || !this.isAuthority)
@@ -54,16 +51,16 @@ namespace SamusMod.States
                         projectilePrefab = this.projectilePrefab,
                         owner = base.gameObject,
                         position = base.GetModelChildLocator().FindChild("Ball2").position,
-                        rotation = Util.QuaternionSafeLookRotation(aimRay.direction), 
+                        rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
                         damage = this.damageCoef * base.damageStat,
                         force = 0,
                         crit = this.RollCrit()
-                        
+
                     };
                     //Util.PlaySound(this.bombSound, this.gameObject);
 
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
-                    
+
                     this.hasFired = true;
                 }
             }
@@ -71,7 +68,10 @@ namespace SamusMod.States
 
         public override void OnExit()
         {
+            base.skillLocator.primary.DeductStock(3);
+            base.skillLocator.primary.RecalculateMaxStock();
             base.OnExit();
+            
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

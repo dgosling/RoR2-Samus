@@ -1,17 +1,18 @@
 ﻿using System;
 using UnityEngine;
-using EnigmaticThunder.Modules;
+using R2API;
 using RoR2;
 using System.Collections.Generic;
-using EnigmaticThunder.Util;
+
 
 namespace SamusMod.Modules
 {
     public static class Skins
     {
+        internal static UnlockableDef unlockableDef;
         public static SkinDef CreateSkinDef(string skinName,Sprite skinIcon,CharacterModel.RendererInfo[] rendererInfos,SkinnedMeshRenderer meshRenderer, GameObject root,string unlockName)
         {
-            Loadouts.SkinDefInfo skinDefInfo = new Loadouts.SkinDefInfo
+            LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo
             {
                 BaseSkins = Array.Empty<SkinDef>(),
                 GameObjectActivations = new SkinDef.GameObjectActivation[0],
@@ -23,17 +24,17 @@ namespace SamusMod.Modules
                 ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0],
                 RendererInfos = rendererInfos,
                 RootObject = root,
-                UnlockableName = unlockName
+                UnlockableDef = unlockableDef
             };
 
-            SkinDef skin = Loadouts.CreateNewSkinDef(skinDefInfo);
+            SkinDef skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
 
             return skin;
         }
 
         public static SkinDef CreateSkinDef(string skinName,Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos,SkinnedMeshRenderer meshRenderer, GameObject root,string unlockName, Mesh skinMesh)
         {
-            Loadouts.SkinDefInfo skinDefInfo = new Loadouts.SkinDefInfo
+            LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo
             {
                 BaseSkins = Array.Empty<SkinDef>(),
                 GameObjectActivations = new SkinDef.GameObjectActivation[0],
@@ -52,10 +53,10 @@ namespace SamusMod.Modules
                 ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0],
                 RendererInfos = rendererInfos,
                 RootObject = root,
-                UnlockableName = unlockName
+                UnlockableDef = unlockableDef
             };
 
-            SkinDef skin = Loadouts.CreateNewSkinDef(skinDefInfo);
+            SkinDef skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
             return skin;
         }
 

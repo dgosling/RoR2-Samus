@@ -1,33 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using BepInEx;
-using EnigmaticThunder;
-using EnigmaticThunder.Modules;
-using EnigmaticThunder.Util;
+using R2API;
+using R2API.Utils;
 using EntityStates;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using System.Runtime.CompilerServices;
 
+
 namespace SamusMod
 {
-    [BepInDependency("com.EnigmaDev.EnigmaticThunder", BepInDependency.DependencyFlags.HardDependency)]
-    
-    [BepInPlugin(MODUID,"Samus","1.1.0")]
-    //[R2APISubmoduleDependency(new string[]
-    //{
-    //    "PrefabAPI",
-    //    "SurvivorAPI",
-    //    "LoadoutAPI",
-    //    "BuffAPI",
-    //    "LanguageAPI",
-    //    "SoundAPI",
-    //    "EffectAPI",
-    //    "UnlockablesAPI",
-    //    "ResourcesAPI"
+    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
 
-    //})]
+    [BepInPlugin(MODUID,"Samus","1.1.0")]
+    [R2APISubmoduleDependency(new string[]
+    {
+        "PrefabAPI",
+        "SurvivorAPI",
+        "LoadoutAPI",
+        "BuffAPI",
+        "LanguageAPI",
+        "SoundAPI",
+        "EffectAPI",
+        "UnlockablesAPI",
+        "ResourcesAPI",
+        "ProjectileAPI"
+
+    })]
     public class SamusPlugin : BaseUnityPlugin
     {
         public const string MODUID = "com.dgosling.Samus";
@@ -101,10 +102,10 @@ namespace SamusMod
 
         private void CreateDoppelganger()
         {
-            doppelganger = Prefabs.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "SamusMonsterMaster");
+            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "SamusMonsterMaster");
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = Modules.Prefabs.samusPrefab;
 
-            Masters.RegisterMaster(doppelganger);
+            Modules.Prefabs.masterPrefabs.Add(doppelganger);
         }
 
         private void Hook()
@@ -415,6 +416,8 @@ namespace SamusMod
                 
                 //Debug.Log("test");
             }
+
+
 
             orig(self);
 

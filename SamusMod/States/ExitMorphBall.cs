@@ -46,6 +46,7 @@ namespace SamusMod.States
             base.OnExit();
             this.skillLocator.primary.UnsetSkillOverride(this.skillLocator.primary, morphBallEnter.bomb, GenericSkill.SkillOverridePriority.Contextual);
             this.skillLocator.utility.UnsetSkillOverride(this.skillLocator.utility, morphBallEnter.exitMorph, GenericSkill.SkillOverridePriority.Contextual);
+            this.skillLocator.secondary.UnsetSkillOverride(this.skillLocator.secondary, morphBallEnter.powerBomb, GenericSkill.SkillOverridePriority.Contextual);
             SamusMain.morphBall = false;
         }
 
