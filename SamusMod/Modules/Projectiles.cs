@@ -114,10 +114,13 @@ namespace SamusMod.Modules
             
             var morphSimple = morphBomb.GetComponent<ProjectileSimple>();
             var morphControl = morphBomb.GetComponent<ProjectileController>();
-            morphSimple.lifetime = 1.2f;
+            morphSimple.lifetime = 1.02f;
             var morphExpl = morphBomb.GetComponent<ProjectileImpactExplosion>();
             morphBomb.GetComponent<Rigidbody>().useGravity = false;
+            morphBomb.GetComponent<Rigidbody>().isKinematic = true;
+            morphBomb.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             morphBomb.GetComponent<Rigidbody>().detectCollisions = false;
+            //morphBomb.GetComponent<SphereCollider>().radius = .25f;
             //var morphTeam = morphBomb.GetComponent<TeamFilter>();
             //morphTeam.teamIndex = TeamIndex.Player;
             morphSimple.desiredForwardSpeed = 0;
@@ -126,39 +129,45 @@ namespace SamusMod.Modules
             //morphExpl.blastAttackerFiltering = AttackerFiltering.NeverHit;
             morphControl.startSound = Sounds.primeBomb;
             morphExpl.lifetimeExpiredSound = null;
-            morphExpl.lifetime = 1.1f;
-            morphExpl.blastRadius = 5;
+            morphExpl.lifetime = 1f;
+            morphExpl.blastAttackerFiltering = AttackerFiltering.AlwaysHit;
+            morphExpl.bonusBlastForce = Vector3.zero;
+            morphExpl.blastRadius = 1;
             morphExpl.blastDamageCoefficient = 1f;
-
+            //morphBomb.AddComponent<Misc.colision_test>();
             SamusPlugin.Destroy(morphBomb.GetComponent<PhysicsImpactSpeedModifier>());
             #endregion
             #region pMorphBomb
-            pMorphBomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile"), "SamusPowerBomb", true);
-            //GameObject pmorphGhost = Assets.powerbomb.InstantiateClone("SamusPowerBombGhost", false);
-            //pmorphGhost.AddComponent<ProjectileGhostController>();
-            //pMorphBomb.GetComponent<ProjectileController>().ghostPrefab = pmorphGhost;
-            var pmorphSimple = pMorphBomb.GetComponent<ProjectileSimple>();
+            pMorphBomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/CaptainAirstrikeProjectile1"), "SamusPowerBomb", true);
+            GameObject pmorphGhost = Assets.powerbomb1.InstantiateClone("SamusPowerBombGhost", false);
+            pmorphGhost.AddComponent<ProjectileGhostController>();
+            pMorphBomb.GetComponent<ProjectileController>().ghostPrefab = pmorphGhost;
+            //var pmorphSimple = pMorphBomb.GetComponent<ProjectileSimple>();
+            var pmorphDam = pMorphBomb.GetComponent<ProjectileDamage>();
             var pmorphControl = pMorphBomb.GetComponent<ProjectileController>();
             var pmorphExpl = pMorphBomb.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(pmorphExpl);
-            pmorphExpl.falloffModel = BlastAttack.FalloffModel.Linear;
+            pmorphExpl.falloffModel = BlastAttack.FalloffModel.None;
             pmorphExpl.impactEffect = Assets.powerbomb;
-            pmorphExpl.timerAfterImpact = true;
+            pmorphDam.damageType = DamageType.Generic;
+            //pmorphExpl.explosionEffect = Assets.powerbomb;
+            pmorphExpl.timerAfterImpact = false;
             pmorphExpl.lifetimeAfterImpact = 8;
-            pmorphExpl.lifetimeExpiredSound = Assets.powerBombExplosionSound;
-            pmorphExpl.lifetime = 10;
-            pmorphExpl.blastRadius = 15;
+            //pmorphExpl.lifetimeExpiredSound = Assets.powerBombExplosionSound;
+            pmorphExpl.lifetime = .5f;
+            pmorphExpl.blastRadius = 20;
             pmorphExpl.blastDamageCoefficient = 1f;
-            pMorphBomb.GetComponent<Rigidbody>().useGravity = false;
-            pMorphBomb.GetComponent<Rigidbody>().detectCollisions = false;
-            pmorphSimple.lifetime = 1;
-            pmorphSimple.desiredForwardSpeed = 0;
+            //pMorphBomb.GetComponent<Rigidbody>().useGravity = false;
+            //pMorphBomb.GetComponent<Rigidbody>().detectCollisions = false;
+            //pmorphSimple.lifetime = 1;
+            //pmorphSimple.desiredForwardSpeed = 0;
+            //pMorphBomb.GetComponent<SphereCollider>().radius = 1;
             
-            pmorphControl.startSound = null;
+            //pmorphControl.startSound = Sounds.powerBomb;
 
             //pmorphExpl.lifetimeAfterImpact = 8;
 
-            SamusPlugin.Destroy(pMorphBomb.GetComponent<PhysicsImpactSpeedModifier>());
+            //SamusPlugin.Destroy(pMorphBomb.GetComponent<PhysicsImpactSpeedModifier>());
 
             #endregion
 

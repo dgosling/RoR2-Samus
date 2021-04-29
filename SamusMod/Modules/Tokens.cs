@@ -7,10 +7,10 @@ namespace SamusMod.Modules
         public static void AddTokens()
         {
             string desc = "Samus is a galatic bounty hunter.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Tip 1. WIP" + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Tip 2. WIP" + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Tip 3. WIP" + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Tip 4. WIP" + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > The Power Beam can be rapidly shot or charged." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Backup Magazines give you 5 more missiles!" + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Morph Bomb Dash can be good for escaping when surrounded." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Super Missiles can clear a group of enemies, but cost 5 missiles to use." + Environment.NewLine + Environment.NewLine;
 
 
             string outro = StaticValues.characterOutro;
@@ -40,17 +40,19 @@ namespace SamusMod.Modules
 
             desc = "<style=cIsUtility>Dash</style> forward and drop a <style=cKeywordName>bomb</style> that does <style=cIsDamage>" + 100f * StaticValues.dashDamageCoefficient + "% damage</style> midway through.";
 
-            LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_NAME", "Morph Ball and Bomb");
+            LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_NAME", "Morph Bomb Desh");
             LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_DESCRIPTION", desc);
 
-            desc = "test";
+            desc = "Go into and out of Morph Ball mode, where you can roll around and drop bombs and super bombs.";
             LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_NAME", "Morph Ball Mode");
             LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_DESCRIPTION", desc);
-            desc = "test";
+            desc = "Exit out of Morph Ball Mode.";
             LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_EXIT_NAME", "Exit Morph Ball Mode");
             LanguageAPI.Add("DG_SAMUS_UTILITY_MORPH_EXIT_DESCRIPTION", desc);
+            desc = "Drop a Morph Bomb for <style=cIsDamage>" + (StaticValues.baseDamage * 3) * 100 + "</style>";
             LanguageAPI.Add("DG_SAMUS_PRIMARY_MORPH_BOMB_NAME", "Morph Bomb");
             LanguageAPI.Add("DG_SAMUS_PRIMARY_MORPH_BOMB_DESCRIPTION", desc);
+            desc = "Drop a Power Bomb for <style=cIsDamage>" + (StaticValues.baseDamage * 10) * 100 + "</style>";
             LanguageAPI.Add("DG_SAMUS_SECONDARY_MORPH_PBOMB_NAME", "Power Bomb");
             LanguageAPI.Add("DG_SAMUS_SECONDARY_MORPH_PBOMB_DESCRIPTION", desc);
 

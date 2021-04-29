@@ -76,7 +76,6 @@ namespace SamusMod.Modules
             samusPrefab.GetComponent<CameraTargetParams>().cameraParams = samusCameraParams;
 
             samusDisplayPrefab = CreateDisplayPrefab("DGdisplaySamus", samusPrefab);
-
             //create hitbox
 
             /*GameObject model = samusPrefab.GetComponent<ModelLocator>().modelTransform.gameObject;
@@ -103,6 +102,7 @@ namespace SamusMod.Modules
             ChildLocator childLocator = characterModel.GetComponent<ChildLocator>();
 
             characterModel.body = prefab.GetComponent<CharacterBody>();
+            //childLocator.FindChild("Ball2").gameObject.AddComponent<Misc.colision_test>();
 
             List<CharacterModel.RendererInfo> rendererInfos = new List<CharacterModel.RendererInfo>();
             for(int i =0; i < rendererInfo.Length; i++)
@@ -199,6 +199,7 @@ namespace SamusMod.Modules
             SetupFootstepController(model);
             SetupRagdoll(model);
             SetupAimAnimator(newPrefab, model);
+            
             bodyPrefabs.Add(newPrefab);
             //SetupBallKinCont(newPrefab);
             //SetupTracker(newPrefab);

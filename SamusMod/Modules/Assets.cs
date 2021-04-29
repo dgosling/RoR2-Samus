@@ -37,6 +37,7 @@ public static class Assets
         public static GameObject morphBomb;
         public static GameObject bombExplosion;
         public static GameObject powerbomb;
+        public static GameObject powerbomb1;
 
         internal static NetworkSoundEventDef bombExplosionSound;
         internal static NetworkSoundEventDef powerBombExplosionSound;
@@ -56,8 +57,8 @@ public static class Assets
                 using(var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusbundle"))
                 {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                    var provider = new AssetBundleResourcesProvider("@Samus", mainAssetBundle);
-                    ResourcesAPI.AddProvider(provider);
+                    //var provider = new AssetBundleResourcesProvider("@Samus", mainAssetBundle);
+                    //ResourcesAPI.AddProvider(provider);
 
                 }
                 using(Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.Samus.bnk"))
@@ -97,8 +98,12 @@ public static class Assets
             //chargeEffect = LoadEffect("chargeMuzzle", "");
             beamImpactEffect = LoadEffect("beamImpact", "");
             missileEffect = LoadEffect("missileMuzzle", "");
-            //powerbomb = mainAssetBundle.LoadAsset<GameObject>("powerBombExplosion");
+            powerbomb1 = mainAssetBundle.LoadAsset<GameObject>("powerBombExplosion1");
             powerbomb = LoadEffect("powerBombExplosion", Sounds.powerBomb);
+            //powerbomb.GetComponent<DestroyOnTimer>().duration = 20;
+            powerbomb.GetComponent<EffectComponent>().applyScale = true;
+            //powerbomb.GetComponent<EffectComponent>().parentToReferencedTransform = false;
+            //powerbomb.GetComponent<EffectComponent>().positionAtReferencedTransform = false;
             morphBomb = mainAssetBundle.LoadAsset<GameObject>("morphBomb");
             bombExplosion = LoadEffect("bombExplosion", Sounds.bombExplode);
             

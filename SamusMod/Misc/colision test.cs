@@ -8,22 +8,24 @@ namespace SamusMod.Misc
 {
     public class colision_test : MonoBehaviour
     {
+        private void OnTriggerEnter(Collider collision)
+        {
+            if (collision.name == "SamusMorphBomb(Clone)")
+            {
+                Debug.Log("collision");
+            }
+            else
+                Debug.Log("Collided with "+collision.name);
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.name=="ball2")
-            {
-
-                Debug.Log("test Jump");
-            }
+            //Debug.Log(collision.collider.name);
         }
 
-        private void OnCollisionExit(Collision collision)
-        {
-            if (collision.gameObject.name == "ball2")
-            {
+      
 
-                Debug.Log("test Jump");
-            }
-        }
+
+
     }
 }
