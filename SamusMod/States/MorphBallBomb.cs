@@ -11,7 +11,7 @@ namespace SamusMod.States
 {
     public class MorphBallBomb : BaseSkillState
     {
-        public float baseDuration = .25f;
+        public float baseDuration = .1f;
         public string bombSound;
         public GameObject projectilePrefab;
         private bool hasFired;

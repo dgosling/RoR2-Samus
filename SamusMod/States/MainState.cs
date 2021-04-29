@@ -1,6 +1,7 @@
 ﻿using RoR2;
 using EntityStates;
 using UnityEngine;
+using System;
 
 namespace SamusMod.States
 {
@@ -13,6 +14,13 @@ namespace SamusMod.States
         private Collider collider;
         private GameObject ball;
         private Rigidbody rigidbody;
+        private CharacterBody body;
+        private Vector3 velocity;
+        private Vector3 direction;
+        public static Vector3 camera;
+        private float horizontalInput;
+        private Vector3 forwardDir;
+        private float stopwatch;
         public static bool morphBall { get; set; }
 
 
@@ -22,7 +30,9 @@ namespace SamusMod.States
             this.ball = this.ChildLocator.FindChild("Ball2").gameObject;
             this.collider = this.ball.GetComponent<Collider>();
             this.rigidbody = this.ball.GetComponent<Rigidbody>();
+            this.body = base.characterBody;
             
+
             base.OnEnter();
             //KinematicCharacterController.KinematicCharacterMotor kin = ball.AddComponent<KinematicCharacterController.KinematicCharacterMotor>();
             //kin.CharacterController = this.characterMotor;
@@ -48,26 +58,116 @@ namespace SamusMod.States
 
             if (morphBall == true)
             {
-                collider.enabled = true;
-                rigidbody.isKinematic = false;
-                rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
-                rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 
-                //rigidbody.AddForce(this.characterMotor.velocity * 100, ForceMode.VelocityChange);
-                rigidbody.AddForce(new Vector3((this.characterMotor.velocity.x * 100) + base.characterBody.transform.rotation.eulerAngles.x * -1, this.characterMotor.velocity.y * 100, this.characterMotor.velocity.z * 100), ForceMode.Force);
-                this.ball.transform.rotation = new Quaternion(base.characterBody.transform.rotation.x * -1, this.ball.transform.rotation.y, this.ball.transform.rotation.z, this.ball.transform.rotation.w);
+                this.velocity = this.characterMotor.velocity;
+                this.direction = this.inputBank.moveVector;
+                camera = this.cameraTargetParams.cameraPivotTransform.rotation.eulerAngles;
+                if (this.characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine) > 0)
+                {
+                    this.skillLocator.primary.maxStock = this.characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine) + 3;
+                    
+                }
+                Vector3 combined = Vector3.Scale(this.velocity,this.direction);
+                //this.rigidbody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationY;
+                //this.characterDirection
+                
+                this.collider.enabled = true;
+                this.rigidbody.isKinematic = false;
+                this.rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+                this.rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                float amount;
+                if (this.characterBody.isSprinting == true)
+                {
+                    if (this.velocity.x < 0 && this.velocity.z < 0)
+                    {
+                        amount = -this.velocity.x + (-this.velocity.z);
+                    }
+                    else if (this.velocity.x < 0 && this.velocity.z > 0)
+                    {
+                        amount = -this.velocity.x + this.velocity.z;
+                    }
+                    else if (this.velocity.x > 0 && this.velocity.z < 0)
+                    {
+                        amount = this.velocity.x + (-this.velocity.z);
+                    }
+                    else if (this.velocity.x > 0 && this.velocity.z > 0)
+                    {
+                        amount = this.velocity.x + this.velocity.z;
+                    }
+                    else
+                        amount = this.velocity.x + this.velocity.z;
+
+                    if (amount > 16.8f || amount < -16.8f)
+                    {
+                        amount = 16.8f;
+                    }
+                }
+                else
+                {
+                    if (this.velocity.x < 0 && this.velocity.z < 0)
+                    {
+                        amount = -this.velocity.x + (-this.velocity.z);
+                    }
+                    else if (this.velocity.x < 0 && this.velocity.z > 0)
+                    {
+                        amount = -this.velocity.x + this.velocity.z;
+                    }
+                    else if (this.velocity.x > 0 && this.velocity.z < 0)
+                    {
+                        amount = this.velocity.x + (-this.velocity.z);
+                    }
+                    else if (this.velocity.x > 0 && this.velocity.z > 0)
+                    {
+                        amount = this.velocity.x + this.velocity.z;
+                    }
+                    else
+                        amount = this.velocity.x + this.velocity.z;
+
+                    if (amount > 14 || amount < -14)
+                    {
+                        amount = 14;
+                    }
+                }
+
+
+
+
+                //On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
+                //this.rigidbody.AddForce(combined);
+                //this.ball.transform.Rotate(new Vector3(-this.characterMotor.moveDirection.y,this.characterMotor.moveDirection.x,this.characterMotor.moveDirection.z));
+                //this.rigidbody.AddForce(new Vector3(this.characterMotor.velocity.x * 100 +( this.characterBody.transform.rotation.eulerAngles.x * -1), this.characterMotor.velocity.y * 100, this.characterMotor.velocity.z * 100), ForceMode.Force);
+                //this.ball.transform.rotation = new Quaternion(this.characterBody.transform.rotation.x * -1, this.ball.transform.rotation.y, this.ball.transform.rotation.z, this.ball.transform.rotation.w);
                 //if (morphBall == true && this.collision.gameObject.name == "DGmdlSamus")
                 //{
                 //    Debug.Log("bomb jump test");
                 //}
                 //if (base.healthComponent.TakeDamage())
                 //    Debug.Log("test");
+
+                if (this.characterMotor.velocity != Vector3.zero)
+                {
+                    this.ball.transform.Rotate(Vector3.up, (-amount ));
+                    //Debug.Log("vel: " + this.velocity);
+                    //Debug.Log("local vel " + Ivelocity);
+                    //Debug.Log("test: " + Vector3.RotateTowards(this.ball.transform.rotation.eulerAngles, this.velocity, this.moveSpeedStat * Time.deltaTime, 0));
+                    //Debug.Log("Velocity: "+this.velocity);
+                    //Debug.Log("Camera: " + camera);
+                    //Debug.Log("Combined: " + combined);
+                }
+
             }
 
 
 
 
 
+
         }
+
+
+
+
+
+
     }
 }

@@ -12,18 +12,22 @@ namespace SamusMod.States
         private ChildLocator ChildLocator;
 
         public float speedMult = 1.2f;
-        public float baseDuration = .45f;
+        public float baseDuration = .42f;
         private float duration;
         private GameObject ball;
         private GameObject armature;
         private GameObject mesh;
         private GameObject bone;
-        private float normalSpeed;
+        public static float normalSpeed;
         private Transform tran;
         private float velx, vely, velz;
+        public static int normalJumps;
+        public static float normalSprint;
+        public static int stock1,stock2;
         public static SkillDef bomb = SamusMod.Modules.Skills.morphBallBomb;
         public static SkillDef powerBomb = SamusMod.Modules.Skills.morphBallPowerBomb;
         public static SkillDef exitMorph = SamusMod.Modules.Skills.morphBallExit;
+       
         
         public override void OnEnter()
         {
@@ -32,10 +36,19 @@ namespace SamusMod.States
             //    this.bone.AddComponent<Misc.colision_test>();
 
             //Debug.Log("onenter true");
+            stock1 = this.skillLocator.secondary.stock;
+            stock2 = this.skillLocator.special.stock;
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.skillLocator.primary.SetSkillOverride(this.skillLocator.primary, morphBallEnter.bomb, GenericSkill.SkillOverridePriority.Contextual);
             this.skillLocator.utility.SetSkillOverride(this.skillLocator.utility, morphBallEnter.exitMorph, GenericSkill.SkillOverridePriority.Contextual);
             this.skillLocator.secondary.SetSkillOverride(this.skillLocator.secondary, morphBallEnter.powerBomb, GenericSkill.SkillOverridePriority.Contextual);
+
+            if (ExitMorphBall.recharge != 0)
+            {
+                this.skillLocator.secondary.rechargeStopwatch = ExitMorphBall.recharge;
+                
+            }
+            this.skillLocator.secondary.stock = ExitMorphBall.pstock;
             this.ChildLocator = base.GetModelChildLocator();
 
             this.characterBody.gameObject.GetComponent<Collider>().enabled = false;
@@ -44,7 +57,7 @@ namespace SamusMod.States
             this.armature = ChildLocator.FindChild("armature").gameObject;
             this.mesh = ChildLocator.FindChild("Body").gameObject;
             this.bone = ChildLocator.FindChild("Ball2Bone").gameObject;
-
+            
             base.PlayAnimation("Body", "transformIn", "Roll.playbackRate",this.duration);
 
         }
@@ -55,15 +68,26 @@ namespace SamusMod.States
             if (this.fixedAge < this.duration || !this.isAuthority)
                 return;
             this.outer.SetNextStateToMain();
+            
         }
 
         public override void OnExit()
         {
             base.OnExit();
-            this.ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            this.ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition|RigidbodyConstraints.FreezeRotationX|RigidbodyConstraints.FreezeRotationZ;
+            this.ball.GetComponent<Rigidbody>().detectCollisions = false;
 
-            normalSpeed = base.moveSpeedStat;
-            this.moveSpeedStat = normalSpeed * 2;
+            normalSpeed = this.characterBody.baseMoveSpeed;
+
+            this.characterBody.baseMoveSpeed = normalSpeed * 2;
+            normalJumps = this.characterBody.baseJumpCount;
+            this.characterBody.baseJumpCount = 0;
+            normalSprint = this.characterBody.sprintingSpeedMultiplier;
+            this.characterBody.sprintingSpeedMultiplier = 1.2f;
+
+            //Debug.Log("basemovespeed: " + normalSpeed);
+            //this.moveSpeedStat = normalSpeed * 2;
+            //Debug.Log("modmovespeed: "+this.moveSpeedStat);
             if (NetworkServer.active)
             {
                 this.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
@@ -75,6 +99,7 @@ namespace SamusMod.States
             this.mesh.SetActive(false);
             //this.ball.transform.rotation = (Quaternion.Euler(new Vector3(0, 0, 270)));
             SamusMain.morphBall = true;
+            //SamusMain.camera = this.cameraTargetParams.cameraPivotTransform.rotation.eulerAngles;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

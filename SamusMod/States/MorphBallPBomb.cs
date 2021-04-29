@@ -68,8 +68,9 @@ namespace SamusMod.States
 
         public override void OnExit()
         {
-            base.skillLocator.primary.DeductStock(3);
-            base.skillLocator.primary.RecalculateMaxStock();
+            base.skillLocator.primary.RemoveAllStocks();
+            
+            //base.skillLocator.primary.RecalculateMaxStock();
             base.OnExit();
             
         }

@@ -10,6 +10,7 @@ using UnityEngine;
 using System.Runtime.CompilerServices;
 
 
+
 namespace SamusMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
@@ -134,11 +135,30 @@ namespace SamusMod
             //On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.DamageTrail.DoDamage += DamageTrail_DoDamage;
             On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float;
-
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
             On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
             On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
            // On.EntityStates.FrozenState.OnExit += FrozenState_OnExit;
+        }
+
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+            if (self)
+            {
+                if(self.body.baseNameToken== "DG_SAMUS_NAME" && (damageInfo.inflictor.name == "bombExplosion(Clone)"||damageInfo.inflictor.name== "SamusMorphBomb(Clone)"))
+                {
+                    damageInfo.damage = 0;
+                    if (self.body.characterMotor.isGrounded == true||self.body.characterMotor.velocity.y>-10)
+                    {
+                        damageInfo.force = new Vector3(0, 1200, 0);
+                    }
+                    else
+                        damageInfo.force = new Vector3(0, 3000, 0);
+                    
+                }
+            }
+            orig(self, damageInfo);
         }
 
         private void DotController_InflictDot_GameObject_GameObject_DotIndex_float_float(On.RoR2.DotController.orig_InflictDot_GameObject_GameObject_DotIndex_float_float orig, GameObject victimObject, GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier)
@@ -218,9 +238,11 @@ namespace SamusMod
             {
                 if (self.GetBody().baseNameToken == "DG_SAMUS_NAME")
                 {
+
                     //Debug.Log("worked");
                     Util.PlaySound(SamusMod.Modules.Sounds.hurtSound, self.bodyInstanceObject);
                 }
+                
                 orig(self, damageReport);
             }
         }
@@ -325,8 +347,26 @@ namespace SamusMod
             {
                 if (self.characterBody.skillLocator.secondary == self && self.characterBody.baseNameToken == "DG_SAMUS_NAME")
                 {
-                    newBonusStockFromBody *= 5;
-                    orig(self, newBonusStockFromBody);
+                    //if (SamusMod.States.SamusMain.morphBall == true)
+                    //{
+                    //    float test = self.characterBody.skillLocator.primary.stock%3;
+                    //    if (test == 0)
+                    //    {
+                    //        newBonusStockFromBody = (self.characterBody.skillLocator.primary.maxStock / 3);
+                    //    }
+                    //    else
+                    //    {
+                    //        newBonusStockFromBody = Mathf.FloorToInt(self.characterBody.skillLocator.primary.maxStock / 3);
+                    //    }
+                    //    orig(self, newBonusStockFromBody);
+                    //}
+                    //else
+                    //{
+                    if (SamusMod.States.SamusMain.morphBall != true) { 
+                        newBonusStockFromBody *= 5;
+                        orig(self, newBonusStockFromBody);
+                    }
+
                 }
                 else
                     orig(self, newBonusStockFromBody);
@@ -408,6 +448,14 @@ namespace SamusMod
             
             if (self&&self.skillLocator.secondary&&self.skillLocator.special&&self.baseNameToken=="DG_SAMUS_NAME")
             {
+                if (SamusMod.States.SamusMain.morphBall == true)
+                {
+                    if (self.skillLocator.primary.maxStock == 3)
+                    {
+                        self.skillLocator.secondary.maxStock = 1;
+                    }
+                }
+
                 if (self.skillLocator.secondary.stock >= 5)
                     self.skillLocator.special.stock = 1;
                 else

@@ -3,10 +3,10 @@
     class StaticValues
     {
         public const string characterName = "Samus";
-        public const string characterSubtitle = "Galatic Bounty Hunter";
+        public const string characterSubtitle = "Intergalatic Bounty Hunter";
         public const string characterOutro = "..and so she left, her mission complete.";
         public const string characterOutroFail = "..and so she vanished, her mission complete.";
-        public const string characterLore = "\nsample text";
+        public const string characterLore = "Samus Aran is an intergalatic bounty hunter, she was raised by the mysterious Chozo.";
 
         
         //misc

@@ -32,78 +32,78 @@ namespace SamusMod.Modules
             PrimarySetup(bodyPrefab);
            //Debug.Log("setup primary skills");
             SecondarySetup(bodyPrefab);
-           //Debug.Log("Setup secondary skills");
-            //SkillDef temp = ScriptableObject.CreateInstance<SkillDef>();
-            
-            //temp.skillName = "DG_SAMUS_UTILITY_MORPH_EXIT_NAME";
-            //temp.skillNameToken = "DG_SAMUS_UTILITY_MORPH_EXIT_NAME";
-            //temp.skillDescriptionToken = "DG_SAMUS_UTILITY_MORPH_EXIT_DESCRIPTION";
-            //temp.icon = Assets.icon3;
-            //temp.activationState = new SerializableEntityStateType(typeof(SamusMod.States.ExitMorphBall));
-            //temp.activationStateMachineName = "Weapon";
-            //temp.baseMaxStock = 1;
-            //temp.baseRechargeInterval = 0f;
-            //temp.beginSkillCooldownOnSkillEnd = false;
-            //temp.canceledFromSprinting = false;
-            //temp.forceSprintDuringState = false;
-            //temp.fullRestockOnAssign = true;
-            //temp.interruptPriority = InterruptPriority.Any;
-            //temp.resetCooldownTimerOnUse = false;
-            //temp.isCombatSkill = false;
-            //temp.mustKeyPress = true;
-            //temp.cancelSprintingOnActivation = true;
-            //temp.rechargeStock = 1;
-            //temp.requiredStock = 1;
-            //temp.stockToConsume = 1;
+            //Debug.Log("Setup secondary skills");
+            SkillDef temp = ScriptableObject.CreateInstance<SkillDef>();
 
-            //morphBallExit = temp;
-            //temp = ScriptableObject.CreateInstance<SkillDef>();
-            //temp.skillName = "DG_SAMUS_PRIMARY_MORPH_BOMB_NAME";
-            //temp.skillNameToken = "DG_SAMUS_PRIMARY_MORPH_BOMB_NAME";
-            //temp.skillDescriptionToken = "DG_SAMUS_PRIMARY_MORPH_BOMB_DESCRIPTION";
-            //temp.icon = Assets.icon3;
-            //temp.activationState = new SerializableEntityStateType(typeof(SamusMod.States.MorphBallBomb));
-            //temp.activationStateMachineName = "Weapon";
-            //temp.baseMaxStock = 3;
-            //temp.baseRechargeInterval = 4;
-            //temp.beginSkillCooldownOnSkillEnd = false;
-            //temp.canceledFromSprinting = false;
-            //temp.fullRestockOnAssign = true;
-            //temp.interruptPriority = InterruptPriority.PrioritySkill;
-            //temp.resetCooldownTimerOnUse = false;
-            //temp.isCombatSkill = true;
-            //temp.mustKeyPress = true;
-            //temp.cancelSprintingOnActivation = true;
-            //temp.rechargeStock = 3;
-            //temp.requiredStock = 1;
-            //temp.stockToConsume = 1;
-            //morphBallBomb = temp;
-            //temp = ScriptableObject.CreateInstance<SkillDef>();
-            //temp.skillName = "DG_SAMUS_SECONDARY_MORPH_PBOMB_NAME";
-            //temp.skillNameToken = "DG_SAMUS_SECONDARY_MORPH_PBOMB_NAME";
-            //temp.skillDescriptionToken = "DG_SAMUS_SECONDARY_MORPH_PBOMB_DESCRIPTION";
-            //temp.icon = Assets.icon3;
-            //temp.activationState = new SerializableEntityStateType(typeof(SamusMod.States.MorphBallPBomb));
-            //temp.activationStateMachineName = "Weapon";
-            //temp.baseMaxStock = 1;
-            //temp.baseRechargeInterval = 8;
-            //temp.beginSkillCooldownOnSkillEnd = false;
-            //temp.canceledFromSprinting = false;
-            //temp.fullRestockOnAssign = true;
-            //temp.interruptPriority = InterruptPriority.PrioritySkill;
-            //temp.resetCooldownTimerOnUse = false;
-            //temp.isCombatSkill = true;
-            //temp.mustKeyPress = true;
-            //temp.cancelSprintingOnActivation = true;
-            //temp.rechargeStock = 1;
-            //temp.requiredStock = 1;
-            //temp.stockToConsume = 1;
-            //temp.dontAllowPastMaxStocks = true;
+            temp.skillName = "DG_SAMUS_UTILITY_MORPH_EXIT_NAME";
+            temp.skillNameToken = "DG_SAMUS_UTILITY_MORPH_EXIT_NAME";
+            temp.skillDescriptionToken = "DG_SAMUS_UTILITY_MORPH_EXIT_DESCRIPTION";
+            temp.icon = Assets.icon3;
+            temp.activationState = new SerializableEntityStateType(typeof(SamusMod.States.ExitMorphBall));
+            temp.activationStateMachineName = "Weapon";
+            temp.baseMaxStock = 1;
+            temp.baseRechargeInterval = 0f;
+            temp.beginSkillCooldownOnSkillEnd = false;
+            temp.canceledFromSprinting = false;
+            temp.forceSprintDuringState = false;
+            temp.fullRestockOnAssign = true;
+            temp.interruptPriority = InterruptPriority.Any;
+            temp.resetCooldownTimerOnUse = false;
+            temp.isCombatSkill = false;
+            temp.mustKeyPress = true;
+            temp.cancelSprintingOnActivation = true;
+            temp.rechargeStock = 1;
+            temp.requiredStock = 1;
+            temp.stockToConsume = 1;
 
-            //morphBallPowerBomb = temp;
+            morphBallExit = temp;
+            temp = ScriptableObject.CreateInstance<SkillDef>();
+            temp.skillName = "DG_SAMUS_PRIMARY_MORPH_BOMB_NAME";
+            temp.skillNameToken = "DG_SAMUS_PRIMARY_MORPH_BOMB_NAME";
+            temp.skillDescriptionToken = "DG_SAMUS_PRIMARY_MORPH_BOMB_DESCRIPTION";
+            temp.icon = Assets.icon3;
+            temp.activationState = new SerializableEntityStateType(typeof(SamusMod.States.MorphBallBomb));
+            temp.activationStateMachineName = "Weapon";
+            temp.baseMaxStock = 3;
+            temp.baseRechargeInterval = 4;
+            temp.beginSkillCooldownOnSkillEnd = false;
+            temp.canceledFromSprinting = false;
+            temp.fullRestockOnAssign = true;
+            temp.interruptPriority = InterruptPriority.PrioritySkill;
+            temp.resetCooldownTimerOnUse = false;
+            temp.isCombatSkill = true;
+            temp.mustKeyPress = true;
+            temp.cancelSprintingOnActivation = false;
+            temp.rechargeStock = 99;
+            temp.requiredStock = 1;
+            temp.stockToConsume = 1;
+            morphBallBomb = temp;
+            temp = ScriptableObject.CreateInstance<SkillDef>();
+            temp.skillName = "DG_SAMUS_SECONDARY_MORPH_PBOMB_NAME";
+            temp.skillNameToken = "DG_SAMUS_SECONDARY_MORPH_PBOMB_NAME";
+            temp.skillDescriptionToken = "DG_SAMUS_SECONDARY_MORPH_PBOMB_DESCRIPTION";
+            temp.icon = Assets.icon3;
+            temp.activationState = new SerializableEntityStateType(typeof(SamusMod.States.MorphBallPBomb));
+            temp.activationStateMachineName = "Weapon";
+            temp.baseMaxStock = 1;
+            temp.baseRechargeInterval = 8;
+            temp.beginSkillCooldownOnSkillEnd = false;
+            temp.canceledFromSprinting = false;
+            temp.fullRestockOnAssign = false;
+            temp.interruptPriority = InterruptPriority.PrioritySkill;
+            temp.resetCooldownTimerOnUse = false;
+            temp.isCombatSkill = true;
+            temp.mustKeyPress = true;
+            temp.cancelSprintingOnActivation = false;
+            temp.rechargeStock = 1;
+            temp.requiredStock = 1;
+            temp.stockToConsume = 1;
+            temp.dontAllowPastMaxStocks = true;
+
+            morphBallPowerBomb = temp;
 
 
-           
+
             UtilitySetup(bodyPrefab);
 
             //Debug.Log("utility");
@@ -247,38 +247,38 @@ namespace SamusMod.Modules
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
-            //mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            //mySkillDef.activationState = new SerializableEntityStateType(typeof(SamusMod.States.morphBallEnter));
-            //mySkillDef.activationStateMachineName = "Weapon";
-            //mySkillDef.baseMaxStock = 1;
-            //mySkillDef.baseRechargeInterval = 0f;
-            //mySkillDef.beginSkillCooldownOnSkillEnd = false;
-            //mySkillDef.canceledFromSprinting = false;
-            //mySkillDef.fullRestockOnAssign = true;
-            //mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
-            //mySkillDef.resetCooldownTimerOnUse = false;
-            //mySkillDef.isCombatSkill = false;
-            //mySkillDef.mustKeyPress = true;
-            //mySkillDef.cancelSprintingOnActivation = true;
-            //mySkillDef.rechargeStock = 1;
-            //mySkillDef.requiredStock = 1;
-            //mySkillDef.stockToConsume = 1;
-            //mySkillDef.icon = Assets.icon3;
-            //mySkillDef.skillDescriptionToken = "DG_SAMUS_UTILITY_MORPH_DESCRIPTION";
-            //mySkillDef.skillName = "DG_SAMUS_UTILITY_MORPH_NAME";
-            //mySkillDef.skillNameToken = "DG_SAMUS_UTILITY_MORPH_NAME";
-            //mySkillDef.keywordTokens = new string[]
-            //{
-            //    "KEYWORD_AGILE"
-            //};
-            //LoadoutAPI.AddSkillDef(mySkillDef);
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(SamusMod.States.morphBallEnter));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 0f;
+            mySkillDef.beginSkillCooldownOnSkillEnd = false;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
+            mySkillDef.resetCooldownTimerOnUse = false;
+            mySkillDef.isCombatSkill = false;
+            mySkillDef.mustKeyPress = true;
+            mySkillDef.cancelSprintingOnActivation = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Assets.icon3;
+            mySkillDef.skillDescriptionToken = "DG_SAMUS_UTILITY_MORPH_DESCRIPTION";
+            mySkillDef.skillName = "DG_SAMUS_UTILITY_MORPH_NAME";
+            mySkillDef.skillNameToken = "DG_SAMUS_UTILITY_MORPH_NAME";
+            mySkillDef.keywordTokens = new string[]
+            {
+                "KEYWORD_AGILE"
+            };
+            LoadoutAPI.AddSkillDef(mySkillDef);
 
-            //Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
-            //skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
-            //{
-            //    skillDef = mySkillDef,
-            //    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
-            //};
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
 
         }
 
