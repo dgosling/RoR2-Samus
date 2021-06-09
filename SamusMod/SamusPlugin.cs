@@ -15,7 +15,7 @@ namespace SamusMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
 
-    [BepInPlugin(MODUID,"Samus","1.1.0")]
+    [BepInPlugin(MODUID,"Samus","1.3.0")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -103,7 +103,8 @@ namespace SamusMod
 
         private void CreateDoppelganger()
         {
-            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "SamusMonsterMaster");
+            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"),
+                                                      "SamusMonsterMaster",true);
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = Modules.Prefabs.samusPrefab;
 
             Modules.Prefabs.masterPrefabs.Add(doppelganger);
@@ -144,7 +145,7 @@ namespace SamusMod
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
-            if (self)
+            if (self!=null&&damageInfo.inflictor!=null&&self.body!=null)
             {
                 if(self.body.baseNameToken== "DG_SAMUS_NAME" && (damageInfo.inflictor.name == "bombExplosion(Clone)"||damageInfo.inflictor.name== "SamusMorphBomb(Clone)"))
                 {
@@ -155,8 +156,9 @@ namespace SamusMod
                     }
                     else
                         damageInfo.force = new Vector3(0, 3000, 0);
-                    
+
                 }
+
             }
             orig(self, damageInfo);
         }

@@ -10,7 +10,7 @@ namespace SamusMod.States
 
     public abstract class BaseMissile : BaseSkillState
     {
-
+        
         public float damageCoef;
         public float baseDuration;
         public float recoil;
@@ -23,11 +23,12 @@ namespace SamusMod.States
         private bool hasFired;
         private Animator animator;
         private string muzzleString;
-
+        public HurtBox target;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.fireDuration = .5f * this.duration;
             base.characterBody.SetAimTimer(2f);
@@ -53,11 +54,28 @@ namespace SamusMod.States
                 this.hasFired = true;
                 Util.PlaySound(this.Sound, this.gameObject);
                 base.characterBody.AddSpreadBloom(.75f);
+                //Debug.Log(target);
                 Ray aimRay = base.GetAimRay();
                 if (muzzleEffectPrefab != null)
                     EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
+                if (base.isAuthority && this.target != null)
+                {
+                    FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+                    {
+                        projectilePrefab = projectilePrefab,
+                        position = aimRay.origin,
+                        rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
+                        damage = this.damageCoef * this.damageStat,
+                        owner = base.gameObject,
+                        force = 5f,
+                        crit = base.RollCrit(),
+                        speedOverride = StaticValues.missileSpeed,
+                        target = this.target.gameObject
+                    };
+                    ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+                }
 
-                if (base.isAuthority)
+                else if (base.isAuthority&&this.target==null)
                 {
 
 

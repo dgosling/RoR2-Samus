@@ -7,6 +7,7 @@ using RoR2;
 using R2API;
 using RoR2.Audio;
 using System.Collections.Generic;
+using Rewired;
 
 namespace SamusMod.Modules
 {
@@ -22,7 +23,9 @@ public static class Assets
         public static Sprite icon1;
         public static Sprite icon2;
         public static Sprite icon3;
+        public static Sprite icon3b;
         public static Sprite icon4;
+        public static Sprite icon2b;
         //Projectile ghosts
         public static GameObject beam;
         public static GameObject cbeam;
@@ -38,6 +41,7 @@ public static class Assets
         public static GameObject bombExplosion;
         public static GameObject powerbomb;
         public static GameObject powerbomb1;
+        public static GameObject Tracker;
 
         internal static NetworkSoundEventDef bombExplosionSound;
         internal static NetworkSoundEventDef powerBombExplosionSound;
@@ -75,7 +79,9 @@ public static class Assets
             icon1 = mainAssetBundle.LoadAsset<Sprite>("skill");
             icon2 = mainAssetBundle.LoadAsset<Sprite>("skill2");
             icon3 = mainAssetBundle.LoadAsset<Sprite>("skill3");
+            icon3b = mainAssetBundle.LoadAsset<Sprite>("skill2b");
             icon4 = mainAssetBundle.LoadAsset<Sprite>("skill4");
+            icon2b = mainAssetBundle.LoadAsset<Sprite>("skill2Track");
             #endregion
 
             #region ProjectileGhosts
@@ -106,7 +112,8 @@ public static class Assets
             //powerbomb.GetComponent<EffectComponent>().positionAtReferencedTransform = false;
             morphBomb = mainAssetBundle.LoadAsset<GameObject>("morphBomb");
             bombExplosion = LoadEffect("bombExplosion", Sounds.bombExplode);
-            
+            Tracker = mainAssetBundle.LoadAsset<GameObject>("samusTrackingIndicator");
+            InitTracker();
 
             bombExplosionSound = CreateNetworkSoundEventDef(Sounds.bombExplode);
             powerBombExplosionSound = CreateNetworkSoundEventDef(Sounds.powerBomb);
@@ -133,9 +140,28 @@ public static class Assets
         //    return Chargebeam;
         //}
 
-        private static void InitCustomItems()
+        private static void InitTracker()
         {
+            GameObject HuntressTracker = Resources.Load<GameObject>("Prefabs/HuntressTrackingIndicator");
+            Rewired.ComponentControls.Effects.RotateAroundAxis rotateAroundAxis = HuntressTracker.transform.Find("Holder").gameObject.GetComponent<Rewired.ComponentControls.Effects.RotateAroundAxis>();
 
+           var SamusTrackerRAA = Tracker.transform.Find("Holder").gameObject.AddComponent<Rewired.ComponentControls.Effects.RotateAroundAxis>();
+            SamusTrackerRAA.fastRotationSpeed = rotateAroundAxis.fastRotationSpeed;
+            SamusTrackerRAA.slowRotationSpeed = rotateAroundAxis.slowRotationSpeed;
+            SamusTrackerRAA.speed = rotateAroundAxis.speed;
+            SamusTrackerRAA.rotateAroundAxis = rotateAroundAxis.rotateAroundAxis;
+            SamusTrackerRAA.relativeTo = rotateAroundAxis.relativeTo;
+            SamusTrackerRAA.reverse = rotateAroundAxis.reverse;
+
+            ObjectScaleCurve objectScaleCurve = HuntressTracker.transform.Find("Holder").gameObject.GetComponent<ObjectScaleCurve>();
+
+            var SamusScaleCurve = Tracker.transform.Find("Holder").gameObject.AddComponent<ObjectScaleCurve>();
+            SamusScaleCurve.curveX = objectScaleCurve.curveX;
+            SamusScaleCurve.curveY = objectScaleCurve.curveY;
+            SamusScaleCurve.curveZ = objectScaleCurve.curveZ;
+            SamusScaleCurve.overallCurve = objectScaleCurve.overallCurve;
+            SamusScaleCurve.useOverallCurveOnly = objectScaleCurve.useOverallCurveOnly;
+            SamusScaleCurve.timeMax = objectScaleCurve.timeMax;
         }
 
         private static GameObject CreateItemDisplay(string prefabName,string matName)

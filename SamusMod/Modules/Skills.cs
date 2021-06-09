@@ -205,7 +205,37 @@ namespace SamusMod.Modules
                 skillDef = skillDef,
                 viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
             };
-                
+
+            skillDef = ScriptableObject.CreateInstance<SkillDef>();
+            skillDef.activationState = new SerializableEntityStateType(typeof(SamusMod.States.trackingMissile));
+            skillDef.activationStateMachineName = "Weapon";
+            skillDef.baseMaxStock = 5;
+            skillDef.baseRechargeInterval = 5f;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+            skillDef.canceledFromSprinting = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.interruptPriority = InterruptPriority.Any;
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+            skillDef.cancelSprintingOnActivation = false;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+            skillDef.icon = Assets.icon2b;
+            skillDef.skillDescriptionToken = "DG_SAMUS_SECONDARY_TMISSILE_DESCRIPTION";
+            skillDef.skillName = "DG_SAMUS_SECONDARY_TMISSILE_NAME";
+            skillDef.skillNameToken = "DG_SAMUS_SECONDARY_TMISSILE_NAME";
+            skillDef.keywordTokens = new string[] { "KEYWORD_AGILE" };
+            LoadoutAPI.AddSkillDef(skillDef);
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
+            };
+
         }
 
         private static void UtilitySetup(GameObject bodyPrefab)
@@ -226,7 +256,7 @@ namespace SamusMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon3;
+            mySkillDef.icon = Assets.icon3b;
             mySkillDef.skillDescriptionToken = "DG_SAMUS_UTILITY_DASH_DESCRIPTION";
             mySkillDef.skillName = "DG_SAMUS_UTILITY_DASH_NAME";
             mySkillDef.skillNameToken = "DG_SAMUS_UTILITY_DASH_NAME";

@@ -37,10 +37,13 @@ namespace SamusMod.Modules
 
             LanguageAPI.Add("DG_SAMUS_SECONDARY_MISSILE_NAME", "Missile");
             LanguageAPI.Add("DG_SAMUS_SECONDARY_MISSILE_DESCRIPTION", desc);
+            desc = "Fire a Tracking Missile that will home in on the targeted enemy if one is highlighted, otherwise will act like the default missile.";
+            LanguageAPI.Add("DG_SAMUS_SECONDARY_TMISSILE_NAME", "Tracking Missile");
+            LanguageAPI.Add("DG_SAMUS_SECONDARY_TMISSILE_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Dash</style> forward and drop a <style=cKeywordName>bomb</style> that does <style=cIsDamage>" + 100f * StaticValues.dashDamageCoefficient + "% damage</style> midway through.";
 
-            LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_NAME", "Morph Bomb Desh");
+            LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_NAME", "Morph Bomb Dash");
             LanguageAPI.Add("DG_SAMUS_UTILITY_DASH_DESCRIPTION", desc);
 
             desc = "Go into and out of Morph Ball mode, where you can roll around and drop bombs and super bombs.";

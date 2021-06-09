@@ -3,6 +3,7 @@ using EntityStates;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Skills;
+using RewiredConsts;
 
 namespace SamusMod.States
 {
@@ -50,8 +51,8 @@ namespace SamusMod.States
             }
             this.skillLocator.secondary.stock = ExitMorphBall.pstock;
             this.ChildLocator = base.GetModelChildLocator();
-
-            this.characterBody.gameObject.GetComponent<Collider>().enabled = false;
+            
+            //this.characterBody.gameObject.GetComponent<Collider>().enabled = false;
 
             this.ball = ChildLocator.FindChild("Ball2").gameObject;
             this.armature = ChildLocator.FindChild("armature").gameObject;
@@ -59,7 +60,7 @@ namespace SamusMod.States
             this.bone = ChildLocator.FindChild("Ball2Bone").gameObject;
             
             base.PlayAnimation("Body", "transformIn", "Roll.playbackRate",this.duration);
-
+            
         }
 
         public override void FixedUpdate()

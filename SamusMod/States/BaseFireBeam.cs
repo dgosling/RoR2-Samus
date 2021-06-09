@@ -98,7 +98,7 @@ namespace SamusMod.States
                     foreach (SphereCollider i in this.projectilePrefab.GetComponentsInChildren<SphereCollider>())
                     {
                         var sphereCollider = i.radius;
-                        sphereCollider = 1;
+                        sphereCollider = .6f;
                     }
                     //this.projectilePrefab.GetComponent<ProjectileDamageTrail>().trailPrefab.gameObject.GetComponent<TrailRenderer>().widthMultiplier = .1f;
                     this.charge = .1f;
@@ -119,6 +119,8 @@ namespace SamusMod.States
                     float num = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                     float num2 = this.charge * this.force;
                     Util.PlaySound(this.projSound, this.gameObject);
+                    this.projectilePrefab.GetComponent<Misc.colision_test>().inTransform = this.guncon.transform;
+                    
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
                         projectilePrefab = this.projectilePrefab,

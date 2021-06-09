@@ -41,7 +41,7 @@ namespace SamusMod.Modules
                 subtitleNameToken = "DG_SAMUS_SUBTITLE",
                 bodyColor = SamusPlugin.characterColor
             });
-
+            samusPrefab.AddComponent<Misc.SamusTracker>();
             SetupCharacterModel(samusPrefab, new CustomRendererInfo[]
             {
                 new CustomRendererInfo
@@ -86,7 +86,7 @@ namespace SamusMod.Modules
 
         public static GameObject CreateDisplayPrefab(string modelName,GameObject prefab)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
+            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab",true);
 
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
@@ -128,7 +128,7 @@ namespace SamusMod.Modules
 
         public static GameObject CreatePrefab(string bodyName,string modelName,BodyInfo bodyInfo)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
+            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName,true);
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
             SfxLocator sfxLocator = newPrefab.GetComponent<SfxLocator>();
