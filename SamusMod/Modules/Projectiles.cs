@@ -13,6 +13,7 @@ namespace SamusMod.Modules
         public static GameObject bomb;
         public static GameObject morphBomb;
         public static GameObject pMorphBomb;
+        public static GameObject altmissile;
 
         //public static GameObject cbeam;
 
@@ -30,15 +31,28 @@ namespace SamusMod.Modules
             missileGhost.AddComponent<ProjectileGhostController>();
             missile.GetComponent<ProjectileController>().ghostPrefab = missileGhost;
             missile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            //missile.GetComponent<ProjectileController>().allowPrediction = false;
             missile.GetComponent<MissileController>().maxSeekDistance = 100f;
             missile.GetComponent<MissileController>().acceleration = 5f;
             missile.GetComponent<MissileController>().giveupTimer = 3f;
             missile.GetComponent<MissileController>().maxVelocity = 50f;
             missile.GetComponent<MissileController>().delayTimer = .3f;
-            
+
             //missile.GetComponent<Rigidbody>().useGravity = false;
             #endregion
-
+            altmissile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/EngiHarpoon"), "SamusaltMissile", true);
+            GameObject altmissileGhost = Assets.missile.InstantiateClone("SamusMissileGhost", false);
+            altmissileGhost.AddComponent<ProjectileGhostController>();
+            altmissile.GetComponent<ProjectileController>().ghostPrefab = altmissileGhost;
+            altmissile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            //altmissile.GetComponent<ProjectileController>().allowPrediction = false;
+            altmissile.GetComponent<MissileController>().maxSeekDistance = 100f;
+            altmissile.GetComponent<MissileController>().acceleration = 5f;
+            altmissile.GetComponent<MissileController>().giveupTimer = 3f;
+            altmissile.GetComponent<MissileController>().maxVelocity = 50f;
+            altmissile.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Resources.Load<GameObject>("prefabs/effects/impacteffects/MissileExplosionVFX");
+            altmissile.GetComponent<MissileController>().delayTimer = 0;
+            SamusPlugin.Destroy(altmissile.GetComponent<ApplyTorqueOnStart>());
             #region smissile
             smissile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIcebolt"), "SamusSuperMissile", true);
             GameObject smissileGhost = Assets.smissile.InstantiateClone("SamusSuperMissileGhost", false);
@@ -63,6 +77,7 @@ namespace SamusMod.Modules
             beamGhost.AddComponent<ProjectileGhostController>();
             SamusPlugin.Destroy(beam.GetComponent<ProjectileImpactExplosion>());
             beam.AddComponent<ProjectileSingleTargetImpact>();
+            beam.AddComponent<Misc.colision_test>();
             //var beamSingleImpact = beam.GetComponent<ProjectileSingleTargetImpact>();
             beam.GetComponent<ProjectileSingleTargetImpact>().destroyOnWorld = true;
             beam.GetComponent<ProjectileController>().ghostPrefab = beamGhost;
@@ -77,7 +92,7 @@ namespace SamusMod.Modules
             foreach(SphereCollider i in beam.GetComponentsInChildren<SphereCollider>())
             {
                 var sphere = i;
-                i.radius = .5f;
+                i.radius = .6f;
             }
             beam.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Modules.Assets.beamImpactEffect;
             
@@ -174,6 +189,7 @@ namespace SamusMod.Modules
 
 
             ProjectileAPI.Add(missile);
+            ProjectileAPI.Add(altmissile);
             ProjectileAPI.Add(smissile);
             ProjectileAPI.Add(beam);
             ProjectileAPI.Add(bomb);

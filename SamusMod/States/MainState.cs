@@ -2,6 +2,7 @@
 using EntityStates;
 using UnityEngine;
 using System;
+using RewiredConsts;
 
 namespace SamusMod.States
 {
@@ -21,6 +22,7 @@ namespace SamusMod.States
         private float horizontalInput;
         private Vector3 forwardDir;
         private float stopwatch;
+
         public static bool morphBall { get; set; }
 
 
@@ -31,7 +33,7 @@ namespace SamusMod.States
             this.collider = this.ball.GetComponent<Collider>();
             this.rigidbody = this.ball.GetComponent<Rigidbody>();
             this.body = base.characterBody;
-            
+
 
             base.OnEnter();
             //KinematicCharacterController.KinematicCharacterMotor kin = ball.AddComponent<KinematicCharacterController.KinematicCharacterMotor>();
@@ -58,7 +60,10 @@ namespace SamusMod.States
 
             if (morphBall == true)
             {
+                //Material test = Resources.Load<GameObject>("prefabs/networkedobjects/LockedMage").transform.Find("ModelBase/IceMesh").GetComponent<MeshRenderer>().materials[1];
+                //Debug.Log(test.HasProperty("_Magnitude"));
                 
+
                 this.velocity = this.characterMotor.velocity;
                 this.direction = this.inputBank.moveVector;
                 camera = this.cameraTargetParams.cameraPivotTransform.rotation.eulerAngles;
@@ -130,8 +135,6 @@ namespace SamusMod.States
                 }
 
 
-
-
                 //On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
                 //this.rigidbody.AddForce(combined);
                 //this.ball.transform.Rotate(new Vector3(-this.characterMotor.moveDirection.y,this.characterMotor.moveDirection.x,this.characterMotor.moveDirection.z));
@@ -147,6 +150,7 @@ namespace SamusMod.States
                 if (this.characterMotor.velocity != Vector3.zero)
                 {
                     this.ball.transform.Rotate(Vector3.up, (-amount ));
+
                     //Debug.Log("vel: " + this.velocity);
                     //Debug.Log("local vel " + Ivelocity);
                     //Debug.Log("test: " + Vector3.RotateTowards(this.ball.transform.rotation.eulerAngles, this.velocity, this.moveSpeedStat * Time.deltaTime, 0));

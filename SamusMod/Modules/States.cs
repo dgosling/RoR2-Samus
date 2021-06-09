@@ -42,6 +42,8 @@ namespace SamusMod.Modules
             LoadoutAPI.AddSkill(typeof(MorphBallBomb));
             entitystates.Add(typeof(MorphBallBomb));
             LoadoutAPI.AddSkill(typeof(MorphBallPBomb));
+            entitystates.Add(typeof(trackingMissile));
+            LoadoutAPI.AddSkill(typeof(trackingMissile));
 
             EntityStateMachine samusStateMachine = Prefabs.samusPrefab.GetComponent<EntityStateMachine>();
             samusStateMachine.mainStateType = new SerializableEntityStateType(typeof(SamusMain));

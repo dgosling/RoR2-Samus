@@ -2,25 +2,35 @@
 using System.Collections;
 using UnityEngine;
 using RoR2;
+using RoR2.Projectile;
 using System.Runtime.CompilerServices;
 
 namespace SamusMod.Misc
 {
     public class colision_test : MonoBehaviour
     {
-        private void OnTriggerEnter(Collider collision)
+        public Transform inTransform;
+        ProjectileSingleTargetImpact projectileSingle;
+        float length;
+        float dist;
+        void Awake()
         {
-            if (collision.name == "SamusMorphBomb(Clone)")
-            {
-                Debug.Log("collision");
-            }
-            else
-                Debug.Log("Collided with "+collision.name);
+            projectileSingle = gameObject.GetComponent<ProjectileSingleTargetImpact>();
+            length = 1;
+
+            projectileSingle.destroyOnWorld = false;
         }
 
-        private void OnCollisionEnter(Collision collision)
+        void FixedUpdate()
         {
-            //Debug.Log(collision.collider.name);
+            dist = Vector3.Distance(transform.position, inTransform.position);
+            //Debug.Log(dist);
+            if(dist >= length)
+            {
+                projectileSingle.destroyOnWorld = true;
+                enabled = false;
+            }
+
         }
 
       

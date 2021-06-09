@@ -23,7 +23,7 @@ namespace SamusMod.States
             {
                 this.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
-            this.characterBody.gameObject.GetComponent<Collider>().enabled = true;
+            //this.characterBody.gameObject.GetComponent<Collider>().enabled = true;
             Collider collider = this.ball.GetComponent<Collider>();
             Rigidbody rigidbody = this.ball.GetComponent<Rigidbody>();
             collider.enabled = false;
