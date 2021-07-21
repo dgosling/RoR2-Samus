@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using EntityStates;
 using RoR2.Projectile;
+using VRAPI;
 
 namespace SamusMod.States
 {
@@ -21,6 +22,9 @@ namespace SamusMod.States
         private Animator animator;
         private Vector3 previousPosition;
         private bool hasFired;
+        public SkinnedMeshRenderer[] DmeshRenderers;
+        public SkinnedMeshRenderer[] NDmeshRenderers;
+        private bool vrCheck;
 
         public override void OnEnter()
         {
@@ -32,9 +36,23 @@ namespace SamusMod.States
             }
             this.animator = this.GetModelAnimator();
             ChildLocator component = this.animator.GetComponent<ChildLocator>();
-            if(this.isAuthority && this.inputBank && this.characterDirection)
+            if(this.isAuthority && this.inputBank && this.characterDirection&&VRAPI.Utils.IsUsingMotionControls(base.characterBody)==false)
             {
                 this.forwardDirection = (this.inputBank.moveVector == Vector3.zero ? this.characterDirection.forward : this.inputBank.moveVector).normalized;
+            }
+            else if(this.isAuthority && VRAPI.Utils.IsUsingMotionControls(base.characterBody))
+            {
+                this.forwardDirection = Camera.main.transform.forward;
+                vrCheck = true;
+                foreach (SkinnedMeshRenderer re in this.DmeshRenderers)
+                {
+                    re.enabled = false;
+                }
+                foreach (SkinnedMeshRenderer ree in this.NDmeshRenderers)
+                {
+                    ree.enabled = false;
+                }
+
             }
             Vector3 rhs1 = this.characterDirection ? this.characterDirection.forward : this.forwardDirection;
             Vector3 rhs2 = Vector3.Cross(Vector3.up, rhs1);
@@ -88,13 +106,14 @@ namespace SamusMod.States
             if (this.isAuthority)
             {
                 Ray aimRay = this.GetAimRay();
+                
                 if (this.projectilePrefab != null)
                 {
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
                         projectilePrefab = this.projectilePrefab,
                         owner = this.gameObject,
-                        position = aimRay.origin - new Vector3(0,2f,0),
+                        position = aimRay.origin,
                         rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
                         damage = this.damageCoefficient * this.damageStat,
                         force = 0,
@@ -115,12 +134,21 @@ namespace SamusMod.States
                 this.cameraTargetParams.fovOverride = -1f;
             if (this.hasFired == true)
                 this.hasFired = false;
-
+            if (Utils.IsUsingMotionControls(base.characterBody)&&vrCheck==true) { 
+            foreach (SkinnedMeshRenderer re in this.DmeshRenderers)
+            {
+                re.enabled = true;
+            }
+            foreach (SkinnedMeshRenderer ree in this.NDmeshRenderers)
+            {
+                ree.enabled = true;
+            }
+        }
             //if (childLocator.FindChild("Ball").gameObject.activeSelf == true&&base.healthComponent.isInFrozenState==true)
             //{
 
             //    //childLocator.FindChild("Body").gameObject.SetActive(true);
-                
+
             //    childLocator.FindChild("Ball").gameObject.SetActive(false);
             //}
             base.OnExit();

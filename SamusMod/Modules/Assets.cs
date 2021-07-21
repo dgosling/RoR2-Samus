@@ -8,7 +8,7 @@ using R2API;
 using RoR2.Audio;
 using System.Collections.Generic;
 using Rewired;
-
+using VRAPI;
 namespace SamusMod.Modules
 {
 public static class Assets    
@@ -16,6 +16,7 @@ public static class Assets
     {
         //bundle
         public static AssetBundle mainAssetBundle;
+        public static AssetBundle VRassets;
         //Character portrait
         public static Texture charPortrait;
         //skill icons
@@ -42,7 +43,10 @@ public static class Assets
         public static GameObject powerbomb;
         public static GameObject powerbomb1;
         public static GameObject Tracker;
-
+        public static GameObject VRDomHand;
+        public static GameObject VRnDomHand;
+        public static RuntimeAnimatorController gun;
+        public static RuntimeAnimatorController ray;
         internal static NetworkSoundEventDef bombExplosionSound;
         internal static NetworkSoundEventDef powerBombExplosionSound;
 
@@ -56,22 +60,35 @@ public static class Assets
 
         public static void PopulateAssets()
         {
-            if(mainAssetBundle == null)
+            if (mainAssetBundle == null)
             {
-                using(var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusbundle"))
+                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusbundle"))
                 {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
                     //var provider = new AssetBundleResourcesProvider("@Samus", mainAssetBundle);
                     //ResourcesAPI.AddProvider(provider);
 
                 }
-                using(Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.Samus.bnk"))
+                using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.Samus.bnk"))
                 {
                     byte[] array = new byte[manifestResourceStream2.Length];
                     manifestResourceStream2.Read(array, 0, array.Length);
                     SoundAPI.SoundBanks.Add(array);
                 }
+
+
             }
+
+            if (VRassets == null&&VR.enabled)
+            {
+                using (var vrassetstream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusvr"))
+                {
+                    VRassets = AssetBundle.LoadFromStream(vrassetstream);
+                    var provider = new AssetBundleResourcesProvider("@Samus", VRassets);
+                    ResourcesAPI.AddProvider(provider);
+                }
+            }
+
             #region Icons
             charPortrait = mainAssetBundle.LoadAsset<Texture>("texSamusIcon");
 
@@ -91,7 +108,7 @@ public static class Assets
             smissile = mainAssetBundle.LoadAsset<GameObject>("supermissilePref");
             beamTrail = mainAssetBundle.LoadAsset<GameObject>("beamTrail");
             bomb = mainAssetBundle.LoadAsset<GameObject>("bombproj");
-            
+
             #endregion
             #region Meshes
             body = mainAssetBundle.LoadAsset<Mesh>("meshDGSsamus");
@@ -100,7 +117,7 @@ public static class Assets
 
             #endregion
             #region effects
-            beamShootEffect = LoadEffect("beamFireMuzzle","");
+            beamShootEffect = LoadEffect("beamFireMuzzle", "");
             //chargeEffect = LoadEffect("chargeMuzzle", "");
             beamImpactEffect = LoadEffect("beamImpact", "");
             missileEffect = LoadEffect("missileMuzzle", "");
@@ -118,6 +135,21 @@ public static class Assets
             bombExplosionSound = CreateNetworkSoundEventDef(Sounds.bombExplode);
             powerBombExplosionSound = CreateNetworkSoundEventDef(Sounds.powerBomb);
             #endregion
+            #region vrprefabs
+            if (VRAPI.VR.enabled) 
+            { 
+            VRAPI.VR.PreventRendererDisable("dgoslingSamusBody", "ball2Mesh");
+            VRDomHand = VRassets.LoadAsset<GameObject>("samusGun");
+            MotionControls.AddHandPrefab(VRDomHand);
+            VRnDomHand = VRassets.LoadAsset<GameObject>("samusHand");
+            MotionControls.AddHandPrefab(VRnDomHand);
+                //gun = VRassets.LoadAsset<RuntimeAnimatorController>("gun");
+                //ray = VRassets.LoadAsset<RuntimeAnimatorController>("ray");
+                
+            }
+
+            #endregion
+
             // InitCustomItems();
         }
 

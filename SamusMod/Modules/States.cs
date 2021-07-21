@@ -5,11 +5,13 @@ using SamusMod.States;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using VRAPI;
 namespace SamusMod.Modules
 {
     public static class States
     {
         public static List<Type> entitystates = new List<Type>();
+        
         public static void RegisterStates() 
         {
             LoadoutAPI.AddSkill(typeof(SamusMain));
@@ -44,7 +46,8 @@ namespace SamusMod.Modules
             LoadoutAPI.AddSkill(typeof(MorphBallPBomb));
             entitystates.Add(typeof(trackingMissile));
             LoadoutAPI.AddSkill(typeof(trackingMissile));
-
+            if(VR.enabled)
+                VR.AddVignetteState(typeof(Roll));
             EntityStateMachine samusStateMachine = Prefabs.samusPrefab.GetComponent<EntityStateMachine>();
             samusStateMachine.mainStateType = new SerializableEntityStateType(typeof(SamusMain));
             samusStateMachine.initialStateType = new SerializableEntityStateType(typeof(SpawnState));

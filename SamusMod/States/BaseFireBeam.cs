@@ -37,23 +37,38 @@ namespace SamusMod.States
             ChildLocator childLocator = base.GetModelChildLocator();
             Transform transform = childLocator.FindChild("gunCon");
             guncon = transform.gameObject;
-            
+
             //this.test.position = projectilePrefab.transform.position;
             //this.test.rotation = projectilePrefab.transform.rotation;
             //  this.test.localScale = projectilePrefab.transform.localScale * charge;
             // this.csize = this.projectilePrefab.transform.localScale;
             //Debug.Log(csize);
-
-            if (charge == 1)
+            if (VRAPI.Utils.IsUsingMotionControls(this.characterBody))
             {
-                base.PlayAnimation("Gesture, Override", "chargeMaxShoot", "Charge.playbackRate", this.duration);
-
-
-
+                Animator VR = VRAPI.MotionControls.dominantHand.animator;
+                if(charge <=.15f)
+                {
+                    PlayAnimationOnAnimator(VR, "Base Layer", "shoot", "Shoot.playbackRate", this.duration);
+                }
+                else if (charge > .15f)
+                {
+                    PlayAnimationOnAnimator(VR, "Base Layer", "chargeShoot", "Charge.playbackRate", this.attackSpeedStat*(.917f/2));
+                }
             }
             else
             {
-                base.PlayAnimation("Gesture, Override", "Beam", "Charge.playbackRate", this.duration);
+
+                if (charge == 1)
+                {
+                    base.PlayAnimation("Gesture, Override", "chargeMaxShoot", "Charge.playbackRate", this.duration);
+
+
+
+                }
+                else
+                {
+                    base.PlayAnimation("Gesture, Override", "Beam", "Charge.playbackRate", this.duration);
+                }
             }
             if (this.muzzleflashEffectPrefab)
             {
@@ -105,6 +120,8 @@ namespace SamusMod.States
                     //this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.gameObject.GetComponent<TrailRenderer>().widthMultiplier = .1f;
                 }
                 Ray aimRay = base.GetAimRay();
+                if (VRAPI.Utils.IsUsingMotionControls(this.characterBody) == true)
+                    aimRay = VRAPI.MotionControls.dominantHand.aimRay;
                 if (this.projectilePrefab != null)
                 {
                     // this.ResizeProjectile();
@@ -148,6 +165,7 @@ namespace SamusMod.States
                         float num = Util.Remap(.1f, .1f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                         float num2 = this.charge * this.force;
                         Util.PlaySound(this.tracerSound, this.gameObject);
+
                         new BulletAttack()
                         {
                             owner = this.gameObject,

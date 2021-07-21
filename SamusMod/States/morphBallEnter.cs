@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Skills;
 using RewiredConsts;
-
+using VRAPI;
 namespace SamusMod.States
 {
     public class morphBallEnter : BaseSkillState
@@ -28,8 +28,10 @@ namespace SamusMod.States
         public static SkillDef bomb = SamusMod.Modules.Skills.morphBallBomb;
         public static SkillDef powerBomb = SamusMod.Modules.Skills.morphBallPowerBomb;
         public static SkillDef exitMorph = SamusMod.Modules.Skills.morphBallExit;
-       
-        
+        public static SkinnedMeshRenderer[] DsMR, NDsMR;
+        public static Vector3 cameraPOS;
+        public static Transform VRCamera;
+        public static Animator VR;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -51,13 +53,33 @@ namespace SamusMod.States
             }
             this.skillLocator.secondary.stock = ExitMorphBall.pstock;
             this.ChildLocator = base.GetModelChildLocator();
-            
+
             //this.characterBody.gameObject.GetComponent<Collider>().enabled = false;
 
             this.ball = ChildLocator.FindChild("Ball2").gameObject;
             this.armature = ChildLocator.FindChild("armature").gameObject;
             this.mesh = ChildLocator.FindChild("Body").gameObject;
             this.bone = ChildLocator.FindChild("Ball2Bone").gameObject;
+            if (Utils.IsUsingMotionControls(this.characterBody))
+            {
+                VR = MotionControls.dominantHand.animator;
+                VRCamera = this.characterBody.transform.Find("VRCamera");
+                DsMR = MotionControls.dominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+                NDsMR = MotionControls.nonDominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+                foreach (SkinnedMeshRenderer renderer in DsMR)
+                {
+                    renderer.enabled = false;
+                }
+                foreach (SkinnedMeshRenderer rend in NDsMR)
+                {
+                    rend.enabled = false;
+                }
+
+                cameraPOS = VRCamera.localPosition;
+                VRCamera.Translate(0,-.5f,0);
+
+            }
             
             base.PlayAnimation("Body", "transformIn", "Roll.playbackRate",this.duration);
             
@@ -95,7 +117,7 @@ namespace SamusMod.States
             }
             this.ball.SetActive(true);
             //Debug.Log("isBall2Active " + this.ChildLocator.FindChild("Ball2").gameObject.activeSelf);
-            this.armature.SetActive(false);
+            //this.armature.SetActive(false);
             //Debug.Log("isarmatureActive " + this.ChildLocator.FindChild("armature").gameObject.activeSelf);
             this.mesh.SetActive(false);
             //this.ball.transform.rotation = (Quaternion.Euler(new Vector3(0, 0, 270)));
