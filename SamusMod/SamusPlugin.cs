@@ -8,14 +8,16 @@ using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using System.Runtime.CompilerServices;
+using VRAPI;
 
 
 
 namespace SamusMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.HardDependency)]
 
-    [BepInPlugin(MODUID,"Samus","1.3.0")]
+    [BepInPlugin(MODUID,"Samus","1.4.0")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",

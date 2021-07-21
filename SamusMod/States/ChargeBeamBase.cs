@@ -32,20 +32,27 @@ namespace SamusMod.States
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
+            Transform transform = this.childLocator.FindChild("gunCon");
+            if (!VRAPI.Utils.IsUsingMotionControls(this.characterBody)) 
+            { 
 
-            if (this.childLocator)
-            {
-                Transform transform = this.childLocator.FindChild("gunCon");
-
-                if(transform && this.chargeEffectPrefab)
-                {
-                    this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);
-                    this.chargeEffectInstance.transform.parent = transform;
                     
 
-                }
-            }
+                    if (transform && this.chargeEffectPrefab)
+                    {
+                        this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);
+                        this.chargeEffectInstance.transform.parent = transform;
 
+
+                    }
+                
+            }
+            else
+            {
+
+                this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform);
+                this.chargeEffectInstance.transform.Rotate(90, 0, 0);
+            }
 
             base.PlayAnimation("Gesture, Override", "chargeLoop", "Charge.playbackRate", this.duration);
             

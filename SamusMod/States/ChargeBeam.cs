@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VRAPI;
 
 namespace SamusMod.States
 {
@@ -21,8 +22,18 @@ namespace SamusMod.States
             
             base.OnEnter();
             ChildLocator childLocator = base.GetModelChildLocator();
+
+            //if (VRAPI.Utils.IsUsingMotionControls(this.characterBody) == true)
+            //{
+            //    Transform temp = MotionControls.dominantHand.transform.Find("Muzzle");
+            //    this.chargeEffect = temp.Find("chargeMuzzle").gameObject;
+
+
+            //}
             if (childLocator)
             {
+
+
                 this.chargeEffect = childLocator.FindChild("chargeEffect").gameObject;
                 this.chargeEffect.SetActive(false);//temp
             }
@@ -48,7 +59,10 @@ namespace SamusMod.States
             {
                 this.chargeEffect.SetActive(true);
             }
-            newSize = new Vector3(calcCharge()*10,calcCharge()*10,calcCharge()*10);
+            if (!VRAPI.Utils.IsUsingMotionControls(this.characterBody))
+                newSize = new Vector3(calcCharge() * 10, calcCharge() * 10, calcCharge() * 10);
+            else
+                newSize = new Vector3(calcCharge()/2, calcCharge()/2, calcCharge()/2);
 
             this.chargeEffectInstance.transform.localScale = newSize;
         }

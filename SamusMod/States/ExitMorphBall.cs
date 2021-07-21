@@ -2,7 +2,7 @@
 using RoR2;
 using EntityStates;
 using UnityEngine.Networking;
-
+using VRAPI;
 namespace SamusMod.States
 {
      public class ExitMorphBall : BaseSkillState
@@ -31,7 +31,7 @@ namespace SamusMod.States
             //rigidbody.interpolation = RigidbodyInterpolation.None;
             //rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
             this.childLocator.FindChild("Ball2").gameObject.SetActive(false);
-            this.childLocator.FindChild("armature").gameObject.SetActive(true);
+           // this.childLocator.FindChild("armature").gameObject.SetActive(true);
             this.childLocator.FindChild("Body").gameObject.SetActive(true);
             base.PlayAnimation("Body", "transformOut", "Roll.playbackRate", this.duration);
         }
@@ -58,7 +58,22 @@ namespace SamusMod.States
             this.skillLocator.secondary.stock = morphBallEnter.stock1;
             //this.skillLocator.secondary.RecalculateMaxStock();
             this.skillLocator.special.stock = morphBallEnter.stock2;
-            
+            if (Utils.IsUsingMotionControls(this.characterBody))
+            {
+
+
+                foreach (SkinnedMeshRenderer renderer in morphBallEnter.DsMR)
+                {
+                    renderer.enabled = true;
+                }
+                foreach (SkinnedMeshRenderer rend in morphBallEnter.NDsMR)
+                {
+                    rend.enabled = true;
+                }
+                morphBallEnter.VRCamera.localPosition = morphBallEnter.cameraPOS;
+
+
+            }
             //this.skillLocator.special.RecalculateMaxStock();
             SamusMain.morphBall = false;
         }

@@ -15,13 +15,15 @@ namespace SamusMod.States
         private Collider collider;
         private GameObject ball;
         private Rigidbody rigidbody;
-        private CharacterBody body;
+        //private CharacterBody body;
         private Vector3 velocity;
         private Vector3 direction;
         public static Vector3 camera;
         private float horizontalInput;
         private Vector3 forwardDir;
         private float stopwatch;
+        public static bool vrCheck;
+        public static CharacterBody body;
 
         public static bool morphBall { get; set; }
 
@@ -32,21 +34,32 @@ namespace SamusMod.States
             this.ball = this.ChildLocator.FindChild("Ball2").gameObject;
             this.collider = this.ball.GetComponent<Collider>();
             this.rigidbody = this.ball.GetComponent<Rigidbody>();
-            this.body = base.characterBody;
+            body = base.characterBody;
+            if(VRAPI.VR.enabled)
+            { 
+            vrCheck = VRAPI.Utils.IsUsingMotionControls(body);
+            if (vrCheck == true)
+            {
+                SamusMod.Modules.VRStuff.setupVR(body);
 
+                this.ChildLocator.FindChild("chargeEffect").gameObject.SetActive(false);
+                    Debug.Log("dom: " + VRAPI.MotionControls.dominantHand);
+                    Debug.Log("ndom: " + VRAPI.MotionControls.nonDominantHand);
+                }
 
+        }
             base.OnEnter();
             //KinematicCharacterController.KinematicCharacterMotor kin = ball.AddComponent<KinematicCharacterController.KinematicCharacterMotor>();
             //kin.CharacterController = this.characterMotor;
             //kin.Rigidbody = ball.GetComponent<Rigidbody>();
-            //kin.Capsule = ball.GetComponent<CapsuleCollider>();
+            //kin.Capsule = ball.GetComponent<CapsuleCollider>();s
             //kin.enabled = false;
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            this.characterBody.skillLocator.FindSkill("");
             if (this.Animator)
             {
                 this.Animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, .2f, Time.fixedDeltaTime);

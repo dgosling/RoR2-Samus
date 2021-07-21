@@ -56,6 +56,8 @@ namespace SamusMod.States
                 base.characterBody.AddSpreadBloom(.75f);
                 //Debug.Log(target);
                 Ray aimRay = base.GetAimRay();
+                if (VRAPI.Utils.IsUsingMotionControls(this.characterBody) == true)
+                    aimRay = VRAPI.MotionControls.dominantHand.aimRay;
                 if (muzzleEffectPrefab != null)
                     EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
                 if (base.isAuthority && this.target != null)

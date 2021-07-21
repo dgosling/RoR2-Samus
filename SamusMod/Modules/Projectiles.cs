@@ -59,7 +59,7 @@ namespace SamusMod.Modules
             smissileGhost.AddComponent<ProjectileGhostController>();
             smissile.GetComponent<ProjectileController>().ghostPrefab = smissileGhost;
             smissile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
-            
+
             smissile.GetComponent<ProjectileImpactExplosion>().blastRadius = 10;
             smissile.GetComponent<Rigidbody>().useGravity = false;
             smissile.GetComponent<ProjectileImpactExplosion>().impactEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionVFX");
@@ -77,7 +77,10 @@ namespace SamusMod.Modules
             beamGhost.AddComponent<ProjectileGhostController>();
             SamusPlugin.Destroy(beam.GetComponent<ProjectileImpactExplosion>());
             beam.AddComponent<ProjectileSingleTargetImpact>();
-            beam.AddComponent<Misc.colision_test>();
+            //if (VRAPI.VR.enabled == false) 
+           // { 
+                beam.AddComponent<Misc.colision_test>();
+           // }
             //var beamSingleImpact = beam.GetComponent<ProjectileSingleTargetImpact>();
             beam.GetComponent<ProjectileSingleTargetImpact>().destroyOnWorld = true;
             beam.GetComponent<ProjectileController>().ghostPrefab = beamGhost;
