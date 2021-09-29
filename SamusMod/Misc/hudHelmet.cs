@@ -8,15 +8,16 @@ namespace SamusMod.Misc
         //Vector3 pivotPosition;
         bool helmetVis, glowVis;
         //Camera camera;
-        GameObject Pivot, glow;
+        GameObject Pivot, glow,baseObject;
         List<GameObject> helmet, helmetLight;
-        hudChangingColors.hudColors hudColors;
+        hudColors hudColors;
         string path;
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            hudColors = new hudChangingColors.hudColors(true);
+            hudColors = new hudColors(true);
             path = "combatVisor";
+            baseObject = gameObject.transform.Find(path).gameObject;
             Pivot = gameObject.transform.Find(path + "/BaseWidget_Pivot").gameObject;
             helmet = new List<GameObject>();
             helmet.Add(Pivot.transform.Find("BaseWidget_Helmet/model_bottomhel").gameObject);
@@ -71,6 +72,16 @@ namespace SamusMod.Misc
             }
         }
 
+        void UpdateVisibility()
+        {
+            baseObject.SetActive(helmetVis);
+        }
+
+        public void SetVisible(bool visible) 
+        { 
+            helmetVis = visible;
+            UpdateVisibility();
+        }
 
     }
 }

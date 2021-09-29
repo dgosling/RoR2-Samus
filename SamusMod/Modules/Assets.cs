@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-
+using System;
 using UnityEngine;
 using System.IO;
 using UnityEngine.Networking;
@@ -17,6 +17,7 @@ public static class Assets
         //bundle
         public static AssetBundle mainAssetBundle;
         public static AssetBundle VRassets;
+        public static uint unloadingID;
         //Character portrait
         public static Texture charPortrait;
         //skill icons
@@ -45,10 +46,16 @@ public static class Assets
         public static GameObject Tracker;
         public static GameObject VRDomHand;
         public static GameObject VRnDomHand;
+        public static GameObject HUDHandler;
+        public static GameObject combatVisor;
+        public static GameObject combatHUD;
+        public static GameObject ballHUD;
+        public static GameObject bossHUD;
         public static RuntimeAnimatorController gun;
         public static RuntimeAnimatorController ray;
         internal static NetworkSoundEventDef bombExplosionSound;
         internal static NetworkSoundEventDef powerBombExplosionSound;
+        
 
         //skin meshes
         public static Mesh body;
@@ -62,31 +69,34 @@ public static class Assets
         {
             if (mainAssetBundle == null)
             {
-                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusbundle"))
-                {
-                    mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                    //var provider = new AssetBundleResourcesProvider("@Samus", mainAssetBundle);
-                    //ResourcesAPI.AddProvider(provider);
+                //using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusbundle"))
+                //{
+                //    mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
+                //    //var provider = new AssetBundleResourcesProvider("@Samus", mainAssetBundle);
+                //    //ResourcesAPI.AddProvider(provider);
 
-                }
-                using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.Samus.bnk"))
-                {
-                    byte[] array = new byte[manifestResourceStream2.Length];
-                    manifestResourceStream2.Read(array, 0, array.Length);
-                    SoundAPI.SoundBanks.Add(array);
-                }
+                //}
+                mainAssetBundle = LoadAssetBundle(Properties.Resources.samusbundle);
+                //using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.Samus.bnk"))
+                //{
+                //    byte[] array = new byte[manifestResourceStream2.Length];
+                //    manifestResourceStream2.Read(array, 0, array.Length);
+                //    SoundAPI.SoundBanks.Add(array);
+                //}
+                unloadingID = LoadSoundBank(Properties.Resources.Samus);
 
 
             }
 
             if (VRassets == null&&VR.enabled)
             {
-                using (var vrassetstream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusvr"))
-                {
-                    VRassets = AssetBundle.LoadFromStream(vrassetstream);
-                    var provider = new AssetBundleResourcesProvider("@Samus", VRassets);
-                    ResourcesAPI.AddProvider(provider);
-                }
+                //using (var vrassetstream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SamusMod.samusvr"))
+                //{
+                //    VRassets = AssetBundle.LoadFromStream(vrassetstream);
+                //    var provider = new AssetBundleResourcesProvider("@Samus", VRassets);
+                //    ResourcesAPI.AddProvider(provider);
+                //}
+                VRassets = LoadAssetBundle(Properties.Resources.samusvr);
             }
 
             #region Icons
@@ -114,7 +124,7 @@ public static class Assets
             body = mainAssetBundle.LoadAsset<Mesh>("meshDGSsamus");
             ball = mainAssetBundle.LoadAsset<Mesh>("meshDGBall");
             ball2 = mainAssetBundle.LoadAsset<Mesh>("meshBall2");
-
+            
             #endregion
             #region effects
             beamShootEffect = LoadEffect("beamFireMuzzle", "");
@@ -134,6 +144,7 @@ public static class Assets
 
             bombExplosionSound = CreateNetworkSoundEventDef(Sounds.bombExplode);
             powerBombExplosionSound = CreateNetworkSoundEventDef(Sounds.powerBomb);
+            
             #endregion
             #region vrprefabs
             if (VRAPI.VR.enabled) 
@@ -145,6 +156,11 @@ public static class Assets
             MotionControls.AddHandPrefab(VRnDomHand);
                 //gun = VRassets.LoadAsset<RuntimeAnimatorController>("gun");
                 //ray = VRassets.LoadAsset<RuntimeAnimatorController>("ray");
+                combatVisor = VRassets.LoadAsset<GameObject>("combatVisor");
+                combatHUD = VRassets.LoadAsset<GameObject>("combatHud");
+                ballHUD = VRassets.LoadAsset<GameObject>("ballHUD");
+                bossHUD = VRassets.LoadAsset<GameObject>("bossHud");
+                HUDHandler = VRassets.LoadAsset<GameObject>("hudHandler");
                 
             }
 
@@ -152,7 +168,25 @@ public static class Assets
 
             // InitCustomItems();
         }
+        static AssetBundle LoadAssetBundle(Byte[] resourceBytes)
+        {
+            //Check to make sure that the byte array supplied is not null, and throw an appropriate exception if they are.
+            if (resourceBytes == null) throw new ArgumentNullException(nameof(resourceBytes));
 
+            //Actually load the bundle with a Unity function.
+            var bundle = AssetBundle.LoadFromMemory(resourceBytes);
+
+            return bundle;
+        }
+
+        static UInt32 LoadSoundBank(Byte[] resourceBytes)
+        {
+            //Check to make sure that the byte array supplied is not null, and throw an appropriate exception if they are.
+            if (resourceBytes == null) throw new ArgumentNullException(nameof(resourceBytes));
+
+            //Register the soundbank and return the ID
+            return SoundAPI.SoundBanks.Add(resourceBytes);
+        }
         internal static NetworkSoundEventDef CreateNetworkSoundEventDef(string eventName)
         {
             NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();

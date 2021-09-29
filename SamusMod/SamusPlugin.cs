@@ -70,7 +70,7 @@ namespace SamusMod
             Modules.Projectiles.RegisterProjectiles();
             Modules.ItemDisplays.InitializeItemDisplays();
             Modules.Tokens.AddTokens();
-
+            
             CreateDoppelganger();
             //new Modules.ContentPacks().CreateContentPack();
             Hook();
@@ -102,7 +102,7 @@ namespace SamusMod
             }
             start();
         }
-
+        
         private void CreateDoppelganger()
         {
             doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"),
@@ -139,10 +139,47 @@ namespace SamusMod
             On.RoR2.DamageTrail.DoDamage += DamageTrail_DoDamage;
             On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            //On.RoR2.GlobalEventManager.ClientDamageNotified += GlobalEventManager_ClientDamageNotified;
             On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
             On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
             On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
+            
+           // On.RoR2.DotController.InflictDot_refInflictDotInfo += DotController_InflictDot_refInflictDotInfo;
            // On.EntityStates.FrozenState.OnExit += FrozenState_OnExit;
+        }
+
+        private void DotController_InflictDot_refInflictDotInfo(On.RoR2.DotController.orig_InflictDot_refInflictDotInfo orig, ref InflictDotInfo inflictDotInfo)
+        {
+            if(inflictDotInfo.victimObject.GetComponent<CharacterBody>().baseNameToken== "DG_SAMUS_NAME")
+            {
+                if (inflictDotInfo.dotIndex == DotController.DotIndex.Burn || inflictDotInfo.dotIndex == DotController.DotIndex.PercentBurn)
+                    inflictDotInfo.damageMultiplier = 0;
+
+            }
+            orig(ref inflictDotInfo);
+        }
+
+        private void GlobalEventManager_ClientDamageNotified(On.RoR2.GlobalEventManager.orig_ClientDamageNotified orig, DamageDealtMessage damageDealtMessage)
+        {
+            if(damageDealtMessage.victim.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME")
+            {
+                Misc.SamusHUD.DamageAm = damageDealtMessage.damage;
+            }
+            orig(damageDealtMessage);
+        }
+
+        private void HealthComponent_TakeDamage1(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+
+                if (self.body.baseNameToken == "DG_SAMUS_NAME")
+                {
+                    if (VRAPI.Utils.IsInVR(self.body))
+                    {
+                        Misc.SamusHUD.DamageAm = damageInfo.damage;
+                    }
+                }
+            orig(self, damageInfo);
+            
         }
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
@@ -328,8 +365,6 @@ namespace SamusMod
         //        float origDam = damageInfo.damage;
         //        DamageTrail reference = gameObject.GetComponent<DamageTrail>();
         //        Debug.Log(damageInfo.damage);
-        //        if (damageInfo.attacker==reference/*&&gameObject.GetComponent<DamageTrail>().name=="FireTrail"*/ && self.body.baseNameToken == "DG_SAMUS_NAME")
-        //        {
         //            Debug.Log("test firetrail");
         //            damageInfo.damage = 0;
         //            orig(self, damageInfo);

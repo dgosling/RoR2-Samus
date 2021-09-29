@@ -34,17 +34,20 @@ namespace SamusMod.States
             this.ball = this.ChildLocator.FindChild("Ball2").gameObject;
             this.collider = this.ball.GetComponent<Collider>();
             this.rigidbody = this.ball.GetComponent<Rigidbody>();
-            body = base.characterBody;
+            body = characterBody;
             if(VRAPI.VR.enabled)
             { 
             vrCheck = VRAPI.Utils.IsUsingMotionControls(body);
             if (vrCheck == true)
             {
                 SamusMod.Modules.VRStuff.setupVR(body);
+                    
+                    Camera.main.nearClipPlane = 0.05f;
 
                 this.ChildLocator.FindChild("chargeEffect").gameObject.SetActive(false);
                     Debug.Log("dom: " + VRAPI.MotionControls.dominantHand);
                     Debug.Log("ndom: " + VRAPI.MotionControls.nonDominantHand);
+                    Modules.VRStuff.SamusHUD.initSamusHUD(body);
                 }
 
         }
@@ -55,7 +58,7 @@ namespace SamusMod.States
             //kin.Capsule = ball.GetComponent<CapsuleCollider>();s
             //kin.enabled = false;
         }
-
+        
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -65,6 +68,9 @@ namespace SamusMod.States
                 this.Animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, .2f, Time.fixedDeltaTime);
                 this.Animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
             }
+
+           
+
 
             if (base.healthComponent.isInFrozenState == true && (this.ChildLocator.FindChild("Ball").localScale != new Vector3(.5f, .5f, .5f)))
             {
@@ -181,10 +187,6 @@ namespace SamusMod.States
 
         }
 
-
-
-
-
-
+       
     }
 }

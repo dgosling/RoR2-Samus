@@ -59,7 +59,7 @@ namespace SamusMod.States
             {
                 this.chargeEffect.SetActive(true);
             }
-            if (!VRAPI.Utils.IsUsingMotionControls(this.characterBody))
+            if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
                 newSize = new Vector3(calcCharge() * 10, calcCharge() * 10, calcCharge() * 10);
             else
                 newSize = new Vector3(calcCharge()/2, calcCharge()/2, calcCharge()/2);

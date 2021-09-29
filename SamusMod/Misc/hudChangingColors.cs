@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 namespace SamusMod.Misc
 {
-    public class hudChangingColors
-    {
+    //public class hudChangingColors
+    //{
         public struct hudColors
         {
+            public bool init { get; }
             public Color combatDecoColor { get; }
             public Color missileIconColorActive { get; }
             public Color energyBarFilledLow { get; }
@@ -45,19 +47,19 @@ namespace SamusMod.Misc
             public Color threatDigitsOutline { get; }
             public Color missileDigitsFont { get; }
             public Color missileDigitsOutline { get; }
-            public Color energyBarFilled { get; }
-            public Color energyBarEmpty { get; }
-            public Color energyBarShadow { get; }
-            public Color energyTankFilled { get; }
-            public Color energyTankEmpty { get; }
-            public Color energyDigitsFont { get; }
-            public Color energyDigitsOutline { get; }
+            //public Color energyBarFilled { get; }
+            //public Color energyBarEmpty { get; }
+            //public Color energyBarShadow { get; }
+          //  public Color energyTankFilled { get; }
+            //public Color energyTankEmpty { get; }
+           // public Color energyDigitsFont { get; }
+           // public Color energyDigitsOutline { get; }
             public Color missileIconDepleteAlt { get; }
             public Color hudFrameColor { get; }
             public Color helmetLightColor { get; }
             public Color missileIconColorCanAlt { get; }
             public Color missileIconColorNoAlt { get; }
-            bool combatVisorCheck;
+            public bool combatVisorCheck;
             public struct EnergyBarColors
             {
                 public Color filled;
@@ -72,8 +74,18 @@ namespace SamusMod.Misc
                 public Color digitsFont;
                 public Color digitsOutline;
             }
-            List<EnergyBarColors> energyBarColors;
-            List<EnergyInitColors> energyInitColors;
+           public struct perVisorColors
+        {
+            public Color energyBarFilled;
+            public Color energyBarEmpty;
+            public Color energyBarShadow;
+            public Color energyTankFilled;
+            public Color energyTankEmpty;
+            public Color energyDigitsFont;
+            public Color energyDigitsOutline;
+        }
+        public IDictionary<bool, perVisorColors> VisorColors;
+        
 
             public hudColors(bool combatVisor)
             {
@@ -118,31 +130,32 @@ namespace SamusMod.Misc
                 missileDigitsFont = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f);
                 missileIconDepleteAlt = new Color(0.537255f, 0.839216f, 1.0f, 1.0f);
                 missileDigitsOutline = Color.black;
-                energyBarColors = new List<EnergyBarColors>();
-                energyInitColors = new List<EnergyInitColors>();
-                energyBarFilled = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f);
+            VisorColors = new Dictionary<bool, perVisorColors>();
+            VisorColors.Add(true, new perVisorColors
+            {
+                energyBarFilled = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f),
+                energyBarEmpty = new Color(0.172549f, 0.290196f, 0.372549f, 1.0f),
+            energyBarShadow = new Color(0.294118f, 0.494118f, 0.639216f, 1.0f),
+            energyTankFilled = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f),
+            energyTankEmpty = new Color(0.403922f, 0.682353f, 0.882353f, 0.254118f),
+            energyDigitsFont = new Color(0.2f, 0.337255f, 0.439216f, 1.0f),
+            energyDigitsOutline = Color.black
+        });
+            VisorColors.Add(false, new perVisorColors
+            {
+                energyBarFilled = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f),
+            energyBarEmpty = new Color(0.172549f, 0.290196f, 0.372549f, 1.0f),
+            energyBarShadow = new Color(0.294118f, 0.494118f, 0.639216f, 1.0f),
+            energyTankFilled = new Color(0.454902f, 0.764706f, 1.0f, 1.0f),
+            energyTankEmpty = new Color(0.2f, 0.337255f, 0.439216f, 1.0f),
+            energyDigitsFont = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f),
+            energyDigitsOutline = Color.black
+        });
 
-                energyBarEmpty = new Color(0.172549f, 0.290196f, 0.372549f, 1.0f);
-                energyBarShadow = new Color(0.294118f, 0.494118f, 0.639216f, 1.0f);
-                energyTankFilled = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f);
-                energyTankEmpty = new Color(0.403922f, 0.682353f, 0.882353f, 0.254118f);
-                energyDigitsFont = new Color(0.2f, 0.337255f, 0.439216f, 1.0f);
-                energyDigitsOutline = Color.black;
+
                 missileIconColorCanAlt = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f);
                 missileIconColorNoAlt = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-                energyBarColors.Add(new EnergyBarColors
-                {
-                    filled = energyBarFilled,
-                    empty = energyBarEmpty,
-                    shadow = energyBarShadow
-                });
-                energyInitColors.Add(new EnergyInitColors
-                {
-                    tankEmpty = energyTankEmpty,
-                    tankFilled = energyTankFilled,
-                    digitsFont = energyDigitsFont,
-                    digitsOutline = energyDigitsOutline
-                });
+
                 //barColors = new EnergyBarColors()
                 //{
                 //    filled = energyBarFilled,
@@ -162,27 +175,9 @@ namespace SamusMod.Misc
 
 
 
-                energyBarFilled = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f);
-                energyBarEmpty = new Color(0.172549f, 0.290196f, 0.372549f, 1.0f);
-                energyBarShadow = new Color(0.294118f, 0.494118f, 0.639216f, 1.0f);
-                energyTankFilled = new Color(0.454902f, 0.764706f, 1.0f, 1.0f);
-                energyTankEmpty = new Color(0.2f, 0.337255f, 0.439216f, 1.0f);
-                energyDigitsFont = new Color(0.403922f, 0.682353f, 0.882353f, 1.0f);
-                energyDigitsOutline = Color.black;
 
-                energyBarColors.Add(new EnergyBarColors
-                {
-                    filled = energyBarFilled,
-                    empty = energyBarEmpty,
-                    shadow = energyBarShadow
-                });
-                energyInitColors.Add(new EnergyInitColors
-                {
-                    tankEmpty = energyTankEmpty,
-                    tankFilled = energyTankFilled,
-                    digitsFont = energyDigitsFont,
-                    digitsOutline = energyDigitsOutline
-                });
+
+
                 //barColors = new EnergyBarColors()
                 //{
                 //    filled = energyBarFilled,
@@ -199,44 +194,30 @@ namespace SamusMod.Misc
                 //};
 
                 combatVisorCheck = combatVisor;
+            init = true;
             }
-
-            public EnergyBarColors getVisorEnergyBarColors()
-            {
-                if (combatVisorCheck)
-                {
-                    return energyBarColors[0];
-                }
-                else
-                    return energyBarColors[1];
-            }
-
-            public EnergyInitColors getVisorEnergyInitColors()
-            {
-                if (combatVisorCheck)
-                    return energyInitColors[0];
-                else
-                    return energyInitColors[1];
-            }
-
-            public EnergyBarColors getVisorEnergyBarColors(bool combatVisor)
-            {
-                if (combatVisor)
-                    return energyBarColors[0];
-                else
-                    return energyBarColors[1];
-
-            }
-            public EnergyInitColors getVisorEnergyInitColors(bool combatVisor)
-            {
-                if (combatVisor)
-                    return energyInitColors[0];
-                else
-                    return energyInitColors[1];
-
-            }
-
+        public EnergyBarColors GetEnergyBarColors()
+        {
+            perVisorColors colors = VisorColors[combatVisorCheck];
+            return new EnergyBarColors() { filled = colors.energyBarFilled, empty = colors.energyBarEmpty, shadow = colors.energyBarShadow };
+        }
+        public EnergyBarColors GetEnergyBarColors(bool combatMode)
+        {
+            perVisorColors colors = VisorColors[combatMode];
+            return new EnergyBarColors() { filled = colors.energyBarFilled,empty = colors.energyBarEmpty,shadow = colors.energyBarShadow};
+        }
+        public EnergyInitColors GetEnergyInitColors()
+        {
+            perVisorColors colors = VisorColors[combatVisorCheck];
+            return new EnergyInitColors() { tankEmpty = colors.energyTankEmpty, tankFilled = colors.energyTankFilled, digitsFont = colors.energyDigitsFont, digitsOutline = colors.energyDigitsOutline };
+        }
+        public EnergyInitColors GetEnergyInitColors(bool combatMode)
+        {
+            perVisorColors colors = VisorColors[combatMode];
+            return new EnergyInitColors() { tankEmpty = colors.energyTankEmpty, tankFilled = colors.energyTankFilled, digitsFont = colors.energyDigitsFont, digitsOutline = colors.energyDigitsOutline };
         }
 
-    }
+        }
+        
+   // }
 }

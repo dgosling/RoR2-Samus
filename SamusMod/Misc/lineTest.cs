@@ -8,7 +8,7 @@ namespace SamusMod.Misc
     public class lineTest : MonoBehaviour
     {
 
-        [ExecuteAlways] // makes it work in the editor
+       // [ExecuteAlways] // makes it work in the editor
         [SerializeField]
         private int numSegments = 30; // quality setting - the higher the better it looks in close-ups
         [SerializeField]
