@@ -7,7 +7,7 @@ namespace SamusMod.Misc
 {
     public class hudBall : MonoBehaviour
     {
-        hudChangingColors.hudColors hudColors;
+        hudColors hudColors;
         GameObject bombDeco;
         Image bombIcon;
         Text bombDigits;
@@ -18,10 +18,10 @@ namespace SamusMod.Misc
         bool hasPb;
         public bool ballini;
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
 
-            hudColors = new hudChangingColors.hudColors(false);
+            hudColors = new hudColors(false);
             string hudN = "ballHUD";
 
             bombDeco = gameObject.transform.Find(hudN + "/bombdeco").gameObject;
@@ -51,7 +51,16 @@ namespace SamusMod.Misc
         {
 
         }
+        public bool isActive(bool init)
+        {
+            if (init)
+                return true;
+            if (energyDeco.transform.parent.gameObject.activeInHierarchy)
+                return true;
+            else
+                return false;
 
+        }
         void UpdatePowerBombReadoutColors()
         {
             Color fontColor;
@@ -83,7 +92,7 @@ namespace SamusMod.Misc
             bombIcon.color = iconColor;
         }
 
-        public void SetBombParams(int PbAmount, int PbCapacity, int AvailableBombs, bool init)
+        public void SetBombParams(int PbAmount, int PbCapacity, int AvailableBombs, bool init,hudColors colors)
         {
             if (PbAmount != pbAmount || init)
             {
@@ -106,7 +115,7 @@ namespace SamusMod.Misc
 
             }
             availableBombs = AvailableBombs;
-
+            hudColors = colors;
             bombDeco.SetActive(pbCapacity > 0);
             if (init)
                 ballini = true;

@@ -23,7 +23,7 @@ namespace SamusMod.Misc
         Text missileDigits, missileWarning;
         hudEnergyBar missileBar;
         float IconTranslateRange;
-        hudChangingColors.hudColors hudColors;
+        hudColors hudColors;
         //hudTimer timer;
         uint rendertimings;
         public bool missIni;
@@ -32,7 +32,7 @@ namespace SamusMod.Misc
         float iconLerp, rIconLerp;
         //Material localMat;
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             rendertimings = 0;
             arrowTimer = 0f;
@@ -43,7 +43,7 @@ namespace SamusMod.Misc
             missileIconIncrement = 0f;
             visible = true;
             IconTranslateRange = 342.5f;
-            hudColors = new hudChangingColors.hudColors(true);
+            hudColors = new hudColors(true);
             string path = "combatHud/Missiles";
             //hudType = HudType;
             //missileCapacity = MissileCapacity;
@@ -91,6 +91,15 @@ namespace SamusMod.Misc
             if (vis)
                 UpdateHud(0f);
         }
+        public bool isActive(bool init)
+        {
+            if (init)
+                return true;
+            if (missileIcon.gameObject.transform.parent.gameObject.activeInHierarchy)
+                return true;
+            else
+                return false;
+        }
         public void UpdateHud(float dt)
         {
 
@@ -124,12 +133,12 @@ namespace SamusMod.Misc
             {
                 if (hasAlt)
                 {
-                    if (numMissiles > 5)
-                    {
+                    //if (numMissiles > 5)
+                    //{
                         missileIcon.color = hudColors.missileIconColorCanAlt + addColor;
-                    }
-                    else
-                        missileIcon.color = hudColors.missileIconColorNoAlt + addColor;
+                    //}
+                    //else
+                    //    missileIcon.color = hudColors.missileIconColorNoAlt + addColor;
                 }
                 else
                 {
@@ -217,13 +226,15 @@ namespace SamusMod.Misc
                     missileWarning.text = tString;
                     if (latestStatus == invStatus.Normal && curStatus == invStatus.Warning)
                     {
-                        //play missile warning
+                        //AkSoundEngine.PostEvent(2892136322, gameObject);
+                        SamusHUD.playSound(2892136322, gameObject);
                         missileWarningPulse = 7f;
 
                     }
                     else if (curStatus == invStatus.Depleted)
                     {
-                        //play missile warning
+                        //AkSoundEngine.PostEvent(2892136322, gameObject);
+                        SamusHUD.playSound(2892136322, gameObject);
                         missileWarningPulse = 7f;
                     }
                     latestStatus = curStatus;
@@ -273,24 +284,25 @@ namespace SamusMod.Misc
         public void SetNumMissiles(int NumMissiles)
         {
             Debug.Log("NumMissiles: " + NumMissiles);
-            NumMissiles = Mathf.Clamp(NumMissiles, 0, 999);
+            int tmp = NumMissiles;
+            tmp = Mathf.Clamp(NumMissiles, 0, 999);
 
-            missileDigits.text = NumMissiles.ToString("d3");
+            missileDigits.text = tmp.ToString("d3");
 
-            if (numMissiles < NumMissiles)
+            if (numMissiles < tmp)
             {
                 arrowTimer = 0.5f;
                 missileIconIncrement = -Mathf.Epsilon;
             }
-            else if (numMissiles > NumMissiles)
+            else if (numMissiles > tmp)
             {
                 arrowTimer = -0.5f;
             }
 
-            if (5 + NumMissiles <= numMissiles)
+            if (5 + tmp <= numMissiles)
                 missileIconAltDeplete = 1f;
 
-            numMissiles = NumMissiles;
+            numMissiles = tmp;
             Debug.Log("numMissiles: " + numMissiles);
         }
         public void SetMissileCapacity(int MissileCapacity) { missileCapacity = MissileCapacity; }
@@ -328,6 +340,7 @@ namespace SamusMod.Misc
             SetNumMissiles(numMissiles);
             missIni = true;
         }
+        public void setHasAlt(bool alt) { hasAlt = alt; }
         public void SetRenderTimings(uint renderTimings) { rendertimings = renderTimings; }
         //public void SetIconLerp(float lerp) { iconLerp = lerp; }
         //public void getReverseIconLerp()

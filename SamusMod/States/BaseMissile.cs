@@ -42,8 +42,14 @@ namespace SamusMod.States
 
         public override void OnExit()
         {
-          //  this.calculateSMissiles();
-           // base.skillLocator.special.RecalculateMaxStock();
+            //  this.calculateSMissiles();
+            // base.skillLocator.special.RecalculateMaxStock();
+            if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+            {
+                Misc.SamusHUD samusHUD = LocalUserManager.GetFirstLocalUser().cameraRigController.hud.transform.parent.GetComponentInChildren<Misc.SamusHUD>();
+                samusHUD.setMissileActive(true);
+            }
+
             base.OnExit();
         }
 
@@ -56,7 +62,7 @@ namespace SamusMod.States
                 base.characterBody.AddSpreadBloom(.75f);
                 //Debug.Log(target);
                 Ray aimRay = base.GetAimRay();
-                if (VRAPI.Utils.IsUsingMotionControls(this.characterBody) == true)
+                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
                     aimRay = VRAPI.MotionControls.dominantHand.aimRay;
                 if (muzzleEffectPrefab != null)
                     EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, base.gameObject, this.muzzleString, false);

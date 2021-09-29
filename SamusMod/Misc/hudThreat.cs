@@ -19,7 +19,7 @@ namespace SamusMod.Misc
         Text threatWarning;
         hudEnergyBar threatBar;
         float iconTranslateRange;
-        hudChangingColors.hudColors hudColors;
+        hudColors hudColors;
         // Material localMat, originalMat;
         //hudTimer lhudTimer;
         float debugTMP;
@@ -31,7 +31,7 @@ namespace SamusMod.Misc
         float debugIniMaxEnergy;
         uint rendertimings;
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             ini = false;
             string path = "combatHud/Envirorment";
@@ -43,7 +43,7 @@ namespace SamusMod.Misc
             threatStatus = ThreatStatus.Normal;
             visible = true;
             iconTranslateRange = 342.5f;
-            hudColors = new hudChangingColors.hudColors(true);
+            hudColors = new hudColors(true);
 
             //lhudTimer = new hudTimer();
 
@@ -64,7 +64,7 @@ namespace SamusMod.Misc
 
             threatIcon[0].GetComponent<Image>().color = hudColors.threatIconColor;
             threatIconTrans = threatIcon[0].transform;
-
+            
             threatBar.SetFilledColor(hudColors.threatBarFilled);
             //Debug.Log(threatBar.GetFilledColor());
             threatBar.SetShadowColor(hudColors.threatBarShadow);
@@ -91,7 +91,15 @@ namespace SamusMod.Misc
         }
 
         // Update is called once per frame
-
+        public bool isActive(bool init)
+        {
+            if (init)
+                return true;
+            if (threatStuff.activeInHierarchy)
+                return true;
+            else
+                return false;
+        }
 
         float fmod(float numer, float denom)
         {
@@ -209,11 +217,13 @@ namespace SamusMod.Misc
 
                     if (threatStatus == ThreatStatus.Normal && newStatus == ThreatStatus.Warning)
                     {
-                        //play threatWarning
+                        //AkSoundEngine.PostEvent(1988175364, gameObject);
+                        SamusHUD.playSound(1988175364, gameObject);
                     }
                     else if (newStatus == ThreatStatus.Damage)
                     {
-                        //play threatDamage
+                        //AkSoundEngine.PostEvent(1246534283, gameObject);
+                        SamusHUD.playSound(1246534283, gameObject);
                     }
 
                     threatStatus = newStatus;
@@ -229,7 +239,8 @@ namespace SamusMod.Misc
 
             if (threatStatus == ThreatStatus.Damage && damagePulseTimer < oldDPT)
             {
-                //play threat damage
+                //AkSoundEngine.PostEvent(1246534283, gameObject);
+                SamusHUD.playSound(1246534283, gameObject);
             }
 
             if (threatWarning)

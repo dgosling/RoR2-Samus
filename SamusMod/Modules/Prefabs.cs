@@ -142,7 +142,7 @@ namespace SamusMod.Modules
             bodyComponent.portraitIcon = bodyInfo.characterPortrait;
             bodyComponent.crosshairPrefab = bodyInfo.crosshair;
 
-            bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes | CharacterBody.BodyFlags.IgnoreFallDamage;
+            bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes | CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.OverheatImmune;
             bodyComponent.rootMotionInMainState = false;
 
             bodyComponent.baseMaxHealth = bodyInfo.maxHealth;

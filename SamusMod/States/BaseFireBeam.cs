@@ -43,7 +43,7 @@ namespace SamusMod.States
             //  this.test.localScale = projectilePrefab.transform.localScale * charge;
             // this.csize = this.projectilePrefab.transform.localScale;
             //Debug.Log(csize);
-            if (VRAPI.Utils.IsUsingMotionControls(this.characterBody))
+            if (VRAPI.Utils.IsUsingMotionControls(characterBody))
             {
                 Animator VR = VRAPI.MotionControls.dominantHand.animator;
                 if(charge <=.15f)
@@ -120,7 +120,7 @@ namespace SamusMod.States
                     //this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.gameObject.GetComponent<TrailRenderer>().widthMultiplier = .1f;
                 }
                 Ray aimRay = base.GetAimRay();
-                if (VRAPI.Utils.IsUsingMotionControls(this.characterBody) == true)
+                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
                     aimRay = VRAPI.MotionControls.dominantHand.aimRay;
                 if (this.projectilePrefab != null)
                 {

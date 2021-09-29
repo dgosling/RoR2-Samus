@@ -12,6 +12,7 @@ public class hudHealthInterface : MonoBehaviour
     float energyLowFader = 0f;
     float flashMag = 0f;
     float tankEnergy;
+        float maxEnergy;
     public int totalEnergyTanks;
     public int numTanksFilled;
     float cachedBarEnergy = 0f;
@@ -31,20 +32,22 @@ public class hudHealthInterface : MonoBehaviour
     [SerializeField]
     hudEnergyBar combatEnergyBar, ballEnergyBar;
     lineTest lineTest;
-    hudChangingColors.hudColors hudColors;
-    hudChangingColors.hudColors.EnergyInitColors initColors;
-    hudChangingColors.hudColors.EnergyBarColors barColors;
+    hudColors cHudColors,combatHudColors,ballHudColors;
+    hudColors.EnergyInitColors cInitColors,combatInitColors,ballInitColors;
+    hudColors.EnergyBarColors cBarColors,combatBarColors,ballBarColors;
     public bool initHealth;
-
+        HealthComponent healthComponent;
 
     //float healthP;
     //hudEnergyBar.CalculateMode calculateMode;
-    private void Start()
+    private void Awake()
     {
-        hudColors = new hudChangingColors.hudColors(true);
-        initColors = hudColors.getVisorEnergyInitColors();
-        barColors = hudColors.getVisorEnergyBarColors();
-
+            combatHudColors = new hudColors(true);
+            combatBarColors = combatHudColors.GetEnergyBarColors();
+            combatInitColors = combatHudColors.GetEnergyInitColors();
+            ballHudColors = new hudColors(false);
+            ballBarColors = ballHudColors.GetEnergyBarColors();
+            ballInitColors = ballHudColors.GetEnergyInitColors();
 
 
     }
@@ -96,17 +99,17 @@ public class hudHealthInterface : MonoBehaviour
         {
             barDirty = false;
             cachedBarEnergy = cEnergyBar.GetFilledEnergy();
-            string lString = ((int)fmod(cachedBarEnergy, 101f)).ToString("d2");
+            string lString = ((int)Mathf.Ceil(healthComponent.combinedHealthFraction*100)).ToString("d2");
             cEnergyDigits.text = lString;
             combatEnergyDigits.text = lString;
             ballEnergyDigits.text = lString;
         }
 
-        //hudChangingColors.hudColors.EnergyBarColors barColors = hudColors.getVisorEnergyBarColors();
-        Color emptyColor = energyLow ? hudColors.energyBarEmptyLow : barColors.empty;
-        Color filledColor = energyLow ? hudColors.energyBarFilledLow : barColors.filled;
-        Color shadowColor = energyLow ? hudColors.energyBarShadowLow : barColors.shadow;
-        Color useFillColor = Color.Lerp(filledColor, hudColors.energyBarFlashColor, flashMag);
+        //hudColors.EnergyBarColors barColors = hudColors.getVisorEnergyBarColors();
+        Color emptyColor = energyLow ? cHudColors.energyBarEmptyLow : cBarColors.empty;
+        Color filledColor = energyLow ? cHudColors.energyBarFilledLow : cBarColors.filled;
+        Color shadowColor = energyLow ? cHudColors.energyBarShadowLow : cBarColors.shadow;
+        Color useFillColor = Color.Lerp(filledColor, cHudColors.energyBarFlashColor, flashMag);
         if (energyLow)
             useFillColor = Color.Lerp(useFillColor, new Color(1f, 0.8f, 0.4f, 1f), energyLowPulse);
         cEnergyBar.SetFilledColor(useFillColor);
@@ -137,12 +140,13 @@ public class hudHealthInterface : MonoBehaviour
             ballEnergyWarning.text = lString;
         }
 
-        //if (EnergyLow)
-        //{
-        //    //play energy low sound
-        //}
+            if (EnergyLow)
+            {
+                //AkSoundEngine.PostEvent(1631926714, gameObject);
+                SamusHUD.playSound(1631926714, gameObject);
+            }
 
-        energyLow = EnergyLow;
+            energyLow = EnergyLow;
     }
     public void SetFlashMagnitude(float mag) { flashMag = Mathf.Clamp01(mag); }
     public void SetNumFilledEnergyTanks(int NumTanksFilled)
@@ -193,10 +197,11 @@ public class hudHealthInterface : MonoBehaviour
 
         }
     }
-    public void SetCurrEnergy(float TankEnergy, bool wrapped)
+    public void SetCurrEnergy(float TankEnergy,float MaxEnergy, bool wrapped)
     {
         tankEnergy = TankEnergy;
-
+            maxEnergy = MaxEnergy;
+            cEnergyBar.SetMaxEnergy(maxEnergy);
         cEnergyBar.SetCurrEnergy(tankEnergy, tankEnergy == 0f ? hudEnergyBar.ESetMode.Insta : wrapped == true ? hudEnergyBar.ESetMode.Wrapped : hudEnergyBar.ESetMode.Normal);
         updateEnergyBarCurrEnergy(wrapped);
     }
@@ -218,7 +223,7 @@ public class hudHealthInterface : MonoBehaviour
     //  public void SetCalculateMode(hudEnergyBar.CalculateMode calculate) { calculateMode = calculate; }
     // public hudEnergyBar.CalculateMode GetCalculateMode(){ return calculateMode; }
     //  public void SetHealthP(float per) { healthP = per; }
-    public void initValues(hudTypes hud, float TankEnergy, int totalTanks, int NumTanksFilled, bool EnergyLow)
+    public void initValues(hudTypes hud, float TankEnergy,float MaxEnergy, int totalTanks, int NumTanksFilled,HealthComponent health, bool EnergyLow)
     {
         //calculateMode = calculate;
         hudTypes = hud;
@@ -226,21 +231,26 @@ public class hudHealthInterface : MonoBehaviour
         totalEnergyTanks = totalTanks;
         numTanksFilled = NumTanksFilled;
         energyLow = EnergyLow;
+            maxEnergy = MaxEnergy;
+            healthComponent = health;
         cEmptyTanks = new List<Image>();
         cFilledTanks = new List<Image>();
         updateItems(hud);
+            //cHudColors = colors;
+            //barColors = colors.GetEnergyBarColors();
+            //initColors = colors.GetEnergyInitColors();
         combatEnergyBar.SetTesselation(1f);
         ballEnergyBar.SetTesselation(1f);
         //energyBar.SetCalulateMode(calculate);
 
-        combatEnergyBar.SetMaxEnergy(100f);
-        ballEnergyBar.SetMaxEnergy(100f);
-        combatEnergyBar.SetFilledColor(hudColors.getVisorEnergyBarColors(true).filled);
-        ballEnergyBar.SetFilledColor(hudColors.getVisorEnergyBarColors(false).filled);
-        combatEnergyBar.SetShadowColor(hudColors.getVisorEnergyBarColors(true).shadow);
-        ballEnergyBar.SetShadowColor(hudColors.getVisorEnergyBarColors(false).shadow);
-        combatEnergyBar.SetEmptyColor(hudColors.getVisorEnergyBarColors(true).empty);
-        ballEnergyBar.SetEmptyColor(hudColors.getVisorEnergyBarColors(false).empty);
+        combatEnergyBar.SetMaxEnergy(maxEnergy);
+        ballEnergyBar.SetMaxEnergy(maxEnergy);
+        combatEnergyBar.SetFilledColor(combatBarColors.filled);
+        ballEnergyBar.SetFilledColor(ballBarColors.filled);
+        combatEnergyBar.SetShadowColor(combatBarColors.shadow);
+        ballEnergyBar.SetShadowColor(ballBarColors.shadow);
+        combatEnergyBar.SetEmptyColor(combatBarColors.empty);
+        ballEnergyBar.SetEmptyColor(ballBarColors.empty);
 
         combatEnergyBar.SetFilledDrainSpeed(99f);
         ballEnergyBar.SetFilledDrainSpeed(99f);
@@ -250,20 +260,20 @@ public class hudHealthInterface : MonoBehaviour
         ballEnergyBar.SetShadowDrainDelay(0.7f);
         combatEnergyBar.SetIsAlwaysResetTimer(false);
         ballEnergyBar.SetIsAlwaysResetTimer(false);
-        cEnergyDigits.color = initColors.digitsFont;
-        combatEnergyDigits.color = hudColors.getVisorEnergyInitColors(true).digitsFont;
-        ballEnergyDigits.color = hudColors.getVisorEnergyInitColors(false).digitsFont;
+        cEnergyDigits.color = cInitColors.digitsFont;
+        combatEnergyDigits.color = combatInitColors.digitsFont;
+        ballEnergyDigits.color = ballInitColors.digitsFont;
 
-        cEnergyDigits.gameObject.GetComponent<Outline>().effectColor = initColors.digitsOutline;
-        combatEnergyDigits.gameObject.GetComponent<Outline>().effectColor = hudColors.getVisorEnergyInitColors(true).digitsOutline;
-        ballEnergyDigits.gameObject.GetComponent<Outline>().effectColor = hudColors.getVisorEnergyInitColors(false).digitsOutline;
+        cEnergyDigits.gameObject.GetComponent<Outline>().effectColor = cInitColors.digitsOutline;
+        combatEnergyDigits.gameObject.GetComponent<Outline>().effectColor = combatInitColors.digitsOutline;
+        ballEnergyDigits.gameObject.GetComponent<Outline>().effectColor = ballInitColors.digitsOutline;
 
-        cEnergyWarning.color = hudColors.energyWarningFont;
-        combatEnergyWarning.color = hudColors.energyWarningFont;
-        ballEnergyWarning.color = hudColors.energyWarningFont;
-        cEnergyWarning.gameObject.GetComponent<Outline>().effectColor = hudColors.energyWarningOutline;
-        combatEnergyWarning.gameObject.GetComponent<Outline>().effectColor = hudColors.energyWarningOutline;
-        ballEnergyWarning.gameObject.GetComponent<Outline>().effectColor = hudColors.energyWarningOutline;
+        cEnergyWarning.color = cHudColors.energyWarningFont;
+        combatEnergyWarning.color = combatHudColors.energyWarningFont;
+        ballEnergyWarning.color = ballHudColors.energyWarningFont;
+        cEnergyWarning.gameObject.GetComponent<Outline>().effectColor = cHudColors.energyWarningOutline;
+        combatEnergyWarning.gameObject.GetComponent<Outline>().effectColor = combatHudColors.energyWarningOutline;
+        ballEnergyWarning.gameObject.GetComponent<Outline>().effectColor = ballHudColors.energyWarningOutline;
         if (energyLow)
         {
             cEnergyWarning.text = "Energy Low";
@@ -282,12 +292,12 @@ public class hudHealthInterface : MonoBehaviour
 
         for (int i = 0; i < 6; i++)
         {
-            cEmptyTanks[i].color = initColors.tankEmpty;
-            combatEmptyTanks[i].color = hudColors.getVisorEnergyInitColors(true).tankEmpty;
-            ballEmptyTanks[i].color = hudColors.getVisorEnergyInitColors(false).tankEmpty;
-            cFilledTanks[i].color = initColors.tankFilled;
-            combatFilledTanks[i].color = hudColors.getVisorEnergyInitColors(true).tankFilled;
-            ballFilledTanks[i].color = hudColors.getVisorEnergyInitColors(false).tankFilled;
+            cEmptyTanks[i].color = cInitColors.tankEmpty;
+            combatEmptyTanks[i].color = combatInitColors.tankEmpty;
+            ballEmptyTanks[i].color = ballInitColors.tankEmpty;
+            cFilledTanks[i].color = cInitColors.tankFilled;
+            combatFilledTanks[i].color = combatInitColors.tankFilled;
+            ballFilledTanks[i].color = ballInitColors.tankFilled;
         }
         for (int i = 0; i < 6; i++)
         {
@@ -367,13 +377,15 @@ public class hudHealthInterface : MonoBehaviour
         }
         if (hud == hudTypes.combat)
         {
-            initColors = hudColors.getVisorEnergyInitColors(true);
-            barColors = hudColors.getVisorEnergyBarColors(true);
+                cHudColors = combatHudColors;
+            cInitColors = combatInitColors;
+            cBarColors = combatBarColors;
         }
         else
         {
-            initColors = hudColors.getVisorEnergyInitColors(false);
-            barColors = hudColors.getVisorEnergyBarColors(false);
+                cHudColors = ballHudColors;
+            cInitColors = ballInitColors;
+            cBarColors = ballBarColors;
         }
     }
 
@@ -390,7 +402,26 @@ public class hudHealthInterface : MonoBehaviour
     void updateEnergyBarCurrEnergy(bool Wrapped)
     {
         combatEnergyBar.SetCurrEnergy(tankEnergy, tankEnergy == 0f ? hudEnergyBar.ESetMode.Insta : Wrapped == true ? hudEnergyBar.ESetMode.Wrapped : hudEnergyBar.ESetMode.Normal);
+            combatEnergyBar.SetMaxEnergy(maxEnergy);
         ballEnergyBar.SetCurrEnergy(tankEnergy, tankEnergy == 0f ? hudEnergyBar.ESetMode.Insta : Wrapped == true ? hudEnergyBar.ESetMode.Wrapped : hudEnergyBar.ESetMode.Normal);
+            ballEnergyBar.SetMaxEnergy(maxEnergy);
     }
+
+        public bool checkEnergyBarIsActive(bool init)
+        {
+            if (init)
+                return true;
+
+
+
+            if (!cEnergyBar.gameObject.activeSelf)
+                return false;
+            else if (!ballEnergyBar.gameObject.activeSelf)
+                return false;
+            else if (!combatEnergyBar.gameObject.activeSelf)
+                return false;
+            else
+                return true;
+        }
 }
 }

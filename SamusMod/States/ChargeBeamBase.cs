@@ -33,7 +33,7 @@ namespace SamusMod.States
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
             Transform transform = this.childLocator.FindChild("gunCon");
-            if (!VRAPI.Utils.IsUsingMotionControls(this.characterBody)) 
+            if (!VRAPI.Utils.IsUsingMotionControls(characterBody)) 
             { 
 
                     

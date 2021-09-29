@@ -36,11 +36,11 @@ namespace SamusMod.States
             }
             this.animator = this.GetModelAnimator();
             ChildLocator component = this.animator.GetComponent<ChildLocator>();
-            if(this.isAuthority && this.inputBank && this.characterDirection&&VRAPI.Utils.IsUsingMotionControls(base.characterBody)==false)
+            if(this.isAuthority && this.inputBank && this.characterDirection&&!VRAPI.Utils.IsUsingMotionControls(characterBody))
             {
                 this.forwardDirection = (this.inputBank.moveVector == Vector3.zero ? this.characterDirection.forward : this.inputBank.moveVector).normalized;
             }
-            else if(this.isAuthority && VRAPI.Utils.IsUsingMotionControls(base.characterBody))
+            else if(this.isAuthority && VRAPI.Utils.IsUsingMotionControls(characterBody))
             {
                 this.forwardDirection = Camera.main.transform.forward;
                 vrCheck = true;

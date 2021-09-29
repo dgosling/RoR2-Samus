@@ -21,7 +21,7 @@ namespace SamusMod.Misc
         float fillPercentage;
         //hudTimer hudTimer;
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             //filledImage = gameObject.GetComponent<Image>();
             //shadowImage = gameObject.transform.parent.Find(gameObject.name + "Shadow").gameObject.GetComponent<Image>();
@@ -30,7 +30,7 @@ namespace SamusMod.Misc
             else
                 color2 = filledLine.material.color;
             tesselation = 1f;
-            if (!(maxEnergy > 0f))
+            
                 maxEnergy = 0f;
             filledSpeed = 1000f;
             shadowSpeed = 1000f;

@@ -26,5 +26,10 @@ namespace SamusMod.Modules
         public const string bombExplode = "bombExplode";
         public const string primeBomb = "morphBomb";
         public const string powerBomb = "Powerbomb";
+
+        public const string lowEnergySFX = "energy_low";
+        public const string missileWarningSFX = "missile_warning";
+        public const string threatWarningSFX = "threat_warning";
+        public const string threatDamageSFX = "threat_damage";
     }
 }

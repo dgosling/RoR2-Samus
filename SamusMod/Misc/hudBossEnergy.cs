@@ -19,13 +19,13 @@ namespace SamusMod.Misc
         hudEnergyBar bossBar;
         Text textBoss, textBossSub;
         public bool bossIni;
-        hudChangingColors.hudColors hudColors;
-        hudChangingColors.hudColors.EnergyBarColors EnergyBarColors;
+        hudColors hudColors;
+        hudColors.EnergyBarColors EnergyBarColors;
         public Color debugColor;
         // hudEnergyBar.CalculateMode calculateMode;
         // float healthP;
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             bossIni = false;
             alpha = 1f;
@@ -33,8 +33,8 @@ namespace SamusMod.Misc
             curEnergy = 0f;
             maxEnergy = 0f;
             visible = false;
-            hudColors = new hudChangingColors.hudColors(true);
-            EnergyBarColors = hudColors.getVisorEnergyBarColors();
+            //hudColors = new hudColors(true);
+            //EnergyBarColors = hudColors.getVisorEnergyBarColors();
             root = gameObject.transform.Find("bossHud").gameObject;
             bossBar = root.transform.Find("BossHealth/BossBar").gameObject.GetComponent<hudEnergyBar>();
             textBoss = root.transform.Find("BossFrame/bossName").gameObject.GetComponent<Text>();
@@ -53,16 +53,22 @@ namespace SamusMod.Misc
             //calculateMode = hudEnergyBar.CalculateMode.automatic;
 
             //bossBar.SetFilledDrainSpeed(0f); //test
-            bossBar.SetFilledColor(EnergyBarColors.filled);
-            bossBar.SetShadowColor(EnergyBarColors.shadow);
-            bossBar.SetEmptyColor(EnergyBarColors.empty);
+
 
 
         }
 
         // Update is called once per frame
 
-
+        public bool isVisible(bool init)
+        {
+            if (init)
+                return false;
+            if (visible)
+                return true;
+            else
+                return false;
+        }
         public void hudUpdate(float dt)
         {
             //if (bossBar.GetCalculateMode() != calculateMode)
@@ -117,12 +123,17 @@ namespace SamusMod.Misc
             bossBar.Draw();
         }
         public void SetAlpha(float a) { alpha = a; }
-        public void SetBossParams(bool Visible, string name, string subtitle, float curenerg, float maxenerg)
+        public void SetBossParams(bool Visible, string name, string subtitle, float curenerg, float maxenerg,hudColors colors)
         {
             //calculateMode = calculate;
+            hudColors = colors;
+            EnergyBarColors = hudColors.GetEnergyBarColors();
             visible = Visible;
             if (Visible)
             {
+                bossBar.SetFilledColor(EnergyBarColors.filled);
+                bossBar.SetShadowColor(EnergyBarColors.shadow);
+                bossBar.SetEmptyColor(EnergyBarColors.empty);
                 bossBar.SetFilledDrainSpeed(maxenerg);
                 bossBar.SetCurrEnergy(curenerg, hudEnergyBar.ESetMode.Normal);
                 bossBar.SetMaxEnergy(maxenerg);
