@@ -46,7 +46,7 @@ namespace SamusMod.States
             // base.skillLocator.special.RecalculateMaxStock();
             if (VRAPI.Utils.IsUsingMotionControls(characterBody))
             {
-                Misc.SamusHUD samusHUD = LocalUserManager.GetFirstLocalUser().cameraRigController.hud.transform.parent.GetComponentInChildren<Misc.SamusHUD>();
+                Misc.SamusHUD samusHUD = Modules.VRStuff.SamusHUD;
                 samusHUD.setMissileActive(true);
             }
 
@@ -58,7 +58,10 @@ namespace SamusMod.States
             if (!hasFired)
             {
                 this.hasFired = true;
-                Util.PlaySound(this.Sound, this.gameObject);
+                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                    Util.PlaySound(this.Sound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
+                else
+                    Util.PlaySound(this.Sound, this.gameObject);
                 base.characterBody.AddSpreadBloom(.75f);
                 //Debug.Log(target);
                 Ray aimRay = base.GetAimRay();

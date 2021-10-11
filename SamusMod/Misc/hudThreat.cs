@@ -72,7 +72,7 @@ namespace SamusMod.Misc
             threatBar.SetEmptyColor(hudColors.threatBarEmpty);
             //Debug.Log(threatBar.GetEmptyColor());
             threatBar.SetTesselation(1f);
-            threatBar.SetMaxEnergy(10f);
+            threatBar.SetMaxEnergy(100f);
             threatBar.SetFilledDrainSpeed(9999f);
             threatBar.SetShadowDrainSpeed(9999f);
             threatBar.SetShadowDrainDelay(0f);

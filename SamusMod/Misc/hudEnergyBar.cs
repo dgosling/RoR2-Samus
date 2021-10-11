@@ -227,7 +227,7 @@ namespace SamusMod.Misc
             filledLine = healthbarLine;
             shadowLine = shadowBarLine;
         }
-
+        public void SetColor2(Color Color2) { color2 = Color2; }
         public Color GetFilledColor() { return filledColor; }
         public Color GetShadowColor() { return shadowColor; }
         public Color GetEmptyColor() { return emptyColor; }

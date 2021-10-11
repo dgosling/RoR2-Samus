@@ -45,9 +45,10 @@ namespace SamusMod.States
                     Camera.main.nearClipPlane = 0.05f;
 
                 this.ChildLocator.FindChild("chargeEffect").gameObject.SetActive(false);
-                    Debug.Log("dom: " + VRAPI.MotionControls.dominantHand);
-                    Debug.Log("ndom: " + VRAPI.MotionControls.nonDominantHand);
-                    Modules.VRStuff.SamusHUD.initSamusHUD(body);
+                    //Debug.Log("dom: " + VRAPI.MotionControls.dominantHand);
+                    //Debug.Log("ndom: " + VRAPI.MotionControls.nonDominantHand);
+                    if(Modules.Config.enableHud.Value)
+                        Modules.VRStuff.SamusHUD.initSamusHUD(body);
                 }
 
         }
@@ -68,7 +69,12 @@ namespace SamusMod.States
                 this.Animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, .2f, Time.fixedDeltaTime);
                 this.Animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
             }
+            if (!healthComponent.alive)
+            {
+                
+                Destroy(Modules.VRStuff.hudHandle);
 
+            }
            
 
 
@@ -187,6 +193,11 @@ namespace SamusMod.States
 
         }
 
-       
+        public override void OnExit()
+        {
+            base.OnExit();
+            //Modules.VRStuff.SamusHUD.bossEnergyIntf.reset();
+            Destroy(Modules.VRStuff.hudHandle);
+        }
     }
 }

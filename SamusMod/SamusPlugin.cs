@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BepInEx;
+using BepInEx.Logging;
 using R2API;
 using R2API.Utils;
 using EntityStates;
@@ -17,7 +18,7 @@ namespace SamusMod
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.HardDependency)]
 
-    [BepInPlugin(MODUID,"Samus","1.4.0")]
+    [BepInPlugin(MODUID,"Samus","1.5.2")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -35,6 +36,7 @@ namespace SamusMod
     public class SamusPlugin : BaseUnityPlugin
     {
         public const string MODUID = "com.dgosling.Samus";
+        public static ManualLogSource logger; 
 
         public static SamusPlugin instance;
 
@@ -58,9 +60,10 @@ namespace SamusMod
         private void SamusPlugin_Load()
         {
             instance = this;
+            logger = base.Logger;
 
             Modules.Assets.PopulateAssets();
-
+            Modules.Config.ReadConfig();
             Modules.Prefabs.CreatePrefabs();
             characterPrefab = Modules.Prefabs.samusPrefab;
             Modules.States.RegisterStates();
