@@ -131,13 +131,13 @@ namespace SamusMod.Modules
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 0f;
             mySkillDef.beginSkillCooldownOnSkillEnd = false;
-            mySkillDef.canceledFromSprinting = true;
+            mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.cancelSprintingOnActivation = true;
+            mySkillDef.cancelSprintingOnActivation = false;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
@@ -255,7 +255,7 @@ namespace SamusMod.Modules
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = true;
-            mySkillDef.cancelSprintingOnActivation = true;
+            mySkillDef.cancelSprintingOnActivation = false;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;

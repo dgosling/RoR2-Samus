@@ -32,7 +32,8 @@ namespace SamusMod.States
             
             if (dodgeSoundString != null)
             {
-                uint num = Util.PlaySound(this.dodgeSoundString, this.gameObject);
+
+                Util.PlaySound(this.dodgeSoundString, this.gameObject);
             }
             this.animator = this.GetModelAnimator();
             ChildLocator component = this.animator.GetComponent<ChildLocator>();

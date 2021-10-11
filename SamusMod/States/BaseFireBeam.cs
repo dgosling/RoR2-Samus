@@ -135,7 +135,11 @@ namespace SamusMod.States
                 {
                     float num = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                     float num2 = this.charge * this.force;
-                    Util.PlaySound(this.projSound, this.gameObject);
+                    if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                        Util.PlaySound(this.projSound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
+                    else
+                        Util.PlaySound(this.projSound, this.gameObject);
+
                     this.projectilePrefab.GetComponent<Misc.colision_test>().inTransform = this.guncon.transform;
                     
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
@@ -164,7 +168,10 @@ namespace SamusMod.States
                         // Ray aimRay = this.GetAimRay();
                         float num = Util.Remap(.1f, .1f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                         float num2 = this.charge * this.force;
-                        Util.PlaySound(this.tracerSound, this.gameObject);
+                        if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                            Util.PlaySound(this.projSound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
+                        else
+                            Util.PlaySound(this.tracerSound, this.gameObject);
 
                         new BulletAttack()
                         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using RoR2;
 
 namespace SamusMod.Misc
 {
@@ -30,6 +31,7 @@ namespace SamusMod.Misc
         bool hasAlt;
         public float debugTMP, debugMissileWarningAlpha, debugWarnPulse;
         float iconLerp, rIconLerp;
+        SkillLocator reference;
         //Material localMat;
         // Start is called before the first frame update
         void Awake()
@@ -227,14 +229,16 @@ namespace SamusMod.Misc
                     if (latestStatus == invStatus.Normal && curStatus == invStatus.Warning)
                     {
                         //AkSoundEngine.PostEvent(2892136322, gameObject);
-                        SamusHUD.playSound(2892136322, gameObject);
+                        if(reference.secondary.skillDef==reference.secondary.baseSkill)
+                            SamusHUD.playSound(2892136322, gameObject);
                         missileWarningPulse = 7f;
-
+                        
                     }
                     else if (curStatus == invStatus.Depleted)
                     {
                         //AkSoundEngine.PostEvent(2892136322, gameObject);
-                        SamusHUD.playSound(2892136322, gameObject);
+                        if (reference.secondary.skillDef == reference.secondary.baseSkill)
+                            SamusHUD.playSound(2892136322, gameObject);
                         missileWarningPulse = 7f;
                     }
                     latestStatus = curStatus;
@@ -283,7 +287,7 @@ namespace SamusMod.Misc
         public bool GetIsMissilesActive() { return missilesActive; }
         public void SetNumMissiles(int NumMissiles)
         {
-            Debug.Log("NumMissiles: " + NumMissiles);
+            //Debug.Log("NumMissiles: " + NumMissiles);
             int tmp = NumMissiles;
             tmp = Mathf.Clamp(NumMissiles, 0, 999);
 
@@ -303,7 +307,7 @@ namespace SamusMod.Misc
                 missileIconAltDeplete = 1f;
 
             numMissiles = tmp;
-            Debug.Log("numMissiles: " + numMissiles);
+            //Debug.Log("numMissiles: " + numMissiles);
         }
         public void SetMissileCapacity(int MissileCapacity) { missileCapacity = MissileCapacity; }
         public invStatus GetInvStatus()
@@ -332,12 +336,13 @@ namespace SamusMod.Misc
             return rendertimings / 60f;
         }
 
-        public void missInit(int MissileCapacity, int NumMissiles, bool MissilesActive)
+        public void missInit(int MissileCapacity, int NumMissiles, bool MissilesActive,SkillLocator skillLocator)
         {
             missileCapacity = MissileCapacity;
             numMissiles = NumMissiles;
             missilesActive = MissilesActive;
             SetNumMissiles(numMissiles);
+            reference = skillLocator;
             missIni = true;
         }
         public void setHasAlt(bool alt) { hasAlt = alt; }

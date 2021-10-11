@@ -14,6 +14,7 @@ namespace SamusMod.Misc
         List<Image> bombFilled;
         List<Image> bombEmpty;
         GameObject energyDeco;
+        GameObject baseObject;
         int pbAmount, pbCapacity, availableBombs;
         bool hasPb;
         public bool ballini;
@@ -23,7 +24,7 @@ namespace SamusMod.Misc
 
             hudColors = new hudColors(false);
             string hudN = "ballHUD";
-
+            baseObject = gameObject.transform.Find(hudN).gameObject;
             bombDeco = gameObject.transform.Find(hudN + "/bombdeco").gameObject;
             bombIcon = gameObject.transform.Find(hudN + "/Bombs/Powerbomb/PBfill").gameObject.GetComponent<Image>();
             bombDigits = gameObject.transform.Find(hudN + "/Text/PowerBombText").gameObject.GetComponent<Text>();
@@ -121,5 +122,12 @@ namespace SamusMod.Misc
                 ballini = true;
         }
         public void SetavaliableBombs(int AvailableBombs) { availableBombs = AvailableBombs; }
+
+        public void SetActive(bool active)
+        {
+            baseObject.SetActive(active);
+            //if (baseObject.GetComponent<Canvas>().scaleFactor != 0.5f)
+            //    baseObject.GetComponent<Canvas>().scaleFactor = 0.5f;
+        }
     }
 }

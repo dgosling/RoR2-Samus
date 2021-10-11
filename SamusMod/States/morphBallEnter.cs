@@ -66,7 +66,7 @@ namespace SamusMod.States
                 VRCamera = this.characterBody.transform.Find("VRCamera");
                 DsMR = MotionControls.dominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
                 NDsMR = MotionControls.nonDominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-
+                Modules.VRStuff.SamusHUD.inMorphBall = true;
                 foreach (SkinnedMeshRenderer renderer in DsMR)
                 {
                     renderer.enabled = false;

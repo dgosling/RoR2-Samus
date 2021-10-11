@@ -54,7 +54,20 @@ namespace SamusMod.Misc
 
         // Update is called once per frame
 
-
+        public void SetSize()
+        {
+            Camera camera = gameObject.transform.root.GetComponentInChildren<Camera>();
+            float dist = Vector3.Distance(camera.transform.position, baseObject.transform.position);
+            float scale = 1.5f * dist * Mathf.Tan(Mathf.Deg2Rad * (camera.fieldOfView * 0.5f));
+            GameObject helmet = Pivot.transform.Find("BaseWidget_Helmet").gameObject;
+            GameObject energy = baseObject.transform.Find("basewidget_energystuff").gameObject;
+            Vector3 energyScale = energy.transform.localScale;
+            Vector3 helmetScale = helmet.transform.localScale;
+            Vector3 glowScale = glow.transform.localScale;
+            helmet.transform.localScale = helmetScale*scale;
+            glow.transform.localScale = glowScale*scale;
+            energy.transform.localScale = energyScale * scale;
+        }
 
         public void AddHelmetLightValue(float val)
         {
