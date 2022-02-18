@@ -1,0 +1,217 @@
+fileFormatVersion: 2
+guid: 79f44856eb936d645a8f1a6b78e75491
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ArmL
+    100004: ArmR
+    100006: Bust
+    100008: ClavicleC
+    100010: ClavicleL
+    100012: ClavicleR
+    100014: FingerL10
+    100016: FingerL11
+    100018: FingerL12
+    100020: FingerL13
+    100022: FingerL20
+    100024: FingerL21
+    100026: FingerL22
+    100028: FingerL23
+    100030: FingerL30
+    100032: FingerL31
+    100034: FingerL32
+    100036: FingerL33
+    100038: FingerL40
+    100040: FingerL41
+    100042: FingerL42
+    100044: FingerL43
+    100046: FingerL51
+    100048: FingerL52
+    100050: FingerL53
+    100052: FootL
+    100054: FootR
+    100056: gamemodel_ball
+    100058: H_ClavicleL
+    100060: H_ClavicleR
+    100062: HandL
+    100064: HandL_eff
+    100066: HandR
+    100068: HaveL
+    100070: HaveR
+    100072: Head
+    100074: Hip
+    100076: KneeL
+    100078: KneeR
+    100080: LegC
+    100082: LegL
+    100084: LegR
+    100086: model-armature
+    100088: Neck
+    100090: Rot
+    100092: samus_ball_VIS_O_OBJShape
+    100094: ShoulderL
+    100096: ShoulderpadL
+    100098: ShoulderpadR
+    100100: ShoulderR
+    100102: Throw
+    100104: ToeL
+    100106: ToeR
+    100108: Trans
+    100110: Waist
+    400000: //RootNode
+    400002: ArmL
+    400004: ArmR
+    400006: Bust
+    400008: ClavicleC
+    400010: ClavicleL
+    400012: ClavicleR
+    400014: FingerL10
+    400016: FingerL11
+    400018: FingerL12
+    400020: FingerL13
+    400022: FingerL20
+    400024: FingerL21
+    400026: FingerL22
+    400028: FingerL23
+    400030: FingerL30
+    400032: FingerL31
+    400034: FingerL32
+    400036: FingerL33
+    400038: FingerL40
+    400040: FingerL41
+    400042: FingerL42
+    400044: FingerL43
+    400046: FingerL51
+    400048: FingerL52
+    400050: FingerL53
+    400052: FootL
+    400054: FootR
+    400056: gamemodel_ball
+    400058: H_ClavicleL
+    400060: H_ClavicleR
+    400062: HandL
+    400064: HandL_eff
+    400066: HandR
+    400068: HaveL
+    400070: HaveR
+    400072: Head
+    400074: Hip
+    400076: KneeL
+    400078: KneeR
+    400080: LegC
+    400082: LegL
+    400084: LegR
+    400086: model-armature
+    400088: Neck
+    400090: Rot
+    400092: samus_ball_VIS_O_OBJShape
+    400094: ShoulderL
+    400096: ShoulderpadL
+    400098: ShoulderpadR
+    400100: ShoulderR
+    400102: Throw
+    400104: ToeL
+    400106: ToeR
+    400108: Trans
+    400110: Waist
+    2100000: Material.001
+    2300000: //RootNode
+    2300002: samus_ball_VIS_O_OBJShape
+    3300000: //RootNode
+    3300002: samus_ball_VIS_O_OBJShape
+    4300000: samus_ball_VIS_O_OBJShape
+    9500000: //RootNode
+    13700000: samus_ball_VIS_O_OBJShape
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 99bc19651a80fb2488e1fa29b658d4a0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0001
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: model-armature
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
