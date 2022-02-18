@@ -1,0 +1,21 @@
+{
+    "name": "SamusVR",
+    "references": [
+        "Unity.TextMeshPro"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Switch"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "BepInEx.dll",
+        "Assembly-CSharp.dll",
+        "R2API.dll",
+        "VRAPI.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
