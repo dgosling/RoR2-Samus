@@ -1,0 +1,150 @@
+fileFormatVersion: 2
+guid: dbb7bbde7ec973d4e94b7d8706ee2c4a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arm_cannon4_VIS_O_OBJShape.001
+    100002: FingerL10
+    100004: FingerL11
+    100006: FingerL12
+    100008: FingerL13
+    100010: FingerL20
+    100012: FingerL21
+    100014: FingerL22
+    100016: FingerL23
+    100018: FingerL30
+    100020: FingerL31
+    100022: FingerL32
+    100024: FingerL33
+    100026: FingerL40
+    100028: FingerL41
+    100030: FingerL42
+    100032: FingerL43
+    100034: FingerL51
+    100036: FingerL52
+    100038: FingerL53
+    100040: HandL
+    100042: HandL_eff
+    100044: HaveL
+    100046: model-armature
+    100048: //RootNode
+    400000: arm_cannon4_VIS_O_OBJShape.001
+    400002: FingerL10
+    400004: FingerL11
+    400006: FingerL12
+    400008: FingerL13
+    400010: FingerL20
+    400012: FingerL21
+    400014: FingerL22
+    400016: FingerL23
+    400018: FingerL30
+    400020: FingerL31
+    400022: FingerL32
+    400024: FingerL33
+    400026: FingerL40
+    400028: FingerL41
+    400030: FingerL42
+    400032: FingerL43
+    400034: FingerL51
+    400036: FingerL52
+    400038: FingerL53
+    400040: HandL
+    400042: HandL_eff
+    400044: HaveL
+    400046: model-armature
+    400048: //RootNode
+    2100000: body
+    4300000: arm_cannon4_VIS_O_OBJShape.001
+    9500000: //RootNode
+    13700000: arm_cannon4_VIS_O_OBJShape.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 3ee894a6bcfd8df44bcfb061b3f69538, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
