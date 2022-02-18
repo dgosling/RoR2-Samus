@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1291734287593606086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4181038827642360393}
+  - component: {fileID: 6399913158591973754}
+  - component: {fileID: 9192972828243936538}
+  - component: {fileID: 617968831301952903}
+  - component: {fileID: 3962380901484410063}
+  - component: {fileID: 1873463305338493669}
+  - component: {fileID: 6165382957461461620}
+  - component: {fileID: 4884414782720923862}
+  m_Layer: 0
+  m_Name: reference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4181038827642360393
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291734287593606086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6399913158591973754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291734287593606086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd23b0ca505efc949b4c55dda56d4b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballini: 0
+--- !u!114 &9192972828243936538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291734287593606086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2318e32a0ce78414ea86660e5827b2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 0}
+  rootChildren: []
+  bossBar: {fileID: 0}
+  bossIni: 0
+  debugColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &617968831301952903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291734287593606086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcdbbc1ebe01054f8d5ec7e20262efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  init: 0
+  changedColor: 0
+--- !u!114 &3962380901484410063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291734287593606086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c89e3b433c59e47b3a98581699bcfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1873463305338493669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291734287593606086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e695342f20c1a42a1796e815ecb0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ini: 0
+  debugMaxEnergy: 0
+  debugIniMaxEnergy: 0
+--- !u!114 &6165382957461461620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291734287593606086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d207f20988ed8e49b5a3d76f2a2a598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missilesActive: 0
+  missIni: 0
+  debugTMP: 0
+  debugMissileWarningAlpha: 0
+  debugWarnPulse: 0
+--- !u!114 &4884414782720923862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291734287593606086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff17e1d7fc078754c9aaabbecb526b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalEnergyTanks: 0
+  numTanksFilled: 0
+  cEnergyBar: {fileID: 0}
+  combatEnergyDigits: {fileID: 0}
+  ballEnergyDigits: {fileID: 0}
+  combatEmptyTanks: []
+  combatFilledTanks: []
+  ballEmptyTanks: []
+  ballFilledTanks: []
+  combatEnergyWarning: {fileID: 0}
+  ballEnergyWarning: {fileID: 0}
+  combatEnergyBar: {fileID: 0}
+  ballEnergyBar: {fileID: 0}
+  initHealth: 0
