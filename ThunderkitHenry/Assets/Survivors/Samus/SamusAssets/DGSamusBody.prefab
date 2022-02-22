@@ -42,10 +42,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.75
-  m_Height: 2.5
+  m_Radius: 0.5
+  m_Height: 1.82
   m_Direction: 1
-  m_Center: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0.035, y: 1, z: 0.1}
 --- !u!114 &8368827512762481844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 9056801057465966797}
   - component: {fileID: 5050056297215124436}
   - component: {fileID: 41317577845914576}
+  - component: {fileID: 5219969109973221215}
   m_Layer: 0
   m_Name: DGSamusBody
   m_TagString: Player
@@ -404,9 +405,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.82
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0.035, y: 1, z: 0.1}
 --- !u!114 &5043503136507829426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,6 +755,22 @@ MonoBehaviour:
   skillName: Super Missile
   hideInCharacterSelect: 0
   hasExecutedSuccessfully: 0
+--- !u!114 &5219969109973221215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624172028979364242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillFamily: {fileID: 11400000, guid: 6d3c0c265db14c44ea57204f4acf7df3, type: 2}
+  skillName: Power Bomb
+  hideInCharacterSelect: 1
+  hasExecutedSuccessfully: 0
 --- !u!1 &624172029122999544
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +902,7 @@ SkinnedMeshRenderer:
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
-  m_UpdateWhenOffscreen: 0
+  m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 4300000, guid: 6d0d01bb7f8ea464f9952527738fa33f, type: 2}
   m_Bones:
@@ -1889,8 +1906,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusPointTransform: {fileID: 8129968822401672743}
   cameraPositionTransform: {fileID: 1968277503391033793}
-  minDistance: 1
-  maxDistance: 10
+  minDistance: 1.5
+  maxDistance: 3
 --- !u!1 &3856944587014695684
 GameObject:
   m_ObjectHideFlags: 0
@@ -4135,7 +4152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4709976268407436753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.095998, z: 0}
+  m_LocalPosition: {x: 0, y: 0.197998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3856944587015190306}
@@ -8893,7 +8910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8136001613185198946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.435003, z: 1.893}
+  m_LocalPosition: {x: 0, y: 0.537003, z: 1.893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3856944587015190306}

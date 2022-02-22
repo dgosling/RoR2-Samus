@@ -23,13 +23,13 @@ MonoBehaviour:
     _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   interruptPriority: 0
-  baseRechargeInterval: 5
+  baseRechargeInterval: 4
   baseMaxStock: 5
   rechargeStock: 1
   requiredStock: 1
   stockToConsume: 1
   resetCooldownTimerOnUse: 0
-  fullRestockOnAssign: 1
+  fullRestockOnAssign: 0
   dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
   cancelSprintingOnActivation: 0

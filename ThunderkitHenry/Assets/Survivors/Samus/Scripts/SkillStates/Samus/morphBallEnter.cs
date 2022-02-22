@@ -26,7 +26,7 @@ namespace SamusMod.SkillStates.Samus
         private float velx, vely, velz;
         private static int normalJumps;
         private static float normalSprint;
-        private static int stock2;
+        //private static int stock2;
         [SerializeField]
         public  SkillDef bomb;
         [SerializeField]
@@ -41,40 +41,78 @@ namespace SamusMod.SkillStates.Samus
         private static Transform vRCamera;
 
         private static Animator vR;
-        private static int stock1;
+        //private static int stock1;
+        //private static int stock1Max;
+        //private static int stock2Max;
+        //private static float stock1Recharge;
+        //private static float stock2Recharge;
         private static SkinnedMeshRenderer[] dsMR;
 
         public static int NormalJumps { get => normalJumps; set => normalJumps = value; }
         public static float NormalSprint { get => normalSprint; set => normalSprint = value; }
-        public static int Stock1 { get => stock1; set => stock1 = value; }
-        public static int Stock2 { get => stock2; set => stock2 = value; }
+        //public static int Stock1 { get => stock1; set => stock1 = value; }
+        //public static int Stock2 { get => stock2; set => stock2 = value; }
+        
+        
         public static SkinnedMeshRenderer[] DsMR { get => dsMR; set => dsMR = value; }
         public static SkinnedMeshRenderer[] NDsMR { get => nDsMR; set => nDsMR = value; }
         public static Vector3 CameraPOS { get => cameraPOS; set => cameraPOS = value; }
         public static Transform VRCamera { get => vRCamera; set => vRCamera = value; }
         public static Animator VR { get => vR; set => vR = value; }
         public static float NormalSpeed { get => normalSpeed; set => normalSpeed = value; }
+        //public static int Stock2Max { get => stock2Max; set => stock2Max = value; }
+        //public static int Stock1Max { get => stock1Max; set => stock1Max = value; }
+        //public static float Stock1Recharge { get => stock1Recharge; set => stock1Recharge = value; }
+        //public static float Stock2Recharge { get => stock2Recharge; set => stock2Recharge = value; }
 
         public override void OnEnter()
         {
             base.OnEnter();
             //if(this.bone.GetComponent<Misc.colision_test>()==null)
             //    this.bone.AddComponent<Misc.colision_test>();
+            this.duration = this.baseDuration / this.attackSpeedStat;
 
             //Debug.Log("onenter true");
-            Stock1 = this.skillLocator.secondary.stock;
-            Stock2 = this.skillLocator.special.stock;
-            this.duration = this.baseDuration / this.attackSpeedStat;
+            //BaseStates.BaseSamus.Stock1 = this.skillLocator.secondary.stock;
+            //BaseStates.BaseSamus.Stock1Max = this.skillLocator.secondary.maxStock;
+            //BaseStates.BaseSamus.Stock1Recharge = skillLocator.secondary.finalRechargeInterval;
+            //if(skillLocator.secondary.stock<skillLocator.secondary.maxStock)
+            //    BaseStates.BaseSamus.CalcRechargeStepWatch(skillLocator.secondary, true);
+                
+            
+            
+            
             this.skillLocator.primary.SetSkillOverride(this.skillLocator.primary, bomb, GenericSkill.SkillOverridePriority.Contextual);
             this.skillLocator.utility.SetSkillOverride(this.skillLocator.utility, exitMorph, GenericSkill.SkillOverridePriority.Contextual);
-            this.skillLocator.secondary.SetSkillOverride(this.skillLocator.secondary, powerBomb, GenericSkill.SkillOverridePriority.Contextual);
+            this.skillLocator.secondary=BaseStates.BaseSamus.PowerBallskill;
+            //if (BaseStates.BaseSamus.PowerBombInit)
+            //{
+            //   var tuple = BaseStates.BaseSamus.CalcSkillInfo(skillLocator.secondary, false);
+            //    if (tuple.Item1 == 999 && tuple.Item2 == 999)
+            //        skillLocator.secondary.Reset();
+            //    else
+            //    {
+            //        skillLocator.secondary.stock = tuple.Item1;
+            //        skillLocator.secondary.rechargeStopwatch = tuple.Item2;
+            //    }
+            //    skillLocator.secondary.RecalculateValues();
+            //}
+            //skillLocator.secondary.stock = ExitMorphBall.Pstock;
+            //if (ExitMorphBall.Recharge != 0)
+            //{
+            //    this.skillLocator.secondary.rechargeStopwatch = ExitMorphBall.Recharge;
 
-            if (ExitMorphBall.Recharge != 0)
-            {
-                this.skillLocator.secondary.rechargeStopwatch = ExitMorphBall.Recharge;
+            //skillLocator.secondary.stock = BaseStates.BaseSamus.Stock2;
+            //skillLocator.secondary.rechargeStopwatch = BaseStates.BaseSamus.Stopwatch2 % BaseStates.BaseSamus.Stock2Recharge;
 
-            }
-            this.skillLocator.secondary.stock = ExitMorphBall.Pstock;
+            //}
+            //if (BaseStates.BaseSamus.NoPowerBomb && BaseStates.BaseSamus.Stopwatch2 >= 8f)
+            //    this.skillLocator.secondary.stock = 1;
+            //else if (BaseStates.BaseSamus.NoPowerBomb && BaseStates.BaseSamus.Stopwatch2 < 8f)
+            //    skillLocator.secondary.stock = 0;
+            //else
+            //    skillLocator.secondary.Reset();
+
             this.ChildLocator = base.GetModelChildLocator();
 
             //this.characterBody.gameObject.GetComponent<Collider>().enabled = false;

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionSoundString: 
   falloffModel: 1
-  blastRadius: 1
+  blastRadius: 2
   blastDamageCoefficient: 1
   blastProcCoefficient: 1
   blastAttackerFiltering: 1
