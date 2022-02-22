@@ -20,8 +20,8 @@ namespace SamusMod.SkillStates.Samus
         public SkillDef bomb;
         [SerializeField]
         public SkillDef exitMorph;
-        [SerializeField]
-        public SkillDef powerBomb;
+        //[SerializeField]
+       // public SkillDef missile;
         private static float recharge;
         private static int pstock;
 
@@ -66,14 +66,40 @@ namespace SamusMod.SkillStates.Samus
             this.characterBody.baseJumpCount = morphBallEnter.NormalJumps;
             this.characterBody.sprintingSpeedMultiplier = morphBallEnter.NormalSprint;
             this.characterBody.RecalculateStats();
-            Recharge = this.skillLocator.secondary.rechargeStopwatch;
-            Pstock = this.skillLocator.secondary.stock;
+//            if (!BaseStates.BaseSamus.PowerBombInit)
+//            {
+//BaseStates.BaseSamus.PowerBombInit = true;
+//                Debug.Log("set powerbombinit");
+//            }
+
+
+            //this.skillLocator.secondary.onSkillChanged += Secondary_onSkillChanged;
+            //skillLocator.special.onSkillChanged += Special_onSkillChanged;
+
+            //BaseStates.BaseSamus.Stock2 = skillLocator.secondary.stock;
+            //BaseStates.BaseSamus.Stock2Max = skillLocator.secondary.maxStock;
+            //BaseStates.BaseSamus.Stock2Recharge = skillLocator.secondary.finalRechargeInterval;
+            //if (skillLocator.secondary.stock < skillLocator.secondary.maxStock)
+            //    BaseStates.BaseSamus.CalcRechargeStepWatch(skillLocator.secondary, false);
             this.skillLocator.primary.UnsetSkillOverride(this.skillLocator.primary, bomb, GenericSkill.SkillOverridePriority.Contextual);
             this.skillLocator.utility.UnsetSkillOverride(this.skillLocator.utility, exitMorph, GenericSkill.SkillOverridePriority.Contextual);
-            this.skillLocator.secondary.UnsetSkillOverride(this.skillLocator.secondary, powerBomb, GenericSkill.SkillOverridePriority.Contextual);
-            this.skillLocator.secondary.stock = morphBallEnter.Stock1;
-            //this.skillLocator.secondary.RecalculateMaxStock();
-            this.skillLocator.special.stock = morphBallEnter.Stock2;
+            this.skillLocator.secondary = BaseStates.BaseSamus.MissileSkill;
+
+            //var tuple = BaseStates.BaseSamus.CalcSkillInfo(skillLocator.secondary, true);
+            //if (tuple.Item1 == 999 && tuple.Item2 == 999)
+            //    skillLocator.secondary.Reset();
+            //else
+            //{
+            //    skillLocator.secondary.stock = tuple.Item1;
+            //    skillLocator.secondary.rechargeStopwatch = tuple.Item2;
+            //}
+            //skillLocator.secondary.RecalculateValues();
+            //this.skillLocator.secondary.stock = BaseStates.BaseSamus.Stock1;
+            //skillLocator.secondary.rechargeStopwatch = BaseStates.BaseSamus.Stopwatch % BaseStates.BaseSamus.Stock1Recharge;
+            //this.skillLocator.secondary.RecalculateValues();
+            //Debug.Log(skillLocator.secondary.stock);
+            //this.skillLocator.special.stock = BaseStates.BaseSamus.Stock2;
+            //skillLocator.secondary.rechargeStopwatch += duration;
             if (Utils.IsUsingMotionControls(this.characterBody))
             {
 
@@ -93,6 +119,18 @@ namespace SamusMod.SkillStates.Samus
             //this.skillLocator.special.RecalculateMaxStock();
             BaseStates.BaseSamus.morphBall = false;
         }
+
+        //private void Special_onSkillChanged(GenericSkill obj)
+        //{
+        //    obj.stock = morphBallEnter.Stock2;
+        //    Debug.Log("SMissile stock: "+obj.stock);
+        //}
+
+        //private void Secondary_onSkillChanged(GenericSkill obj)
+        //{
+        //    obj.stock = morphBallEnter.Stock1;
+        //    Debug.Log("missile stock: "+obj.stock);
+        //}
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {

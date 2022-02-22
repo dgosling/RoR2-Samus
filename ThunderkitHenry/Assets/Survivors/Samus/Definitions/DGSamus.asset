@@ -23,5 +23,5 @@ MonoBehaviour:
   outroFlavorToken: DG_SAMUS_OUTRO_FLAVOR
   mainEndingEscapeFailureFlavorToken: DG_SAMUS_MAIN_ENDING_ESCAPE_FAILURE_FLAVOR
   primaryColor: {r: 0, g: 0, b: 0, a: 0}
-  desiredSortPosition: 7
+  desiredSortPosition: 15
   hidden: 0

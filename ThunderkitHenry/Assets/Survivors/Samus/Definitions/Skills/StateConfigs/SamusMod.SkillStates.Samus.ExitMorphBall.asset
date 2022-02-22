@@ -25,7 +25,3 @@ MonoBehaviour:
       fieldValue:
         stringValue: 
         objectValue: {fileID: 11400000, guid: f103c0d2fb7897e4088d9ca80c6b6c7a, type: 2}
-    - fieldName: powerBomb
-      fieldValue:
-        stringValue: 
-        objectValue: {fileID: 11400000, guid: 06c5921886d0ff842962694568ede3d7, type: 2}

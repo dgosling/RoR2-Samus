@@ -31,7 +31,7 @@ namespace SamusMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.dgosling.Samus";
         public const string MODNAME = "Samus";
-        public const string MODVERSION = "2.0.0";
+        public const string MODVERSION = "2.0.2";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "DG";
@@ -205,10 +205,15 @@ namespace SamusMod
                     //}
                     //else
                     //{
-                    if (SamusMod.SkillStates.BaseStates.BaseSamus.morphBall != true)
+                    if (!SamusMod.SkillStates.BaseStates.BaseSamus.morphBall)
                     {
                         newBonusStockFromBody *= 5;
                         orig(self, newBonusStockFromBody);
+                    }
+                    else if (SkillStates.BaseStates.BaseSamus.morphBall)
+                    {
+                        newBonusStockFromBody = (Mathf.FloorToInt( self.characterBody.skillLocator.primary.maxStock/3))-1;
+                        orig(self,newBonusStockFromBody);
                     }
 
                 }
@@ -222,19 +227,14 @@ namespace SamusMod
 
             if (self && self.skillLocator.secondary && self.skillLocator.special && self.baseNameToken == "DG_SAMUS_NAME")
             {
-                if (SamusMod.SkillStates.BaseStates.BaseSamus.morphBall == true)
+
+                if (!SkillStates.BaseStates.BaseSamus.morphBall)
                 {
-                    if (self.skillLocator.primary.maxStock == 3)
-                    {
-                        self.skillLocator.secondary.maxStock = 1;
-                    }
-                }
-
-                if (self.skillLocator.secondary.stock >= 5)
-                    self.skillLocator.special.stock = 1;
-                else
-                    self.skillLocator.special.RemoveAllStocks();
-
+                    if (self.skillLocator.secondary.stock >= 5)
+                        self.skillLocator.special.stock = 1;
+                    else
+                        self.skillLocator.special.RemoveAllStocks();
+                }    
 
                 //Debug.Log("test");
             }

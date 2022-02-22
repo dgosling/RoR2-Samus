@@ -178,10 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 1389097793, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 50
+  maxVelocity: 100
   rollVelocity: 0
-  acceleration: 5
-  delayTimer: 0.3
+  acceleration: 10
+  delayTimer: 0.1
   giveupTimer: 3
   deathTimer: 16
   turbulence: 2

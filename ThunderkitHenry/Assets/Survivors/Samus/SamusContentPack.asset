@@ -45,6 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 81f173e6baf37d64ea802203b172b94c, type: 2}
   - {fileID: 11400000, guid: 6b14e3918524dea41b17f33c7bd02f46, type: 2}
   - {fileID: 11400000, guid: a49d487d83af6294793ea0a82a895a64, type: 2}
+  - {fileID: 11400000, guid: 6d3c0c265db14c44ea57204f4acf7df3, type: 2}
   sceneDefs: []
   itemDefs: []
   equipmentDefs: []
