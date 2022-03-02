@@ -32,10 +32,14 @@ namespace SamusMod.SkillStates.BaseStates
         private static bool vrCheck;
         private static CharacterBody body;
         [SerializeField]
-        public RoR2.Skills.SkillDef refer;
+        public RoR2.Skills.SkillDef morphBallRef;
+        [SerializeField]
+        public RoR2.Skills.SkillDef autoFireSkill;
         private static GenericSkill powerBallskill;
         private static GenericSkill missileSkill;
-
+        bool effectiveAuth;
+        //private static Components.ExtraInputBankTest extraInput;
+       // private bool AutoFireEnabled;
         public static bool morphBall { get; set; }
         public static CharacterBody Body { get => body; set => body = value; }
         public static bool VrCheck { get => vrCheck; set => vrCheck = value; }
@@ -44,6 +48,9 @@ namespace SamusMod.SkillStates.BaseStates
         public static bool PowerBombInit { get => powerBombInit; set => powerBombInit = value; }
         public static GenericSkill PowerBallskill { get => powerBallskill; set => powerBallskill = value; }
         public static GenericSkill MissileSkill { get => missileSkill; set => missileSkill = value; }
+        PlayerCharacterMasterController PlayerCharacterMasterController;
+        Rewired.Player player;
+       // public bool autoFireEnabled { get => AutoFireEnabled; set => AutoFireEnabled = value; }
 
         //public static int Stock1 { get => stock1; set => stock1 = value; }
         //public static int Stock2 { get => stock2; set => stock2 = value; }
@@ -65,7 +72,11 @@ namespace SamusMod.SkillStates.BaseStates
             this.ball = this.ChildLocator.FindChild("Ball2").gameObject;
             this.collider = this.ball.GetComponent<Collider>();
             this.BallRigidBody = this.ball.GetComponent<Rigidbody>();
-            if (skillLocator.utility.skillDef == refer)
+
+            PlayerCharacterMasterController = characterBody.master.playerCharacterMasterController;
+            
+                PlayerCharacterMasterController.CanSendBodyInput(PlayerCharacterMasterController.networkUser, out _, out player, out _);
+            if (skillLocator.utility.skillDef == morphBallRef)
             {
                 MissileSkill = skillLocator.FindSkillByFamilyName("SamusSecondary");
                 powerBallskill = skillLocator.FindSkillByFamilyName("SamusSecondary2");
@@ -76,7 +87,8 @@ namespace SamusMod.SkillStates.BaseStates
                  skillLocator.FindSkillByFamilyName("SamusSecondary2").enabled = false;
                 
             }
-                
+            //if (SamusPlugin.autoFireEnabled)
+            //    extraInput = gameObject.GetComponent<Components.ExtraInputBankTest>();
             Stopwatch = 0f;
             Stopwatch2 = 0f;
             powerBombInit = false;
@@ -106,13 +118,28 @@ namespace SamusMod.SkillStates.BaseStates
             
             base.OnEnter();
         }
+        public override void Update()
+        {
+            base.Update();
+            if (effectiveAuth)
+            {
+                if (SamusPlugin.autoFireEnabled&& !morphBall && player.GetButtonDown(Modules.RewiredAction.autoFire.ActionId))
+                {
+                    bool a = skillLocator.primary.skillDef == autoFireSkill;
 
+                    if (a)
+                        skillLocator.primary.UnsetSkillOverride(skillLocator.primary, autoFireSkill, GenericSkill.SkillOverridePriority.Contextual);
+                    else
+                        skillLocator.primary.SetSkillOverride(skillLocator.primary, autoFireSkill, GenericSkill.SkillOverridePriority.Contextual);
+                }
+            }
+        }
         // Update is called once per frame
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             this.characterBody.skillLocator.FindSkill("");
-
+            effectiveAuth = characterBody.master.hasEffectiveAuthority;
             if (this.Animator)
             {
                 this.Animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, .2f, Time.fixedDeltaTime);
@@ -124,7 +151,7 @@ namespace SamusMod.SkillStates.BaseStates
                 Destroy(Modules.VRStuff.hudHandle);
 
             }
-
+            
             //maxtime2 = stock2Max * stock2Recharge;
             //if (!morphBall && cacheBackup != characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine))
             //{
@@ -182,11 +209,11 @@ namespace SamusMod.SkillStates.BaseStates
                 this.velocity = this.characterMotor.velocity;
                 this.direction = this.inputBank.moveVector;
                 camera = this.cameraTargetParams.cameraPivotTransform.rotation.eulerAngles;
-                if (this.characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine) > 0)
-                {
-                    this.skillLocator.primary.maxStock = this.characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine) + 3;
+                //if (this.characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine) > 0)
+                //{
+                //    this.skillLocator.primary.maxStock = this.characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine) + 3;
 
-                }
+                //}
                 Vector3 combined = Vector3.Scale(this.velocity, this.direction);
                 //this.rigidbody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationY;
                 //this.characterDirection

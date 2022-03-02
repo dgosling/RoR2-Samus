@@ -97,6 +97,7 @@ namespace SamusMod.Modules
             LanguageAPI.Add(prefix + "LORE", "Samus Aran is an intergalatic bounty hunter, she was raised by the mysterious Chozo.");
             LanguageAPI.Add(prefix + "OUTRO_FLAVOR", outro);
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", outroFailure);
+            LanguageAPI.Add("SAMUS_AUTOFIRE_TOGGLE", "Auto-Fire Toggle");
             #region skin
             LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Default");
             #endregion
@@ -107,6 +108,8 @@ namespace SamusMod.Modules
             #region primary
             LanguageAPI.Add(prefix + "PRIMARY_BEAM_NAME", "Power Beam");
             LanguageAPI.Add(prefix + "PRIMARY_BEAM_DESCRIPTION", "Click to do <style=cIsDamage>" + StaticValues.baseDamage + "</style> and hold to charge a beam that does <style=cIsDamage>" + 100f * StaticValues.shootDamageCoefficient + "% to " + 100 * StaticValues.cshootDamageCoefficient + "% damage.</style>");
+            LanguageAPI.Add(prefix + "PRIMARY_AUTOBEAM_NAME", "Auto-Fire Beam");
+            LanguageAPI.Add(prefix + "PRIMARY_AUTOBEAM_DESCRIPTION", "Hold down button to auto-fire the basic beam as fast as possible.");
 
             #endregion
             desc = "Fire a Homing Missile that homes in on the nearest enemy and does <style=cIsDamage>" + 100f * StaticValues.missileDamageCoefficient + "% damage.</style>";

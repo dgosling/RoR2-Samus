@@ -8,7 +8,7 @@ namespace SamusMod.SkillStates.Samus
         public override void OnEnter()
         {
 
-            this.baseDuration = .5f;
+            this.baseDuration = .1f;
             this.damageCoef = Modules.StaticValues.missileDamageCoefficient;
             this.recoil = .5f;
 
