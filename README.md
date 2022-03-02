@@ -1,18 +1,118 @@
-# Thunderkit-Henry (EARLY RELEASE)
-**This is an EARLY RELEASE of ThunderHenry, a ThunderKit based template for survivors. This template DOES NOT have WWise setup, meaning custom sounds are NOT POSSIBLE with this version of the template. A future release will have WWise support.**
+## SamusMod
+- Adds Samus, the intergalatic bounty hunter as a playable survivor
+- Now with VR Support!
+- Now with Metroid Prime VR Visor!
+- Now using RoR2 Shaders!
 
-See the [ThunderHenry Wiki](https://github.com/Vale-X/Thunderkit-Henry/wiki/Creating-Survivors-with-ThunderHenry) for a WORK IN PROGRESS tutorial on how to use this template, and how to create ThunderKit survivors in general.
 
+## Overview
+Samus is an agile survivor with a charge beam, homing missiles, a super missile, and a rolling dash attack that drops a bomb.
+[![](https://i.imgur.com/cQ6cTRU.png)]()
+
+# Contact
+- If you want to report any bugs, you can contact me on discord: dgosling#5259
+
+# Donation
+[Donate/Buy me a coffee here.](https://www.buymeacoffee.com/dgosling)
+
+## Future Plans
+- Add more Skills and Suits/skins
+
+## Known Issues
+- Missiles' projectile ghost sometimes fall down, but they still fire and hit enemies
+- Charged beam will sometimes not register hitting enemy - improved
+
+## Special Thanks
+- Rob for Paladin mod source code
+- RoR2 Modding Discord
+- ShayneHawke and his Community Discord
+- MetaForce Team for Metroid Prime tools to remake Prime Bomb Effects
+- DrBibop for helping me add VR Support
+- Thunderkit Team for Making it Possible and Easy to use RoR2 Shaders Inside Unity
 ## Changelog
+` 2.0.2 `
+- Fixed the camera clipping issue
+- Reduced Missile cooldown from 5 to 4 seconds
+- slightly increased missile damage
+- increased super missile damage 
+- missiles now cooldown when in morph ball
+- power bombs now cooldown when not in morph ball
+- increased missiles speed
+- reduced missiles and super missiles fire delay
+- increased morph ball bombs explosion radius
+- When in VR, the tracking missiles' tracker is now based on your dominant hand's aimray
 
-__Major Update 1__
-- The project now uses `ThunderKit v4.1.1` and `R2API v3.0.59`.
-- The project now uses `StubbedShaderConverter v1.0.0` as a package instead of a local install.
-- Added `Shaders.cs`, for using ShaderConverter and also creating a list of all materials in the proejct.
-- Updated StubbedShaders, including `hgCloudRemap`. In order for cloud remap materials to work correctly, `SourceBlend` and `DestinationBlend` (set within the material) must be non-zero.
-- Updated `Buffs.cs`, adding methods for Buffs and Debuffs.
-- Updated `Config.cs`, adding a new `ForceUnlock` config option.
-- Updated `Helpers.cs`, adding `StartDebug()` for debugging prints.
-- Updated `Prefabs.cs`, adding a `bodyIndexes` list.
-- Updated `Unlockables.cs`, now uses R2API's UnlockableAPI.
-- Fixed an issue with `Assembly-CSharp.Public.dll`.
+` 2.0.1 `
+- Forgot to Update SurvivorDef Name Token
+
+` 2.0.0 `
+- Ported to ThunderKit-Henry
+- Switched to RoR2 Shaders 
+- Fixed Samus' Beam to Actually Fire as Fast as you can Click
+
+` 1.5.2 `
+- Fixed some Multiplayer related VR Visor Bugs Bugs
+- Performance Fixes For Visor
+- HopeFully Really Fixed the Boss Bar this Time
+
+` 1.5.1 `
+- Fixed Boss Health Bar on VR HUD not Updating Alpha after First Boss
+
+` 1.5.0 `
+- Added Metroid Prime VR Visor
+- Fixed Animation Bug that had me disable sprinting while using the Charge Beam, Now you can sprint and Charge/Shoot the Charge Beam 
+- Fixed AutoSprint Compatibilities
+
+` 1.4.0 `
+- Added VR Support
+
+` 1.3.0 `
+- Added Tracking Missile Skill With Prime Tracker
+- Improved Charge Beam Registering Hits
+- Changed Morph Bomb Dash Icon to Help Differentiate it from New Morph Ball Skill
+
+` 1.2.2 `
+- Fixed Morph Ball Mode breaking map zones
+
+` 1.2.1 `
+- Fixed Blood Shrine not working
+
+` 1.2.0 `
+- Added Morph Ball Mode Alt Skill
+-- Based on Metroid Prime's Morph Ball
+-- Transform into a ball and gain an armor boost buff while in
+-- Travel twice as fast while in, and sprint to go a little bit faster
+-- Drop Morph Bombs that can be used to bomb jump
+-- Drop a Power Bomb that on use, will deduct all your Morph Bombs
+- Added Missing Text
+
+` 1.1.1 `
+- Moved back to R2API
+
+` 1.1.0 `
+- Updated to work with latest version
+
+` 1.0.3 `
+- Made it so you can hold the Charge Beam before Firing
+- Reduced chance of Hurt sound playing to help in Void Fields
+
+` 1.0.2 `
+- Removed debug logging
+
+` 1.0.1 `
+- Removed networking test code I accidentally left in
+
+` 1.0.0 `
+- Added Sound Effects
+- Added Muzzle, Charge, and Impact Effects
+- Added Some Item Displays
+- Fixed bugs
+- Balanced damage on level up
+
+` 0.1.1 `
+- Backup Magazine now gives you 5 stock instead of 1
+- Added invulnerability to Blazing enemies blaze effects and trails
+
+` 0.1.0 `
+- Beta Version
+
