@@ -13,7 +13,7 @@ namespace SamusMod.SkillStates.Samus
             this.SamusTracker = gameObject.GetComponent<Misc.SamusTracker>();
             this.target = SamusTracker.GetTrackingTarget();
             //this.projectilePrefab = Modules.Projectiles.altmissile;
-            this.baseDuration = .85f;
+            this.baseDuration = .1f;
             this.damageCoef = Modules.StaticValues.missileDamageCoefficient;
             this.recoil = .5f;
 

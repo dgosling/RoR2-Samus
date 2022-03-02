@@ -5,6 +5,11 @@ using UnityEngine;
 using RoR2;
 using System.Security;
 using System.Security.Permissions;
+using System;
+using Rewired.Data;
+using SamusMod.Modules;
+using System.Reflection;
+using MonoMod.RuntimeDetour.HookGen;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -31,24 +36,27 @@ namespace SamusMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.dgosling.Samus";
         public const string MODNAME = "Samus";
-        public const string MODVERSION = "2.0.2";
+        public const string MODVERSION = "2.0.5";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "DG";
-        public static ManualLogSource logger;
+        public static ManualLogSource logger=> instance?.Logger;
         // use this to toggle debug on stuff, make sure it's false before releasing
         public static bool debug = false;
 
         public static bool cancel;
         public static float jumps;
         public static SamusPlugin instance;
+        public static bool autoFireEnabled=false; 
 
         private void Awake()
         {
             instance = this;
 
             // Load/Configure assets and read Config
+
             Modules.Config.ReadConfig();
+
             Modules.Assets.Init();
             if (cancel) return;
             Modules.Shaders.init();
@@ -57,8 +65,17 @@ namespace SamusMod
             Modules.Buffs.Init();
             Modules.ItemDisplays.Init();
             Modules.Unlockables.Init();
-            
-            
+            if (Modules.Config.AutoFireBind.Value)
+            {
+                autoFireEnabled = true;
+                ExtraInputs.AddActionsToInputCatalog();
+                var userDataInit = typeof(UserData).GetMethod(nameof(UserData.KFIfLMJhIpfzcbhqEXHpaKpGsgeZ), BindingFlags.NonPublic | BindingFlags.Instance);
+                HookEndpointManager.Add(userDataInit, (Action<Action<UserData>, UserData>)ExtraInputs.AddCustomActions);
+
+            }
+            //CustomBind();
+
+
             // Any debug stuff you need to do can go here before initialisation
             if (debug) { Modules.Helpers.AwakeDebug(); }
 
@@ -73,6 +90,7 @@ namespace SamusMod
             // If Awake isn't the right place for launch debug, you can put some in Start here.
             // Most of the time Awake will do fine though.
             if (debug) { Modules.Helpers.StartDebug(); }
+
         }
 
         private void Hook()
@@ -85,8 +103,32 @@ namespace SamusMod
             On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
             On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
             On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
+            if (!Modules.Config.AutoFireBind.Value)
+                return;
+                   On.RoR2.UserProfile.LoadDefaultProfile += ExtraInputs.OnLoadDefaultProfile;
+                On.RoR2.UserProfile.LoadUserProfiles += ExtraInputs.OnLoadUserProfiles;
+                On.RoR2.UI.SettingsPanelController.Start += SettingsPanelControllerStart;
+            
+
+            //On.RoR2.InputBankTest.CheckAnyButtonDown += Components.ExtraInputBankTest.CheckAnyButtonDownOverrideHook;
+            //// On.RoR2.PlayerCharacterMasterController.Awake += Components.ExtraPlayerCharacterMasterController.AwakeHook;
+            //On.RoR2.PlayerCharacterMasterController.SetBody += Components.ExtraPlayerCharacterMasterController.SetBodyOverrideHook;
+        }
+        private void CustomBind()
+        {
+
         }
 
+        internal static void SettingsPanelControllerStart(On.RoR2.UI.SettingsPanelController.orig_Start orig, RoR2.UI.SettingsPanelController self)
+        {
+            orig(self);
+            if (self.name == "SettingsSubPanel, Controls (M&KB)" || self.name == "SettingsSubPanel, Controls (Gamepad)")
+            {
+                var jumpBindingTransform = self.transform.Find("Scroll View/Viewport/VerticalLayout/SettingsEntryButton, Binding (Jump)");
+
+                Misc.uiHooks.AddActionBindingToSettings(Modules.RewiredAction.autoFire.Name, jumpBindingTransform);
+            }
+        }
         private void CharacterMaster_OnBodyDamaged(On.RoR2.CharacterMaster.orig_OnBodyDamaged orig, CharacterMaster self, DamageReport damageReport)
         {
             if (self)

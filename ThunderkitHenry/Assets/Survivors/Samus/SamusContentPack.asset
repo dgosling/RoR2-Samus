@@ -31,6 +31,7 @@ MonoBehaviour:
   - {fileID: 5542857733794188179, guid: 52ad163d70855644a9927c06a70daaa0, type: 3}
   - {fileID: 8379400650561052655, guid: e74b1c1f943ecbe4187d5b1e47026a08, type: 3}
   skillDefs:
+  - {fileID: 11400000, guid: f5178990860b5c244830a9aeb386d3fc, type: 2}
   - {fileID: 11400000, guid: c878990c48d83e643a46f7663a75b7de, type: 2}
   - {fileID: 11400000, guid: e970b5a6f1829ae439cdee3838cabd9b, type: 2}
   - {fileID: 11400000, guid: f103c0d2fb7897e4088d9ca80c6b6c7a, type: 2}
@@ -65,6 +66,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 76b7e10881d5b5344af06c03300ce6b5, type: 2}
   - {fileID: 11400000, guid: c1816f08e217e69479c25732579d71f1, type: 2}
   - {fileID: 11400000, guid: e3424312745a1c344ade7409019c85d4, type: 2}
+  - {fileID: 11400000, guid: 1f38f1331bd59704fa576d67ebde2574, type: 2}
   - {fileID: 11400000, guid: 2a9679c53af8507498dc51fffc8b09d5, type: 2}
   - {fileID: 11400000, guid: 18c242c1720da434291aab34f5efe61e, type: 2}
   - {fileID: 11400000, guid: ae3d359c3ea6e524596311eb7a8ce615, type: 2}
@@ -76,6 +78,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3190efcdc8285b14e9373c5d11206a4d, type: 2}
   - {fileID: 11400000, guid: c4816f816f894c24bb7e14bffe94595b, type: 2}
   entityStateTypes:
+  - _typeName: SamusMod.SkillStates.Samus.AutoFireBeam, SamusMod, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   - _typeName: SamusMod.SkillStates.Samus.ChargeBeam, SamusMod, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - _typeName: SamusMod.SkillStates.Samus.ExitMorphBall, SamusMod, Version=0.0.0.0,
