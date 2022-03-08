@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: gun
-  m_Shader: {fileID: 4800000, guid: 3176473f355048889c696da7558f500b, type: 2}
+  m_Shader: {fileID: 4800000, guid: d9d9a1ad1a2e4714b88450e7f75bff45, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0

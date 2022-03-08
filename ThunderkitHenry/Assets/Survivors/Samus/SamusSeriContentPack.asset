@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 870831823, guid: c8c954e10545f6cd0045de066bc4846b, type: 3}
+  m_Name: SamusSeriContentPack
+  m_EditorClassIdentifier: 
+  bodyPrefabs:
+  - {fileID: 624172028979364242, guid: b03e94c8e8483ee4e85a98bc0b75c1c1, type: 3}
+  masterPrefabs: []
+  projectilePrefabs:
+  - {fileID: 8382433129440890974, guid: 696ccbc6277cbb54db953cc96857da22, type: 3}
+  - {fileID: 4384163711743769771, guid: d3198dfeccd016a44bfc3250213d95d0, type: 3}
+  - {fileID: 7445411983760794832, guid: c2c5272a7eec1ac42be81c4e7801e210, type: 3}
+  - {fileID: 4119466451094960908, guid: 25fb0bb55526a75478aeaf5a4bcf526b, type: 3}
+  - {fileID: 2312214303308541935, guid: 8e759cd684abf794cb0d392caeae3973, type: 3}
+  - {fileID: 1937364474398601900, guid: 99be921d8c112ab4392a1df585d6ce8d, type: 3}
+  - {fileID: 4355778085781069051, guid: e5e86a460d15da34a9b92dfaf9a95f57, type: 3}
+  gameModePrefabs: []
+  effectPrefabs:
+  - {fileID: 9170467400573214193, guid: 5ca3ab9e864cb8e4c971d4bc7279bc9f, type: 3}
+  - {fileID: 8648231887135278789, guid: 8bd90c828d6fb2f4d8ba830746b09bbd, type: 3}
+  - {fileID: 7449990042863131829, guid: 0db2e8adbb415f847b4847abc07fb2fa, type: 3}
+  - {fileID: 5542857733794188179, guid: 52ad163d70855644a9927c06a70daaa0, type: 3}
+  - {fileID: 8379400650561052655, guid: e74b1c1f943ecbe4187d5b1e47026a08, type: 3}
+  networkedObjectPrefabs: []
+  skillDefs:
+  - {fileID: 11400000, guid: f5178990860b5c244830a9aeb386d3fc, type: 2}
+  - {fileID: 11400000, guid: c878990c48d83e643a46f7663a75b7de, type: 2}
+  - {fileID: 11400000, guid: e970b5a6f1829ae439cdee3838cabd9b, type: 2}
+  - {fileID: 11400000, guid: f103c0d2fb7897e4088d9ca80c6b6c7a, type: 2}
+  - {fileID: 11400000, guid: 5abe6c5985b0c7c439baf0ab37840fae, type: 2}
+  - {fileID: 11400000, guid: 1c510267ca048904f9090536d909c0c1, type: 2}
+  - {fileID: 11400000, guid: 06c5921886d0ff842962694568ede3d7, type: 2}
+  - {fileID: 11400000, guid: 80193ce9b684ab244b7c0342a1852cd5, type: 2}
+  - {fileID: 11400000, guid: 74b5813b24a75af4fa559ddc421b6e09, type: 2}
+  - {fileID: 11400000, guid: 4cd19f1488c0e6b48b667e0b5ac04a3f, type: 2}
+  skillFamilies:
+  - {fileID: 11400000, guid: 62b4fd571e169c14c8dcc53e332224b3, type: 2}
+  - {fileID: 11400000, guid: 81f173e6baf37d64ea802203b172b94c, type: 2}
+  - {fileID: 11400000, guid: 6d3c0c265db14c44ea57204f4acf7df3, type: 2}
+  - {fileID: 11400000, guid: 6b14e3918524dea41b17f33c7bd02f46, type: 2}
+  - {fileID: 11400000, guid: a49d487d83af6294793ea0a82a895a64, type: 2}
+  sceneDefs: []
+  itemDefs: []
+  itemTierDefs: []
+  itemRelationshipProviders: []
+  itemRelationshipTypes: []
+  equipmentDefs: []
+  buffDefs: []
+  eliteDefs: []
+  unlockableDefs: []
+  survivorDefs:
+  - {fileID: 11400000, guid: 5a798447d6ec298438fd06b3c6ce1e77, type: 2}
+  artifactDefs: []
+  surfaceDefs: []
+  networkSoundEventDefs:
+  - {fileID: 11400000, guid: 65f0603b6a474ae4a8cf7b0240bfc6a7, type: 2}
+  - {fileID: 11400000, guid: 1c10d82e030322e4eb293a1a74ecfc59, type: 2}
+  musicTrackDefs: []
+  gameEndingDefs: []
+  miscPickupDefs: []
+  entityStateConfigurations:
+  - {fileID: 11400000, guid: 76b7e10881d5b5344af06c03300ce6b5, type: 2}
+  - {fileID: 11400000, guid: c1816f08e217e69479c25732579d71f1, type: 2}
+  - {fileID: 11400000, guid: e3424312745a1c344ade7409019c85d4, type: 2}
+  - {fileID: 11400000, guid: 1f38f1331bd59704fa576d67ebde2574, type: 2}
+  - {fileID: 11400000, guid: 2a9679c53af8507498dc51fffc8b09d5, type: 2}
+  - {fileID: 11400000, guid: 18c242c1720da434291aab34f5efe61e, type: 2}
+  - {fileID: 11400000, guid: ae3d359c3ea6e524596311eb7a8ce615, type: 2}
+  - {fileID: 11400000, guid: 094ac20a1bc2c054598ce46f85758302, type: 2}
+  - {fileID: 11400000, guid: f37c4f56b3262744ca3f1189707dfe40, type: 2}
+  - {fileID: 11400000, guid: f52c442cf81ac94428cd569af632876f, type: 2}
+  - {fileID: 11400000, guid: 9ce4210bd4adb2d479f0d70ef903c028, type: 2}
+  - {fileID: 11400000, guid: 829c004af9f5fd840980f6fc0064ad0e, type: 2}
+  - {fileID: 11400000, guid: 3190efcdc8285b14e9373c5d11206a4d, type: 2}
+  - {fileID: 11400000, guid: c4816f816f894c24bb7e14bffe94595b, type: 2}
+  entityStateTypes:
+  - _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod
+  - _typeName: SamusMod.SkillStates.BaseStates.DeathState, SamusMod
+  - _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.AutoFireBeam, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.ChargeBeam, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.ExitMorphBall, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.FireBeam, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.Missile, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.MorphBallBomb, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.morphBallEnter, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.MorphBallPBomb, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.Roll, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.SMissile, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod
+  expansionDefs: []
+  entitlementDefs: []

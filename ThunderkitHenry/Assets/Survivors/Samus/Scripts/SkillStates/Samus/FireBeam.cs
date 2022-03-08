@@ -1,6 +1,7 @@
 ﻿using SamusMod.SkillStates.BaseStates;
 using UnityEngine;
 using RoR2.Projectile;
+using RoR2;
 namespace SamusMod.SkillStates.Samus
 {
 
@@ -26,7 +27,7 @@ namespace SamusMod.SkillStates.Samus
             //this.projectilePrefab = Modules.Projectiles.beam;
             this.speed = 200f;
             this.ResizeProjectile();
-            this.tracerPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerNoSmoke");
+            this.tracerPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerNoSmoke");
             this.muzzleName = "gunCon";
             //this.bulletHitEffect = Modules.Assets.beamImpactEffect;
             if (this.charge <= .4f)

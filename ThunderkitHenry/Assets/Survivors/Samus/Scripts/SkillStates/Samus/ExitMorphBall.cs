@@ -3,7 +3,7 @@ using RoR2;
 using RoR2.Skills;
 using EntityStates;
 using UnityEngine.Networking;
-using VRAPI;
+
 namespace SamusMod.SkillStates.Samus
 {
 
@@ -100,22 +100,22 @@ namespace SamusMod.SkillStates.Samus
             //Debug.Log(skillLocator.secondary.stock);
             //this.skillLocator.special.stock = BaseStates.BaseSamus.Stock2;
             //skillLocator.secondary.rechargeStopwatch += duration;
-            if (Utils.IsUsingMotionControls(this.characterBody))
-            {
+            //if (Utils.IsUsingMotionControls(this.characterBody))
+            //{
 
 
-                foreach (SkinnedMeshRenderer renderer in morphBallEnter.DsMR)
-                {
-                    renderer.enabled = true;
-                }
-                foreach (SkinnedMeshRenderer rend in morphBallEnter.NDsMR)
-                {
-                    rend.enabled = true;
-                }
-                morphBallEnter.VRCamera.localPosition = morphBallEnter.CameraPOS;
+            //    foreach (SkinnedMeshRenderer renderer in morphBallEnter.DsMR)
+            //    {
+            //        renderer.enabled = true;
+            //    }
+            //    foreach (SkinnedMeshRenderer rend in morphBallEnter.NDsMR)
+            //    {
+            //        rend.enabled = true;
+            //    }
+            //    morphBallEnter.VRCamera.localPosition = morphBallEnter.CameraPOS;
 
 
-            }
+            //}
             //this.skillLocator.special.RecalculateMaxStock();
             BaseStates.BaseSamus.morphBall = false;
         }

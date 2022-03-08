@@ -12,14 +12,14 @@ using System.Reflection;
 using MonoMod.RuntimeDetour.HookGen;
 
 [module: UnverifiableCode]
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
+
 
 //Do a 'Find and Replace' on the ThunderHenry namespace. Make your own namespace, please.
 namespace SamusMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.valex.ShaderConverter", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.HardDependency)]
+    //[BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     [R2APISubmoduleDependency(new string[]
@@ -36,7 +36,7 @@ namespace SamusMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.dgosling.Samus";
         public const string MODNAME = "Samus";
-        public const string MODVERSION = "2.0.5";
+        public const string MODVERSION = "2.1.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "DG";
@@ -47,7 +47,7 @@ namespace SamusMod
         public static bool cancel;
         public static float jumps;
         public static SamusPlugin instance;
-        public static bool autoFireEnabled=false; 
+        //public static bool autoFireEnabled=false; 
 
         private void Awake()
         {
@@ -65,14 +65,13 @@ namespace SamusMod
             Modules.Buffs.Init();
             Modules.ItemDisplays.Init();
             Modules.Unlockables.Init();
-            if (Modules.Config.AutoFireBind.Value)
-            {
-                autoFireEnabled = true;
+
+               
                 ExtraInputs.AddActionsToInputCatalog();
-                var userDataInit = typeof(UserData).GetMethod(nameof(UserData.KFIfLMJhIpfzcbhqEXHpaKpGsgeZ), BindingFlags.NonPublic | BindingFlags.Instance);
+                var userDataInit = typeof(UserData).GetMethod(nameof(UserData.wVZZKoPFwEvodLvLcYNvVAPKpUj), BindingFlags.NonPublic | BindingFlags.Instance);
                 HookEndpointManager.Add(userDataInit, (Action<Action<UserData>, UserData>)ExtraInputs.AddCustomActions);
 
-            }
+            
             //CustomBind();
 
 
@@ -98,15 +97,14 @@ namespace SamusMod
             On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
             On.RoR2.GenericSkill.SetBonusStockFromBody += GenericSkill_SetBonusStockFromBody;
             On.RoR2.DamageTrail.DoDamage += DamageTrail_DoDamage;
-            On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float;
+            On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1 += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
             On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
             On.RoR2.CharacterMaster.OnBodyDamaged += CharacterMaster_OnBodyDamaged;
-            if (!Modules.Config.AutoFireBind.Value)
-                return;
+
                    On.RoR2.UserProfile.LoadDefaultProfile += ExtraInputs.OnLoadDefaultProfile;
-                On.RoR2.UserProfile.LoadUserProfiles += ExtraInputs.OnLoadUserProfiles;
+            On.RoR2.SaveSystem.LoadUserProfiles += ExtraInputs.OnLoadUserProfiles;
                 On.RoR2.UI.SettingsPanelController.Start += SettingsPanelControllerStart;
             
 
@@ -114,6 +112,20 @@ namespace SamusMod
             //// On.RoR2.PlayerCharacterMasterController.Awake += Components.ExtraPlayerCharacterMasterController.AwakeHook;
             //On.RoR2.PlayerCharacterMasterController.SetBody += Components.ExtraPlayerCharacterMasterController.SetBodyOverrideHook;
         }
+
+
+
+        private void DotController_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1(On.RoR2.DotController.orig_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1 orig, GameObject victimObject, GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier, uint? maxStacksFromAttacker)
+        {
+            if ((victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME" || attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME") && dotIndex == DotController.DotIndex.PercentBurn)
+            {
+                duration = 0;
+                damageMultiplier = 0;
+                //Debug.Log("testing inflict");
+            }
+            orig(victimObject, attackerObject, dotIndex, duration, damageMultiplier,maxStacksFromAttacker);
+        }
+
         private void CustomBind()
         {
 
@@ -137,7 +149,7 @@ namespace SamusMod
                 {
 
                     //Debug.Log("worked");
-                    Util.PlaySound(SamusMod.Modules.Sounds.hurtSound, self.bodyInstanceObject);
+                    Util.PlaySound(SamusMod.Modules.Sounds.hurtSound, self.GetBodyObject());
                 }
 
                 orig(self, damageReport);
@@ -202,16 +214,10 @@ namespace SamusMod
             orig(self, damageInfo);
         }
 
-        private void DotController_InflictDot_GameObject_GameObject_DotIndex_float_float(On.RoR2.DotController.orig_InflictDot_GameObject_GameObject_DotIndex_float_float orig, UnityEngine.GameObject victimObject, UnityEngine.GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier)
-        {
-            if ((victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME" || attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME") && dotIndex == DotController.DotIndex.PercentBurn)
-            {
-                duration = 0;
-                damageMultiplier = 0;
-                //Debug.Log("testing inflict");
-            }
-            orig(victimObject, attackerObject, dotIndex, duration, damageMultiplier);
-        }
+        //private void DotController_InflictDot_GameObject_GameObject_DotIndex_float_float(On.RoR2.DotController.orig_InflictDot_GameObject_GameObject_DotIndex_float_float_nu orig, UnityEngine.GameObject victimObject, UnityEngine.GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier)
+        //{
+
+        //}
 
         private void DamageTrail_DoDamage(On.RoR2.DamageTrail.orig_DoDamage orig, DamageTrail self)
         {

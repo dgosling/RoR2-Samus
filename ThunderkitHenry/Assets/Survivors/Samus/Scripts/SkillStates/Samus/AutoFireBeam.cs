@@ -2,14 +2,14 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using VRAPI;
+
 
 namespace SamusMod.SkillStates.Samus
 {
     public class AutoFireBeam : BaseSkillState
     {
         
-        private GameObject projectilePrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerNoSmoke");
+        private GameObject projectilePrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerNoSmoke");
         [SerializeField]
         public GameObject muzzleFlashPrefab;
         [SerializeField]
@@ -36,20 +36,20 @@ namespace SamusMod.SkillStates.Samus
 
                     
                 
-                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                {
- aimRay = VRAPI.MotionControls.dominantHand.aimRay;
-                Animator VR = VRAPI.MotionControls.dominantHand.animator;
-                PlayAnimationOnAnimator(VR, "Base Layer", "shoot", "Shoot.playbackRate", .1f);
-                }
-                else
+ //               if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+ //               {
+ //aimRay = VRAPI.MotionControls.dominantHand.aimRay;
+ //               Animator VR = VRAPI.MotionControls.dominantHand.animator;
+ //               PlayAnimationOnAnimator(VR, "Base Layer", "shoot", "Shoot.playbackRate", .1f);
+ //               }
+ //               else
                     PlayAnimation("Gesture, Override", "Beam", "Charge.playbackRate", 0.05f);
                 if (muzzleFlashPrefab)
                     EffectManager.SimpleMuzzleFlash(muzzleFlashPrefab, gameObject, muzzleName, false);  
                 float num = .1f * force;
-                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                    Util.PlayAttackSpeedSound(Modules.Sounds.beamSound, VRAPI.MotionControls.dominantHand.muzzle.gameObject,attackSpeedStat);
-                else
+                //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                //    Util.PlayAttackSpeedSound(Modules.Sounds.beamSound, VRAPI.MotionControls.dominantHand.muzzle.gameObject,attackSpeedStat);
+                //else
                     Util.PlayAttackSpeedSound(Modules.Sounds.beamSound, gameObject,attackSpeedStat);
                 new BulletAttack()
                 {

@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using UnityEngine;
+using RoR2.UI;
 namespace SamusMod.SkillStates.BaseStates
 {
 
@@ -27,7 +28,7 @@ namespace SamusMod.SkillStates.BaseStates
         protected static Vector3 size;
         private GameObject defaultCrosshairPrefab;
         private uint loopSoundInstanceId;
-
+        private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
         private float duration { get; set; }
         private Animator animator { get; set; }
 
@@ -42,8 +43,9 @@ namespace SamusMod.SkillStates.BaseStates
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
             Transform transform = this.childLocator.FindChild("gunCon");
-            if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
-            {
+            crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(characterBody, crosshairOverridePrefab, CrosshairUtils.OverridePriority.Skill);
+            //if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
+            //{
 
 
 
@@ -55,22 +57,22 @@ namespace SamusMod.SkillStates.BaseStates
 
                 }
 
-            }
-            else
-            {
+           // }
+            //else
+            //{
 
-                this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform);
-                this.chargeEffectInstance.transform.Rotate(90, 0, 0);
-            }
+            //    this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform);
+            //    this.chargeEffectInstance.transform.Rotate(90, 0, 0);
+            //}
 
             base.PlayAnimation("Gesture, Override", "chargeLoop", "Charge.playbackRate", this.duration);
 
-            this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
+            this.defaultCrosshairPrefab = base.characterBody.defaultCrosshairPrefab;
 
-            if (this.crosshairOverridePrefab)
-            {
-                base.characterBody.crosshairPrefab = this.crosshairOverridePrefab;
-            }
+            //if (this.crosshairOverridePrefab)
+            //{
+            //    base.characterBody.cro = this.crosshairOverridePrefab;
+            //}
             base.StartAimMode(this.duration + 2f, false);
         }
         //public virtual float GetCharge()
@@ -80,10 +82,7 @@ namespace SamusMod.SkillStates.BaseStates
 
         public override void OnExit()
         {
-            if (base.characterBody)
-            {
-                base.characterBody.crosshairPrefab = this.defaultCrosshairPrefab;
-            }
+            crosshairOverrideRequest?.Dispose();
 
             AkSoundEngine.StopPlayingID(this.loopSoundInstanceId);
 
@@ -126,9 +125,9 @@ namespace SamusMod.SkillStates.BaseStates
         {
             if (base.isAuthority && this.isPlayingSound == false && charge > .15)
             {
-                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                    this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, VRAPI.MotionControls.dominantHand.muzzle.gameObject, this.duration - .15f);
-                else
+                //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                //    this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, VRAPI.MotionControls.dominantHand.muzzle.gameObject, this.duration - .15f);
+                //else
                     this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.duration - .15f);
                 this.isPlayingSound = true;
             }

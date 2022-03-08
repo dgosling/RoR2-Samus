@@ -61,20 +61,20 @@ namespace SamusMod.SkillStates.BaseStates
             //  this.test.localScale = projectilePrefab.transform.localScale * charge;
             // this.csize = this.projectilePrefab.transform.localScale;
             //Debug.Log(csize);
-            if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-            {
-                Animator VR = VRAPI.MotionControls.dominantHand.animator;
-                if (charge <= .15f)
-                {
-                    PlayAnimationOnAnimator(VR, "Base Layer", "shoot", "Shoot.playbackRate", this.duration*2);
-                }
-                else if (charge > .15f)
-                {
-                    PlayAnimationOnAnimator(VR, "Base Layer", "chargeShoot", "Charge.playbackRate", this.attackSpeedStat * (.917f / 2));
-                }
-            }
-            else
-            {
+            //if (VRAPI.Utils.IsUsingMotionControls(this.characterBody))
+            //{
+            //    Animator VR = VRAPI.MotionControls.dominantHand.animator;
+            //    if (charge <= .15f)
+            //    {
+            //        PlayAnimationOnAnimator(VR, "Base Layer", "shoot", "Shoot.playbackRate", this.duration*2);
+            //    }
+            //    else if (charge > .15f)
+            //    {
+            //        PlayAnimationOnAnimator(VR, "Base Layer", "chargeShoot", "Charge.playbackRate", this.attackSpeedStat * (.917f / 2));
+            //    }
+            //}
+            //else
+           // {
 
                 if (charge == 1)
                 {
@@ -87,7 +87,7 @@ namespace SamusMod.SkillStates.BaseStates
                 {
                     base.PlayAnimation("Gesture, Override", "Beam", "Charge.playbackRate", this.duration);
                 }
-            }
+          //  }
             if (this.muzzleflashEffectPrefab)
             {
                 EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "gunCon", false);
@@ -138,8 +138,8 @@ namespace SamusMod.SkillStates.BaseStates
                     //this.projectilePrefab.GetComponent<ProjectileController>().ghostPrefab.gameObject.GetComponent<TrailRenderer>().widthMultiplier = .1f;
                 }
                 Ray aimRay = base.GetAimRay();
-                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                    aimRay = VRAPI.MotionControls.dominantHand.aimRay;
+                //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                //    aimRay = VRAPI.MotionControls.dominantHand.aimRay;
                 if (this.projectilePrefab != null)
                 {
                     // this.ResizeProjectile();
@@ -153,9 +153,9 @@ namespace SamusMod.SkillStates.BaseStates
                 {
                     float num = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                     float num2 = this.charge * this.force;
-                    if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                        Util.PlaySound(this.projSound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
-                    else
+                    //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                    //    Util.PlaySound(this.projSound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
+                    //else
                         Util.PlaySound(this.projSound, this.gameObject);
 
                     this.projectilePrefab.GetComponent<Misc.colision_test>().inTransform = this.guncon.transform;
@@ -186,9 +186,9 @@ namespace SamusMod.SkillStates.BaseStates
                         // Ray aimRay = this.GetAimRay();
                         float num = Util.Remap(.1f, .1f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                         float num2 = this.charge * this.force;
-                        if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                            Util.PlaySound(this.projSound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
-                        else
+                        //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                        //    Util.PlaySound(this.projSound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
+                        //else
                             Util.PlaySound(this.tracerSound, this.gameObject);
 
                         new BulletAttack()

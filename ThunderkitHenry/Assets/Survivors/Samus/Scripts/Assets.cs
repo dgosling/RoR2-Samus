@@ -2,6 +2,7 @@
 using R2API;
 using RoR2;
 using RoR2.ContentManagement;
+using R2API.ContentManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using Path = System.IO.Path;
-using VRAPI;
+
 
 namespace SamusMod.Modules
 {
@@ -21,7 +22,7 @@ namespace SamusMod.Modules
 		internal const string VRAssetBundleName = "SamusVRBundle";
 		
 		//Should be the same name as your SerializableContentPack in the asset bundle
-		internal const string contentPackName = "SamusContentPack";
+		internal const string contentPackName = "SamusSeriContentPack";
 
 		//Name of the your soundbank file, if any.
 		internal const string soundBankName = "Samus"; //HenryBank
@@ -31,7 +32,7 @@ namespace SamusMod.Modules
 		public static GameObject beam;
 		public static GameObject bomb;
 		public static GameObject beamghost;
-
+		public static GameObject cBeam;
 
 
 		public static GameObject VRDomHand;
@@ -45,10 +46,9 @@ namespace SamusMod.Modules
 		public static RuntimeAnimatorController ray;
 
 		internal static AssetBundle mainAssetBundle = null;
-
-		internal static ContentPack mainContentPack = null;
-
-		internal static SerializableContentPack serialContentPack = null;
+		internal static ContentPack contentPack = null;
+		internal static R2API.ScriptableObjects.R2APISerializableContentPack serializableContentPack = null;
+			internal static SerializableContentPack serialContentPack = null;
 		internal static GameObject Tracker;
 		
 		internal static List<EffectDef> effectDefs = new List<EffectDef>();
@@ -85,12 +85,12 @@ namespace SamusMod.Modules
 				return;
 			}
 			Tracker = mainAssetBundle.LoadAsset<GameObject>("samusTrackingIndicator");
-			Missile = mainContentPack.projectilePrefabs.Find("SamusMissile");
+			Missile = contentPack.projectilePrefabs[3];
 			//Missile = (GameObject)result;
             if (Missile)
             {
-				Missile.GetComponent<RoR2.Projectile.ProjectileSingleTargetImpact>().impactEffect = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
-				GameObject refer = Resources.Load<GameObject>("prefabs/projectiles/missileprojectile");
+				Missile.GetComponent<RoR2.Projectile.ProjectileSingleTargetImpact>().impactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
+				GameObject refer = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/missileprojectile");
 				
 				AkEvent[] akEvents = refer.GetComponents<AkEvent>();
 				AkGameObj akGameObj1 = Missile.AddComponent<AkGameObj>();
@@ -101,65 +101,68 @@ namespace SamusMod.Modules
 					b = item;
                 }
             }
-			//mainContentPack.FindAsset("projectilePrefabs", "SamusaltMissile", out object result2);
-			altMissile =mainContentPack.projectilePrefabs.Find("SamusaltMissile");
+			//contentPack.FindAsset("projectilePrefabs", "SamusaltMissile", out object result2);
+			altMissile = contentPack.projectilePrefabs[0];
             if (altMissile)
             {
-				altMissile.GetComponent<RoR2.Projectile.ProjectileSingleTargetImpact>().impactEffect = Resources.Load<GameObject>("prefabs/effects/impacteffects/MissileExplosionVFX");
-				GameObject refer = Resources.Load<GameObject>("prefabs/projectiles/engiharpoon");
+				altMissile.GetComponent<RoR2.Projectile.ProjectileSingleTargetImpact>().impactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/MissileExplosionVFX");
+				GameObject refer = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/engiharpoon");
 				AkGameObj akGameObj = altMissile.AddComponent<AkGameObj>();
 				AkEvent akEvent = altMissile.AddComponent<AkEvent>();
 				akGameObj = refer.GetComponent<AkGameObj>();
 				akEvent = refer.GetComponent<AkEvent>();
 			}
-			//mainContentPack.FindAsset("projectilePrefabs", "SamusSuperMissile", out object res);
-			sMissile = mainContentPack.projectilePrefabs.Find("SamusSuperMissile");
+			//contentPack.FindAsset("projectilePrefabs", "SamusSuperMissile", out object res);
+			sMissile = contentPack.projectilePrefabs[6];
             if (sMissile)
             {
-				sMissile.GetComponent<RoR2.Projectile.ProjectileImpactExplosion>().impactEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionVFX");
-				GameObject refer = Resources.Load<GameObject>("prefabs/projectiles/mageicebolt");
+				sMissile.GetComponent<RoR2.Projectile.ProjectileImpactExplosion>().impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionVFX");
+				GameObject refer = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/mageicebolt");
 				AkEvent akEvent = sMissile.AddComponent<AkEvent>();
 				akEvent = refer.GetComponent<AkEvent>();
 			}
-			//mainContentPack.FindAsset("projectilePrefabs", "SamusBeam", out object ree);
-			beam = mainContentPack.projectilePrefabs.Find("SamusBeam");
+			//contentPack.FindAsset("projectilePrefabs", "SamusBeam", out object ree);
+			beam = contentPack.projectilePrefabs[1];
             if (beam)
             {
-				GameObject refer = Resources.Load<GameObject>("prefabs/projectiles/mageicebolt");
+				GameObject refer = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/mageicebolt");
 				AkEvent akEvent = beam.AddComponent<AkEvent>();
 				akEvent = refer.GetComponent<AkEvent>();
 			}
 			beamghost = beam.GetComponent<RoR2.Projectile.ProjectileController>().ghostPrefab;
-			bomb = mainContentPack.projectilePrefabs.Find("SamusBomb");
+			bomb = contentPack.projectilePrefabs[2];
 			if (bomb)
             {
-				bomb.GetComponent<SphereCollider>().material = Resources.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile").GetComponent<SphereCollider>().material;
-				bomb.GetComponent<RoR2.Projectile.ProjectileImpactExplosion>().impactEffect = Resources.Load<GameObject>("prefabs/effects/omnieffect/omniexplosionvfxcommandogrenade");
-				bomb.GetComponent<RoR2.Projectile.ProjectileImpactExplosion>().lifetimeExpiredSound = Resources.Load<RoR2.NetworkSoundEventDef>("networksoundeventdefs/nsecommandogrenadebounce");
+				bomb.GetComponent<SphereCollider>().material = LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/CommandoGrenadeProjectile").GetComponent<SphereCollider>().material;
+				bomb.GetComponent<RoR2.Projectile.ProjectileImpactExplosion>().impactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/omniexplosionvfxcommandogrenade");
+				bomb.GetComponent<RoR2.Projectile.ProjectileImpactExplosion>().lifetimeExpiredSound = LegacyResourcesAPI.Load<RoR2.NetworkSoundEventDef>("networksoundeventdefs/nsecommandogrenadebounce");
             }
 			bool a;
-			if (mainContentPack.projectilePrefabs.Find("SamusBeam").GetComponent<AkEvent>() != null)
+			if (contentPack.projectilePrefabs[1].GetComponent<AkEvent>() != null)
 				a = true;
 			else
 				a = false;
+
+			cBeam = mainAssetBundle.LoadAsset<GameObject>("beamproj");
 			//Debug.Log(a);
 
-			if (VRAPI.VR.enabled)
-			{
-				VRAPI.VR.PreventRendererDisable("DGSamusBody", "ball2Mesh");
-				VRDomHand = mainAssetBundle.LoadAsset<GameObject>("samusGun");
-				MotionControls.AddHandPrefab(VRDomHand);
-				VRnDomHand = mainAssetBundle.LoadAsset<GameObject>("samusHand");
-				MotionControls.AddHandPrefab(VRnDomHand);
-				//gun = VRassets.LoadAsset<RuntimeAnimatorController>("gun");
-				//ray = VRassets.LoadAsset<RuntimeAnimatorController>("ray");
-				combatVisor = mainAssetBundle.LoadAsset<GameObject>("combatVisor");
-				combatHUD = mainAssetBundle.LoadAsset<GameObject>("combatHud");
-				ballHUD = mainAssetBundle.LoadAsset<GameObject>("ballHUD");
-				bossHUD = mainAssetBundle.LoadAsset<GameObject>("bossHud");
-				HUDHandler = mainAssetBundle.LoadAsset<GameObject>("hudHandler");
+			//if (VRAPI.VR.enabled)
+			//{
+			//	VRAPI.VR.PreventRendererDisable("DGSamusBody", "ball2Mesh");
+			//	VRDomHand = mainAssetBundle.LoadAsset<GameObject>("samusGun");
+			//	MotionControls.AddHandPrefab(VRDomHand);
+			//	VRnDomHand = mainAssetBundle.LoadAsset<GameObject>("samusHand");
+			//	MotionControls.AddHandPrefab(VRnDomHand);
+			//	//gun = VRassets.LoadAsset<RuntimeAnimatorController>("gun");
+			//	//ray = VRassets.LoadAsset<RuntimeAnimatorController>("ray");
+			//	combatVisor = mainAssetBundle.LoadAsset<GameObject>("combatVisor");
+			//	combatHUD = mainAssetBundle.LoadAsset<GameObject>("combatHud");
+			//	ballHUD = mainAssetBundle.LoadAsset<GameObject>("ballHUD");
+			//	bossHUD = mainAssetBundle.LoadAsset<GameObject>("bossHud");
+			//	HUDHandler = mainAssetBundle.LoadAsset<GameObject>("hudHandler");
 
-			}
+			//}
+
 		}
 
 		// Loads the AssetBundle, which includes the Content Pack.
@@ -186,12 +189,12 @@ namespace SamusMod.Modules
 		// mod and initializes a new content pack based on the SerializableContentPack.
 		internal static void LoadContentPack()
         {
-			serialContentPack = mainAssetBundle.LoadAsset<SerializableContentPack>(contentPackName);
-			mainContentPack = serialContentPack.CreateContentPack();
-
+			serializableContentPack = mainAssetBundle.LoadAsset<R2API.ScriptableObjects.R2APISerializableContentPack>(contentPackName);
+			contentPack = serializableContentPack.GetOrCreateContentPack();
+			
 			//AddEntityStateTypes();
-			CreateEffectDefs();
-			ContentPackProvider.contentPack = mainContentPack;
+			
+			ContentPackProvider.contentPack = contentPack;
 		}
 
 
@@ -224,28 +227,28 @@ namespace SamusMod.Modules
 		// Gathers all GameObjects with VFXAttributes attached and creates an EffectDef for each one.
 		// Without this, the Effect is unable to be spawned.
 		// Any VFX elements must have a NetWorkIdentity, VFXAttributes and EffectComponent on the base in order to be usable.
-		internal static void CreateEffectDefs()
-        {
-			List<GameObject> effects = new List<GameObject>();
+		//internal static void CreateEffectDefs()
+  //      {
+		//	List<GameObject> effects = new List<GameObject>();
 
-			GameObject[] assets = mainAssetBundle.LoadAllAssets<GameObject>();
-			foreach (GameObject g in assets)
-            {
-				if (g.GetComponent<EffectComponent>())
-                {
-					effects.Add(g);
-                }
-            }
-			foreach (GameObject g in effects)
-            {
-				EffectDef def = new EffectDef();
-				def.prefab = g;
+		//	GameObject[] assets = mainAssetBundle.LoadAllAssets<GameObject>();
+		//	foreach (GameObject g in assets)
+  //          {
+		//		if (g.GetComponent<EffectComponent>())
+  //              {
+		//			effects.Add(g);
+  //              }
+  //          }
+		//	foreach (GameObject g in effects)
+  //          {
+		//		EffectDef def = new EffectDef();
+		//		def.prefab = g;
 
-				effectDefs.Add(def);
-            }
+		//		effectDefs.Add(def);
+  //          }
 
-			mainContentPack.effectDefs.Add(effectDefs.ToArray());
-        }
+		//	serializableContentPack.ef.Add(effectDefs.ToArray());
+  //      }
 
 
 
@@ -253,12 +256,12 @@ namespace SamusMod.Modules
 		// Saves fuss of having to add them manually. Credit to KingEnderBrine for this code.
 		internal static void AddEntityStateTypes()
         {
-			mainContentPack.entityStateTypes.Add(((IEnumerable<System.Type>)Assembly.GetExecutingAssembly().GetTypes()).Where<System.Type>
+			contentPack.entityStateTypes.Add(((IEnumerable<System.Type>)Assembly.GetExecutingAssembly().GetTypes()).Where<System.Type>
 				((Func<System.Type, bool>)(type => typeof(EntityState).IsAssignableFrom(type))).ToArray<System.Type>());
 
 			if (SamusPlugin.debug)
 			{
-				foreach (Type t in mainContentPack.entityStateTypes)
+				foreach (Type t in contentPack.entityStateTypes)
 				{
 					Debug.Log(SamusPlugin.MODNAME + ": Added EntityStateType: " + t);
 				}

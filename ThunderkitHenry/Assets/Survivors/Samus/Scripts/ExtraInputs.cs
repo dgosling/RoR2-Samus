@@ -28,16 +28,16 @@ namespace SamusMod.Modules
             orig(self);
         }
 
-        internal static void OnLoadUserProfiles(On.RoR2.UserProfile.orig_LoadUserProfiles orig)
+        internal static void OnLoadUserProfiles(On.RoR2.SaveSystem.orig_LoadUserProfiles orig, SaveSystem self)
         {
-            orig();
+            orig(self);
 
-            foreach (var (name, userProfile) in UserProfile.loadedUserProfiles)
+            foreach (var (name, userProfile) in self.loadedUserProfiles)
             {
                 try
                 {
                     AddMissingBindings(userProfile);
-                    userProfile.RequestSave();
+                    userProfile.RequestEventualSave();
                 }
                 catch(Exception e)
                 {
@@ -80,14 +80,14 @@ internal static void OnLoadDefaultProfile(On.RoR2.UserProfile.orig_LoadDefaultPr
         {
             if (userProfile.joystickMap.AllMaps.All(map => map.actionId != action.ActionId))
             {
-                userProfile.joystickMap.AddElementMap(action.DefaultJoystickMap);
-                action.DefaultJoystickMap.GPKKIyqEPFnzbZebduZEdqINbaj(userProfile.joystickMap);
+                userProfile.joystickMap.AMpxarTReIdQulZiNSMMkbJtMRz(action.DefaultJoystickMap);
+                action.DefaultJoystickMap.cNRtEejHCWUdzrhmpthsuslcVcs(userProfile.joystickMap);
             }
 
             if (userProfile.keyboardMap.AllMaps.All(map => map.actionId != action.ActionId))
             {
-                userProfile.keyboardMap.AddElementMap(action.DefaultKeyboardMap);
-                action.DefaultKeyboardMap.GPKKIyqEPFnzbZebduZEdqINbaj(userProfile.keyboardMap);
+                userProfile.keyboardMap.AMpxarTReIdQulZiNSMMkbJtMRz(action.DefaultKeyboardMap);
+                action.DefaultKeyboardMap.cNRtEejHCWUdzrhmpthsuslcVcs(userProfile.keyboardMap);
             }
         }
 
