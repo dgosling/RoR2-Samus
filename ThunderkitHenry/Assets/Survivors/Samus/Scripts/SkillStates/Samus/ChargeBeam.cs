@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using SamusMod.SkillStates.BaseStates;
+using RoR2;
 namespace SamusMod.SkillStates.Samus
 {
 
@@ -19,7 +20,7 @@ namespace SamusMod.SkillStates.Samus
             //this.baseDuration = base.baseDuration;
             
             
-            this.crosshairOverridePrefab = Resources.Load<GameObject>("Prefabs/Crosshair/ToolbotGrenadeLauncherCrosshair");
+            this.crosshairOverridePrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/ToolbotGrenadeLauncherCrosshair");
             this.maxBloomRadius = .1f;
             this.minBloomRadius = 1f;
             this.originalScale = this.chargeEffectPrefab.transform.localScale;
@@ -63,10 +64,10 @@ namespace SamusMod.SkillStates.Samus
             {
                 this.chargeEffect.SetActive(true);
             }
-            if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
+           // if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
                 newSize = new Vector3(calcCharge() * 10, calcCharge() * 10, calcCharge() * 10);
-            else
-                newSize = new Vector3(calcCharge() / 2, calcCharge() / 2, calcCharge() / 2);
+            //else
+            //    newSize = new Vector3(calcCharge() / 2, calcCharge() / 2, calcCharge() / 2);
 
             this.chargeEffectInstance.transform.localScale = newSize;
         }

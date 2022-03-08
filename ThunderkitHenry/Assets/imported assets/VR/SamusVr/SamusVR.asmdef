@@ -3,7 +3,6 @@
     "references": [
         "Unity.TextMeshPro"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [
         "Switch"
@@ -12,10 +11,12 @@
     "overrideReferences": true,
     "precompiledReferences": [
         "BepInEx.dll",
-        "Assembly-CSharp.dll",
+        "RoR2.dll",
         "R2API.dll",
         "VRAPI.dll"
     ],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

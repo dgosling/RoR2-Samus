@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -281164913, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Script: {fileID: -281164913, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: SamusContentPack
   m_EditorClassIdentifier: 
   bodyPrefabs:
@@ -56,6 +56,7 @@ MonoBehaviour:
   survivorDefs:
   - {fileID: 11400000, guid: 5a798447d6ec298438fd06b3c6ce1e77, type: 2}
   artifactDefs: []
+  effectDefs: []
   surfaceDefs: []
   networkSoundEventDefs:
   - {fileID: 11400000, guid: 65f0603b6a474ae4a8cf7b0240bfc6a7, type: 2}
@@ -78,39 +79,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3190efcdc8285b14e9373c5d11206a4d, type: 2}
   - {fileID: 11400000, guid: c4816f816f894c24bb7e14bffe94595b, type: 2}
   entityStateTypes:
-  - _typeName: SamusMod.SkillStates.Samus.AutoFireBeam, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.ChargeBeam, SamusMod, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.ExitMorphBall, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.FireBeam, SamusMod, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.Missile, SamusMod, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.MorphBallBomb, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.morphBallEnter, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.MorphBallPBomb, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.Roll, SamusMod, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.SMissile, SamusMod, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.BaseStates.BaseFireBeam, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.BaseStates.BaseMissile, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.BaseStates.BaseMorphBall, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.BaseStates.ChargeBeamBase, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.BaseStates.DeathState, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  - _typeName: SamusMod.SkillStates.Samus.AutoFireBeam, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.ChargeBeam, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.ExitMorphBall, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.FireBeam, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.Missile, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.MorphBallBomb, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.morphBallEnter, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.MorphBallPBomb, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.Roll, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.SMissile, SamusMod
+  - _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod
+  - _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod
+  - _typeName: SamusMod.SkillStates.BaseStates.DeathState, SamusMod
+  - _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod

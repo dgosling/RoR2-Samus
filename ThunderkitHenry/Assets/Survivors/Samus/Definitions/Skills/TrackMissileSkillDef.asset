@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1391837873, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Script: {fileID: 1391837873, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: TrackMissileSkillDef
   m_EditorClassIdentifier: 
+  <skillIndex>k__BackingField: 0
   skillName: Tracking Missile
   skillNameToken: DG_SAMUS_SECONDARY_TMISSILE_NAME
   skillDescriptionToken: DG_SAMUS_SECONDARY_TMISSILE_DESCRIPTION
@@ -20,8 +21,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 7c8cc9079beb1dc42aeaa35e2ca9d091, type: 3}
   activationStateMachineName: Weapon
   activationState:
-    _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod
   interruptPriority: 0
   baseRechargeInterval: 4
   baseMaxStock: 5

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TrackerMat
-  m_Shader: {fileID: 4800000, guid: 73567847f2724ced843a51029ef7bc23, type: 2}
+  m_Shader: {fileID: 4800000, guid: ca87696ac8fa6ed4c8d7210b9117cba6, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

@@ -28,7 +28,7 @@ namespace SamusMod.Modules
             //If you want to change the 'defaults' set in ForEachReferences, then set them for individual bodyPrefabs here.
             //This is if you want to use a custom crosshair or other stuff.
 
-            bodyPrefabs[0].GetComponent<CharacterBody>().crosshairPrefab = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair");
+            bodyPrefabs[0].GetComponent<CharacterBody>()._defaultCrosshairPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair");
 
             //AddMaterialControllers();
         }
@@ -40,11 +40,11 @@ namespace SamusMod.Modules
             foreach (GameObject g in bodyPrefabs)
             {
                 var cb = g.GetComponent<CharacterBody>();
-                cb.crosshairPrefab = Resources.Load<GameObject>("prefabs/crosshair/StandardCrosshair");
-                //cb.preferredPodPrefab = Resources.Load<GameObject>("prefabs/networkedobjects/SurvivorPod");
+                cb._defaultCrosshairPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/StandardCrosshair");
+                //cb.preferredPodPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/SurvivorPod");
 
                 var fs = g.GetComponentInChildren<FootstepHandler>();
-                fs.footstepDustPrefab = Resources.Load<GameObject>("prefabs/GenericFootstepDust");
+                fs.footstepDustPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/GenericFootstepDust");
 
                 SetupRagdoll(g);
             }
@@ -64,7 +64,7 @@ namespace SamusMod.Modules
 
             if (!ragdollController) return;
 
-            if (ragdollMaterial == null) ragdollMaterial = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
+            if (ragdollMaterial == null) ragdollMaterial = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
 
             foreach (Transform i in ragdollController.bones)
             {
@@ -84,7 +84,7 @@ namespace SamusMod.Modules
         // Find all relevant prefabs within the content pack, per SurvivorDefs.
         private static void GetPrefabs() //wack
         {
-            var d = Assets.mainContentPack.survivorDefs;
+            var d = Assets.contentPack.survivorDefs;
             foreach (SurvivorDef s in d)
             {
                 bodyPrefabs.Add(s.bodyPrefab);

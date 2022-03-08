@@ -47,6 +47,24 @@ Places to talk:
 BepInEx contains helper libraries like [MonoMod.RuntimeDetour](https://github.com/MonoMod/MonoMod/blob/master/README-RuntimeDetour.md) and [HarmonyX](https://github.com/BepInEx/HarmonyX/wiki)
 
 ### Changelog
+* **5.4.1902**
+	* RoR2 BepInExPack specific changes :
+		* Plugin Entrypoint is now at RoR2.FlashWindow..ctor
+
+* **5.4.1901**
+	* RoR2 BepInExPack specific changes :
+	    * HideAndDontSave set back to false in config
+		* Plugin Entrypoint is now at RoR2.RoR2Application.Awake
+
+* **5.4.1900**
+    * Added basic fix for cases where games try to ship their own Harmony
+	* Updated HarmonyX to 2.9.0
+	* Updated MonoMod to 22.01.29.01
+	* RoR2 BepInExPack specific changes :
+	    * Added BepInEx.GUI which replace the default console (you can disable it in the settings)
+	    * HideAndDontSave set to true in config
+	    * Add a plugin which detour old Resources.Call to Addressable equivalent
+
 * **5.4.1801**
     * Updated MonoMod to 22.01.04.03, fixing problems in some Unity environments (wine)
 

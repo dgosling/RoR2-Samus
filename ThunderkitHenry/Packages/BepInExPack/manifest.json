@@ -1,6 +1,6 @@
 {
     "name": "BepInExPack",
-    "version_number": "5.4.1801",
+    "version_number": "5.4.1902",
     "website_url": "https://github.com/BepInEx/BepInEx",
     "description": "Unified BepInEx all-in-one modding pack - plugin framework, detour library",
     "dependencies": []

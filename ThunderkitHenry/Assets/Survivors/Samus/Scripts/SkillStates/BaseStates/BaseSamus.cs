@@ -95,23 +95,23 @@ namespace SamusMod.SkillStates.BaseStates
             //noPowerBomb = true;
             Body = characterBody;
 
-            if (VRAPI.VR.enabled)
-            {
-                VrCheck = VRAPI.Utils.IsUsingMotionControls(Body);
-                if (VrCheck == true)
-                {
-                    SamusMod.Modules.VRStuff.setupVR(Body);
+            //if (VRAPI.VR.enabled)
+            //{
+            //    VrCheck = VRAPI.Utils.IsUsingMotionControls(Body);
+            //    if (VrCheck == true)
+            //    {
+            //        SamusMod.Modules.VRStuff.setupVR(Body);
 
-                    Camera.main.nearClipPlane = 0.05f;
+            //        Camera.main.nearClipPlane = 0.05f;
 
-                    this.ChildLocator.FindChild("chargeEffect").gameObject.SetActive(false);
-                    //Debug.Log("dom: " + VRAPI.MotionControls.dominantHand);
-                    //Debug.Log("ndom: " + VRAPI.MotionControls.nonDominantHand);
-                    if (Modules.Config.enableHud.Value)
-                        Modules.VRStuff.SamusHUD.initSamusHUD(Body);
-                }
+            //        this.ChildLocator.FindChild("chargeEffect").gameObject.SetActive(false);
+            //        //Debug.Log("dom: " + VRAPI.MotionControls.dominantHand);
+            //        //Debug.Log("ndom: " + VRAPI.MotionControls.nonDominantHand);
+            //        if (Modules.Config.enableHud.Value)
+            //            Modules.VRStuff.SamusHUD.initSamusHUD(Body);
+            //    }
 
-            }
+            //}
             skillLocator.secondary.Reset();
             skillLocator.special.Reset();
             //maxtime = skillLocator.secondary.maxStock * skillLocator.secondary.finalRechargeInterval;
@@ -123,7 +123,7 @@ namespace SamusMod.SkillStates.BaseStates
             base.Update();
             if (effectiveAuth)
             {
-                if (SamusPlugin.autoFireEnabled&& !morphBall && player.GetButtonDown(Modules.RewiredAction.autoFire.ActionId))
+                if ( !morphBall && player.GetButtonDown(Modules.RewiredAction.autoFire.ActionId))
                 {
                     bool a = skillLocator.primary.skillDef == autoFireSkill;
 
@@ -183,7 +183,7 @@ namespace SamusMod.SkillStates.BaseStates
                 
             if (morphBall == true)
             {
-                //Material test = Resources.Load<GameObject>("prefabs/networkedobjects/LockedMage").transform.Find("ModelBase/IceMesh").GetComponent<MeshRenderer>().materials[1];
+                //Material test = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/LockedMage").transform.Find("ModelBase/IceMesh").GetComponent<MeshRenderer>().materials[1];
                 //Debug.Log(test.HasProperty("_Magnitude"));
                 //noPowerBomb = true;
                 //if (stopwatch < maxtime)

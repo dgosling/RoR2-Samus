@@ -1,3 +1,4 @@
-v5.4.1801
+Latest Changelog
 
-Bump Monomod to v22.01.04.03
+RoR2 BepInExPack specific changes :
+Plugin Entrypoint is now at RoR2.FlashWindow.cctor

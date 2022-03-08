@@ -48,11 +48,11 @@ namespace SamusMod.Misc
             if (this.trackerUpdateStopwatch < 1 / this.trackerUpdateFrequency)
                 return;
             this.trackerUpdateStopwatch -= 1f / this.trackerUpdateFrequency;
-            if (VRAPI.Utils.IsUsingMotionControls(CharacterBody))
-            {
-                SearchForTarget(VRAPI.MotionControls.dominantHand.aimRay);
-            }
-            else
+            //if (VRAPI.Utils.IsUsingMotionControls(CharacterBody))
+            //{
+            //    SearchForTarget(VRAPI.MotionControls.dominantHand.aimRay);
+            //}
+            //else
                 this.SearchForTarget(new Ray(this.InputBank.aimOrigin, this.InputBank.aimDirection));
             this.Indicator.targetTransform = this.trackingTarget ? this.trackingTarget.transform : null;
         }
