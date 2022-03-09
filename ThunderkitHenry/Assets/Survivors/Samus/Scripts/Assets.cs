@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using VRAPI;
 using UnityEngine;
 using Path = System.IO.Path;
 
@@ -18,7 +19,7 @@ namespace SamusMod.Modules
     internal static class Assets
     {
 		//The file name of your asset bundle
-		internal const string assetBundleName = "SamusAssets";
+		internal const string assetBundleName = "samusassets";
 		internal const string VRAssetBundleName = "SamusVRBundle";
 		
 		//Should be the same name as your SerializableContentPack in the asset bundle
@@ -144,26 +145,26 @@ namespace SamusMod.Modules
 				a = false;
 
 			cBeam = mainAssetBundle.LoadAsset<GameObject>("beamproj");
-			//Debug.Log(a);
+            //Debug.Log(a);
 
-			//if (VRAPI.VR.enabled)
-			//{
-			//	VRAPI.VR.PreventRendererDisable("DGSamusBody", "ball2Mesh");
-			//	VRDomHand = mainAssetBundle.LoadAsset<GameObject>("samusGun");
-			//	MotionControls.AddHandPrefab(VRDomHand);
-			//	VRnDomHand = mainAssetBundle.LoadAsset<GameObject>("samusHand");
-			//	MotionControls.AddHandPrefab(VRnDomHand);
-			//	//gun = VRassets.LoadAsset<RuntimeAnimatorController>("gun");
-			//	//ray = VRassets.LoadAsset<RuntimeAnimatorController>("ray");
-			//	combatVisor = mainAssetBundle.LoadAsset<GameObject>("combatVisor");
-			//	combatHUD = mainAssetBundle.LoadAsset<GameObject>("combatHud");
-			//	ballHUD = mainAssetBundle.LoadAsset<GameObject>("ballHUD");
-			//	bossHUD = mainAssetBundle.LoadAsset<GameObject>("bossHud");
-			//	HUDHandler = mainAssetBundle.LoadAsset<GameObject>("hudHandler");
+            if (VRAPI.VR.enabled)
+            {
+                VRAPI.VR.PreventRendererDisable("DGSamusBody", "ball2Mesh");
+                VRDomHand = mainAssetBundle.LoadAsset<GameObject>("samusGun");
+                MotionControls.AddHandPrefab(VRDomHand);
+                VRnDomHand = mainAssetBundle.LoadAsset<GameObject>("samusHand");
+                MotionControls.AddHandPrefab(VRnDomHand);
+                //gun = VRassets.LoadAsset<RuntimeAnimatorController>("gun");
+                //ray = VRassets.LoadAsset<RuntimeAnimatorController>("ray");
+                combatVisor = mainAssetBundle.LoadAsset<GameObject>("combatVisor");
+                combatHUD = mainAssetBundle.LoadAsset<GameObject>("combatHud");
+                ballHUD = mainAssetBundle.LoadAsset<GameObject>("ballHUD");
+                bossHUD = mainAssetBundle.LoadAsset<GameObject>("bossHud");
+                HUDHandler = mainAssetBundle.LoadAsset<GameObject>("hudHandler");
 
-			//}
+            }
 
-		}
+        }
 
 		// Loads the AssetBundle, which includes the Content Pack.
 		internal static void LoadAssetBundle()

@@ -21,7 +21,8 @@
         "Rewired_Core.refstub.dll",
         "KinematicCharacterController.dll",
         "RoR2.dll",
-        "LegacyResourcesAPI.dll"
+        "LegacyResourcesAPI.dll",
+        "VRAPI.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

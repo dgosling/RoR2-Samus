@@ -82,6 +82,13 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "com.unity.ui.builder": {
+      "version": "1.0.0-preview.18",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.7",
       "depth": 0,
@@ -98,6 +105,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "drbibop-vrmod": {
+      "version": "file:VRMod",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "riskofrain2": {
       "version": "file:Risk of Rain 2",
       "depth": 0,
@@ -106,6 +119,12 @@
     },
     "riskofthunder-hookgenpatcher": {
       "version": "file:HookGenPatcher",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-ror2editorkit": {
+      "version": "file:RoR2EditorKit",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

@@ -7,10 +7,10 @@ namespace SamusMod.Modules
     // but that's in the CharacterBody component instead.
     internal static class StaticValues
     {
-        public static float baseDamage = 15f; 
+        public static float baseDamage = 15f;
 
         //Beam
-        public const float shootDamageCoefficient = .5f;
+        public const float shootDamageCoefficient = 1f;
         public const float cshootDamageCoefficient = 6f;
         public const float beamSpeed = 240f;
         public const float cbeamSpeed = 160f;
