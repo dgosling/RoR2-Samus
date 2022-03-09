@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using SamusMod.SkillStates.BaseStates;
 using RoR2;
+using VRAPI;
 namespace SamusMod.SkillStates.Samus
 {
 
@@ -8,7 +9,7 @@ namespace SamusMod.SkillStates.Samus
     public class ChargeBeam : ChargeBeamBase
     {
         
-        public GameObject chargeEffect;
+        private GameObject chargeEffect;
 
         private Vector3 originalScale;
 
@@ -24,14 +25,13 @@ namespace SamusMod.SkillStates.Samus
             this.maxBloomRadius = .1f;
             this.minBloomRadius = 1f;
             this.originalScale = this.chargeEffectPrefab.transform.localScale;
-
             base.OnEnter();
             ChildLocator childLocator = base.GetModelChildLocator();
 
             //if (VRAPI.Utils.IsUsingMotionControls(this.characterBody) == true)
             //{
             //    Transform temp = MotionControls.dominantHand.transform.Find("Muzzle");
-            //    this.chargeEffect = temp.Find("chargeMuzzle").gameObject;
+            //    chargeEffect = temp.GetChild(0).gameObject;
 
 
             //}
@@ -39,9 +39,11 @@ namespace SamusMod.SkillStates.Samus
             {
 
 
-                this.chargeEffect = childLocator.FindChild("chargeEffect").gameObject;
-                this.chargeEffect.SetActive(false);//temp
+                chargeEffect = childLocator.FindChild("chargeEffect").gameObject;
+                chargeEffect.SetActive(false);//temp
             }
+            
+
 
 
 
@@ -64,10 +66,10 @@ namespace SamusMod.SkillStates.Samus
             {
                 this.chargeEffect.SetActive(true);
             }
-           // if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
+            if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
                 newSize = new Vector3(calcCharge() * 10, calcCharge() * 10, calcCharge() * 10);
-            //else
-            //    newSize = new Vector3(calcCharge() / 2, calcCharge() / 2, calcCharge() / 2);
+            else
+                newSize = new Vector3(calcCharge() / 2, calcCharge() / 2, calcCharge() / 2);
 
             this.chargeEffectInstance.transform.localScale = newSize;
         }

@@ -44,8 +44,8 @@ namespace SamusMod.SkillStates.BaseStates
             this.childLocator = base.GetModelChildLocator();
             Transform transform = this.childLocator.FindChild("gunCon");
             crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(characterBody, crosshairOverridePrefab, CrosshairUtils.OverridePriority.Skill);
-            //if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
-            //{
+            if (!VRAPI.Utils.IsUsingMotionControls(characterBody))
+            {
 
 
 
@@ -57,13 +57,13 @@ namespace SamusMod.SkillStates.BaseStates
 
                 }
 
-           // }
-            //else
-            //{
+            }
+            else
+            {
 
-            //    this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform);
-            //    this.chargeEffectInstance.transform.Rotate(90, 0, 0);
-            //}
+                this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform);
+                this.chargeEffectInstance.transform.Rotate(90, 0, 0);
+            }
 
             base.PlayAnimation("Gesture, Override", "chargeLoop", "Charge.playbackRate", this.duration);
 
@@ -125,9 +125,9 @@ namespace SamusMod.SkillStates.BaseStates
         {
             if (base.isAuthority && this.isPlayingSound == false && charge > .15)
             {
-                //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                //    this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, VRAPI.MotionControls.dominantHand.muzzle.gameObject, this.duration - .15f);
-                //else
+                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                    this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, VRAPI.MotionControls.dominantHand.muzzle.gameObject, this.duration - .15f);
+                else
                     this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.duration - .15f);
                 this.isPlayingSound = true;
             }

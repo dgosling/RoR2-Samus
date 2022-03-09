@@ -49,11 +49,11 @@ namespace SamusMod.SkillStates.BaseStates
         {
             //  this.calculateSMissiles();
             // base.skillLocator.special.RecalculateMaxStock();
-            //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-            //{
-            //    Misc.SamusHUD samusHUD = Modules.VRStuff.SamusHUD;
-            //    samusHUD.setMissileActive(true);
-            //}
+            if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+            {
+                Misc.SamusHUD samusHUD = Modules.VRStuff.SamusHUD;
+                samusHUD.setMissileActive(true);
+            }
 
             base.OnExit();
         }
@@ -63,15 +63,15 @@ namespace SamusMod.SkillStates.BaseStates
             if (!hasFired)
             {
                 this.hasFired = true;
-                //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                //    Util.PlaySound(this.Sound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
-                //else
+                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                    Util.PlaySound(this.Sound, VRAPI.MotionControls.dominantHand.muzzle.gameObject);
+                else
                     Util.PlaySound(this.Sound, this.gameObject);
                 base.characterBody.AddSpreadBloom(.75f);
                 //Debug.Log(target);
                 Ray aimRay = base.GetAimRay();
-                //if (VRAPI.Utils.IsUsingMotionControls(characterBody))
-                //    aimRay = VRAPI.MotionControls.dominantHand.aimRay;
+                if (VRAPI.Utils.IsUsingMotionControls(characterBody))
+                    aimRay = VRAPI.MotionControls.dominantHand.aimRay;
                 if (muzzleEffectPrefab != null)
                     EffectManager.SimpleMuzzleFlash(muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
                 if (base.isAuthority && this.target != null)

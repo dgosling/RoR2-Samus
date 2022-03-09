@@ -3,7 +3,7 @@ using EntityStates;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Skills;
-
+using VRAPI;
 namespace SamusMod.SkillStates.Samus
 {
 
@@ -121,26 +121,26 @@ namespace SamusMod.SkillStates.Samus
             this.armature = ChildLocator.FindChild("armature").gameObject;
             this.mesh = ChildLocator.FindChild("Body").gameObject;
             this.bone = ChildLocator.FindChild("Ball2Bone").gameObject;
-            //if (Utils.IsUsingMotionControls(this.characterBody))
-            //{
-            //    VR = MotionControls.dominantHand.animator;
-            //    VRCamera = this.characterBody.transform.Find("VRCamera");
-            //    DsMR = MotionControls.dominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-            //    NDsMR = MotionControls.nonDominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-            //    Modules.VRStuff.SamusHUD.inMorphBall = true;
-            //    foreach (SkinnedMeshRenderer renderer in DsMR)
-            //    {
-            //        renderer.enabled = false;
-            //    }
-            //    foreach (SkinnedMeshRenderer rend in NDsMR)
-            //    {
-            //        rend.enabled = false;
-            //    }
+            if (Utils.IsUsingMotionControls(this.characterBody))
+            {
+                VR = MotionControls.dominantHand.animator;
+                VRCamera = this.characterBody.transform.Find("VRCamera");
+                DsMR = MotionControls.dominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+                NDsMR = MotionControls.nonDominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+                Modules.VRStuff.SamusHUD.inMorphBall = true;
+                foreach (SkinnedMeshRenderer renderer in DsMR)
+                {
+                    renderer.enabled = false;
+                }
+                foreach (SkinnedMeshRenderer rend in NDsMR)
+                {
+                    rend.enabled = false;
+                }
 
-            //    CameraPOS = VRCamera.localPosition;
-            //    VRCamera.Translate(0, -.5f, 0);
+                CameraPOS = VRCamera.localPosition;
+                VRCamera.Translate(0, -.5f, 0);
 
-            //}
+            }
 
             base.PlayAnimation("Body", "transformIn", "Roll.playbackRate", this.duration);
 

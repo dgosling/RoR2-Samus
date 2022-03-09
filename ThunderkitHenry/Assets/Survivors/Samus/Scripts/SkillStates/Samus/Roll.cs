@@ -31,7 +31,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using EntityStates;
 using RoR2.Projectile;
-
+using VRAPI;
 namespace SamusMod.SkillStates.Samus
 {
 
@@ -86,24 +86,24 @@ namespace SamusMod.SkillStates.Samus
             }
             this.animator = this.GetModelAnimator();
             ChildLocator component = this.animator.GetComponent<ChildLocator>();
-            if (this.isAuthority && this.inputBank && this.characterDirection /*&& !VRAPI.Utils.IsUsingMotionControls(characterBody)*/)
+            if (this.isAuthority && this.inputBank && this.characterDirection && !VRAPI.Utils.IsUsingMotionControls(characterBody))
             {
                 this.forwardDirection = (this.inputBank.moveVector == Vector3.zero ? this.characterDirection.forward : this.inputBank.moveVector).normalized;
             }
-            //else if (this.isAuthority && VRAPI.Utils.IsUsingMotionControls(characterBody))
-            //{
-            //    this.forwardDirection = Camera.main.transform.forward;
-            //    vrCheck = true;
-            //    foreach (SkinnedMeshRenderer re in this.DmeshRenderers)
-            //    {
-            //        re.enabled = false;
-            //    }
-            //    foreach (SkinnedMeshRenderer ree in this.NDmeshRenderers)
-            //    {
-            //        ree.enabled = false;
-            //    }
+            else if (this.isAuthority && VRAPI.Utils.IsUsingMotionControls(characterBody))
+            {
+                this.forwardDirection = Camera.main.transform.forward;
+                vrCheck = true;
+                foreach (SkinnedMeshRenderer re in this.DmeshRenderers)
+                {
+                    re.enabled = false;
+                }
+                foreach (SkinnedMeshRenderer ree in this.NDmeshRenderers)
+                {
+                    ree.enabled = false;
+                }
 
-            //}
+            }
             Vector3 rhs1 = this.characterDirection ? this.characterDirection.forward : this.forwardDirection;
             Vector3 rhs2 = Vector3.Cross(Vector3.up, rhs1);
             float f1 = Vector3.Dot(this.forwardDirection, rhs1);
@@ -184,17 +184,17 @@ namespace SamusMod.SkillStates.Samus
                 this.cameraTargetParams.fovOverride = -1f;
             if (this.hasFired == true)
                 this.hasFired = false;
-            //if (Utils.IsUsingMotionControls(base.characterBody) && vrCheck == true)
-            //{
-            //    foreach (SkinnedMeshRenderer re in this.DmeshRenderers)
-            //    {
-            //        re.enabled = true;
-            //    }
-            //    foreach (SkinnedMeshRenderer ree in this.NDmeshRenderers)
-            //    {
-            //        ree.enabled = true;
-            //    }
-            //}
+            if (Utils.IsUsingMotionControls(base.characterBody) && vrCheck == true)
+            {
+                foreach (SkinnedMeshRenderer re in this.DmeshRenderers)
+                {
+                    re.enabled = true;
+                }
+                foreach (SkinnedMeshRenderer ree in this.NDmeshRenderers)
+                {
+                    ree.enabled = true;
+                }
+            }
             //if (childLocator.FindChild("Ball").gameObject.activeSelf == true&&base.healthComponent.isInFrozenState==true)
             //{
 

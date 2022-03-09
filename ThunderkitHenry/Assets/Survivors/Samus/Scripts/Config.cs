@@ -22,7 +22,7 @@ namespace SamusMod.Modules
             //forceUnlock = SamusPlugin.instance.Config.Bind<bool>(new ConfigDefinition("General", "Force Unlock"), false, new ConfigDescription("Set to true to force this Survivor's content to be unlocked."));
 
             //VR
-            //enableHud = SamusPlugin.instance.Config.Bind<bool>("VR Settings", "Enable VR Visor", true, "Enables the Metroid Prime Style Visor When playing in VR.");
+            enableHud = SamusPlugin.instance.Config.Bind<bool>("VR Settings", "Enable VR Visor", true, "Enables the Metroid Prime Style Visor When playing in VR.");
         }
     }
 }

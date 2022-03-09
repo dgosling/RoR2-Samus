@@ -15,12 +15,17 @@ namespace SamusMod.Misc
         GameObject baseHUD;
         GameObject damageLight;
         GameObject camFilter;
-
+        [SerializeField]
         hudHealthInterface energyIntf;
+        [SerializeField]
         hudThreat threatIntf;
+        [SerializeField]
         hudMissiles missileIntf;
+        [SerializeField]
         hudDeco decoIntf;
+        [SerializeField]
         hudHelmet helmetIntf;
+        [SerializeField]
         hudBall ballIntf;
         public hudBossEnergy bossEnergyIntf;
         hudColors hudcolors, combatHudColors, ballHudColors;
@@ -37,18 +42,18 @@ namespace SamusMod.Misc
         {
             bossEnergyIntf.reset();
         }
-        void Awake()
+        void Start()
         {
             baseHUD = gameObject;
-            energyIntf = gameObject.GetComponent<hudHealthInterface>();
-            threatIntf = gameObject.GetComponent<hudThreat>();
-            missileIntf = gameObject.GetComponent<hudMissiles>();
-            decoIntf = gameObject.GetComponent<hudDeco>();
+            //energyIntf = gameObject.GetComponent<hudHealthInterface>();
+            //threatIntf = gameObject.GetComponent<hudThreat>();
+            //missileIntf = gameObject.GetComponent<hudMissiles>();
+            //decoIntf = gameObject.GetComponent<hudDeco>();
             decoIntf.SetSize();
-            helmetIntf = gameObject.GetComponent<hudHelmet>();
+            //helmetIntf = gameObject.GetComponent<hudHelmet>();
             helmetIntf.SetSize();
-            ballIntf = gameObject.GetComponent<hudBall>();
-            bossEnergyIntf = gameObject.GetComponent<hudBossEnergy>();
+            //ballIntf = gameObject.GetComponent<hudBall>();
+            //bossEnergyIntf = gameObject.GetComponent<hudBossEnergy>();
             combatHudColors = new hudColors(true);
             combatEnergyBar = combatHudColors.GetEnergyBarColors(true);
             ballHudColors = new hudColors(false);
