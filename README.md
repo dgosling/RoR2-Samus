@@ -21,6 +21,7 @@ Samus is an agile survivor with a charge beam, homing missiles, a super missile,
 ## Known Issues
 - Missiles' projectile ghost sometimes fall down, but they still fire and hit enemies
 - Charged beam will sometimes not register hitting enemy - improved
+- Default autofire binding won't set and spam errors on first launch after enabling the option, Either bind it or restart the game after launching to fix
 
 ## Special Thanks
 - Rob for Paladin mod source code
@@ -29,18 +30,44 @@ Samus is an agile survivor with a charge beam, homing missiles, a super missile,
 - MetaForce Team for Metroid Prime tools to remake Prime Bomb Effects
 - DrBibop for helping me add VR Support
 - Thunderkit Team for Making it Possible and Easy to use RoR2 Shaders Inside Unity
+- Vale-X for Making ThunderkitHenry
 ## Changelog
+` 2.1.2 `
+- Fixed Bug Relating to Using the Roll Skill in VR Spawning Infinite Bombs 
+
+` 2.1.1 `
+- Added Back in VR Support
+- Changed Missiles to Require a KeyPress so Don't Accidently Fire Multiple
+
+` 2.1.0 `
+- Updated for SOTV
+- Temporary Removed VR Support until it is Updated
+- Removed AutoFire Toggle Config Option, Just Don't Use Bind if You Don't Want to Use it
+
+` 2.0.5 `
+- Fixed Being able to Switch to Autofire While in Morph Ball
+- Fixed Autofire Toggle Inconsistency
+
+` 2.0.4 `
+- Fixed Error Spam if you had Controls Tab Open in Settings with AutofireToggle Disabled
+
+` 2.0.3 `
+- Added AutoFire Beam Toggle Than you can Enable in the Config
+- Fixed Missiles not Firing if you Shoot the Beam Right after
+- Hopefully Fixed a Bug Where the Powerbomb's Cooldown Will Break for a Stage
+- Increased Powerbomb's Cooldown from 8 Seconds to 12
+
 ` 2.0.2 `
-- Fixed the camera clipping issue
-- Reduced Missile cooldown from 5 to 4 seconds
-- slightly increased missile damage
-- increased super missile damage 
-- missiles now cooldown when in morph ball
-- power bombs now cooldown when not in morph ball
-- increased missiles speed
-- reduced missiles and super missiles fire delay
-- increased morph ball bombs explosion radius
-- When in VR, the tracking missiles' tracker is now based on your dominant hand's aimray
+- Fixed the Camera Clipping Issue
+- Reduced Missile Cooldown from 5 to 4 Seconds
+- Slightly Increased Missile Damage
+- Increased Super Missile Damage 
+- Missiles now Cooldown When in Morph Ball
+- Powerbombs now Cooldown When Not in Morph Ball
+- Increased Missiles Speed
+- Reduced Missiles and Super Missiles Fire Delay
+- Increased Morph Ball Bombs Explosion Radius
+- When in VR, the Tracking Missiles' Tracker is now Based on Your Dominant Hand's Aimray
 
 ` 2.0.1 `
 - Forgot to Update SurvivorDef Name Token

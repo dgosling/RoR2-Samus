@@ -69,13 +69,13 @@ namespace SamusMod.SkillStates.Samus
             this.dodgeFOV = 110;
             this.bombSoundString = Modules.Sounds.morphBomb;
             this.dodgeSoundString = Modules.Sounds.rollSound;
-            //if (VR.enabled)
-            //{
+            if (VR.enabled)
+            {
 
 
-            //    this.DmeshRenderers = MotionControls.dominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-            //    this.NDmeshRenderers = MotionControls.nonDominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-            //}
+                this.DmeshRenderers = MotionControls.dominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+                this.NDmeshRenderers = MotionControls.nonDominantHand.transform.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+            }
             damageCoefficient = Modules.StaticValues.dashDamageCoefficient;
             initialSpeedCoefficient = Modules.StaticValues.rollSpeedCoefficientIni;
             finalSpeedCoefficient = Modules.StaticValues.rollSpeedCoefficientFin;
