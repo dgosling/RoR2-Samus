@@ -440,8 +440,7 @@ MonoBehaviour:
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
   preferredInitialStateType:
-    _typeName: EntityStates.Uninitialized, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod
   skinIndex: 0
   customKillTotalStatName: 
   overrideCoreTransform: {fileID: 0}
@@ -838,7 +837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customName: Body
   initialStateType:
-    _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod
+    _typeName: EntityStates.SpawnTeleporterState, RoR2
   mainStateType:
     _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod
   <networker>k__BackingField: {fileID: 0}
@@ -1947,7 +1946,6 @@ Transform:
   - {fileID: 3636858839349163135}
   - {fileID: 7637202254099118075}
   - {fileID: 8129968822401672743}
-  - {fileID: 1968277503391033793}
   m_Father: {fileID: 624172030016419701}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4516,7 +4514,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.197998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1968277503391033793}
   m_Father: {fileID: 3856944587015190306}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9327,12 +9326,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8136001613185198946}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.537003, z: 1.893}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.339005, z: 1.893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3856944587015190306}
-  m_RootOrder: 6
+  m_Father: {fileID: 8129968822401672743}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8146654402366613774
 GameObject:

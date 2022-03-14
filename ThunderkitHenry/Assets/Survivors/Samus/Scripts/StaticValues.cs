@@ -17,11 +17,11 @@ namespace SamusMod.Modules
 
         //missile
         public const float missileDamageCoefficient = 5f;
-        public const float missileSpeed = 200f;
+        public const float missileSpeed = 150f;
 
         //smissile
         public const float smissileDamageCoefficient = 26.25f;
-        public const float smissileSpeed = 100f;
+        public const float smissileSpeed = 75f;
 
         //roll
         public const float dashDamageCoefficient = 5f;

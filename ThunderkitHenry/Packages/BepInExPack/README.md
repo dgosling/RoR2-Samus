@@ -47,6 +47,10 @@ Places to talk:
 BepInEx contains helper libraries like [MonoMod.RuntimeDetour](https://github.com/MonoMod/MonoMod/blob/master/README-RuntimeDetour.md) and [HarmonyX](https://github.com/BepInEx/HarmonyX/wiki)
 
 ### Changelog
+* **5.4.1903**
+	* RoR2 BepInExPack specific changes :
+		* Fix the BepInEx GUI sometimes not being visible at all / full white
+
 * **5.4.1902**
 	* RoR2 BepInExPack specific changes :
 		* Plugin Entrypoint is now at RoR2.FlashWindow..ctor

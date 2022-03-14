@@ -15,6 +15,8 @@ Samus is an agile survivor with a charge beam, homing missiles, a super missile,
 # Donation
 [Donate/Buy me a coffee here.](https://www.buymeacoffee.com/dgosling)
 
+[I also have a Github Sponsor page.](https://github.com/sponsors/dgosling)
+
 ## Future Plans
 - Add more Skills and Suits/skins
 
@@ -22,6 +24,7 @@ Samus is an agile survivor with a charge beam, homing missiles, a super missile,
 - Missiles' projectile ghost sometimes fall down, but they still fire and hit enemies
 - Charged beam will sometimes not register hitting enemy - improved
 - Default autofire binding won't set and spam errors on first launch after enabling the option, Either bind it or restart the game after launching to fix
+- Multiplayer is Currently Broken
 
 ## Special Thanks
 - Rob for Paladin mod source code
@@ -32,6 +35,12 @@ Samus is an agile survivor with a charge beam, homing missiles, a super missile,
 - Thunderkit Team for Making it Possible and Easy to use RoR2 Shaders Inside Unity
 - Vale-X for Making ThunderkitHenry
 ## Changelog
+` 2.1.3 `
+- Fixed Volume of Samus' VR Hud and Gun Noises
+- Improved Missile Tracking
+- Added Pocket ICBM Compatibility to Samus' Missile Skills
+- Removed Stubbed Shader Converter Dependency
+
 ` 2.1.2 `
 - Fixed Bug Relating to Using the Roll Skill in VR Spawning Infinite Bombs 
 

@@ -52,7 +52,7 @@ namespace SamusMod.Modules
         // Add Material Controllers to character to edit materials using RoR2 materials in-game.
         private static void AddMaterialControllers()
         {
-            Components.MaterialControllerComponents.HGControllerFinder bodyControllerFinder = bodyPrefabs[0].GetComponent<ModelLocator>().modelTransform.Find("body").gameObject.AddComponent<Components.MaterialControllerComponents.HGControllerFinder>();
+           // Components.MaterialControllerComponents.HGControllerFinder bodyControllerFinder = bodyPrefabs[0].GetComponent<ModelLocator>().modelTransform.Find("body").gameObject.AddComponent<Components.MaterialControllerComponents.HGControllerFinder>();
            // bodyControllerFinder.Renderer = bodyPrefabs[0].GetComponent<ModelLocator>().modelTransform.Find("body").GetComponent<Renderer>();
            // bodyControllerFinder.Materials = bodyPrefabs[0].GetComponent<ModelLocator>().modelTransform.Find("body").GetComponent<Renderer>().materials;
         }
@@ -84,7 +84,7 @@ namespace SamusMod.Modules
         // Find all relevant prefabs within the content pack, per SurvivorDefs.
         private static void GetPrefabs() //wack
         {
-            var d = Assets.contentPack.survivorDefs;
+            var d = Assets.mainContentPack.survivorDefs;
             foreach (SurvivorDef s in d)
             {
                 bodyPrefabs.Add(s.bodyPrefab);

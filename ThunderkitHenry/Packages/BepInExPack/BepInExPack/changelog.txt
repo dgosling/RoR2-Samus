@@ -1,4 +1,4 @@
 Latest Changelog
 
 RoR2 BepInExPack specific changes :
-Plugin Entrypoint is now at RoR2.FlashWindow.cctor
+Fix the BepInEx GUI sometimes not being visible at all / full white

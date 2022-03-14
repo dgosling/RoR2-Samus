@@ -121,6 +121,8 @@ namespace SamusMod.SkillStates.BaseStates
         public override void Update()
         {
             base.Update();
+            RoR2.DotController.onDotInflictedServerGlobal += DotController_onDotInflictedServerGlobal;
+            
             if (effectiveAuth)
             {
                 if ( !morphBall && player.GetButtonDown(Modules.RewiredAction.autoFire.ActionId))
@@ -134,10 +136,13 @@ namespace SamusMod.SkillStates.BaseStates
                 }
             }
         }
+        
+
         // Update is called once per frame
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            
             this.characterBody.skillLocator.FindSkill("");
             effectiveAuth = characterBody.master.hasEffectiveAuthority;
             if (this.Animator)
@@ -302,6 +307,17 @@ namespace SamusMod.SkillStates.BaseStates
                 }
 
             }
+        }
+
+        private void DotController_onDotInflictedServerGlobal(DotController dotController, ref InflictDotInfo inflictDotInfo)
+        {
+            if ((inflictDotInfo.victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME" || inflictDotInfo.attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME") && inflictDotInfo.dotIndex == DotController.DotIndex.PercentBurn)
+            {
+                inflictDotInfo.duration = 0;
+                inflictDotInfo.damageMultiplier = 0;
+                //Debug.Log("testing inflict");
+            }
+            
         }
 
         public override void OnExit()

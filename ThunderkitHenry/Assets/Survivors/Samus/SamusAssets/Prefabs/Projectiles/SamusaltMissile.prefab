@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamIndexInternal: 0
   defaultTeam: -1
 --- !u!114 &3084950085063315728
 MonoBehaviour:
@@ -117,10 +118,20 @@ MonoBehaviour:
     type: 3}
   ghostTransformAnchor: {fileID: 0}
   startSound: 
+  cannotBeDeleted: 0
   flightSoundLoop: {fileID: 0}
+  rigidbody: {fileID: 0}
+  <teamFilter>k__BackingField: {fileID: 0}
+  <ghost>k__BackingField: {fileID: 0}
+  <isPrediction>k__BackingField: 0
+  canImpactOnTrigger: 0
+  <shouldPlaySounds>k__BackingField: 0
   allowPrediction: 0
   owner: {fileID: 0}
+  <procChainMask>k__BackingField:
+    mask: 0
   procCoefficient: 1
+  myColliders: []
 --- !u!114 &3757190173492281870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 717380117, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <target>k__BackingField: {fileID: 0}
 --- !u!114 &7138904194769612702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 1952984350, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileController: {fileID: 0}
+  projectileDamage: {fileID: 0}
+  alive: 1
   destroyWhenNotAlive: 1
   destroyOnWorld: 1
   impactEffect: {fileID: 0}
@@ -178,12 +193,18 @@ MonoBehaviour:
   m_Script: {fileID: 1389097793, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 100
+  transform: {fileID: 0}
+  rigidbody: {fileID: 0}
+  teamFilter: {fileID: 0}
+  targetComponent: {fileID: 0}
+  maxVelocity: 50
   rollVelocity: 0
-  acceleration: 10
-  delayTimer: 0.1
+  acceleration: 3
+  delayTimer: 0
   giveupTimer: 3
   deathTimer: 16
+  timer: 0
+  torquePID: {fileID: 0}
   turbulence: 2
   maxSeekDistance: 100
 --- !u!114 &4141332910786552325
@@ -198,9 +219,15 @@ MonoBehaviour:
   m_Script: {fileID: -270136354, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileController: {fileID: 0}
+  transform: {fileID: 0}
+  rb: {fileID: 0}
+  interpolatedTransform: {fileID: 0}
   positionTransmitInterval: 0.033333335
   interpolationFactor: 1
   allowClientsideCollision: 0
+  serverPosition: {x: 0, y: 0, z: 0}
+  serverRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &5485718620996199222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +246,11 @@ MonoBehaviour:
   targetQuat: {x: 0, y: 0, z: 0, w: 1}
   outputVector: {x: 0, y: 0, z: 0}
   gain: 10
+  errorSum: {x: 0, y: 0, z: 0}
+  deltaError: {x: 0, y: 0, z: 0}
+  lastError: {x: 0, y: 0, z: 0}
+  lastTimer: 0
+  timer: 0
 --- !u!114 &5929700656940505168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +268,5 @@ MonoBehaviour:
   force: 0
   damageColorIndex: 0
   damageType: 0
+  useDotMaxStacksFromAttacker: 0
+  dotMaxStacksFromAttacker: 4294967295

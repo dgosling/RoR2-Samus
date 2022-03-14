@@ -1,4 +1,4 @@
-﻿using StubbedConverter;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,9 +10,7 @@ namespace SamusMod.Modules
 
         internal static void init()
         {
-            if (SamusPlugin.debug)
-                ConvertCloudMaterials(Assets.beamghost.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material, true);
-            else
+
                 ConvertCloudMaterials(Assets.beamghost.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material);
             ConvertCloudMaterials(Assets.cBeam.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material);
 
@@ -62,10 +60,8 @@ namespace SamusMod.Modules
                         
             
         }
-        private static void ConvertCloudMaterials(Material inAssetBundle,bool debug)
-        {
-            ShaderConverter.ConvertStubbedShaders(inAssetBundle,debug);
-        }
+        //private static void ConvertCloudMaterials(Material inAssetBundle,bool debug)
+
 
         private static Dictionary<string, string> nameConversion = new Dictionary<string, string>()
         {

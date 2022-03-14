@@ -614,20 +614,20 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    7: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    13: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    14: thunderkit;riskofrain2;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    19: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    21: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    25: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
+    1: cher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpacker;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack;thunderkit
+    7: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    13: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    14: thunderkit;riskofrain2;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    19: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    21: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    25: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
     26: thunderkit;riskofrain2;twiner-unitygameimporter;riskofthunder-ror2editorkit;teammoonstorm-moonstormsharededitorutils;riskofthunder-fixplugintypesserialization;teammoonstorm-moonstormsharedutils;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;tristanmcpherson-r2api
-    27: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    28: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    29: thunderkit;riskofrain2;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    30: thunderkit;riskofrain2;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    32: thunderkit;riskofrain2;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
-    33: thunderkit;riskofrain2;bbepis-bepinexpack;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod
+    27: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    28: thunderkit;riskofrain2;twiner-unitygameimporter;drbibop-vrapi;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    29: thunderkit;riskofrain2;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    30: thunderkit;riskofrain2;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    32: thunderkit;riskofrain2;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
+    33: thunderkit;riskofrain2;riskofthunder-hookgenpatcher;tristanmcpherson-r2api;riskofthunder-ror2editorkit;drbibop-vrmod;bbepis-bepinexpack
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

@@ -24,6 +24,9 @@ Event	ID	Name			Wwise Object Path	Notes
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
+Effect plug-ins	ID	Name	Type				Notes
+	4286906788	Gentle_Program_Compressor_Minus_20dB_RMS	Wwise Compressor			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	7830682	missile	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\missile_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\missile		20121
 	33563201	morph_bomb	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\morph_bomb_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\morph_bomb		1549
@@ -36,14 +39,14 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	304426988	charge_loop	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\charge_loop_78160227.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\charge test\charge_loop		13069
 	332799934	powerbomb	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\powerbomb_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\powerbomb		43402
 	431272663	roll	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\roll_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Movement SFX\roll		5722
-	479531698	threat_damage	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\threat_damage_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\HUD\threat_damage		3698
+	479531698	threat_damage	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\threat_damage_CCD3FBA0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\HUD\threat_damage		3595
 	533000023	bomb_explode	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\bomb_explode_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\bomb_explode		6535
 	581771752	charge_50_shoot	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\charge_50_shoot_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\charge_50_shoot		9085
-	666931925	energy_low	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\energy_low_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\HUD\energy_low		4016
+	666931925	energy_low	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\energy_low_CCD3FBA0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\HUD\energy_low		3649
 	697968246	death	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\death_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Movement SFX\death		13452
 	752851236	charge_75_shoot	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\charge_75_shoot_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\charge_75_shoot		9409
 	932388119	charge_start	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\charge_start_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\charge test\charge_start		11859
-	943246087	missile_warning	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\missile_warning_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\HUD\missile_warning		3757
+	943246087	missile_warning	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\missile_warning_CCD3FBA0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\HUD\missile_warning		3695
 	976754621	hurt2	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\hurt2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Movement SFX\Hurt\hurt2		2228
 	989595916	beam1	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\beam1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Gun SFX\beam1		7786
 	1009489239	djump	D:\documents\WwiseProjects\Samus\.cache\Windows\SFX\djump_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Movement SFX\djump		8983

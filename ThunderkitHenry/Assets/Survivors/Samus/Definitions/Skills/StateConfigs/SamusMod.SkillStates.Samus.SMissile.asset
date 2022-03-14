@@ -27,3 +27,8 @@ MonoBehaviour:
         stringValue: 
         objectValue: {fileID: 5542857733794188179, guid: 52ad163d70855644a9927c06a70daaa0,
           type: 3}
+    - fieldName: smissleObject
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 4119466451094960908, guid: 25fb0bb55526a75478aeaf5a4bcf526b,
+          type: 3}

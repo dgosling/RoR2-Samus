@@ -17,4 +17,24 @@ MonoBehaviour:
   - inspectorName: EntityStateConfigurationInspector
     typeReference: RoR2EditorKit.RoR2Related.Inspectors.EntityStateConfigurationInspector,
       RoR2EditorKit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    isEnabled: 0
+    isEnabled: 1
+  - inspectorName: ChildLocatorInspector
+    typeReference: RoR2EditorKit.RoR2Related.Inspectors.ChildLocatorInspector, RoR2EditorKit,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    isEnabled: 1
+  - inspectorName: CharacterBodyInspector
+    typeReference: RoR2EditorKit.RoR2Related.Inspectors.CharacterBodyInspector, RoR2EditorKit,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    isEnabled: 1
+  - inspectorName: SkillLocatorInspector
+    typeReference: RoR2EditorKit.RoR2Related.Inspectors.SkillLocatorInspector, RoR2EditorKit,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    isEnabled: 1
+  - inspectorName: NetworkStateMachineInspector
+    typeReference: RoR2EditorKit.RoR2Related.Inspectors.NetworkStateMachineInspector,
+      RoR2EditorKit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    isEnabled: 1
+  - inspectorName: ObjectScaleCurveInspector
+    typeReference: RoR2EditorKit.RoR2Related.Inspectors.ObjectScaleCurveInspector,
+      RoR2EditorKit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    isEnabled: 1

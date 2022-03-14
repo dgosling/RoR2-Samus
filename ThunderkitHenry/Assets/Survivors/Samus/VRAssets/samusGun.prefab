@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5717998847714924417}
   - component: {fileID: 5717998847728486055}
-  - component: {fileID: 1220917001670108080}
   m_Layer: 0
   m_Name: gamemodelShape
   m_TagString: Untagged
@@ -103,19 +102,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.22057974, y: 3.430308, z: 0.039779782}
     m_Extent: {x: 1.3191205, y: 3.9603422, z: 1.5026203}
   m_DirtyAABB: 0
---- !u!114 &1220917001670108080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5717998847714888609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 860032353, guid: 8c9723f54a9077defbd277e7d46281d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 0
 --- !u!1 &5717998847714888611
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5717998847714924423}
   - component: {fileID: 5717998847728486053}
-  - component: {fileID: 6689963774916266838}
   m_Layer: 0
   m_Name: emissive3Shape
   m_TagString: Untagged
@@ -288,19 +273,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.10021481, y: 3.1934211, z: 0.039779723}
     m_Extent: {x: 0.91318524, y: 3.0522692, z: 1.4916403}
   m_DirtyAABB: 0
---- !u!114 &6689963774916266838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5717998847714888615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 860032353, guid: 8c9723f54a9077defbd277e7d46281d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 0
 --- !u!1 &5717998847714888617
 GameObject:
   m_ObjectHideFlags: 0

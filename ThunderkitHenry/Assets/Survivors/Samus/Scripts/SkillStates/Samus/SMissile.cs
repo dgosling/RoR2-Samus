@@ -1,10 +1,12 @@
 ﻿using SamusMod.SkillStates.BaseStates;
+using UnityEngine;
 namespace SamusMod.SkillStates.Samus
 {
 
 
     public class SMissile : BaseMissile
     {
+
         // Start is called before the first frame update
         public override void OnEnter()
         {
@@ -12,10 +14,10 @@ namespace SamusMod.SkillStates.Samus
             this.baseDuration = .1f;
             this.recoil = .5f;
             //this.projectilePrefab = SamusMod.Modules.Projectiles.smissile;
-
+            
             this.Sound = SamusMod.Modules.Sounds.sMissileSound;
             // base.skillLocator.special.RecalculateMaxStock();
-
+            this.sMissile = true;
             base.OnEnter();
         }
 

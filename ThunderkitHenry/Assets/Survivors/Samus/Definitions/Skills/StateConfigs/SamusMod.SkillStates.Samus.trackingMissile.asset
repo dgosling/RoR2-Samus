@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SamusMod.SkillStates.Samus.trackingMissile
   m_EditorClassIdentifier: 
   targetType:
-    assemblyQualifiedName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    assemblyQualifiedName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   serializedFieldsCollection:
     serializedFields:
     - fieldName: projectilePrefab
@@ -27,3 +27,7 @@ MonoBehaviour:
         stringValue: 
         objectValue: {fileID: 5542857733794188179, guid: 52ad163d70855644a9927c06a70daaa0,
           type: 3}
+    - fieldName: smissleObject
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 0}

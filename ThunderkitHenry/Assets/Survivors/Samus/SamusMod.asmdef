@@ -10,7 +10,6 @@
     "precompiledReferences": [
         "BepInEx.dll",
         "R2API.dll",
-        "StubbedShaderConverter.dll",
         "Mono.Cecil.dll",
         "MonoMod.Utils.dll",
         "Wwise.dll",

@@ -6,9 +6,12 @@ using RoR2;
 using System.Security;
 using System.Security.Permissions;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using Rewired.Data;
 using SamusMod.Modules;
 using System.Reflection;
+using MonoMod.RuntimeDetour;
 using MonoMod.RuntimeDetour.HookGen;
 
 [module: UnverifiableCode]
@@ -18,7 +21,7 @@ using MonoMod.RuntimeDetour.HookGen;
 namespace SamusMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency("com.valex.ShaderConverter", BepInDependency.DependencyFlags.HardDependency)]
+    //[BepInDependency("com.valex.ShaderConverter", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
@@ -36,7 +39,7 @@ namespace SamusMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.dgosling.Samus";
         public const string MODNAME = "Samus";
-        public const string MODVERSION = "2.1.2";
+        public const string MODVERSION = "2.1.3";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "DG";
@@ -63,15 +66,15 @@ namespace SamusMod
             Modules.Tokens.Init();
             Modules.Prefabs.Init();
             Modules.Buffs.Init();
-            Modules.ItemDisplays.Init();
+
             Modules.Unlockables.Init();
 
-               
-                ExtraInputs.AddActionsToInputCatalog();
-                var userDataInit = typeof(UserData).GetMethod(nameof(UserData.wVZZKoPFwEvodLvLcYNvVAPKpUj), BindingFlags.NonPublic | BindingFlags.Instance);
-                HookEndpointManager.Add(userDataInit, (Action<Action<UserData>, UserData>)ExtraInputs.AddCustomActions);
 
-            
+            ExtraInputs.AddActionsToInputCatalog();
+            var userDataInit = typeof(UserData).GetMethod(nameof(UserData.wVZZKoPFwEvodLvLcYNvVAPKpUj), BindingFlags.NonPublic | BindingFlags.Instance);
+            HookEndpointManager.Add(userDataInit, (Action<Action<UserData>, UserData>)ExtraInputs.AddCustomActions);
+
+
             //CustomBind();
 
 
@@ -82,10 +85,13 @@ namespace SamusMod
             Modules.ContentPackProvider.Initialize();
 
             Hook();
-        }
 
+            
+        }
+        
         private void Start()
         {
+
             // If Awake isn't the right place for launch debug, you can put some in Start here.
             // Most of the time Awake will do fine though.
             if (debug) { Modules.Helpers.StartDebug(); }
@@ -97,7 +103,7 @@ namespace SamusMod
             On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
             On.RoR2.GenericSkill.SetBonusStockFromBody += GenericSkill_SetBonusStockFromBody;
             On.RoR2.DamageTrail.DoDamage += DamageTrail_DoDamage;
-            On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1 += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1;
+          //  On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1 += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
             On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
