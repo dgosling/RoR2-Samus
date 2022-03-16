@@ -1,0 +1,561 @@
+ManifestFileVersion: 0
+CRC: 1420741619
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: aa04d0406666c5f54a1d559e59f5f573
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 954706694ea9c57ca3b441f9cd34ab6c
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 84
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 96
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1143142494, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
+- Class: 114
+  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 1533710874, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
+- Class: 114
+  Script: {fileID: 488236779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4d207f20988ed8e49b5a3d76f2a2a598, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1dcdbbc1ebe01054f8d5ec7e20262efd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: bdd86482e41106d4aac260b05152f946, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d5e695342f20c1a42a1796e815ecb0fa, type: 3}
+- Class: 114
+  Script: {fileID: -1086023540, guid: fb14ac44d0cfad329934c17bcc9706de, type: 3}
+- Class: 114
+  Script: {fileID: -2038423122, guid: fb14ac44d0cfad329934c17bcc9706de, type: 3}
+- Class: 114
+  Script: {fileID: -1833730433, guid: fb14ac44d0cfad329934c17bcc9706de, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ff17e1d7fc078754c9aaabbecb526b42, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7d4459c8a25654a45bc2d39da9a846a7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2318e32a0ce78414ea86660e5827b2a5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 1392865457, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -46258121, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -132178706, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1067940895, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -197296741, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 953270592, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1277448904, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1077198318, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1530905962, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 89795172, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1144835783, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -365436499, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -202159943, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1792105662, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1549848242, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -359660931, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1512185436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1888550019, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 707171152, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1389097793, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1864444436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1931460509, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1918207524, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1848696948, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -270136354, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1952984350, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 717380117, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -2053006600, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -281164913, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -789927658, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 952828898, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1391837873, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1627637702, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 306635731, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1255927399, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1881990681, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -315171339, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fd23b0ca505efc949b4c55dda56d4b16, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e4c89e3b433c59e47b3a98581699bcfa, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8026728b3db2b0b4b921b6c5bbe6ee87, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0bf7f29c73002da439290a1856fbdb44, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 172bfc4e0e7cc76489dfe40947763206, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+- Class: 114
+  Script: {fileID: -1568778350, guid: 050936fea8909af15a3fd3b64da1ff83, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 120
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 144
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.005.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/Jet2Test.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/DGmeshSamus.mesh
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/ef_samus_flash01.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.005.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/healthBarShadowV.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_morph_001_emi.png
+- Assets/Survivors/Samus/VRAssets/Materials/MAT_0_0.027.mat
+- Assets/Survivors/Samus/VRAssets/Textures/met_gun_001_nor.png
+- Assets/Survivors/Samus/VRAssets/Font/scanface SDF.asset
+- Assets/Survivors/Samus/SamusAssets/Animations/animDGSamus.controller
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_morph_001_col_spec.png
+- Assets/Survivors/Samus/VRAssets/Materials/MAT_0_0.003.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/ray.controller
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.004.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/skill3.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/healthText.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_779E8B03.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/BAF74BDA.mat
+- Assets/Survivors/Samus/VRAssets/Materials/bossFrameMat.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/test.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/GLOW_EC89B813.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.025.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/glow2.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_9C2122BE.png
+- Assets/Survivors/Samus/SamusAssets/Animations/DGspawn.anim
+- Assets/Survivors/Samus/VRAssets/HUD/FRME_CombatHud.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.037.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGdamage.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/glow7.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/Tracker_part.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_2.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/ef_samus_burner00.png
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_1.001.mat
+- Assets/Survivors/Samus/SamusAssets/Prefabs/supermissilePref.prefab
+- Assets/Survivors/Samus/SamusAssets/Prefabs/powerBombExplosion.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/GLOW_EC89B813.png
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.007.mat
+- Assets/Survivors/Samus/VRAssets/samusHand.prefab
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_1649C30D.png
+- Assets/Survivors/Samus/VRAssets/HUD/combatVisor.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_1.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/bossframe.mat
+- Assets/Survivors/Samus/VRAssets/Materials/chargeMuzzle.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texCloudDifferenceBW2.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/cbeamproj.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/CMDL_BCCB83A3.mesh
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/white.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGSamus1Avatar.asset
+- Assets/Survivors/Samus/SamusAssets/Animations/DGwalkB.anim
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_F4A3BA0D.png
+- Assets/Survivors/Samus/VRAssets/Font/scanface.ttf
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Effects/beamImpact.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/3EA4F038.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGsprintTest.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/meshBall2.mesh
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_6.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/hud-color.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/glow2_29782CA6.png
+- Assets/Survivors/Samus/SamusAssets/Animations/disableRay.anim
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Ghosts/powerBombExplosion1Ghost.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.009.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_FD1A3780V.png
+- Assets/Survivors/Samus/VRAssets/Animations/shootmissile.anim
+- Assets/Survivors/Samus/VRAssets/HUD/FRME_Helmet.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_morph_001_col_svg.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/healthBarV.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_bomb_001_col_svg.png
+- Assets/Survivors/Samus/VRAssets/Textures/met_gun_001_col_svg.png
+- Assets/Survivors/Samus/VRAssets/HUD/ballHUD.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/texSamus.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/TXTR_D103A266.png
+- Assets/Survivors/Samus/VRAssets/Materials/MAT_0_0.029.mat
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.002.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/8D262E85.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_1.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_757CDD3E.png
+- Assets/Survivors/Samus/VRAssets/Textures/met_gun_emissive_001_col_svg.png
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_3.001.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/empty.mat
+- Assets/Survivors/Samus/VRAssets/Textures/met_gun_001_emi-svg.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/bomb2.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGtransformOut.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/matBomb.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGfallUp.anim
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_7AFD5BA3.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/bombBaseMesh.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_missile_001_col_svg.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/bombShape.mesh
+- Assets/Survivors/Samus/SamusAssets/Animations/DGaim.mask
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/TXTR_F67CE48B.png
+- Assets/Survivors/Samus/VRAssets/HUD/healthbar.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/gun_light.mat
+- Assets/Survivors/Samus/SamusAssets/Prefabs/beamproj.prefab
+- Assets/Survivors/Samus/VRAssets/HUD/ballHudFrame.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/bomb_base.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/healthBarBack.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_morph_001_nor.png
+- Assets/Survivors/Samus/SamusAssets/Animations/DGjump.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_supermissile_001_emi_svg.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Ghosts/supermissilePrefGhost.prefab
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Trail.prefab
+- Assets/Survivors/Samus/SamusAssets/Animations/DGidle.anim
+- Assets/Survivors/Samus/SamusAssets/Animations/aimV_90D.anim
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/bossHealthBar.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/matBall.mat
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Ghosts/beamprojGhost.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.016.mat
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_5.mat
+- Assets/Survivors/Samus/VRAssets/Materials/MAT_0_0.019.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_C7901750.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/samusTrackingIndicator.prefab
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Projectiles/SamusMissile.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/autoFireskillIcon.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/tri.mesh
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_70CE6D72.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/missile.mat
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_4.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/Text.mat
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.006.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.028.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_915C73C2.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Projectiles/SamusSuperMissile.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/test1.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/0C123CF5.mat
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.mat
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_2.001.mat
+- Assets/Survivors/Samus/VRAssets/Mesh/emissive3Shape.mesh
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/matDGSamus.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGmissileTest.anim
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_1649C30D 1.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.mat
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Projectiles/SamusaltMissile.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/skill2b.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Projectiles/SamusMorphBomb.prefab
+- Assets/Survivors/Samus/VRAssets/HUD/combatHud.prefab
+- Assets/Survivors/Samus/SamusAssets/Animations/DGcbeam_loopTest.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampTritone2.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/beam.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/skill2.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/skill2Track.png
+- Assets/Survivors/Samus/SamusAssets/Animations/chargeStart.anim
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_7A76B8B5.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampMissileTrail.png
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_41599627.png
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_5D25C11E 1.png
+- Assets/Survivors/Samus/VRAssets/Animations/gun.controller
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_5B3B4553.png
+- Assets/Survivors/Samus/VRAssets/HUD/healthbarOver.prefab
+- Assets/Survivors/Samus/SamusAssets/Animations/DGfall.anim
+- Assets/Survivors/Samus/SamusAssets/Animations/DGjumpd.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/bomb_test 1.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/beam_outer.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGwalkF.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/test.renderTexture
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/healthBarBackV.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/glow11_25CAF202.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.036.mat
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Ghosts/missilePrefGhost.prefab
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_915C73C1.png
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_41599628.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_bomb_001_emi_svg.png
+- Assets/Survivors/Samus/SamusAssets/Animations/HUDAnimator.controller
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_9C2122BE 1.png
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_1.002.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_469D5C7B 1.png
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_2.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/texSamusEmission.png
+- Assets/Survivors/Samus/VRAssets/Textures/Assets0.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/Samus-spec.png
+- Assets/Survivors/Samus/SamusAssets/Animations/DGbeamTest.anim
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.001.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.023.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/bomb-sphere.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGwalkR.anim
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.006.mat
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.003.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_7AFD5BA2.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/bombElec.mat
+- Assets/Survivors/Samus/SamusAssets/DGSamusBody.prefab
+- Assets/Survivors/Samus/VRAssets/samusGun.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_1.003.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_82B93505.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/missilePref.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/texSamusIcon.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/text.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/glow7_79B5BD15.png
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_5.001.mat
+- Assets/Survivors/Samus/SamusContentPack.asset
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/healthbarBackground.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_1.002.mat
+- Assets/Survivors/Samus/VRAssets/Animations/gunRest.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/Crosshair.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/TXTR_3EA4F038.png
+- Assets/Survivors/Samus/VRAssets/healthbar.prefab
+- Assets/Survivors/Samus/SamusAssets/Animations/DGcbeam_maxTest.anim
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Ghosts/cbeamprojGhost.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_supermissile_001_col_svg.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/white.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/DGmeshSamuss.mesh
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Ghosts/beamTrail.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_4.001.mat
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Projectiles/SamusBomb.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.003.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_469D5C7B.png
+- Assets/Survivors/Samus/SamusAssets/Animations/aimV_45U.anim
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.032.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/meshDGSamus.mesh
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_transportation_001_col_svg.png
+- Assets/Survivors/Samus/SamusAssets/Animations/DGcbeam_startTest.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/skillP.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.021.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampDefault.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/healthBar.mat
+- Assets/Survivors/Samus/VRAssets/Materials/MAT_0_0.010.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_5490EFF7.png
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_0.008.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampTwotoneWhite.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/TXTR_BAF74BDA.png
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_2B26BE59.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_2.002.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampTwotoneBlack.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/TXTR_8D262E85.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/texMainSkin.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/bomb-white.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampTwotone.png
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_480B94CD.png
+- Assets/Survivors/Samus/SamusAssets/Animations/enableRay.anim
+- Assets/Survivors/Samus/SamusAssets/Animations/chargeMaxShoot.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/meshDGSsamus.mesh
+- Assets/Survivors/Samus/VRAssets/Animations/shoot.anim
+- Assets/Survivors/Samus/SamusAssets/Animations/energyPulse.anim
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.009.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/BossHealthBarBack.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/supermissile.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_DF884DD0.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/morphBomb.prefab
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_A7C4129F.png
+- Assets/Survivors/Samus/VRAssets/Textures/met_gun_emissive_001_nor.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.031.mat
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Ghosts/morphBombGhost.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampTritone.png
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_FD1A3780.png
+- Assets/Survivors/Samus/VRAssets/Materials/helmet/MAT_0_3.mat
+- Assets/Survivors/Samus/VRAssets/Materials/MAT_0_0.034.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampGenericDust.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/skill.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/TrackerMat.mat
+- Assets/Survivors/Samus/VRAssets/HUD/bossHud.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Icons/skill4.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.033.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/aimV_45D.anim
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_2.001.mat
+- Assets/Survivors/Samus/VRAssets/Mesh/arm_cannon4_VIS_O_OBJShape.001.mesh
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampTritoneReversed.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Ghosts/bombprojGhost.prefab
+- Assets/Survivors/Samus/SamusAssets/Animations/displayDGSamus.controller
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_0C4F7F24.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Projectiles/SamusPowerBomb.prefab
+- Assets/Survivors/Samus/SamusAssets/Animations/SgestureMask.mask
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Effects/missileMuzzle.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/missileShape.mesh
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.017.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/aimV_90U.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/TXTR_0C123CF5.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/normalbeamMat.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/samus-normal.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/ef_cmn_smoke05.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/bombproj.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/bomb_test.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/texSmokeRamp.png
+- Assets/Survivors/Samus/SamusAssets/Animations/DGtransformIn1 1.anim
+- Assets/Survivors/Samus/SamusAssets/Prefabs/DGmdlSamus.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampTwotoneEnvironment.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Effects/bombExplosion.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/Jet.mat
+- Assets/Survivors/Samus/SamusAssets/DGSamusDisplay.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/transport.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/electrical_4E470390.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/meshDGBall.mesh
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/missileIcon.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/Material.001.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_1.001.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/D103A266.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/healthBarShadow.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/test 1.png
+- Assets/Survivors/Samus/VRAssets/HUD/healthbarttest.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/glow10_EE9621A7.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/chargeMuzzle.prefab
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_4776EA65.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/meshBall.mesh
+- Assets/Survivors/Samus/SamusAssets/Animations/chargeLoop.anim
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_1.004.mat
+- Assets/Survivors/Samus/VRAssets/Materials/MAT_0_0.021.mat
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Effects/beamFireMuzzle.prefab
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.027.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_7A76B8B6.png
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/smoke.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Mesh/supermissileShape.mesh
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Projectiles/SamusBeam.prefab
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_5D25C11E.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/anygui-healthbar.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_C7901751.png
+- Assets/Survivors/Samus/SamusAssets/Prefabs/Effects/powerBombExplosion.prefab
+- Assets/Survivors/Samus/SamusAssets/Resources/Materials/New Material.mat
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_4719867D.png
+- Assets/Survivors/Samus/VRAssets/Materials/gun.mat
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/met_missile_001_emi_svg.png
+- Assets/Survivors/Samus/VRAssets/Mesh/gamemodelShape.mesh
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/anygui-healthbarBack.mat
+- Assets/Survivors/Samus/SamusAssets/Animations/DGtransformIn.anim
+- Assets/Survivors/Samus/VRAssets/HUD/combined.prefab
+- Assets/Survivors/Samus/SamusAssets/Animations/DGwalkL.anim
+- Assets/Survivors/Samus/SamusAssets/Resources/Textures/RoR2/texRampTritoneSmoothed.png
+- Assets/Survivors/Samus/VRAssets/Textures/TXTR_293276E8.png
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.011.mat
+- Assets/Survivors/Samus/VRAssets/Materials/combatHUD/MAT_0_0.029.mat
+- Assets/Survivors/Samus/VRAssets/Animations/chargeShoot.anim
+- Assets/Survivors/Samus/VRAssets/HUD/hudHandler.prefab
+Dependencies: []

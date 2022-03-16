@@ -1,0 +1,152 @@
+ManifestFileVersion: 0
+CRC: 564439820
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 21b397389cb0e4394b96fa7efee66da5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cfb28957b5958d58f941765386de7a07
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 144
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGwalkBL.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGwalkBL.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/gun-missile.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walkB.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/beam_charge.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Roll.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/DGdisplaySamus.prefab
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGmissile.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGwalkR.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGbeam.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/aimH_90L.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/missile.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/shoot.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGcbeam_maxTest.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/aimH.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Trail.controller
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/transformOut.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGsprint.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walkL.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGcbeam_loop.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGcbeam_start.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/aimH_45R.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/beam.controller
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGbeamTest.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGjumpD.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGwalkBR.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGwalkB.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGmissile.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGwalkF.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGcbeam_start.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGfall.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walk.controller
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/aimY.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/aimH_90R.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/mdlSamus.prefab
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/hurt.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGSamus1Avatar
+  1.asset
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/bombAvatar.asset
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/aimH_45L.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walkBR.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Missileshoot.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGcbeam_loop.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walkFL.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGcbeam_max.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGtransformIn.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/supermissile_anim.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/missile-swoosh1.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Dash.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGwalkFL.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGspawn.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/PART_13338231.controller
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walkFR.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGSamusAvatar.asset
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGcbeam_max.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Particle
+  System.controller
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/test-PART_13338231.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGwalkBR.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/samus-c00-edit_001Avatar.asset
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGidle.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGwalkL.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGbeam.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/transformIn.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGwalkFL.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGcbeam_loopTest.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Sprint.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGairiel.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/SaimMask.mask
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Missile_particle.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Idle.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGcbeam_startTest.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/fall.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/jumpD.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/SimpactMask.mask
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/jump.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/samusDisplay.prefab
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGdamage.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGwalkFR.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/ballAvatar.asset
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/temp.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/gun.controller
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGsprint.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walkR.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGjump.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/transportation_anim.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/missile_anim.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walkBL.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/primeMissile.controller
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Junk/DGtransformOut.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/Spawn.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/animDGSamus
+  1.controller
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/DGwalkFR.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/walkF.anim
+- Assets/imported assets/ExampleSurvivor/ExampleSurvivorAssets/Animations/gun-shoot.anim
+Dependencies: []

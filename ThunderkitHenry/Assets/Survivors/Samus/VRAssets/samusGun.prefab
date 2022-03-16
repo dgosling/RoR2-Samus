@@ -945,7 +945,7 @@ MonoBehaviour:
   rendererInfos:
   - renderer: {fileID: 5717998847728486055}
     defaultMaterial: {fileID: 2100000, guid: a6af615ff3dd7634593e679dade66bd6, type: 2}
-    defaultShadowCastingMode: 0
+    defaultShadowCastingMode: 1
     ignoreOverlays: 0
   - renderer: {fileID: 5717998847728486053}
     defaultMaterial: {fileID: 2100000, guid: 72de56649c627354e90482f67384575f, type: 2}

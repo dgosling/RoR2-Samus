@@ -32,8 +32,9 @@ namespace SamusMod.SkillStates.BaseStates
         private bool hasFired;
         private Animator animator;
         private string muzzleString;
+        private Transform muzzleTransform;
         public HurtBox target;
-
+        private Ray gunRay;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -47,6 +48,7 @@ namespace SamusMod.SkillStates.BaseStates
             this.PlayAnimation("Gesture, Override", "Missile", "Missile.playbackRate", this.duration);
             secStock = skillLocator.secondary.stock;
             //muzzleEffectPrefab = SamusMod.Modules.Assets.missileEffect;
+            muzzleTransform = GetModelChildLocator().FindChild(muzzleString);
         }
 
         public override void OnExit()
@@ -74,6 +76,7 @@ namespace SamusMod.SkillStates.BaseStates
                 base.characterBody.AddSpreadBloom(.75f);
                 //Debug.Log(target);
                 Ray aimRay = base.GetAimRay();
+                gunRay = new Ray(muzzleTransform.position,aimRay.direction);
                 if (VRAPI.Utils.IsUsingMotionControls(characterBody))
                     aimRay = VRAPI.MotionControls.dominantHand.aimRay;
                 if (muzzleEffectPrefab != null)
@@ -92,7 +95,7 @@ namespace SamusMod.SkillStates.BaseStates
                     //    speedOverride = Modules.StaticValues.missileSpeed,
                     //    target = this.target.gameObject
                     //};
-                    MissileUtils.FireMissile(aimRay.origin, characterBody, new ProcChainMask(), target.gameObject, damageCoef * damageStat, RollCrit(), projectilePrefab, DamageColorIndex.Default);
+                    MissileUtils.FireMissile(gunRay.origin, characterBody, new ProcChainMask(), target.gameObject, damageCoef * damageStat, RollCrit(), projectilePrefab, DamageColorIndex.Default,gunRay.direction + UnityEngine.Random.insideUnitSphere * 0.1f, 100f,true);
                 }
 
                 else if (base.isAuthority && this.target == null&&!sMissile)
@@ -111,16 +114,16 @@ namespace SamusMod.SkillStates.BaseStates
                     //    crit = base.RollCrit(),
                     //    speedOverride = Modules.StaticValues.missileSpeed
                     //};
-                    MissileUtils.FireMissile(aimRay.origin, characterBody, new ProcChainMask(), (GameObject)null, damageCoef * damageStat, RollCrit(), projectilePrefab, DamageColorIndex.Default);
+                    MissileUtils.FireMissile(gunRay.origin, characterBody, new ProcChainMask(), (GameObject)null, damageCoef * damageStat, RollCrit(), projectilePrefab, DamageColorIndex.Default,gunRay.direction + UnityEngine.Random.insideUnitSphere * 0.25f, 100f, true);
                 }
                 else if (base.isAuthority && this.target == null && sMissile)
                 {
-                    SuperMissileICBMLaunch(aimRay.origin, characterBody, new ProcChainMask(), (GameObject)null, damageCoef * damageStat, RollCrit(), projectilePrefab, DamageColorIndex.Default);
+                    SuperMissileICBMLaunch(gunRay.origin, characterBody, new ProcChainMask(), (GameObject)null, damageCoef * damageStat, RollCrit(), projectilePrefab, DamageColorIndex.Default);
                 }
 
             }
         }
-        void SuperMissileICBMLaunch(Vector3 position, CharacterBody attacker, ProcChainMask procChainMask, GameObject victim,float missileDamage,bool isCrit,GameObject projectilePrefab,DamageColorIndex damageColorIndex)
+        private void SuperMissileICBMLaunch(Vector3 position, CharacterBody attacker, ProcChainMask procChainMask, GameObject victim,float missileDamage,bool isCrit,GameObject projectilePrefab,DamageColorIndex damageColorIndex)
         {
             Vector3 initialDirection = Vector3.up + UnityEngine.Random.insideUnitSphere * 0.1f;
             float force = 200f;
@@ -135,7 +138,7 @@ namespace SamusMod.SkillStates.BaseStates
             {
                 projectilePrefab = projectilePrefab,
                 position = position,
-                rotation = Util.QuaternionSafeLookRotation(GetAimRay().direction),
+                rotation = Util.QuaternionSafeLookRotation(gunRay.direction),
                 procChainMask = procChainMask1,
                 target = victim,
                 owner = attacker.gameObject,

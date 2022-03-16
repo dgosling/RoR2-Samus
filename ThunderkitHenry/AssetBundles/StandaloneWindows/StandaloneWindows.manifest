@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3260114433
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: samusassets
+      Dependencies: {}

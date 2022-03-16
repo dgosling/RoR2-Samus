@@ -56,7 +56,7 @@ MonoBehaviour:
   Author: dgosling
   Name: dgoslings_Samus_Mod
   Description: Now Using RoR2 Shaders and ThunderKit!
-  Version: 2.1.3
+  Version: 2.1.4
   Dependencies:
   - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
   - {fileID: 11400000, guid: 7fb5b3d290bed6011ed7e8daf230df89, type: 2}

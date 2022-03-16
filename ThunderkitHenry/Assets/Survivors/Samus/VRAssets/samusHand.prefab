@@ -53,7 +53,7 @@ MonoBehaviour:
   rendererInfos:
   - renderer: {fileID: 5389777541087205105}
     defaultMaterial: {fileID: 2100000, guid: 3ee894a6bcfd8df44bcfb061b3f69538, type: 2}
-    defaultShadowCastingMode: 0
+    defaultShadowCastingMode: 1
     ignoreOverlays: 0
 --- !u!1 &3590624281037528671
 GameObject:
@@ -692,6 +692,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -703,6 +704,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

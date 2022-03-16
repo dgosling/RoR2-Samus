@@ -2,108 +2,112 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1045 &1
 EditorBuildSettings:
+  m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/RoR2/Scenes/loadingbasic.unity
-    guid: 4ccf1079e6f94a0fb81f4caa15a82b8c
-  - enabled: 1
-    path: Assets/RoR2/Scenes/splash.unity
-    guid: 4df3097ece0b42f985ea976c6b636767
-  - enabled: 1
-    path: Assets/RoR2/Scenes/intro.unity
-    guid: 6db4307c49a142c7918b9819c0c249db
-  - enabled: 1
-    path: Assets/RoR2/Scenes/title.unity
-    guid: 318dcccfc9ca452d8100bfbdd0ebf020
-  - enabled: 1
-    path: Assets/RoR2/Scenes/lobby.unity
-    guid: bb906d85042a47ef870e4b4f23da2a57
-  - enabled: 1
-    path: Assets/RoR2/Scenes/blackbeach.unity
-    guid: 7923c1f042370d64dae4591d16754a1b
-  - enabled: 1
-    path: Assets/RoR2/Scenes/logbook.unity
-    guid: 10190b2bf2334aa1a4886fdfc09cd071
-  - enabled: 1
-    path: Assets/RoR2/Scenes/testscene.unity
-    guid: 928362bdb80c48319e40c4b8c4ec0f82
-  - enabled: 1
-    path: Assets/RoR2/Scenes/goolake.unity
-    guid: 3bf28b128ef9036448dedbd7d8378e69
-  - enabled: 1
-    path: Assets/RoR2/Scenes/bazaar.unity
-    guid: 90c37a3fb62347b6b1643b8f1d6f31a0
-  - enabled: 1
-    path: Assets/RoR2/Scenes/frozenwall.unity
-    guid: dccb76e469db4a46a48c77ea00f576b3
-  - enabled: 1
-    path: Assets/RoR2/Scenes/crystalworld.unity
-    guid: a8e0e6afaa78464ab151ebf575ae545d
-  - enabled: 1
-    path: Assets/RoR2/Scenes/goldshores.unity
-    guid: c3fcb7449a194471a9353e8ffef939c5
-  - enabled: 1
-    path: Assets/RoR2/Scenes/dampcave.unity
-    guid: eae90dc4d97641bc8daf6a17f05b3eb1
-  - enabled: 1
-    path: Assets/RoR2/Scenes/golemplains.unity
-    guid: cfaa9d92367dc0d41a6ab468607b1a5b
-  - enabled: 1
-    path: Assets/RoR2/Scenes/dampcavesimple.unity
-    guid: 89d21c13f79b8b9418bb8d35311f9ce1
-  - enabled: 1
-    path: Assets/RoR2/Scenes/foggyswamp.unity
-    guid: b28da714b4d71ed499ff23891363c7d2
-  - enabled: 1
-    path: Assets/RoR2/Scenes/mysteryspace.unity
-    guid: e7ee241047874c33af3215ef8672fe85
-  - enabled: 1
-    path: Assets/RoR2/Scenes/blackbeachTest.unity
-    guid: 7923c1f042370d64dae4591d16754a1b
-  - enabled: 1
-    path: Assets/RoR2/Scenes/golemplains_trailer.unity
-    guid: ff62aa68eff84a22b6619892016792ac
-  - enabled: 1
-    path: Assets/RoR2/Scenes/wispgraveyard.unity
-    guid: 3514e1ade5167f54f92bb3449595c4be
-  - enabled: 1
-    path: Assets/RoR2/Scenes/shipgraveyard.unity
-    guid: 2d3c7cf8eb86e134d92a80b2713e5840
-  - enabled: 1
-    path: Assets/RoR2/Scenes/arena.unity
-    guid: cd55221be3d3e4542a46b14e27e7e2f5
-  - enabled: 1
-    path: Assets/RoR2/Scenes/golemplains2.unity
-    guid: ed37018179769f446bcaf187c67992ec
-  - enabled: 1
-    path: Assets/RoR2/Scenes/blackbeach2.unity
-    guid: 1b79a8290425e994289f3b6c5fd2a0d2
-  - enabled: 1
-    path: Assets/RoR2/Scenes/limbo.unity
-    guid: d17ac8bab12f4271acc9b3d492480aa9
-  - enabled: 1
-    path: Assets/RoR2/Scenes/artifactworld.unity
-    guid: f36b45762389467fb39b7c5a9e2acf7c
-  - enabled: 1
-    path: Assets/RoR2/Scenes/rootjungle.unity
-    guid: 87118fc61aa299447859e2f95ac018de
-  - enabled: 1
-    path: Assets/RoR2/Scenes/skymeadow.unity
-    guid: 85844fc8cda02b74480de96e69d49445
-  - enabled: 1
-    path: Assets/RoR2/Scenes/moon.unity
-    guid: f83a6302dc808824c89c519f124a6938
-  - enabled: 1
-    path: Assets/RoR2/Scenes/outro.unity
-    guid: b6624acbd0a74561a8d0c4fc5642788b
-  - enabled: 1
-    path: Assets/RoR2/Scenes/eclipseworld.unity
-    guid: b098c0c29ee04c64b66052f9a236111c
-  - enabled: 1
-    path: Assets/RoR2/Scenes/ai_test.unity
-    guid: 021d1ee9f9954739a7d4e53617b286fb
-  - enabled: 1
-    path: Assets/RoR2/Scenes/moon2.unity
-    guid: 2877eb890bc1f284fbb86f14efa82a0a
+    path: Assets/Scenes/a.unity
+    guid: a683fffd88e696b4cb247f6ae89c9281
   m_configObjects: {}
