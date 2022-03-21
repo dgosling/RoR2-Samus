@@ -8,6 +8,7 @@ using RoR2EditorKit.Settings;
 using RoR2EditorKit.Common;
 using System;
 using Object = UnityEngine.Object;
+using RoR2EditorKit.Utilities;
 
 namespace RoR2EditorKit.Core.Inspectors
 {
@@ -34,7 +35,7 @@ namespace RoR2EditorKit.Core.Inspectors
         {
             get
             {
-                if (_inspectorSetting == null)
+                if(_inspectorSetting == null)
                 {
                     _inspectorSetting = Settings.InspectorSettings.GetOrCreateInspectorSetting(GetType()); ;
                 }
@@ -42,7 +43,7 @@ namespace RoR2EditorKit.Core.Inspectors
             }
             set
             {
-                if (_inspectorSetting != value)
+                if(_inspectorSetting != value)
                 {
                     var index = Settings.InspectorSettings.inspectorSettings.IndexOf(_inspectorSetting);
                     Settings.InspectorSettings.inspectorSettings[index] = value;
@@ -64,7 +65,7 @@ namespace RoR2EditorKit.Core.Inspectors
             }
             set
             {
-                if (value != InspectorSetting.isEnabled)
+                if(value != InspectorSetting.isEnabled)
                 {
                     InspectorSetting.isEnabled = value;
                     OnInspectorEnabledChange();
@@ -182,7 +183,7 @@ namespace RoR2EditorKit.Core.Inspectors
 
             EnsureNamingConventions();
 
-            if (!InspectorEnabled)
+            if(!InspectorEnabled)
             {
                 var defaultImguiContainer = new IMGUIContainer(OnInspectorGUI);
                 defaultImguiContainer.name = "defaultInspector";
@@ -201,8 +202,7 @@ namespace RoR2EditorKit.Core.Inspectors
 
         protected virtual bool ValidateUXMLPath(string path)
         {
-            Debug.Log(path);
-            return path.StartsWith("Assets/RoR2EditorKit") || path.StartsWith("Packages/riskofthunder-ror2editorkit");
+            return path.StartsWith(Constants.AssetFolderPath) || path.StartsWith(Constants.PackageFolderPath);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace RoR2EditorKit.Core.Inspectors
         /// <param name="name">Optional parameter to find the element</param>
         /// <param name="ussClass">Optional parameter to find the element</param>
         /// <returns>The VisualElement specified</returns>
-        protected TElement Find<TElement>(VisualElement elementToSearch, string name = null, string ussClass = null) where TElement : VisualElement
+        protected TElement Find<TElement>(VisualElement elementToSearch, string name = null, string ussClass = null)where TElement : VisualElement
         {
             return elementToSearch.Q<TElement>(name, ussClass);
         }
@@ -378,30 +378,30 @@ namespace RoR2EditorKit.Core.Inspectors
         /// <returns>If the convention is not followed, an IMGUIContainer with a help box, otherwise it returns null.</returns>
         protected virtual IMGUIContainer EnsureNamingConventions(ChangeEvent<string> evt = null)
         {
-            if (!Settings.InspectorSettings.enableNamingConventions)
+            if(!Settings.InspectorSettings.enableNamingConventions)
             {
                 return null;
             }
 
-            if (prefixContainer != null)
+            if(prefixContainer != null)
             {
                 prefixContainer.TryRemoveFromParent();
             }
 
-            if (evt != null)
+            if(evt != null)
             {
                 TargetType.name = evt.newValue;
             }
 
-            if (prefixUsesTokenPrefix && Settings.TokenPrefix.IsNullOrEmptyOrWhitespace())
+            if(prefixUsesTokenPrefix && Settings.TokenPrefix.IsNullOrEmptyOrWhitespace())
             {
                 throw ErrorShorthands.ThrowNullTokenPrefix();
             }
 
 
-            if (prefix != null)
+            if(prefix != null)
             {
-                if (TargetType && !TargetType.name.ToLowerInvariant().StartsWith(prefix.ToLowerInvariant()))
+                if(TargetType && !TargetType.name.ToLowerInvariant().StartsWith(prefix.ToLowerInvariant()))
                 {
                     string typeName = typeof(T).Name;
                     prefixContainer = CreateHelpBox($"This {typeName}'s name should start with {prefix} for naming conventions.", MessageType.Info);

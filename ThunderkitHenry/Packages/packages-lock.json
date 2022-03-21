@@ -7,13 +7,13 @@
       "dependencies": {}
     },
     "com.passivepicasso.thunderkit": {
-      "version": "https://github.com/PassivePicasso/ThunderKit.git",
+      "version": "https://github.com/PassivePicasso/ThunderKit.git#RC_5_0_0",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.16.1"
       },
-      "hash": "26097cc7eef1255a04f96fd9cba23b03ba342cb5"
+      "hash": "b246655c79ff33409690fc8ca66043ad14405ded"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

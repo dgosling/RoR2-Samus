@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 624172028979364248}
   - component: {fileID: 624172028979364249}
   - component: {fileID: 624172028979364246}
+  - component: {fileID: 5219969109973221215}
   - component: {fileID: 624172028979364244}
   - component: {fileID: 4112803014512122883}
   - component: {fileID: 624172028979364245}
@@ -137,7 +138,6 @@ GameObject:
   - component: {fileID: 9056801057465966797}
   - component: {fileID: 5050056297215124436}
   - component: {fileID: 41317577845914576}
-  - component: {fileID: 5219969109973221215}
   m_Layer: 0
   m_Name: DGSamusBody
   m_TagString: Player
@@ -216,6 +216,34 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &5219969109973221215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624172028979364242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <skillDef>k__BackingField: {fileID: 0}
+  _skillFamily: {fileID: 11400000, guid: 6d3c0c265db14c44ea57204f4acf7df3, type: 2}
+  <baseSkill>k__BackingField: {fileID: 0}
+  skillName: Power Bomb
+  hideInCharacterSelect: 1
+  <stateMachine>k__BackingField: {fileID: 0}
+  <characterBody>k__BackingField: {fileID: 0}
+  <defaultSkillDef>k__BackingField: {fileID: 0}
+  bonusStockFromBody: 0
+  <maxStock>k__BackingField: 0
+  <stock>k__BackingField: 0
+  finalRechargeInterval: 0
+  _cooldownScale: 1
+  _flatCooldownReduction: 1
+  <rechargeStopwatch>k__BackingField: 0
+  hasExecutedSuccessfully: 0
 --- !u!114 &624172028979364244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +468,7 @@ MonoBehaviour:
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
   preferredInitialStateType:
-    _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod
+    _typeName: EntityStates.Uninitialized, RoR2
   skinIndex: 0
   customKillTotalStatName: 
   overrideCoreTransform: {fileID: 0}
@@ -837,7 +865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customName: Body
   initialStateType:
-    _typeName: EntityStates.SpawnTeleporterState, RoR2
+    _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod
   mainStateType:
     _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod
   <networker>k__BackingField: {fileID: 0}
@@ -1026,34 +1054,6 @@ MonoBehaviour:
   <baseSkill>k__BackingField: {fileID: 0}
   skillName: Super Missile
   hideInCharacterSelect: 0
-  <stateMachine>k__BackingField: {fileID: 0}
-  <characterBody>k__BackingField: {fileID: 0}
-  <defaultSkillDef>k__BackingField: {fileID: 0}
-  bonusStockFromBody: 0
-  <maxStock>k__BackingField: 0
-  <stock>k__BackingField: 0
-  finalRechargeInterval: 0
-  _cooldownScale: 1
-  _flatCooldownReduction: 1
-  <rechargeStopwatch>k__BackingField: 0
-  hasExecutedSuccessfully: 0
---- !u!114 &5219969109973221215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624172028979364242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <skillDef>k__BackingField: {fileID: 0}
-  _skillFamily: {fileID: 11400000, guid: 6d3c0c265db14c44ea57204f4acf7df3, type: 2}
-  <baseSkill>k__BackingField: {fileID: 0}
-  skillName: Power Bomb
-  hideInCharacterSelect: 1
   <stateMachine>k__BackingField: {fileID: 0}
   <characterBody>k__BackingField: {fileID: 0}
   <defaultSkillDef>k__BackingField: {fileID: 0}
@@ -1993,8 +1993,7 @@ MonoBehaviour:
   - {fileID: 3856944587015190344}
   - {fileID: 3856944587015190312}
   - {fileID: 3856944587015190374}
-  componentsToDisableOnRagdoll:
-  - {fileID: 2733108197195771843}
+  componentsToDisableOnRagdoll: []
   animator: {fileID: 0}
 --- !u!114 &3986274616578433398
 MonoBehaviour:

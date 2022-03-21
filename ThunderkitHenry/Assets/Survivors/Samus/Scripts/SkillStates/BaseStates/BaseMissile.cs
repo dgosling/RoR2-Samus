@@ -9,7 +9,7 @@ using EntityStates;
 namespace SamusMod.SkillStates.BaseStates
 {
 
-    public abstract class BaseMissile : BaseSkillState
+    public class BaseMissile : BaseSkillState
     {
        
         public float damageCoef;

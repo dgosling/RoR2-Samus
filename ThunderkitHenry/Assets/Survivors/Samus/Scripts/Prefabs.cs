@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using UnityEngine.Networking;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace SamusMod.Modules
             //This is if you want to use a custom crosshair or other stuff.
 
             bodyPrefabs[0].GetComponent<CharacterBody>()._defaultCrosshairPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair");
-
+            
             //AddMaterialControllers();
         }
 
@@ -48,6 +49,8 @@ namespace SamusMod.Modules
 
                 SetupRagdoll(g);
             }
+
+
         }
         // Add Material Controllers to character to edit materials using RoR2 materials in-game.
         private static void AddMaterialControllers()

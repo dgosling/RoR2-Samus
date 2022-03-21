@@ -25,7 +25,6 @@ namespace RoR2EditorKit.Core.EditorWindows
 
         protected virtual bool ValidateUXMLPath(string path)
         {
-            Debug.Log(path);
             return path.StartsWith("Assets/RoR2EditorKit") || path.StartsWith("/Packages/riskofthunder-ror2editorkit");
         }
 

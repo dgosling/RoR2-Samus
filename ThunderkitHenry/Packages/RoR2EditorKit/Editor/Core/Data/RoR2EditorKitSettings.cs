@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RoR2EditorKit.Utilities;
+using System.Collections.Generic;
 using System.Linq;
 using ThunderKit.Core.Data;
 using ThunderKit.Core.Manifests;
@@ -25,6 +26,8 @@ namespace RoR2EditorKit.Settings
         public string TokenPrefix;
 
         public Manifest MainManifest;
+
+        public bool madeRoR2EKAssetsNonEditable = false;
 
         public EditorInspectorSettings InspectorSettings { get => GetOrCreateSettings<EditorInspectorSettings>(); }
 

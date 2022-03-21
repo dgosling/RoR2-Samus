@@ -6,9 +6,12 @@ namespace SamusMod.SkillStates.BaseStates
 {
 
 
-    public abstract class ChargeBeamBase : BaseSkillState
+    public class ChargeBeamBase : BaseSkillState
     {
-        protected abstract BaseFireBeam GetNextState();
+        public virtual BaseFireBeam GetNextBase()
+        {
+            return new BaseFireBeam();
+        }
         [SerializeField]
         public GameObject chargeEffectPrefab;
         [SerializeField]
@@ -96,7 +99,7 @@ namespace SamusMod.SkillStates.BaseStates
 
         }
 
-        protected float calcCharge()
+        protected virtual float calcCharge()
         {
             if (base.age <= Time.fixedDeltaTime)
                 return Mathf.Clamp01(Time.fixedDeltaTime / this.duration);
@@ -133,7 +136,7 @@ namespace SamusMod.SkillStates.BaseStates
             }
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.age >= ChargeBeamBase.minChargeDuration)))
             {
-                BaseFireBeam nextState = this.GetNextState();
+                BaseFireBeam nextState = this.GetNextBase();
                 nextState.charge = charge;
                 this.outer.SetNextState(nextState);
             }

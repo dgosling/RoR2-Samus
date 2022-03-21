@@ -78,18 +78,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 829c004af9f5fd840980f6fc0064ad0e, type: 2}
   - {fileID: 11400000, guid: 3190efcdc8285b14e9373c5d11206a4d, type: 2}
   - {fileID: 11400000, guid: c4816f816f894c24bb7e14bffe94595b, type: 2}
-  entityStateTypes:
-  - _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod
-  - _typeName: SamusMod.SkillStates.BaseStates.DeathState, SamusMod
-  - _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.AutoFireBeam, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.ChargeBeam, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.ExitMorphBall, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.FireBeam, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.Missile, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.MorphBallBomb, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.morphBallEnter, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.MorphBallPBomb, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.Roll, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.SMissile, SamusMod
-  - _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod
+  entityStateTypes: []

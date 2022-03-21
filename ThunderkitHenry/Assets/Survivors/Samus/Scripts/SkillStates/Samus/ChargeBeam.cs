@@ -85,7 +85,7 @@ namespace SamusMod.SkillStates.Samus
             //this.chargeEffectPrefab.transform.localScale = new Vector3(.1f,.1f,.1f);
         }
 
-        protected override BaseFireBeam GetNextState()
+        public override BaseFireBeam GetNextBase()
         {
             return new FireBeam();
         }

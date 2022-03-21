@@ -9,7 +9,7 @@ namespace SamusMod.SkillStates.BaseStates
 {
 
 
-    public abstract class BaseFireBeam : BaseSkillState
+    public class BaseFireBeam : BaseSkillState
     {
         // Start is called before the first frame update
         [SerializeField]
@@ -98,7 +98,7 @@ namespace SamusMod.SkillStates.BaseStates
 
             this.Fire();
         }
-        public void ResizeProjectile()
+        public virtual void ResizeProjectile()
         {
 
             this.projectilePrefab.transform.localScale = (this.projectilePrefab.transform.localScale * this.charge) + new Vector3(.1f, .1f, .1f);

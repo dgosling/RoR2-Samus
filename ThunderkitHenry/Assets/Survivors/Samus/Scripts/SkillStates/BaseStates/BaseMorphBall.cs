@@ -8,7 +8,7 @@ namespace SamusMod.SkillStates.BaseStates
 
 
 
-    public abstract class BaseMorphBall : BaseSkillState
+    public class BaseMorphBall : BaseSkillState
     {
         private ChildLocator ChildLocator;
         private bool onEnter;

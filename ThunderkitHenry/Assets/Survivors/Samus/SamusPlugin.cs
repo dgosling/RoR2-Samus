@@ -30,7 +30,8 @@ namespace SamusMod
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
-        "UnlockableAPI"
+        "UnlockableAPI",
+        nameof(R2API.ContentManagement.R2APIContentManager)
     })]
     public class SamusPlugin : BaseUnityPlugin
     {
@@ -39,7 +40,7 @@ namespace SamusMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.dgosling.Samus";
         public const string MODNAME = "Samus";
-        public const string MODVERSION = "2.1.4";
+        public const string MODVERSION = "2.1.5";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "DG";
@@ -54,8 +55,9 @@ namespace SamusMod
 
         private void Awake()
         {
+            
             instance = this;
-
+            //On.RoR2.Networking.NetworkManagerSystem.OnClientConnect += (self, user, t) => { };
             // Load/Configure assets and read Config
 
             Modules.Config.ReadConfig();
@@ -82,7 +84,7 @@ namespace SamusMod
             if (debug) { Modules.Helpers.AwakeDebug(); }
 
             //Initialize Content Pack
-            Modules.ContentPackProvider.Initialize();
+            ContentPackProvider.Initialize();
 
             Hook();
 

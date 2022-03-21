@@ -21,7 +21,8 @@
         "KinematicCharacterController.dll",
         "RoR2.dll",
         "LegacyResourcesAPI.dll",
-        "VRAPI.dll"
+        "VRAPI.dll",
+        "HGCSharpUtils.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
