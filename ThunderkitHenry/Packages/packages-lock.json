@@ -13,7 +13,7 @@
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.16.1"
       },
-      "hash": "b246655c79ff33409690fc8ca66043ad14405ded"
+      "hash": "71788ca1e8d1cd4e2a4a93d7b7d0e19e95d5abd8"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -89,13 +89,6 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "com.unity.ui.builder": {
-      "version": "1.0.0-preview.18",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.7",
       "depth": 0,
@@ -128,6 +121,12 @@
     },
     "drbibop-vrmod": {
       "version": "file:VRMod",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "nebby-unitymultiplayerhlapi": {
+      "version": "file:UnityMultiplayerHLAPI",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

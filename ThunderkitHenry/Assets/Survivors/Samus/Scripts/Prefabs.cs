@@ -47,7 +47,7 @@ namespace SamusMod.Modules
                 var fs = g.GetComponentInChildren<FootstepHandler>();
                 fs.footstepDustPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/GenericFootstepDust");
 
-                SetupRagdoll(g);
+                SetupRagdoll(g.GetComponentInChildren<RagdollController>().gameObject);
             }
 
 

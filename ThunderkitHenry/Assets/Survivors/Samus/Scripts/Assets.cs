@@ -181,14 +181,14 @@ namespace SamusMod.Modules
 					SamusPlugin.cancel = true;
 					return;
 				}
-				List<GameObject> networkObj = new List<GameObject>();
-				foreach (GameObject item in mainAssetBundle.LoadAllAssets<GameObject>())
-				{
-					if(item.TryGetComponent<NetworkIdentity>(out NetworkIdentity a))
-                    {
-						PrefabAPI.RegisterNetworkPrefab(item);
-                    }
-				}
+				//List<GameObject> networkObj = new List<GameObject>();
+				//foreach (GameObject item in mainAssetBundle.LoadAllAssets<GameObject>())
+				//{
+				//	if(item.TryGetComponent<NetworkIdentity>(out NetworkIdentity a))
+    //                {
+				//		PrefabAPI.RegisterNetworkPrefab(item);
+    //                }
+				//}
 				LoadContentPack();
 			}
 
@@ -202,7 +202,7 @@ namespace SamusMod.Modules
 			serialContentPack = mainAssetBundle.LoadAsset<SerializableContentPack>(contentPackName);
 			mainContentPack = serialContentPack.CreateContentPack();
 
-			AddEntityStateTypes();
+			//AddEntityStateTypes();
 			CreateEffectDefs();
 			ContentPackProvider.contentPack = mainContentPack;
 		}

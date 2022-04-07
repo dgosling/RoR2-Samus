@@ -20,7 +20,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d69a3ab07806f104ebbfbb7c1ad0675a, type: 3}
   activationStateMachineName: Weapon
   activationState:
-    _typeName: SamusMod.SkillStates.Samus.MorphBallPBomb, SamusMod
+    _typeName: SamusMod.SkillStates.Samus.MorphBallPBomb, SamusMod, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   interruptPriority: 2
   baseRechargeInterval: 12
   baseMaxStock: 1

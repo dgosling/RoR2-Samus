@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: -1627637702, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: SamusPrimary
   m_EditorClassIdentifier: 
+  <catalogIndex>k__BackingField: 0
   variants:
   - skillDef: {fileID: 11400000, guid: c878990c48d83e643a46f7663a75b7de, type: 2}
     unlockableName: 

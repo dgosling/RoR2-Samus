@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: EditorInspectorSettings
   m_EditorClassIdentifier: 
   enableNamingConventions: 1
-  inspectorSettings: []
+  inspectorSettings:
+  - inspectorName: EntityStateConfigurationInspector
+    typeReference: RoR2EditorKit.RoR2Related.Inspectors.EntityStateConfigurationInspector,
+      RoR2EditorKit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    isEnabled: 1

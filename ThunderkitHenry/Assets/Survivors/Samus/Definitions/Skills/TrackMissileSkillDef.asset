@@ -21,7 +21,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 7c8cc9079beb1dc42aeaa35e2ca9d091, type: 3}
   activationStateMachineName: Weapon
   activationState:
-    _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod
+    _typeName: SamusMod.SkillStates.Samus.trackingMissile, SamusMod, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   interruptPriority: 0
   baseRechargeInterval: 4
   baseMaxStock: 5

@@ -34,6 +34,9 @@ Samus is an agile survivor with a charge beam, homing missiles, a super missile,
 - Thunderkit Team for Making it Possible and Easy to use RoR2 Shaders Inside Unity
 - Vale-X for Making ThunderkitHenry
 ## Changelog
+` 2.1.6 `
+- Fixed Freezing/Lag When Killing Big Groups of Enemies With Gasoline
+
 ` 2.1.5 `
 - Fixed Multiplayer Not Working
 

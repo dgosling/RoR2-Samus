@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
   - {fileID: 2477222719484189060}
+  QuickAccess: 0
   manifest: {fileID: 0}
 --- !u!114 &2477222719484189060
 MonoBehaviour:
@@ -27,9 +28,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4f4581088b47744a114c282abc085d, type: 3}
   m_Name: StageDependencies
   m_EditorClassIdentifier: 
-  Errored: 0
-  ErrorMessage: 
-  ErrorStacktrace: 
   Active: 1
   StagingPath: 
   ExcludedManifests: []

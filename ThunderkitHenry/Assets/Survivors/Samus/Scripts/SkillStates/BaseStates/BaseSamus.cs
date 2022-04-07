@@ -121,8 +121,25 @@ namespace SamusMod.SkillStates.BaseStates
         public override void Update()
         {
             base.Update();
-            RoR2.DotController.onDotInflictedServerGlobal += DotController_onDotInflictedServerGlobal;
-            
+            // RoR2.DotController.onDotInflictedServerGlobal += DotController_onDotInflictedServerGlobal;
+            if (DotController.FindDotController(gameObject) != null)
+            {
+                DotController dotController = DotController.FindDotController(gameObject);
+                switch (dotController.activeDotFlags)
+                {
+                    case (uint)DotController.DotIndex.PercentBurn:
+                        dotController.RemoveDotStackAtServer(((int)DotController.DotIndex.PercentBurn));
+                        break;
+                    case (uint)DotController.DotIndex.Burn:
+                        dotController.RemoveDotStackAtServer(((int)DotController.DotIndex.Burn));
+                        break;
+                    case (uint)DotController.DotIndex.Helfire:
+                        dotController.RemoveDotStackAtServer(((int)DotController.DotIndex.Helfire));
+                        break;
+                    default:
+                        break;
+                }
+            }
             if (effectiveAuth)
             {
                 if ( !morphBall && player.GetButtonDown(Modules.RewiredAction.autoFire.ActionId))

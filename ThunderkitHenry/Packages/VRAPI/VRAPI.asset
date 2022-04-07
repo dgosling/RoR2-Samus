@@ -19,7 +19,7 @@ MonoBehaviour:
   Author: DrBibop
   Name: VRAPI
   Description: Modding API for VR-compatible mods.
-  Version: 1.0.0
+  Version: 1.0.1
   Dependencies: 
   - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
 --- !u!114 &11400000

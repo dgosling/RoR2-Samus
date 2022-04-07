@@ -35,7 +35,22 @@ A lot of documentation is in the included *xmldocs*, and further information may
 The most recent changelog can always be found on the [GitHub](https://github.com/risk-of-thunder/R2API/blob/master/Archived%20changelogs.md). In this readme, only the most recent *minor* version will have a changelog.
 
 **Current**
+* [Friendlier internal stage names by @bb010g](https://github.com/risk-of-thunder/R2API/pull/373)
+* [Fix DirectorApi spawning by @xiaoxiao921](https://github.com/risk-of-thunder/R2API/pull/374)
 
+
+**4.3.x**
+* [Update DirectorAPI by @xiaoxiao921](https://github.com/risk-of-thunder/R2API/pull/368)
+* [Fix ItemDisplay issues by @KomradeSpectre](https://github.com/risk-of-thunder/R2API/pull/369)
+* [ItemAPI ItemDisplay fixes by @Nebby1999](https://github.com/risk-of-thunder/R2API/pull/371)
+* [Fix EliteAPI and bug fix DirectorAPI by @xiaoxiao921](https://github.com/risk-of-thunder/R2API/pull/372)
+
+**4.2.x**
+* [NuGet package is now available!](https://www.nuget.org/packages/R2API/)
+
+**4.1.x**
+
+* [Fix ItemDisplay addition for Items and Equipment](https://github.com/risk-of-thunder/R2API/pull/369)
 * [Fix contentpacks that did not have the correct name in some cases](https://github.com/risk-of-thunder/R2API/pull/366)
 * [Crit damage multiplier is now a float](https://github.com/risk-of-thunder/R2API/pull/365)
 * [ArtifactCode fix, ContentLogging fix](https://github.com/risk-of-thunder/R2API/pull/361)

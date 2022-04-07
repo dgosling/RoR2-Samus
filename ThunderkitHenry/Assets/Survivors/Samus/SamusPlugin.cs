@@ -234,6 +234,7 @@ namespace SamusMod
                 if(self.segmentPrefab.name == "FireTrailSegment")
                 {
                     self.damagePerSecond = 0;
+                    AkSoundEngine.StopPlayingID(3193947170);
                 }
 
             }

@@ -1,7 +1,8 @@
 {
     "name": "SamusMod",
     "references": [
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "com.unity.multiplayer-hlapi.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -16,7 +17,6 @@
         "MonoMod.RuntimeDetour.dll",
         "Rewired_CSharp.dll",
         "MMHOOK_RoR2.dll",
-        "com.unity.multiplayer-hlapi.Runtime.dll",
         "Rewired_Core.refstub.dll",
         "KinematicCharacterController.dll",
         "RoR2.dll",

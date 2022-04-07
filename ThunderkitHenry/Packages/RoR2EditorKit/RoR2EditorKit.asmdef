@@ -3,7 +3,8 @@
     "references": [
         "ThunderKit.Core",
         "ThunderKit.Markdown",
-        "ThunderKit.Common"
+        "ThunderKit.Common",
+        "com.unity.multiplayer-hlapi.Runtime"
     ],
     "includePlatforms": [
         "Editor"
@@ -14,8 +15,7 @@
     "precompiledReferences": [
         "HGUnityUtils.dll",
         "SimpleJSON.dll",
-        "RoR2.dll",
-        "com.unity.multiplayer-hlapi.Runtime.dll"
+        "RoR2.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

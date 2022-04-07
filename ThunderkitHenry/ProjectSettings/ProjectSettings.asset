@@ -546,19 +546,19 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    7: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    13: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    14: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    19: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    21: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    25: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    27: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    28: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    29: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    30: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    32: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
-    33: TK_ADDRESSABLE;thunderkit;tristanmcpherson-r2api;riskofthunder-ror2editorkit
+    1: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    7: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    13: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    14: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    19: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    21: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    25: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    27: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    28: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    29: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    30: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    32: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
+    33: TK_ADDRESSABLE;riskofrain2;thunderkit;drbibop-vrapi;bbepis-bepinexpack;drbibop-vrmod;nebby-unitymultiplayerhlapi;tristanmcpherson-r2api
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

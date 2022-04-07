@@ -192,7 +192,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 624172028979364242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
+  m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_SceneId:
@@ -468,7 +468,8 @@ MonoBehaviour:
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
   preferredInitialStateType:
-    _typeName: EntityStates.Uninitialized, RoR2
+    _typeName: EntityStates.Uninitialized, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   skinIndex: 0
   customKillTotalStatName: 
   overrideCoreTransform: {fileID: 0}
@@ -845,7 +846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customName: Weapon
   initialStateType:
-    _typeName: EntityStates.Idle, RoR2
+    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   mainStateType:
     _typeName: EntityStates.Idle, RoR2
   <networker>k__BackingField: {fileID: 0}
@@ -865,9 +866,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customName: Body
   initialStateType:
-    _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod
+    _typeName: SamusMod.SkillStates.BaseStates.SpawnState, SamusMod, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   mainStateType:
-    _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod
+    _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   <networker>k__BackingField: {fileID: 0}
   <networkIdentity>k__BackingField: {fileID: 0}
   <destroying>k__BackingField: 0
@@ -932,7 +935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathStateMachine: {fileID: 2451970484214850562}
   deathState:
-    _typeName: SamusMod.SkillStates.BaseStates.DeathState, SamusMod
+    _typeName: SamusMod.SkillStates.BaseStates.DeathState, SamusMod, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   idleStateMachine:
   - {fileID: 8428628557651997393}
   - {fileID: 5983211388195640450}
