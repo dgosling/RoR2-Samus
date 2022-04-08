@@ -23,6 +23,7 @@ namespace SamusMod
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     //[BepInDependency("com.valex.ShaderConverter", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.weliveinasociety.CustomEmotesAPI",BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     [R2APISubmoduleDependency(new string[]
@@ -40,7 +41,7 @@ namespace SamusMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.dgosling.Samus";
         public const string MODNAME = "Samus";
-        public const string MODVERSION = "2.1.5";
+        public const string MODVERSION = "2.1.7";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "DG";
@@ -114,6 +115,9 @@ namespace SamusMod
                    On.RoR2.UserProfile.LoadDefaultProfile += ExtraInputs.OnLoadDefaultProfile;
             On.RoR2.SaveSystem.LoadUserProfiles += ExtraInputs.OnLoadUserProfiles;
                 On.RoR2.UI.SettingsPanelController.Start += SettingsPanelControllerStart;
+            if(Modules.EmoteAPICompatibility.enabled)
+                On.RoR2.SurvivorCatalog.Init += Modules.EmoteAPICompatibility.SurvivorCatalog_Init;
+
             
 
             //On.RoR2.InputBankTest.CheckAnyButtonDown += Components.ExtraInputBankTest.CheckAnyButtonDownOverrideHook;

@@ -22,7 +22,8 @@
         "RoR2.dll",
         "LegacyResourcesAPI.dll",
         "VRAPI.dll",
-        "HGCSharpUtils.dll"
+        "HGCSharpUtils.dll",
+        "CustomEmotesAPI.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

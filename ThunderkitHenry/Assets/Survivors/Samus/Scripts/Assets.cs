@@ -14,7 +14,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Path = System.IO.Path;
 
-
 namespace SamusMod.Modules
 {
     internal static class Assets
@@ -35,6 +34,9 @@ namespace SamusMod.Modules
 		public static GameObject bomb;
 		public static GameObject beamghost;
 		public static GameObject cBeam;
+		public static GameObject bodyPrefab;
+		public static GameObject underSkeleton;
+		public static AnimationClip defaultDance;
 
 
 		public static GameObject VRDomHand;
@@ -146,8 +148,14 @@ namespace SamusMod.Modules
 				a = false;
 
 			cBeam = mainAssetBundle.LoadAsset<GameObject>("beamproj");
-            //Debug.Log(a);
 
+			//Debug.Log(a);
+
+
+				
+				//defaultDance = mainAssetBundle.LoadAsset<AnimationClip>("DanceMoves");
+				//CustomEmotesAPI.AddCustomAnimation(defaultDance, true);
+            
             if (VRAPI.VR.enabled)
             {
                 VRAPI.VR.PreventRendererDisable("DGSamusBody", "ball2Mesh");

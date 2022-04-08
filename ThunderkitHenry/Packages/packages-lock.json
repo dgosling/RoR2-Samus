@@ -125,6 +125,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "metrosexualfruitcake-customemotesapi": {
+      "version": "file:CustomEmotesAPI",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "nebby-unitymultiplayerhlapi": {
       "version": "file:UnityMultiplayerHLAPI",
       "depth": 0,
@@ -145,6 +151,12 @@
     },
     "riskofthunder-ror2editorkit": {
       "version": "file:RoR2EditorKit",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "rune580-risk_of_options": {
+      "version": "file:Risk_Of_Options",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

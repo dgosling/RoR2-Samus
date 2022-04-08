@@ -1,0 +1,11 @@
+{
+    "name": "CustomEmotesAPI",
+    "version_number": "1.0.1",
+    "website_url": "https://github.com/ToastedOven/CustomEmotesAPI/",
+    "description": "API for adding emotes to survivors",
+    "dependencies": [
+        "Rune580-Risk_Of_Options-2.3.0",
+		"tristanmcpherson-R2API-4.3.5",
+		"bbepis-BepInExPack-5.4.1903"
+    ]
+}
