@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>R2API.RecalculateStats</name>
+    </assembly>
+    <members>
+        <member name="T:R2API.RecalculateStatsAPI">
+            <summary>
+            API for computing bonuses granted by factors inside RecalculateStats.
+            </summary>
+        </member>
+        <member name="P:R2API.RecalculateStatsAPI.Loaded">
+            <summary>
+            Return true if the submodule is loaded.
+            </summary>
+        </member>
+        <member name="T:R2API.RecalculateStatsAPI.StatHookEventArgs">
+            <summary>
+            A collection of modifiers for various stats. It will be passed down the event chain of GetStatCoefficients; add to the contained values to modify stats.
+            </summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.healthMultAdd">
+            <summary>Added to the direct multiplier to base health. MAX_HEALTH ~ (BASE_HEALTH + baseHealthAdd) * (HEALTH_MULT + healthMultAdd) / (BASE_CURSE_PENALTY + baseCurseAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseHealthAdd">
+            <summary>Added to base health. MAX_HEALTH ~ (BASE_HEALTH + baseHealthAdd) * (HEALTH_MULT + healthMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseShieldAdd">
+            <summary>Added to base shield. MAX_SHIELD ~ (BASE_SHIELD + baseShieldAdd) * (SHIELD_MULT + shieldMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.regenMultAdd">
+            <summary>Added to the direct multiplier to base health regen. HEALTH_REGEN ~ (BASE_REGEN + baseRegenAdd) * (REGEN_MULT + regenMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseRegenAdd">
+            <summary>Added to base health regen. HEALTH_REGEN ~ (BASE_REGEN + baseRegenAdd) * (REGEN_MULT + regenMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseMoveSpeedAdd">
+            <summary>Added to base move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd / MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.moveSpeedMultAdd">
+            <summary>Added to the direct multiplier to move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd / MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.moveSpeedReductionMultAdd">
+            <summary>Added reduction multiplier to move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd / MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.jumpPowerMultAdd">
+            <summary>Added to the direct multiplier to jump power. JUMP_POWER ~ (BASE_JUMP_POWER + baseJumpPowerAdd) * (JUMP_POWER_MULT + jumpPowerMultAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.damageMultAdd">
+            <summary>Added to the direct multiplier to base damage. DAMAGE ~ (BASE_DAMAGE + baseDamageAdd) * (DAMAGE_MULT + damageMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseDamageAdd">
+            <summary>Added to base damage. DAMAGE ~ (BASE_DAMAGE + baseDamageAdd) * (DAMAGE_MULT + damageMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseAttackSpeedAdd">
+            <summary>Added to attack speed. ATTACK_SPEED ~ (BASE_ATTACK_SPEED + baseAttackSpeedAdd) * (ATTACK_SPEED_MULT + attackSpeedMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.attackSpeedMultAdd">
+            <summary>Added to the direct multiplier to attack speed. ATTACK_SPEED ~ (BASE_ATTACK_SPEED + baseAttackSpeedAdd) * (ATTACK_SPEED_MULT + attackSpeedMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.critAdd">
+            <summary>Added to crit chance. CRIT_CHANCE ~ BASE_CRIT_CHANCE + critAdd.</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.armorAdd">
+            <summary>Added to armor. ARMOR ~ BASE_ARMOR + armorAdd.</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseCurseAdd">
+            <summary> Added to Curse Penalty.MAX_HEALTH ~ (BASE_HEALTH + baseHealthAdd) * (HEALTH_MULT + healthMultAdd) / (BASE_CURSE_PENALTY + baseCurseAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.cooldownReductionAdd">
+            <summary>Added to flat cooldown reduction. COOLDOWN ~ BASE_COOLDOWN * (BASE_COOLDOWN_MULT + cooldownMultAdd) - (BASE_FLAT_REDUCTION + cooldownReductionAdd) </summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.cooldownMultAdd">
+            <summary>Added to the direct multiplier to cooldown timers. COOLDOWN ~ BASE_COOLDOWN * (BASE_COOLDOWN_MULT + cooldownMultAdd) - (BASE_FLAT_REDUCTION + cooldownReductionAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.primaryCooldownMultAdd">
+            <summary> (Primary) Added to the direct multiplier to cooldown timers. COOLDOWN ~ BASE_COOLDOWN * (BASE_COOLDOWN_MULT + cooldownMultAdd + primaryCooldownMultAdd) - (BASE_FLAT_REDUCTION + cooldownReductionAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.secondaryCooldownMultAdd">
+            <summary> (Secondary) Added to the direct multiplier to cooldown timers. COOLDOWN ~ BASE_COOLDOWN * (BASE_COOLDOWN_MULT + cooldownMultAdd+ secondaryCooldownMultAdd) - (BASE_FLAT_REDUCTION + cooldownReductionAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.utilityCooldownMultAdd">
+            <summary> (Utility) Added to the direct multiplier to cooldown timers. COOLDOWN ~ BASE_COOLDOWN * (BASE_COOLDOWN_MULT + cooldownMultAdd + utilityCooldownMultAdd) - (BASE_FLAT_REDUCTION + cooldownReductionAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.specialCooldownMultAdd">
+            <summary> (Special) Added to the direct multiplier to cooldown timers. COOLDOWN ~ BASE_COOLDOWN * (BASE_COOLDOWN_MULT + cooldownMultAdd + specialCooldownMultAdd) - (BASE_FLAT_REDUCTION + cooldownReductionAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.shieldMultAdd">
+            <summary>Added to the direct multiplier to shields MAX_SHIELD ~ (BASE_SHIELD + baseShieldAdd) * (SHIELD_MULT + shieldMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseJumpPowerAdd">
+            <summary>Added to base jump power. JUMP_POWER ~ (BASE_JUMP_POWER + baseJumpPowerAdd)* (JUMP_POWER_MULT + jumpPowerMultAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.levelMultAdd">
+            <summary>Added to the direct multiplier to level scaling. EFFECTIVE LEVEL ~ (BASE LEVEL * (BASE_LEVEL_SCALING + levelMultAdd)</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.moveSpeedRootCount">
+            <summary>Amount of Root effects currently applied. MOVE_SPEED ~ (moveSpeedRootCount > 0) ? 0 : MOVE_SPEED </summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.critDamageMultAdd">
+            <summary>Added to the direct multiplier to crit damage. CRIT_DAMAGE ~ DAMAGE * (BASE_CRIT_MULT + critDamageMultAdd) </summary>
+        </member>
+        <member name="T:R2API.RecalculateStatsAPI.StatHookEventHandler">
+            <summary>
+            Used as the delegate type for the GetStatCoefficients event.
+            </summary>
+            <param name="sender">The CharacterBody which RecalculateStats is being called for.</param>
+            <param name="args">An instance of StatHookEventArgs, passed to each subscriber to this event in turn for modification.</param>
+        </member>
+        <member name="E:R2API.RecalculateStatsAPI.GetStatCoefficients">
+            <summary>
+            Subscribe to this event to modify one of the stat hooks which StatHookEventArgs covers. Fired during CharacterBody.RecalculateStats.
+            </summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.PluginVersion">
+            <summary>
+            Version of the plugin, should be matching with the thunderstore package.
+            </summary>
+        </member>
+        <member name="T:R2API.AutoVersionGen.AutoVersionAttribute">
+            <summary>
+            Add a PluginVersion field to the attribut-ed class filled from the thunderstore.toml versionNumber field
+            </summary>
+        </member>
+    </members>
+</doc>

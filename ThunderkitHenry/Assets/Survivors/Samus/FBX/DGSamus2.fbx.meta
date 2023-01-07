@@ -453,62 +453,85 @@ ModelImporter:
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'model-armature|beam' has import animation warnings
-      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'ClavicleC' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'FingerL20' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL30'
+      that might lower retargeting quality:\n\t'ClavicleC' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'FingerL20'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL30'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL40'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'model-armature|C00AttackDash.nuanmx' has import animation warnings that might
-      lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
-      retargeting quality.\n\t'ClavicleC' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'FingerL20' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'FingerL30'
+      lower retargeting quality:\n\t'Neck' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\t'ClavicleC' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'FingerL20'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL30'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL40'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'model-armature|cbeam_loop' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'ClavicleC' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'HandL' has translation animation that will be discarded.\n\nClip
-      'model-armature|cbeam_max' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'ClavicleC'
+      retargeting quality:\n\t'ClavicleC' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'model-armature|cbeam_max'
+      has import animation warnings that might lower retargeting quality:\n\t'Neck'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ClavicleC'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL20'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL30'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL40'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'model-armature|cbeam_start' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'ClavicleC' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\nClip 'model-armature|D00SpecialNMax.nuanmx' has
-      import animation warnings that might lower retargeting quality:\nNote: Activate
-      translation DOF on avatar to improve retargeting quality.\n\t'FingerL20' is
-      inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL30'
+      retargeting quality:\n\t'ClavicleC' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'model-armature|D00SpecialNMax.nuanmx'
+      has import animation warnings that might lower retargeting quality:\n\t'Neck'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL20'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL30'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL40'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'model-armature|djump' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'KneeL'
-      has translation animation that will be discarded.\n\t'KneeR' has translation
-      animation that will be discarded.\n\nClip 'model-armature|spawn' has import
-      animation warnings that might lower retargeting quality:\nNote: Activate translation
-      DOF on avatar to improve retargeting quality.\n\t'FingerL20' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'FingerL30'
+      'model-armature|damage' has import animation warnings that might lower retargeting
+      quality:\n\t'Neck' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'model-armature|djump' has import animation
+      warnings that might lower retargeting quality:\n\t'Neck' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'model-armature|fall'
+      has import animation warnings that might lower retargeting quality:\n\t'Neck'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'model-armature|idle' has import animation warnings that might lower retargeting
+      quality:\n\t'Neck' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'model-armature|jump' has import animation
+      warnings that might lower retargeting quality:\n\t'Neck' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'model-armature|missile.add'
+      has import animation warnings that might lower retargeting quality:\n\t'Neck'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'model-armature|spawn' has import animation warnings that might lower retargeting
+      quality:\n\t'Neck' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\t'FingerL20' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\t'FingerL30' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL40'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'model-armature|sprint' has import animation warnings that might lower retargeting
+      quality:\n\t'Neck' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'model-armature|TransformIn' has import animation
+      warnings that might lower retargeting quality:\n\t'Neck' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'FingerL20'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL30'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'FingerL40'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'KneeL'
-      has translation animation that will be discarded.\n\nClip 'model-armature|sprint'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'KneeL'
-      has translation animation that will be discarded.\n\t'FootL' has translation
-      animation that will be discarded.\n\t'KneeR' has translation animation that
-      will be discarded.\n\t'FootR' has translation animation that will be discarded.\n\nClip
-      'model-armature|TransformIn' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'FingerL20' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'FingerL30' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'FingerL40' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'model-armature|TransformOut' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'FootR' has translation animation that will be discarded.\n"
+      retargeting quality:\n\t'Neck' is inbetween humanoid transforms and has rotation
+      animation that will be discarded.\n\nClip 'model-armature|walkB' has import
+      animation warnings that might lower retargeting quality:\n\t'Neck' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'model-armature|walkBL' has import animation warnings that might lower retargeting
+      quality:\n\t'Neck' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'model-armature|walkBR' has import animation
+      warnings that might lower retargeting quality:\n\t'Neck' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'model-armature|walkF'
+      has import animation warnings that might lower retargeting quality:\n\t'Neck'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'model-armature|walkFL' has import animation warnings that might lower retargeting
+      quality:\n\t'Neck' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'model-armature|walkFR' has import animation
+      warnings that might lower retargeting quality:\n\t'Neck' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'model-armature|walkL'
+      has import animation warnings that might lower retargeting quality:\n\t'Neck'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'model-armature|walkR' has import animation warnings that might lower retargeting
+      quality:\n\t'Neck' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -1809,7 +1832,7 @@ ModelImporter:
     feetSpacing: 0
     globalScale: 1
     rootMotionBoneName: 
-    hasTranslationDoF: 0
+    hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}

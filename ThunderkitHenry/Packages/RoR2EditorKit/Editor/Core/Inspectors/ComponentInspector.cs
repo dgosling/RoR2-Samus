@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ThunderKit.Core.UIElements;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
 namespace RoR2EditorKit.Core.Inspectors
@@ -15,18 +11,44 @@ namespace RoR2EditorKit.Core.Inspectors
     /// </summary>
     public abstract class ComponentInspector<T> : ExtendedInspector<T> where T : MonoBehaviour
     {
-
         private IMGUIContainer container;
         protected override void OnEnable()
         {
             base.OnEnable();
             container = new IMGUIContainer(DisplayToggle);
-            OnRootElementsCleared += AddIMGUIContainer;
+            OnRootElementsCleared += AddComponentInspectorBase;
+            OnVisualTreeCopy += AddToggle;
         }
 
-        protected void AddIMGUIContainer()
+        private void AddComponentInspectorBase()
         {
-            RootVisualElement.Add(container);
+            var ve = TemplateHelpers.GetTemplateInstance("ComponentInspectorBase", DrawInspectorElement, (str) => str.Contains(RoR2EditorKit.Common.Constants.PackageFolderPath));
+            ve.SendToBack();
+        }
+        private void AddToggle()
+        {
+            if (!InspectorEnabled)
+            {
+                RootVisualElement.Add(container);
+            }
+            else
+            {
+                try
+                {
+                    var container = DrawInspectorElement.Q<VisualElement>("ComponentToggleContainer");
+                    var toggle = container.Q<Toggle>("InspectorToggle");
+                    toggle.value = InspectorEnabled;
+                    toggle.RegisterValueChangedCallback(cb => InspectorEnabled = cb.newValue);
+
+                    var scriptType = toggle.Q<Label>("scriptType");
+                    scriptType.text = serializedObject.FindProperty("m_Script").objectReferenceValue.name;
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning($"Cannot setup toggle and header for component inspector {GetType().Name}, resorting to IMGUI container\n\n{ex}");
+                    RootVisualElement.Add(container);
+                }
+            }
         }
 
         private void DisplayToggle()

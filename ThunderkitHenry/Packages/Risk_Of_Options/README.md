@@ -5,17 +5,22 @@ An API to provide a user interface in game to interact with BepInEx ConfigEntry'
 
 ## Currently supported options
 - CheckBoxes `bool`
-- Sliders and Stepped Sliders `float`
+- Sliders `float`
+- StepSliders `float`
+- IntSliders `int`
 - KeyBinds `KeyboardShortcut`
 - String Input Fields `string`
 - Choice DropDowns `Enum`
+- Color Picker `UnityEngine.Color`
 
 ### Additional Components
 - GenericButtons
 
 ### For feature requests or issues head over to my [repository](https://github.com/Rune580/RiskOfOptions).
 
-## Developers we have a [wiki](https://github.com/Rune580/RiskOfOptions/wiki)
+## Developer Resources
+* [RiskOfOptions Wiki](https://github.com/Rune580/RiskOfOptions/wiki)
+* [Usage Example](https://github.com/Rune580/RiskOfOptions-Example)
 
 ## Getting Started
 First you need to grab the latest release from the [Thunderstore](https://thunderstore.io/package/Rune580/Risk_Of_Options/).
@@ -130,6 +135,49 @@ Discord: Rune#0001
 Github: Rune580
 
 # Changelog
+    2.5.3:
+      Merged PR by Bubbet https://github.com/Rune580/RiskOfOptions/pull/28
+        - Abstracts references to bepinexconfig out.
+        - Allows mods to extend off of RoO's options.
+      Updated to preview C# language.
+
+    2.5.2:
+      Fixed descriptions not wrapping.
+
+    2.5.1:
+      Minor improvements to the layout of the mod options menu.
+      Fixed some minor stutters when opening the settings menu for the first time.
+      Removed HookGenPatcher/MMHook as a dependency.
+
+    2.5.0:
+      Added ColorOption.
+      Added ColorPickerUtil for manually opening a color picker.
+      Added 2 new submit modes for input fields:
+        - OnExitOrSubmit
+        - OnSubmit
+        These can be used with the `submitOn` Field in the InputFieldConfig.
+      Fixed an issue where having multiple input fields causes hitching.
+      Fixed an issue where input fields wouldn't visually revert.
+
+    2.4.2:
+      Sliders can now have their values be manually set in the text box. No more finagling the slider to get the value you want.
+        The future is now!
+
+    2.4.1:
+      Fixed category indicators taking up more vertical space than intended.
+
+    2.4.0:
+      Added IntSlider option, which is just a normal slider but it accepts an ConfigEntry<int> instead.
+
+    2.3.2:
+      Added overrides for modGuid and modName when adding an option.
+      CheckBox is now a prefab instead of being copied from a button in game. What does that mean for the normal user?
+        realistically nothing at all, you shouldn't notice anything different. For the dev however, this puts us a step closer
+        to having RiskOfOptions ui elements be accessible to other mods.
+
+    2.3.1:
+      Disable functionality is now fully implemented on all simple options.
+
     2.3.0:
       Quite a few things in this update, as always let me know if you have any issues.
         - Added ChoiceOption, takes an CongiEntry<enum>.

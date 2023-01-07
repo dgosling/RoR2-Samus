@@ -1,30 +1,75 @@
-﻿using System.Collections;
+﻿using RoR2EditorKit.Common;
+using RoR2EditorKit.Settings;
+using RoR2EditorKit.Utilities;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
-using RoR2EditorKit.Settings;
-using RoR2EditorKit.Common;
-using System;
 using Object = UnityEngine.Object;
-using RoR2EditorKit.Utilities;
 
 namespace RoR2EditorKit.Core.Inspectors
 {
     using static ThunderKit.Core.UIElements.TemplateHelpers;
 
     /// <summary>
-    /// Base inspector for all the RoR2EditorKit Inspectors.
-    /// <para>If you want to make a Scriptable Object Inspector, you'll probably want to use the ScriptableObjectInspector</para>
-    /// <para>If you want to make an Inspector for a Component, you'll probably want to use the ComponentInspector</para>
+    /// Data that defines a ContextMenu that's going to be handled by the ExtendedInspector
+    /// </summary>
+    public struct ContextMenuData
+    {
+        /// <summary>
+        /// The menu name for this contextMenu
+        /// </summary>
+        public string menuName;
+        /// <summary>
+        /// The action that runs when the context menu is clicked
+        /// </summary>
+        public Action<DropdownMenuAction> menuAction;
+        /// <summary>
+        /// A status check to see if the menu should appear or not
+        /// </summary>
+        public Func<DropdownMenuAction, DropdownMenuAction.Status> actionStatusCheck;
+
+        /// <summary>
+        /// ContextMenuData Constructor
+        /// </summary>
+        /// <param name="name">The name of the Context Menu</param>
+        /// <param name="action">An action that runs when the Context Menu is clicked</param>
+        public ContextMenuData(string name, Action<DropdownMenuAction> action)
+        {
+            menuName = name;
+            menuAction = action;
+            actionStatusCheck = x => DropdownMenuAction.Status.Normal;
+        }
+
+        /// <summary>
+        /// ContextMenuData Constructor
+        /// </summary>
+        /// <param name="name">The name of the ContextMenu</param>
+        /// <param name="action">An action that runs when the ContextMenu is clicked</param>
+        /// <param name="statusCheck">A function to check if the ContextMenu is clickable or not</param>
+        public ContextMenuData(string name, Action<DropdownMenuAction> action, Func<DropdownMenuAction, DropdownMenuAction.Status> statusCheck)
+        {
+            menuName = name;
+            menuAction = action;
+            actionStatusCheck = statusCheck;
+        }
+    }
+
+    /// <summary>
+    /// Base inspector for all the RoR2EditorKit Inspectors. Uses visual elements instead of IMGUI
+    /// <para>Automatically retrieves the UXML asset for the editor by looking for an UXML asset with the same name as the inheriting type</para>
+    /// <para>Extended Inspectors can be enabled or disabled</para>
+    /// <para>If you want to make a Scriptable Object Inspector, you'll probably want to use the <see cref="ScriptableObjectInspector{T}"/></para>
+    /// <para>If you want to make an Inspector for a Component, you'll probably want to use the <see cref="ComponentInspector{T}"/></para>
     /// </summary>
     /// <typeparam name="T">The type of Object being inspected</typeparam>
     public abstract class ExtendedInspector<T> : Editor where T : Object
     {
         #region Properties
         /// <summary>
-        /// Access to the Settings file
+        /// Access to the main RoR2EditorKit Settings file
         /// </summary>
         public static RoR2EditorKitSettings Settings { get => RoR2EditorKitSettings.GetOrCreateSettings<RoR2EditorKitSettings>(); }
 
@@ -35,7 +80,7 @@ namespace RoR2EditorKit.Core.Inspectors
         {
             get
             {
-                if(_inspectorSetting == null)
+                if (_inspectorSetting == null)
                 {
                     _inspectorSetting = Settings.InspectorSettings.GetOrCreateInspectorSetting(GetType()); ;
                 }
@@ -43,7 +88,7 @@ namespace RoR2EditorKit.Core.Inspectors
             }
             set
             {
-                if(_inspectorSetting != value)
+                if (_inspectorSetting != value)
                 {
                     var index = Settings.InspectorSettings.inspectorSettings.IndexOf(_inspectorSetting);
                     Settings.InspectorSettings.inspectorSettings[index] = value;
@@ -65,7 +110,7 @@ namespace RoR2EditorKit.Core.Inspectors
             }
             set
             {
-                if(value != InspectorSetting.isEnabled)
+                if (value != InspectorSetting.isEnabled)
                 {
                     InspectorSetting.isEnabled = value;
                     OnInspectorEnabledChange();
@@ -131,59 +176,104 @@ namespace RoR2EditorKit.Core.Inspectors
         private VisualElement _imguiContianerElement;
 
         /// <summary>
+        /// Wether the inspector has done its first drawing.
+        /// <para>When the inspector draws for the first time, unity calls Bind() on <see cref="RootVisualElement"/>, this creates all the necesary fields for property fields, however, this runs only once.</para>
+        /// <para>When HasDoneFirstDrawing is true, the ExtendedInspector will call Bind() to ensure property fields always appear.</para>
+        /// </summary>
+        protected bool HasDoneFirstDrawing { get => _hasDoneFirstDrawing; private set => _hasDoneFirstDrawing = value; }
+        private bool _hasDoneFirstDrawing = false;
+
+        /// <summary>
         /// Direct access to the object that's being inspected as its type.
         /// </summary>
         protected T TargetType { get => target as T; }
+
+        /// <summary>
+        /// If the editor has a visual tree asset, if set to false, RoR2EK will supress the null reference exception that appears from not having one.
+        /// </summary>
+        protected virtual bool HasVisualTreeAsset { get; } = true;
         #endregion Properties
 
         #region Fields
-        /// <summary>
-        /// The visual tree asset, every inspector should have an UXML file with the inspector layout
-        /// <para>The visual tree asset is used to setup the inspector layout for the "DrawInspectorElement"</para>
-        /// </summary>
-        protected VisualTreeAsset visualTreeAsset;
-
-        /// <summary>
-        /// The prefix this asset should use, leave this null unless the asset youre creating requires a prefix.
-        /// </summary>
-        protected string prefix = null;
-
-        /// <summary>
-        /// If the "prefix" string uses the TokenPrefix on the settings file, set this to true.
-        /// </summary>
-        protected bool prefixUsesTokenPrefix = false;
-
         private IMGUIContainer prefixContainer = null;
+        private Dictionary<VisualElement, (ContextualMenuManipulator, List<ContextMenuData>)> elementToContextMenu = new Dictionary<VisualElement, (ContextualMenuManipulator, List<ContextMenuData>)>();
         #endregion Fields
 
         #region Methods
         /// <summary>
         /// Called when the inspector is enabled, always keep the original implementation unless you know what youre doing
         /// </summary>
-        protected virtual void OnEnable() { }
+        protected virtual void OnEnable()
+        {
+            EditorApplication.projectChanged += OnObjectNameChanged;
+        }
+
+        /// <summary>
+        /// Called when the inspector is disabled, always keepp the original implementation unless you know what you're doing
+        /// </summary>
+        protected virtual void OnDisable()
+        {
+            EditorApplication.projectChanged -= OnObjectNameChanged;
+        }
+
+        private void OnObjectNameChanged()
+        {
+            if (this == null || serializedObject == null || serializedObject.targetObject == null)
+                return;
+
+            if (serializedObject.targetObject && Settings.InspectorSettings.enableNamingConventions && this is IObjectNameConvention objNameConvention)
+            {
+                PrefixData data = objNameConvention.GetPrefixData();
+
+                bool flag = data.nameValidatorFunc == null ? serializedObject.targetObject.name.StartsWith(objNameConvention.Prefix) : data.nameValidatorFunc();
+                if (flag)
+                {
+                    prefixContainer?.RemoveFromHierarchy();
+                    prefixContainer = null;
+                    return;
+                }
+                else if (prefixContainer == null)
+                {
+                    prefixContainer = EnsureNamingConventions(objNameConvention);
+                    RootVisualElement.Add(prefixContainer);
+                    prefixContainer.SendToBack();
+                }
+                else
+                {
+                    prefixContainer.RemoveFromHierarchy();
+                    RootVisualElement.Add(prefixContainer);
+                    prefixContainer.SendToBack();
+                }
+            }
+        }
 
         private void OnInspectorEnabledChange()
         {
             void ClearElements()
             {
-                RootVisualElement.Clear();
-                RootVisualElement.styleSheets.Clear();
-                IMGUIContainerElement.Clear();
-                IMGUIContainerElement.styleSheets.Clear();
-                DrawInspectorElement.Clear();
-                DrawInspectorElement.styleSheets.Clear();
+                DrawInspectorElement.Wipe();
+                IMGUIContainerElement.Wipe();
+                RootVisualElement.Wipe();
             }
 
             ClearElements();
             OnRootElementsCleared?.Invoke();
 
-            GetTemplateInstance(GetType().Name, DrawInspectorElement, ValidateUXMLPath);
-            DrawInspectorElement.Bind(serializedObject);
+            try
+            {
+                if (HasVisualTreeAsset)
+                    GetTemplateInstance(GetType().Name, DrawInspectorElement, ValidateUXMLPath);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex);
+            }
+
             OnVisualTreeCopy?.Invoke();
 
-            EnsureNamingConventions();
+            OnObjectNameChanged();
 
-            if(!InspectorEnabled)
+            if (!InspectorEnabled)
             {
                 var defaultImguiContainer = new IMGUIContainer(OnInspectorGUI);
                 defaultImguiContainer.name = "defaultInspector";
@@ -196,24 +286,67 @@ namespace RoR2EditorKit.Core.Inspectors
                 DrawInspectorGUI();
                 RootVisualElement.Add(DrawInspectorElement);
                 OnDrawInspectorElementAdded?.Invoke();
+                if (_hasDoneFirstDrawing)
+                {
+                    RootVisualElement.Bind(serializedObject);
+                }
             }
             serializedObject.ApplyModifiedProperties();
         }
 
+        /// <summary>
+        /// Used to validate the path of a potential UXML asset, overwrite this if youre making an inspector that isnt in the same assembly as RoR2EK.
+        /// </summary>
+        /// <param name="path">A potential UXML asset path</param>
+        /// <returns>True if the path is for this inspector, false otherwise</returns>
         protected virtual bool ValidateUXMLPath(string path)
         {
-            return path.StartsWith(Constants.AssetFolderPath) || path.StartsWith(Constants.PackageFolderPath);
+            return path.Contains(Constants.PackageName);
         }
 
         /// <summary>
-        /// DO NOT OVERRIDE THIS METHOD. Use "DrawInspectorGUI" if you want to implement your inspector!
+        /// Cannot be overwritten, creates the inspector by checking if the editor is enabled or not
+        /// <para>If the editor is enabled, the custom UI from the visual tree asset is drawn, to finish the implementation of said UI, implement <see cref="DrawInspectorGUI"/></para>
+        /// <para>If the editor is disabled, the default IMGUI UI is drawn.</para>
         /// </summary>
-        /// <returns>DO NOT OVERRIDE THIS METHOD. Use "DrawInspectorGUI" if you want to implement your inspector!</returns>
-        public override VisualElement CreateInspectorGUI()
+        /// <returns></returns>
+        public sealed override VisualElement CreateInspectorGUI()
         {
             OnInspectorEnabledChange();
             serializedObject.ApplyModifiedProperties();
+            _hasDoneFirstDrawing = true;
             return RootVisualElement;
+        }
+
+        public sealed override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+        }
+
+        private IMGUIContainer EnsureNamingConventions(IObjectNameConvention objectNameConvention)
+        {
+            PrefixData prefixData = objectNameConvention.GetPrefixData();
+
+            IMGUIContainer container = new IMGUIContainer(() =>
+            {
+                if (prefixData.helpBoxMessage.IsNullOrEmptyOrWhitespace())
+                    EditorGUILayout.HelpBox($"This {typeof(T).Name}'s name should start with \"{objectNameConvention.Prefix}\" so it follows naming conventions", MessageType.Info);
+                else
+                    EditorGUILayout.HelpBox(prefixData.helpBoxMessage, MessageType.Info);
+            });
+
+            container.tooltip = prefixData.tooltipMessage;
+
+            container.AddManipulator(new ContextualMenuManipulator((menuBuilder) =>
+            {
+                menuBuilder.menu.AppendAction("Fix naming convention", (action) =>
+                {
+                    prefixData.contextMenuAction();
+                    OnObjectNameChanged();
+                });
+            }));
+
+            return container;
         }
         #endregion Methods
 
@@ -221,22 +354,22 @@ namespace RoR2EditorKit.Core.Inspectors
         /// <summary>
         /// Invoked when the RootVisualElement, DrawInspectorElement and IMGUIContainerElement are cleared;
         /// </summary>
-        protected Action OnRootElementsCleared;
+        protected event Action OnRootElementsCleared;
 
         /// <summary>
         /// Invoked when the VisualTree assigned to this inspector has been copied to the "DrawInspectorElement"
         /// </summary>
-        protected Action OnVisualTreeCopy;
+        protected event Action OnVisualTreeCopy;
 
         /// <summary>
         /// Invoked right after "IMGUIContainerElement" is added to the "RootVisualElement"
         /// </summary>
-        protected Action OnIMGUIContainerElementAdded;
+        protected event Action OnIMGUIContainerElementAdded;
 
         /// <summary>
         /// Invoked right after the "DrawInspectorElement" is added to the "RootVisualElement"
         /// </summary>
-        protected Action OnDrawInspectorElementAdded;
+        protected event Action OnDrawInspectorElementAdded;
         #endregion
 
         /// <summary>
@@ -245,110 +378,6 @@ namespace RoR2EditorKit.Core.Inspectors
         protected abstract void DrawInspectorGUI();
 
         #region Util Methods
-        /// <summary>
-        /// Shorthand for finding a visual element. the element you're requesting will be queried on the DrawInspectorElement.
-        /// </summary>
-        /// <typeparam name="TElement">The type of visual element.</typeparam>
-        /// <param name="name">Optional parameter to find the element</param>
-        /// <param name="ussClass">Optional parameter to find the element</param>
-        /// <returns>The VisualElement specified</returns>
-        protected TElement Find<TElement>(string name = null, string ussClass = null) where TElement : VisualElement
-        {
-            return DrawInspectorElement.Q<TElement>(name, ussClass);
-        }
-
-        /// <summary>
-        /// Shorthand for finding a visual element. the element you're requesting will be queried on the "elementToSearch"
-        /// </summary>
-        /// <typeparam name="TElement">The Type of VisualElement</typeparam>
-        /// <param name="elementToSearch">The VisualElement where the Quering process will be done.</param>
-        /// <param name="name">Optional parameter to find the element</param>
-        /// <param name="ussClass">Optional parameter to find the element</param>
-        /// <returns>The VisualElement specified</returns>
-        protected TElement Find<TElement>(VisualElement elementToSearch, string name = null, string ussClass = null)where TElement : VisualElement
-        {
-            return elementToSearch.Q<TElement>(name, ussClass);
-        }
-        /// <summary>
-        /// Queries a visual element of type T from the DrawInspectorElement, and binds it to a property on the serialized object.
-        /// <para>Property is found by using the Element's name as the binding path</para>
-        /// </summary>
-        /// <typeparam name="TElement">The Type of VisualElement, must inherit IBindable</typeparam>
-        /// <param name="name">Optional parameter to find the Element, used in the Quering</param>
-        /// <param name="ussClass">Optional parameter of the name of a USSClass the element youre finding uses</param>
-        /// <returns>The VisualElement specified, with a binding to the property</returns>
-        protected TElement FindAndBind<TElement>(string name = null, string ussClass = null) where TElement : VisualElement, IBindable
-        {
-            var bindableElement = DrawInspectorElement.Q<TElement>(name, ussClass);
-            if (bindableElement == null)
-                throw new NullReferenceException($"Could not find element of type {typeof(TElement)} inside the DrawInspectorElement.");
-
-            bindableElement.bindingPath = bindableElement.name;
-            bindableElement.BindProperty(serializedObject);
-
-            return bindableElement;
-        }
-
-        /// <summary>
-        /// Queries a visual element of type T from the DrawInspectorElement, and binds it to a property on the serialized object.
-        /// </summary>
-        /// <typeparam name="TElement">The Type of VisualElement, must inherit IBindable</typeparam>
-        /// <param name="prop">The property which is used in the Binding process</param>
-        /// <param name="name">Optional parameter to find the Element, used in the Quering</param>
-        /// <param name="ussClass">Optional parameter of the name of a USSClass the element youre finding uses</param>
-        /// <returns>The VisualElement specified, with a binding to the property</returns>
-        protected TElement FindAndBind<TElement>(SerializedProperty prop, string name = null, string ussClass = null) where TElement : VisualElement, IBindable
-        {
-            var bindableElement = DrawInspectorElement.Q<TElement>(name, ussClass);
-            if (bindableElement == null)
-                throw new NullReferenceException($"Could not find element of type {typeof(TElement)} inside the DrawInspectorElement.");
-
-            bindableElement.BindProperty(prop);
-
-            return bindableElement;
-        }
-
-        /// <summary>
-        /// Queries a visual element of type T from the elementToSearch argument, and binds it to a property on the serialized object.
-        /// <para>Property is found by using the Element's name as the binding path</para>
-        /// </summary>
-        /// <typeparam name="TElement">The Type of VisualElement, must inherit IBindable</typeparam>
-        /// <param name="elementToSearch">The VisualElement where the Quering process will be done.</param>
-        /// <param name="name">Optional parameter to find the Element, used in the Quering</param>
-        /// <param name="ussClass">The name of a USSClass the element youre finding uses</param>
-        /// <returns>The VisualElement specified, with a binding to the property</returns>
-        protected TElement FindAndBind<TElement>(VisualElement elementToSearch, string name = null, string ussClass = null) where TElement : VisualElement, IBindable
-        {
-            var bindableElement = elementToSearch.Q<TElement>(name, ussClass);
-            if (bindableElement == null)
-                throw new NullReferenceException($"Could not find element of type {typeof(TElement)} inside element {elementToSearch.name}.");
-
-            bindableElement.bindingPath = bindableElement.name;
-            bindableElement.BindProperty(serializedObject);
-
-            return bindableElement;
-        }
-
-        /// <summary>
-        /// Queries a visual element of type T from the elementToSearch argument, and binds it to a property on the serialized object.
-        /// <para>Property is found by using the Element's name as the binding path</para>
-        /// </summary>
-        /// <typeparam name="TElement">The Type of VisualElement, must inherit IBindable</typeparam>
-        /// <param name="elementToSearch">The VisualElement where the Quering process will be done.</param>
-        /// <param name="name">Optional parameter to find the Element, used in the Quering</param>
-        /// <param name="ussClass">The name of a USSClass the element youre finding uses</param>
-        /// <returns>The VisualElement specified, with a binding to the property</returns>
-        protected TElement FindAndBind<TElement>(VisualElement elementToSearch, SerializedProperty prop, string name = null, string ussClass = null) where TElement : VisualElement, IBindable
-        {
-            var bindableElement = elementToSearch.Q<TElement>(name, ussClass);
-            if (bindableElement == null)
-                throw new NullReferenceException($"Could not find element of type {typeof(TElement)} inside element {elementToSearch.name}.");
-
-            bindableElement.BindProperty(prop);
-
-            return bindableElement;
-        }
-
         /// <summary>
         /// Creates a HelpBox and attatches it to a visualElement using IMGUIContainer
         /// </summary>
@@ -370,47 +399,32 @@ namespace RoR2EditorKit.Core.Inspectors
         }
 
         /// <summary>
-        /// Ensure the naming convention for a specific object stays.
-        /// <para>This method is ran right after OnRootElementCleared by default.</para>
-        /// <para>Requires that the prefix for this inspector is not null.</para>
+        /// Adds a ContextMenu to a visual element using RoR2EK's <see cref="ContextMenuData"/> wrapper
         /// </summary>
-        /// <param name="evt">The ChangeEvent, used if the Method is used on a visual element's RegisterValueChange</param>
-        /// <returns>If the convention is not followed, an IMGUIContainer with a help box, otherwise it returns null.</returns>
-        protected virtual IMGUIContainer EnsureNamingConventions(ChangeEvent<string> evt = null)
+        /// <param name="element">The element that's going to be used for the ContextMenu</param>
+        /// <param name="contextMenuData">The data for the ContextMenu</param>
+        protected void AddSimpleContextMenu(VisualElement element, ContextMenuData contextMenuData)
         {
-            if(!Settings.InspectorSettings.enableNamingConventions)
+            if (!elementToContextMenu.ContainsKey(element))
             {
-                return null;
+                var manipulator = new ContextualMenuManipulator(x => CreateMenu(element, x));
+                elementToContextMenu.Add(element, (manipulator, new List<ContextMenuData>()));
+                element.AddManipulator(manipulator);
             }
-
-            if(prefixContainer != null)
-            {
-                prefixContainer.TryRemoveFromParent();
-            }
-
-            if(evt != null)
-            {
-                TargetType.name = evt.newValue;
-            }
-
-            if(prefixUsesTokenPrefix && Settings.TokenPrefix.IsNullOrEmptyOrWhitespace())
-            {
-                throw ErrorShorthands.ThrowNullTokenPrefix();
-            }
-
-
-            if(prefix != null)
-            {
-                if(TargetType && !TargetType.name.ToLowerInvariant().StartsWith(prefix.ToLowerInvariant()))
-                {
-                    string typeName = typeof(T).Name;
-                    prefixContainer = CreateHelpBox($"This {typeName}'s name should start with {prefix} for naming conventions.", MessageType.Info);
-                    return prefixContainer;
-                }
-            }
-            return null;
+            var tuple = elementToContextMenu[element];
+            if (!tuple.Item2.Contains(contextMenuData))
+                tuple.Item2.Add(contextMenuData);
         }
 
+        private void CreateMenu(VisualElement element, ContextualMenuPopulateEvent populateEvent)
+        {
+            var contextMenus = elementToContextMenu[element].Item2;
+
+            foreach (ContextMenuData data in contextMenus)
+            {
+                populateEvent.menu.AppendAction(data.menuName, data.menuAction, data.actionStatusCheck);
+            }
+        }
         #endregion
     }
 }

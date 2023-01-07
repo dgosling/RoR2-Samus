@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>R2API.Loadout</name>
+    </assembly>
+    <members>
+        <member name="P:R2API.LoadoutAPI.Loaded">
+            <summary>
+            Return true if the submodule is loaded.
+            </summary>
+        </member>
+        <member name="M:R2API.LoadoutAPI.AddSkill(System.Type)">
+            <summary>
+            Adds a type for a skill EntityState to the SkillsCatalog.
+            State must derive from EntityStates.EntityState.
+            Note that SkillDefs and SkillFamiles must also be added seperately.
+            </summary>
+            <param name="t">The type to add</param>
+            <returns>True if succesfully added</returns>
+        </member>
+        <member name="M:R2API.LoadoutAPI.StateTypeOf``1">
+            <summary>
+            Creates a SerializableEntityStateType with a much simpler syntax
+            Effectively the same as new SerializableEntityStateType(typeof(T))
+            </summary>
+            <typeparam name="T">The state type</typeparam>
+            <returns>The created SerializableEntityStateType</returns>
+        </member>
+        <member name="M:R2API.LoadoutAPI.AddSkillDef(RoR2.Skills.SkillDef)">
+            <summary>
+            Registers an event to add a SkillDef to the SkillDefCatalog.
+            Must be called before Catalog init (during Awake() or OnEnable())
+            </summary>
+            <param name="s">The SkillDef to add</param>
+            <returns>True if the event was registered</returns>
+        </member>
+        <member name="M:R2API.LoadoutAPI.AddSkillFamily(RoR2.Skills.SkillFamily)">
+            <summary>
+            Registers an event to add a SkillFamily to the SkillFamiliesCatalog
+            Must be called before Catalog init (during Awake() or OnEnable())
+            </summary>
+            <param name="sf">The skillfamily to add</param>
+            <returns>True if the event was registered</returns>
+        </member>
+        <member name="M:R2API.LoadoutAPI.CreateSkinIcon(UnityEngine.Color,UnityEngine.Color,UnityEngine.Color,UnityEngine.Color)">
+            <summary>
+            Creates a skin icon sprite styled after the ones already in the game.
+            </summary>
+            <param name="top">The color of the top portion</param>
+            <param name="right">The color of the right portion</param>
+            <param name="bottom">The color of the bottom portion</param>
+            <param name="left">The color of the left portion</param>
+            <returns>The icon sprite</returns>
+        </member>
+        <member name="M:R2API.LoadoutAPI.CreateSkinIcon(UnityEngine.Color,UnityEngine.Color,UnityEngine.Color,UnityEngine.Color,UnityEngine.Color)">
+            <summary>
+            Creates a skin icon sprite styled after the ones already in the game.
+            </summary>
+            <param name="top">The color of the top portion</param>
+            <param name="right">The color of the right portion</param>
+            <param name="bottom">The color of the bottom portion</param>
+            <param name="left">The color of the left portion</param>
+            <param name="line">The color of the dividing lines</param>
+            <returns></returns>
+        </member>
+        <member name="T:R2API.LoadoutAPI.SkinDefInfo">
+            <summary>
+            A container struct for all SkinDef parameters.
+            Use this to set skinDef values, then call CreateNewSkinDef().
+            </summary>
+        </member>
+        <member name="M:R2API.LoadoutAPI.CreateNewSkinDef(R2API.LoadoutAPI.SkinDefInfo)">
+            <summary>
+            Creates a new SkinDef from a SkinDefInfo.
+            Note that this prevents null-refs by disabling SkinDef awake while the SkinDef is being created.
+            The things that occur during awake are performed when first applied to a character instead.
+            </summary>
+            <param name="skin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:R2API.LoadoutAPI.AddSkinToCharacter(UnityEngine.GameObject,R2API.LoadoutAPI.SkinDefInfo)">
+            <summary>
+            Adds a skin to the body prefab for a character.
+            Will attempt to create a default skin if one is not present.
+            Must be called during plugin Awake or OnEnable. If called afterwards the new skins must be added to bodycatalog manually.
+            </summary>
+            <param name="bodyPrefab">The body to add the skin to</param>
+            <param name="skin">The SkinDefInfo for the skin to add</param>
+            <returns>True if successful</returns>
+        </member>
+        <member name="M:R2API.LoadoutAPI.AddSkinToCharacter(UnityEngine.GameObject,RoR2.SkinDef)">
+            <summary>
+            Adds a skin to the body prefab for a character.
+            Will attempt to create a default skin if one is not present.
+            Must be called during plugin Awake or OnEnable. If called afterwards the new skins must be added to bodycatalog manually.
+            </summary>
+            <param name="bodyPrefab">The body to add the skin to</param>
+            <param name="skin">The SkinDef to add</param>
+            <returns>True if successful</returns>
+        </member>
+        <member name="F:R2API.LoadoutAPI.PluginVersion">
+            <summary>
+            Version of the plugin, should be matching with the thunderstore package.
+            </summary>
+        </member>
+        <member name="T:R2API.AutoVersionGen.AutoVersionAttribute">
+            <summary>
+            Add a PluginVersion field to the attribut-ed class filled from the thunderstore.toml versionNumber field
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -117,6 +117,13 @@ namespace SamusMod.SkillStates.Samus
 
             //this.characterBody.gameObject.GetComponent<Collider>().enabled = false;
 
+            //    BaseStates.BaseSamus.emoteMorphBall = true;
+            //if (Modules.EmoteAPICompatibility.enabled)
+            //{
+
+            //    BaseStates.BaseSamus.boneMapper.gameObject.SetActive(false);
+            //}
+            
             this.ball = ChildLocator.FindChild("Ball2").gameObject;
             this.armature = ChildLocator.FindChild("armature").gameObject;
             this.mesh = ChildLocator.FindChild("Body").gameObject;

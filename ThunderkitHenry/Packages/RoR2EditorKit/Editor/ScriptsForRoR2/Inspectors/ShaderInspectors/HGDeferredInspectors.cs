@@ -6,15 +6,15 @@ namespace RoR2EditorKit.RoR2Related.Inspectors
     /// <summary>
     /// RoR2EK's HopooGames/Deferred shader editors.
     /// </summary>
-    public static class HGDeferredInspectors
+    [InitializeOnLoad]
+    internal static class HGDeferredInspectors
     {
-        [InitializeOnLoadMethod]
-        private static void Initialize()
+        static HGDeferredInspectors()
         {
             if (MaterialEditorEnabled)
             {
-                AddShader("hgStandard", HGStandardEditor, typeof(HGDeferredInspectors));
-                AddShader("hgSnowtopped", HGSnowtoppedEditor, typeof(HGDeferredInspectors));
+                AddShaderEditor("hgStandard", HGStandardEditor, typeof(HGDeferredInspectors));
+                AddShaderEditor("hgSnowtopped", HGSnowtoppedEditor, typeof(HGDeferredInspectors));
             }
         }
 

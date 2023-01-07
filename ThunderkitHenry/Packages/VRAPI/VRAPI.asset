@@ -18,8 +18,8 @@ MonoBehaviour:
   StagingPaths: []
   Author: DrBibop
   Name: VRAPI
-  Description: Modding API for VR-compatible mods.
-  Version: 1.0.1
+  Description: Modding API for VR-compatible mods. Now with custom skin support!
+  Version: 1.1.0
   Dependencies: 
   - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
 --- !u!114 &11400000

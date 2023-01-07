@@ -1,7 +1,6 @@
 {
     "name": "SamusMod",
     "references": [
-        "Unity.TextMeshPro",
         "com.unity.multiplayer-hlapi.Runtime"
     ],
     "includePlatforms": [],
@@ -10,20 +9,27 @@
     "overrideReferences": true,
     "precompiledReferences": [
         "BepInEx.dll",
-        "R2API.dll",
         "Mono.Cecil.dll",
         "MonoMod.Utils.dll",
         "Wwise.dll",
         "MonoMod.RuntimeDetour.dll",
         "Rewired_CSharp.dll",
         "MMHOOK_RoR2.dll",
-        "Rewired_Core.refstub.dll",
         "KinematicCharacterController.dll",
         "RoR2.dll",
         "LegacyResourcesAPI.dll",
         "VRAPI.dll",
         "HGCSharpUtils.dll",
-        "CustomEmotesAPI.dll"
+        "CustomEmotesAPI.dll",
+        "UnityEngine.UI.dll",
+        "Unity.TextMeshPro.dll",
+        "Rewired_Core.dll",
+        "R2API.ContentManagement.dll",
+        "R2API.Core.dll",
+        "R2API.Language.dll",
+        "R2API.Loadout.dll",
+        "R2API.Prefab.dll",
+        "R2API.Sound.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

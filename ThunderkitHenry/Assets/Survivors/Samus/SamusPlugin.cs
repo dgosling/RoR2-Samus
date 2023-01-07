@@ -20,20 +20,35 @@ using MonoMod.RuntimeDetour.HookGen;
 //Do a 'Find and Replace' on the ThunderHenry namespace. Make your own namespace, please.
 namespace SamusMod
 {
-    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+   
+
+[BepInDependency("com.bepis.r2api.content_management")]
+[BepInDependency("com.bepis.r2api")]
+[BepInDependency("com.bepis.r2api.language")]
+[BepInDependency("com.bepis.r2api.loadout")]
+
+
+
+[BepInDependency("com.bepis.r2api.prefab")]
+
+
+[BepInDependency("com.bepis.r2api.sound")]
+
+
+
     //[BepInDependency("com.valex.ShaderConverter", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.weliveinasociety.CustomEmotesAPI",BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
-    [R2APISubmoduleDependency(new string[]
-    {
-        "PrefabAPI",
-        "LanguageAPI",
-        "SoundAPI",
-        "UnlockableAPI",
-        nameof(R2API.ContentManagement.R2APIContentManager)
-    })]
+    //[R2APISubmoduleDependency(new string[]
+    //{
+    //    "PrefabAPI",
+    //    "LanguageAPI",
+    //    "SoundAPI",
+    //    "UnlockableAPI",
+    //    nameof(R2API.ContentManagement.R2APIContentManager)
+    //})]
     public class SamusPlugin : BaseUnityPlugin
     {
         // if you don't change these you're giving permission to deprecate the mod-
@@ -41,7 +56,7 @@ namespace SamusMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.dgosling.Samus";
         public const string MODNAME = "Samus";
-        public const string MODVERSION = "2.1.7";
+        public const string MODVERSION = "2.2.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "DG";
@@ -115,8 +130,12 @@ namespace SamusMod
                    On.RoR2.UserProfile.LoadDefaultProfile += ExtraInputs.OnLoadDefaultProfile;
             On.RoR2.SaveSystem.LoadUserProfiles += ExtraInputs.OnLoadUserProfiles;
                 On.RoR2.UI.SettingsPanelController.Start += SettingsPanelControllerStart;
-            if(Modules.EmoteAPICompatibility.enabled)
+            if (Modules.EmoteAPICompatibility.enabled)
+            {
                 On.RoR2.SurvivorCatalog.Init += Modules.EmoteAPICompatibility.SurvivorCatalog_Init;
+                //EmotesAPI.CustomEmotesAPI.animChanged += Modules.EmoteAPICompatibility.CustomEmotesAPI_animChanged;
+            }
+                
 
             
 

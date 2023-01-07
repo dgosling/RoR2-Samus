@@ -7,13 +7,13 @@
       "dependencies": {}
     },
     "com.passivepicasso.thunderkit": {
-      "version": "https://github.com/PassivePicasso/ThunderKit.git#RC_5_0_0",
+      "version": "https://github.com/PassivePicasso/ThunderKit.git#6.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.16.1"
       },
-      "hash": "71788ca1e8d1cd4e2a4a93d7b7d0e19e95d5abd8"
+      "hash": "f16eae2d2c2e77ef61d3584793bd45eca8aa22e7"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -41,6 +41,19 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.multiplayer-hlapi": {
+      "version": "file:RoR2MultiplayerHLAPI",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.unity.postprocessing": {
+      "version": "2.3.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.scriptablebuildpipeline": {
       "version": "1.19.6",
       "depth": 0,
@@ -59,15 +72,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.textmeshpro": {
-      "version": "2.1.4",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.timeline": {
       "version": "1.2.18",
       "depth": 0,
@@ -79,15 +83,6 @@
         "com.unity.modules.particlesystem": "1.0.0"
       },
       "url": "https://packages.unity.com"
-    },
-    "com.unity.ugui": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0"
-      }
     },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.7",
@@ -131,8 +126,8 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "nebby-unitymultiplayerhlapi": {
-      "version": "file:UnityMultiplayerHLAPI",
+    "mmhook-assemblies": {
+      "version": "file:mmhook-assemblies",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -149,11 +144,156 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "riskofthunder-r2api_artifactcode": {
+      "version": "file:R2API_ArtifactCode",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_colors": {
+      "version": "file:R2API_Colors",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_commandhelper": {
+      "version": "file:R2API_CommandHelper",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_contentmanagement": {
+      "version": "file:R2API_ContentManagement",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_core": {
+      "version": "file:R2API_Core",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_damagetype": {
+      "version": "file:R2API_DamageType",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_deployable": {
+      "version": "file:R2API_Deployable",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_difficulty": {
+      "version": "file:R2API_Difficulty",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_director": {
+      "version": "file:R2API_Director",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_dot": {
+      "version": "file:R2API_Dot",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_elites": {
+      "version": "file:R2API_Elites",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_items": {
+      "version": "file:R2API_Items",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_language": {
+      "version": "file:R2API_Language",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_loadout": {
+      "version": "file:R2API_Loadout",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_lobbyconfig": {
+      "version": "file:R2API_LobbyConfig",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_networking": {
+      "version": "file:R2API_Networking",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_orb": {
+      "version": "file:R2API_Orb",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_prefab": {
+      "version": "file:R2API_Prefab",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_recalculatestats": {
+      "version": "file:R2API_RecalculateStats",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_sceneasset": {
+      "version": "file:R2API_SceneAsset",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_sound": {
+      "version": "file:R2API_Sound",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_tempvisualeffect": {
+      "version": "file:R2API_TempVisualEffect",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_unlockable": {
+      "version": "file:R2API_Unlockable",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "riskofthunder-ror2editorkit": {
       "version": "file:RoR2EditorKit",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
+    },
+    "riskofthunder-ror2importextensions": {
+      "version": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "38a3716970e589ecc20e2292c13352bc0efaa1c5"
     },
     "rune580-risk_of_options": {
       "version": "file:Risk_Of_Options",

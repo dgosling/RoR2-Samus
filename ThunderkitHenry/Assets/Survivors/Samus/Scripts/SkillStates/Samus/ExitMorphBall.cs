@@ -66,11 +66,11 @@ namespace SamusMod.SkillStates.Samus
             this.characterBody.baseJumpCount = morphBallEnter.NormalJumps;
             this.characterBody.sprintingSpeedMultiplier = morphBallEnter.NormalSprint;
             this.characterBody.RecalculateStats();
-//            if (!BaseStates.BaseSamus.PowerBombInit)
-//            {
-//BaseStates.BaseSamus.PowerBombInit = true;
-//                Debug.Log("set powerbombinit");
-//            }
+            //            if (!BaseStates.BaseSamus.PowerBombInit)
+            //            {
+            //BaseStates.BaseSamus.PowerBombInit = true;
+            //                Debug.Log("set powerbombinit");
+            //            }
 
 
             //this.skillLocator.secondary.onSkillChanged += Secondary_onSkillChanged;
@@ -105,19 +105,23 @@ namespace SamusMod.SkillStates.Samus
 
 
                 foreach (SkinnedMeshRenderer renderer in morphBallEnter.DsMR)
-            {
-                renderer.enabled = true;
-            }
-            foreach (SkinnedMeshRenderer rend in morphBallEnter.NDsMR)
-            {
-                rend.enabled = true;
-            }
-            morphBallEnter.VRCamera.localPosition = morphBallEnter.CameraPOS;
+                {
+                    renderer.enabled = true;
+                }
+                foreach (SkinnedMeshRenderer rend in morphBallEnter.NDsMR)
+                {
+                    rend.enabled = true;
+                }
+                morphBallEnter.VRCamera.localPosition = morphBallEnter.CameraPOS;
 
 
             }
+
             //this.skillLocator.special.RecalculateMaxStock();
+            //  BaseStates.BaseSamus.emoteMorphBall = false;
             BaseStates.BaseSamus.morphBall = false;
+            //    if (Modules.EmoteAPICompatibility.enabled)
+            //        BaseStates.BaseSamus.boneMapper.gameObject.SetActive(true);
         }
 
         //private void Special_onSkillChanged(GenericSkill obj)

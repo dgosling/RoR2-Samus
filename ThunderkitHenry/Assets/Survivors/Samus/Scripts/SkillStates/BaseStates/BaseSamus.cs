@@ -28,6 +28,7 @@ namespace SamusMod.SkillStates.BaseStates
         private static float cacheStopwatch2;
         private static float maxStopwatch;
         private static float maxStopwatch2;
+        //private static bool _emoteMorphBall=false;
         private static bool powerBombInit;
         private static bool vrCheck;
         private static CharacterBody body;
@@ -38,8 +39,14 @@ namespace SamusMod.SkillStates.BaseStates
         private static GenericSkill powerBallskill;
         private static GenericSkill missileSkill;
         bool effectiveAuth;
+      //  public static BoneMapper boneMapper;
         //private static Components.ExtraInputBankTest extraInput;
        // private bool AutoFireEnabled;
+       //public static bool emoteMorphBall
+       // {
+       //     get => _emoteMorphBall;
+       //     set => _emoteMorphBall = value;
+       // }
         public static bool morphBall { get; set; }
         public static CharacterBody Body { get => body; set => body = value; }
         public static bool VrCheck { get => vrCheck; set => vrCheck = value; }
@@ -68,6 +75,7 @@ namespace SamusMod.SkillStates.BaseStates
         // Start is called before the first frame update
         public override void OnEnter()
         {
+
             this.ChildLocator = base.GetModelChildLocator();
             this.ball = this.ChildLocator.FindChild("Ball2").gameObject;
             this.collider = this.ball.GetComponent<Collider>();
@@ -87,9 +95,13 @@ namespace SamusMod.SkillStates.BaseStates
                  skillLocator.FindSkillByFamilyName("SamusSecondary2").enabled = false;
                 
             }
-            //if (SamusPlugin.autoFireEnabled)
-            //    extraInput = gameObject.GetComponent<Components.ExtraInputBankTest>();
-            Stopwatch = 0f;
+            //if (Modules.EmoteAPICompatibility.enabled)
+            //{
+            //    boneMapper = modelLocator.modelTransform.GetComponentInChildren<BoneMapper>();
+            //}
+                //if (SamusPlugin.autoFireEnabled)
+                //    extraInput = gameObject.GetComponent<Components.ExtraInputBankTest>();
+                Stopwatch = 0f;
             Stopwatch2 = 0f;
             powerBombInit = false;
             //noPowerBomb = true;
@@ -122,6 +134,10 @@ namespace SamusMod.SkillStates.BaseStates
         {
             base.Update();
             // RoR2.DotController.onDotInflictedServerGlobal += DotController_onDotInflictedServerGlobal;
+
+
+
+            
             if (DotController.FindDotController(gameObject) != null)
             {
                 DotController dotController = DotController.FindDotController(gameObject);
@@ -159,7 +175,8 @@ namespace SamusMod.SkillStates.BaseStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            
+
+
             this.characterBody.skillLocator.FindSkill("");
             effectiveAuth = characterBody.master.hasEffectiveAuthority;
             if (this.Animator)

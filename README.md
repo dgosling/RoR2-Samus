@@ -35,6 +35,17 @@ Samus is an agile survivor with a charge beam, homing missiles, a super missile,
 - Thunderkit Team for Making it Possible and Easy to use RoR2 Shaders Inside Unity
 - Vale-X for Making ThunderkitHenry
 ## Changelog
+` 2.2.0 `
+- Fixed Damage Scaling on Level Up
+- Updated to new R2API Submodules
+- Added New Config Options to Let User Manually Edit Samus' Character Stats and Skill Damage Multipliers
+
+` 2.1.9 `
+- Actually Fixed Skill's Descriptions
+
+` 2.1.8 `
+- Disabled CustomEmotesAPI Armature's Root Motion to Prevent Moving when Emoting
+
 ` 2.1.7 `
 - Fixed Beam Skill Description
 - Added CustomEmotesAPI Support

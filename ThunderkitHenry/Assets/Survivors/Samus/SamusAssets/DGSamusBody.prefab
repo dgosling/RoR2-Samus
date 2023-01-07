@@ -62,13 +62,8 @@ MonoBehaviour:
   isBullseye: 1
   isSniperTarget: 0
   damageModifier: 0
-  <teamIndex>k__BackingField: -1
   hurtBoxGroup: {fileID: 5326841556306280495}
   indexInGroup: 0
-  <collider>k__BackingField: {fileID: 0}
-  <volume>k__BackingField: 0
-  isInBullseyeList: 0
-  isInSniperTargetList: 0
 --- !u!1 &624172028022569882
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,21 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <skillDef>k__BackingField: {fileID: 0}
   _skillFamily: {fileID: 11400000, guid: 6d3c0c265db14c44ea57204f4acf7df3, type: 2}
-  <baseSkill>k__BackingField: {fileID: 0}
   skillName: Power Bomb
   hideInCharacterSelect: 1
-  <stateMachine>k__BackingField: {fileID: 0}
-  <characterBody>k__BackingField: {fileID: 0}
-  <defaultSkillDef>k__BackingField: {fileID: 0}
-  bonusStockFromBody: 0
-  <maxStock>k__BackingField: 0
-  <stock>k__BackingField: 0
-  finalRechargeInterval: 0
-  _cooldownScale: 1
-  _flatCooldownReduction: 1
-  <rechargeStopwatch>k__BackingField: 0
   hasExecutedSuccessfully: 0
 --- !u!114 &624172028979364244
 MonoBehaviour:
@@ -258,10 +241,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hideAllyCardDisplay: 0
   _teamIndex: 1
-  <body>k__BackingField: {fileID: 0}
-  oldTeamIndex: -1
-  defaultIndicatorPrefab: {fileID: 0}
-  indicator: {fileID: 0}
 --- !u!114 &4112803014512122883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,43 +271,7 @@ MonoBehaviour:
   bodyIndex: -1
   baseNameToken: DG_SAMUS_NAME
   subtitleNameToken: DG_SAMUS_SUBTITLE
-  activeBuffsList: 
-  activeBuffsListCount: 0
-  buffs: 
-  eliteBuffCount: 0
-  warCryEffectInstance: {fileID: 0}
   bodyFlags: 529
-  _masterObject: {fileID: 0}
-  _master: {fileID: 0}
-  <inventory>k__BackingField: {fileID: 0}
-  linkedToMaster: 0
-  <isPlayerControlled>k__BackingField: 0
-  disablingHurtBoxes: 0
-  previousEquipmentIndex: -1
-  <executeEliteHealthFraction>k__BackingField: 0
-  transform: {fileID: 0}
-  <rigidbody>k__BackingField: {fileID: 0}
-  <networkIdentity>k__BackingField: {fileID: 0}
-  <characterMotor>k__BackingField: {fileID: 0}
-  <characterDirection>k__BackingField: {fileID: 0}
-  <teamComponent>k__BackingField: {fileID: 0}
-  <healthComponent>k__BackingField: {fileID: 0}
-  <equipmentSlot>k__BackingField: {fileID: 0}
-  <inputBank>k__BackingField: {fileID: 0}
-  <skillLocator>k__BackingField: {fileID: 0}
-  sfxLocator: {fileID: 0}
-  <modelLocator>k__BackingField: {fileID: 0}
-  <hurtBoxGroup>k__BackingField: {fileID: 0}
-  <mainHurtBox>k__BackingField: {fileID: 0}
-  <coreTransform>k__BackingField: {fileID: 0}
-  <hasEffectiveAuthority>k__BackingField: 0
-  _isSprinting: 0
-  outOfCombatStopwatch: 0
-  outOfDangerStopwatch: 0
-  <outOfCombat>k__BackingField: 1
-  _outOfDanger: 1
-  previousPosition: {x: 0, y: 0, z: 0}
-  notMovingStopwatch: 0
   rootMotionInMainState: 0
   mainRootSpeed: 0
   baseMaxHealth: 200
@@ -350,84 +293,11 @@ MonoBehaviour:
   levelMaxShield: 0
   levelMoveSpeed: 0
   levelJumpPower: 0
-  levelDamage: 0.3
+  levelDamage: 2
   levelAttackSpeed: 0
   levelCrit: 0
   levelArmor: 0
-  <experience>k__BackingField: 0
-  <level>k__BackingField: 0
-  <maxHealth>k__BackingField: 0
-  <maxBarrier>k__BackingField: 0
-  <barrierDecayRate>k__BackingField: 0
-  <regen>k__BackingField: 0
-  <maxShield>k__BackingField: 0
-  <moveSpeed>k__BackingField: 0
-  <acceleration>k__BackingField: 0
-  <jumpPower>k__BackingField: 0
-  <maxJumpCount>k__BackingField: 0
-  <maxJumpHeight>k__BackingField: 0
-  <damage>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
-  <crit>k__BackingField: 0
-  <critMultiplier>k__BackingField: 0
-  <bleedChance>k__BackingField: 0
-  <armor>k__BackingField: 0
-  <visionDistance>k__BackingField: 0
-  <critHeal>k__BackingField: 0
-  <cursePenalty>k__BackingField: 0
-  <hasOneShotProtection>k__BackingField: 0
-  <isGlass>k__BackingField: 0
-  <oneShotProtectionFraction>k__BackingField: 0
-  <canPerformBackstab>k__BackingField: 0
-  <canReceiveBackstab>k__BackingField: 0
-  statsDirty: 0
-  aimTimer: 0
-  <killCountServer>k__BackingField: 0
-  helfireController: {fileID: 0}
-  helfireLifetime: 0
-  fireTrail: {fileID: 0}
   wasLucky: 0
-  poisonballTimer: 0
-  lunarMissileRechargeTimer: 10
-  lunarMissileTimerBetweenShots: 0
-  remainingMissilesToFire: 0
-  lunarMissilePrefab: {fileID: 0}
-  timeBubbleWardInstance: {fileID: 0}
-  engiShieldTempEffectInstance: {fileID: 0}
-  bucklerShieldTempEffectInstance: {fileID: 0}
-  slowDownTimeTempEffectInstance: {fileID: 0}
-  crippleEffectInstance: {fileID: 0}
-  tonicBuffEffectInstance: {fileID: 0}
-  weakTempEffectInstance: {fileID: 0}
-  energizedTempEffectInstance: {fileID: 0}
-  barrierTempEffectInstance: {fileID: 0}
-  nullifyStack1EffectInstance: {fileID: 0}
-  nullifyStack2EffectInstance: {fileID: 0}
-  nullifyStack3EffectInstance: {fileID: 0}
-  regenBoostEffectInstance: {fileID: 0}
-  elephantDefenseEffectInstance: {fileID: 0}
-  healingDisabledEffectInstance: {fileID: 0}
-  noCooldownEffectInstance: {fileID: 0}
-  doppelgangerEffectInstance: {fileID: 0}
-  deathmarkEffectInstance: {fileID: 0}
-  crocoRegenEffectInstance: {fileID: 0}
-  mercExposeEffectInstance: {fileID: 0}
-  lifestealOnHitEffectInstance: {fileID: 0}
-  teamWarCryEffectInstance: {fileID: 0}
-  randomDamageEffectInstance: {fileID: 0}
-  lunarGolemShieldEffectInstance: {fileID: 0}
-  warbannerEffectInstance: {fileID: 0}
-  teslaFieldEffectInstance: {fileID: 0}
-  lunarSecondaryRootEffectInstance: {fileID: 0}
-  lunarDetonatorEffectInstance: {fileID: 0}
-  fruitingEffectInstance: {fileID: 0}
-  mushroomVoidTempEffectInstance: {fileID: 0}
-  bearVoidTempEffectInstance: {fileID: 0}
-  outOfCombatArmorEffectInstance: {fileID: 0}
-  voidFogMildEffectInstance: {fileID: 0}
-  voidFogStrongEffectInstance: {fileID: 0}
-  voidJailerSlowEffectInstance: {fileID: 0}
-  voidRaidcrabWardWipeFogEffectInstance: {fileID: 0}
   spreadBloomDecayTime: 0.7
   spreadBloomCurve:
     serializedVersion: 2
@@ -453,18 +323,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  spreadBloomInternal: 0
   _defaultCrosshairPrefab: {fileID: 0}
   hideCrosshair: 0
-  multiKillTimer: 0
-  <multiKillCount>k__BackingField: 0
-  <radius>k__BackingField: 0
   aimOriginTransform: {fileID: 624172028022569885}
   hullClassification: 0
   portraitIcon: {fileID: 2800000, guid: ccbc4709367d60e4a86f282e26d2b534, type: 3}
   bodyColor: {r: 1, g: 0.67058825, b: 0.14901961, a: 1}
   isChampion: 0
-  <isElite>k__BackingField: 0
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
   preferredInitialStateType:
@@ -493,11 +358,6 @@ MonoBehaviour:
   driveFromRootRotation: 0
   turnSpeed: 720
   turnSoundName: 
-  previousParamsIndex: -1
-  yRotationVelocity: 0
-  _yaw: 0
-  targetVector: {x: 0, y: 0, z: 0}
-  <hasEffectiveAuthority>k__BackingField: 0
 --- !u!114 &5084924753074787659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,31 +375,6 @@ MonoBehaviour:
   fovOverride: 0
   recoil: {x: 0, y: 0}
   dontRaycastToPivot: 0
-  targetRecoil: {x: 0, y: 0}
-  recoilVelocity: {x: 0, y: 0}
-  targetRecoilVelocity: {x: 0, y: 0}
-  _currentCameraParamsData:
-    minPitch:
-      value: 0
-      alpha: 0
-    maxPitch:
-      value: 0
-      alpha: 0
-    wallCushion:
-      value: 0
-      alpha: 0
-    pivotVerticalOffset:
-      value: 0
-      alpha: 0
-    idealLocalCameraPos:
-      value: {x: 0, y: 0, z: 0}
-      alpha: 0
-    fov:
-      value: 0
-      alpha: 0
-    isFirstPerson:
-      value: 0
-      alpha: 0
 --- !u!114 &8577965984234766323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,21 +388,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelTransform: {fileID: 3856944587015190306}
-  modelDestructionNotifier: {fileID: 0}
   modelBaseTransform: {fileID: 624172030016419701}
   autoUpdateModelTransform: 1
   dontDetatchFromParent: 0
-  modelParentTransform: {fileID: 0}
   noCorpse: 0
   dontReleaseModelOnDeath: 0
   preserveModel: 0
   normalizeToFloor: 0
   normalSmoothdampTime: 0.1
   normalMaxAngleDelta: 90
-  normalSmoothdampVelocity: {x: 0, y: 0, z: 0}
-  targetNormal: {x: 0, y: 1, z: 0}
-  currentNormal: {x: 0, y: 1, z: 0}
-  characterMotor: {fileID: 0}
 --- !u!54 &1562491142027640281
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -616,23 +445,7 @@ MonoBehaviour:
   magnetiCharge: 0
   dontShowHealthbar: 0
   globalDeathEventChanceCoefficient: 1
-  _killingDamageType: 0
   body: {fileID: 624172028979364245}
-  modelLocator: {fileID: 0}
-  <lastHitAttacker>k__BackingField: {fileID: 0}
-  <godMode>k__BackingField: 0
-  <potionReserve>k__BackingField: 0
-  <isInFrozenState>k__BackingField: 0
-  devilOrbHealPool: 0
-  devilOrbTimer: 0
-  regenAccumulator: 0
-  wasAlive: 1
-  adaptiveArmorValue: 0
-  isShieldRegenForced: 0
-  ospTimer: 0
-  serverDamageTakenThisUpdate: 0
-  repeatHealComponent: {fileID: 0}
-  currentEquipmentIndex: 0
 --- !u!114 &7963288171139867585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,14 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: -1549848242, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterBody: {fileID: 0}
-  _aimDirection: {x: 0, y: 0, z: 0}
-  lastRaycastTime: -Infinity
-  lastFixedRaycastTime: -Infinity
-  didLastRaycastHit: 0
-  lastMaxDistance: 0
   moveVector: {x: 0, y: 0, z: 0}
-  <emoteRequest>k__BackingField: -1
 --- !u!114 &6288068816803210226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,24 +478,12 @@ MonoBehaviour:
   airControl: 0.25
   disableAirControlUntilCollision: 0
   generateParametersOnAwake: 1
-  networkIdentity: {fileID: 0}
-  body: {fileID: 0}
-  capsuleCollider: {fileID: 0}
-  alive: 1
-  restStopwatch: 0
-  previousPosition: {x: 0, y: 0, z: 0}
-  isAirControlForced: 0
-  lastVelocity: {x: 0, y: 0, z: 0}
-  _moveDirection: {x: 0, y: 0, z: 0}
-  _safeCollisionEnableCount: 0
   _gravityParameters:
     environmentalAntiGravityGranterCount: 0
     antiGravityNeutralizerCount: 0
     channeledAntiGravityGranterCount: 0
-  <useGravity>k__BackingField: 0
   _flightParameters:
     channeledFlightGranterCount: 0
-  <isFlying>k__BackingField: 0
 --- !u!114 &5034983300643377110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,18 +531,11 @@ MonoBehaviour:
   m_Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <transform>k__BackingField: {fileID: 0}
-  <inputBank>k__BackingField: {fileID: 0}
-  <characterMotor>k__BackingField: {fileID: 0}
-  <characterDirection>k__BackingField: {fileID: 0}
-  <rigidbody>k__BackingField: {fileID: 0}
   positionTransmitInterval: 0.05
   lastPositionTransmitTime: -Infinity
   interpolationFactor: 3
   debugDuplicatePositions: 0
   debugSnapshotReceived: 0
-  rigidbodyStartedKinematic: 1
-  <hasEffectiveAuthority>k__BackingField: 0
 --- !u!114 &1587397995272613090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,22 +548,6 @@ MonoBehaviour:
   m_Script: {fileID: 1144835783, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  <activeEquipmentSlot>k__BackingField: 0
-  <equipmentIndex>k__BackingField: 0
-  <stock>k__BackingField: 0
-  <maxStock>k__BackingField: 0
-  hasEffectiveAuthority: 0
-  <characterBody>k__BackingField: {fileID: 0}
-  healthComponent: {fileID: 0}
-  inputBank: {fileID: 0}
-  teamComponent: {fileID: 0}
-  missileTimer: 0
-  bfgChargeTimer: 0
-  subcooldownTimer: 0
-  remainingMissiles: 0
-  passiveHealingFollower: {fileID: 0}
-  goldgatControllerObject: {fileID: 0}
 --- !u!114 &3783080605409339771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,13 +574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightInteractor: 0
-  inputReceived: 0
-  networkIdentity: {fileID: 0}
-  <interactor>k__BackingField: {fileID: 0}
-  inputBank: {fileID: 0}
-  characterBody: {fileID: 0}
-  equipmentSlot: {fileID: 0}
-  interactableCooldown: 0
 --- !u!114 &4514602548192955483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +595,6 @@ MonoBehaviour:
   canBeHitStunned: 0
   canBeStunned: 0
   canBeFrozen: 1
-  hasEffectiveAuthority: 1
 --- !u!114 &5983211388195640450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,9 +612,6 @@ MonoBehaviour:
     _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   mainStateType:
     _typeName: EntityStates.Idle, RoR2
-  <networker>k__BackingField: {fileID: 0}
-  <networkIdentity>k__BackingField: {fileID: 0}
-  <destroying>k__BackingField: 0
 --- !u!114 &2451970484214850562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,9 +631,6 @@ MonoBehaviour:
   mainStateType:
     _typeName: SamusMod.SkillStates.BaseStates.BaseSamus, SamusMod, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  <networker>k__BackingField: {fileID: 0}
-  <networkIdentity>k__BackingField: {fileID: 0}
-  <destroying>k__BackingField: 0
 --- !u!114 &8428628557651997393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,9 +648,6 @@ MonoBehaviour:
     _typeName: EntityStates.Idle, RoR2
   mainStateType:
     _typeName: EntityStates.Idle, RoR2
-  <networker>k__BackingField: {fileID: 0}
-  <networkIdentity>k__BackingField: {fileID: 0}
-  <destroying>k__BackingField: 0
 --- !u!114 &624172028979364247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,11 +670,10 @@ MonoBehaviour:
     skillDescriptionToken: DG_SAMUS_PASSIVE_DESCRIPTION
     keywordToken: 
     icon: {fileID: 21300000, guid: bab9c7aa203ab004fbadaf01fb886a0c, type: 3}
-  networkIdentity: {fileID: 0}
-  allSkills: []
-  hasEffectiveAuthority: 0
-  skillDefDirtyFlags: 0
-  inDeserialize: 0
+  primaryBonusStockOverrideSkill: {fileID: 0}
+  secondaryBonusStockOverrideSkill: {fileID: 0}
+  utilityBonusStockOverrideSkill: {fileID: 0}
+  specialBonusStockOverrideSkill: {fileID: 0}
 --- !u!114 &5228843618717462597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,7 +709,6 @@ MonoBehaviour:
   - {fileID: 5983211388195640450}
   - {fileID: 2451970484214850562}
   - {fileID: 8428628557651997393}
-  networkIdentity: {fileID: 0}
 --- !u!114 &2226169156475310273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,21 +721,9 @@ MonoBehaviour:
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <skillDef>k__BackingField: {fileID: 0}
   _skillFamily: {fileID: 11400000, guid: 62b4fd571e169c14c8dcc53e332224b3, type: 2}
-  <baseSkill>k__BackingField: {fileID: 0}
   skillName: Power Beam
   hideInCharacterSelect: 0
-  <stateMachine>k__BackingField: {fileID: 0}
-  <characterBody>k__BackingField: {fileID: 0}
-  <defaultSkillDef>k__BackingField: {fileID: 0}
-  bonusStockFromBody: 0
-  <maxStock>k__BackingField: 0
-  <stock>k__BackingField: 0
-  finalRechargeInterval: 0
-  _cooldownScale: 1
-  _flatCooldownReduction: 1
-  <rechargeStopwatch>k__BackingField: 0
   hasExecutedSuccessfully: 0
 --- !u!114 &9056801057465966797
 MonoBehaviour:
@@ -997,21 +737,9 @@ MonoBehaviour:
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <skillDef>k__BackingField: {fileID: 0}
   _skillFamily: {fileID: 11400000, guid: 81f173e6baf37d64ea802203b172b94c, type: 2}
-  <baseSkill>k__BackingField: {fileID: 0}
   skillName: Missile
   hideInCharacterSelect: 0
-  <stateMachine>k__BackingField: {fileID: 0}
-  <characterBody>k__BackingField: {fileID: 0}
-  <defaultSkillDef>k__BackingField: {fileID: 0}
-  bonusStockFromBody: 0
-  <maxStock>k__BackingField: 0
-  <stock>k__BackingField: 0
-  finalRechargeInterval: 0
-  _cooldownScale: 1
-  _flatCooldownReduction: 1
-  <rechargeStopwatch>k__BackingField: 0
   hasExecutedSuccessfully: 0
 --- !u!114 &5050056297215124436
 MonoBehaviour:
@@ -1025,21 +753,9 @@ MonoBehaviour:
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <skillDef>k__BackingField: {fileID: 0}
   _skillFamily: {fileID: 11400000, guid: a49d487d83af6294793ea0a82a895a64, type: 2}
-  <baseSkill>k__BackingField: {fileID: 0}
   skillName: Morph Bomb Dash
   hideInCharacterSelect: 0
-  <stateMachine>k__BackingField: {fileID: 0}
-  <characterBody>k__BackingField: {fileID: 0}
-  <defaultSkillDef>k__BackingField: {fileID: 0}
-  bonusStockFromBody: 0
-  <maxStock>k__BackingField: 0
-  <stock>k__BackingField: 0
-  finalRechargeInterval: 0
-  _cooldownScale: 1
-  _flatCooldownReduction: 1
-  <rechargeStopwatch>k__BackingField: 0
   hasExecutedSuccessfully: 0
 --- !u!114 &41317577845914576
 MonoBehaviour:
@@ -1053,21 +769,9 @@ MonoBehaviour:
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <skillDef>k__BackingField: {fileID: 0}
   _skillFamily: {fileID: 11400000, guid: 6b14e3918524dea41b17f33c7bd02f46, type: 2}
-  <baseSkill>k__BackingField: {fileID: 0}
   skillName: Super Missile
   hideInCharacterSelect: 0
-  <stateMachine>k__BackingField: {fileID: 0}
-  <characterBody>k__BackingField: {fileID: 0}
-  <defaultSkillDef>k__BackingField: {fileID: 0}
-  bonusStockFromBody: 0
-  <maxStock>k__BackingField: 0
-  <stock>k__BackingField: 0
-  finalRechargeInterval: 0
-  _cooldownScale: 1
-  _flatCooldownReduction: 1
-  <rechargeStopwatch>k__BackingField: 0
   hasExecutedSuccessfully: 0
 --- !u!1 &624172029122999544
 GameObject:
@@ -1998,7 +1702,6 @@ MonoBehaviour:
   - {fileID: 3856944587015190312}
   - {fileID: 3856944587015190374}
   componentsToDisableOnRagdoll: []
-  animator: {fileID: 0}
 --- !u!114 &3986274616578433398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2094,7 +1797,6 @@ MonoBehaviour:
   - {fileID: 4410505899147195735}
   mainHurtBox: {fileID: 4410505899147195735}
   bullseyeCount: 1
-  _hurtBoxesDeactivatorCounter: 0
 --- !u!114 &5068940453240573917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2113,13 +1815,6 @@ MonoBehaviour:
   sprintFootliftOverrideString: 
   enableFootstepDust: 1
   footstepDustPrefab: {fileID: 0}
-  childLocator: {fileID: 0}
-  bodyInventory: {fileID: 0}
-  animator: {fileID: 0}
-  footstepDustInstanceTransform: {fileID: 0}
-  footstepDustInstanceParticleSystem: {fileID: 0}
-  footstepDustInstanceShakeEmitter: {fileID: 0}
-  body: {fileID: 0}
 --- !u!114 &8300916755724442686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2147,12 +1842,7 @@ MonoBehaviour:
   fullYaw: 0
   aimType: 0
   enableAimWeight: 0
-  <isOutsideOfRange>k__BackingField: 0
   UseTransformedAimVector: 0
-  animatorComponent: {fileID: 0}
-  pitchClipCycleEnd: 0
-  yawClipCycleEnd: 0
-  giveupTimer: 0
 --- !u!114 &33227864159754828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2173,48 +1863,18 @@ MonoBehaviour:
     defaultMaterial: {fileID: 2100000, guid: 3ee894a6bcfd8df44bcfb061b3f69538, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
+    hideOnDeath: 0
   - renderer: {fileID: 7063728656958233413}
     defaultMaterial: {fileID: 2100000, guid: 99bc19651a80fb2488e1fa29b658d4a0, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
+    hideOnDeath: 0
   - renderer: {fileID: 3636858839345816927}
     defaultMaterial: {fileID: 2100000, guid: 99bc19651a80fb2488e1fa29b658d4a0, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
+    hideOnDeath: 0
   baseLightInfos: []
-  childLocator: {fileID: 0}
-  goldAffixEffect: {fileID: 0}
-  coreTransform: {fileID: 0}
-  _visibility: 3
-  _isGhost: 0
-  _isDoppelganger: 0
-  _isEcho: 0
-  materialsDirty: 1
-  inventoryEquipmentIndex: -1
-  myEliteIndex: -1
-  fade: 1
-  firstPersonFade: 1
-  mainSkinnedMeshRenderer: {fileID: 0}
-  particleMaterialOverride: {fileID: 0}
-  poisonAffixEffect: {fileID: 0}
-  hauntedAffixEffect: {fileID: 0}
-  voidAffixEffect: {fileID: 0}
-  affixHauntedCloakLockoutDuration: 3
-  currentEquipmentDisplayIndex: -1
-  limbFlagSet:
-    flags: 0
-    <materialMaskValue>k__BackingField: 1
-  currentOverlays:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  activeOverlayCount: 0
-  wasPreviouslyClayGooed: 0
-  wasPreviouslyHaunted: 0
-  shaderEliteRampIndex: -1
 --- !u!114 &1158781454785191233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2229,8 +1889,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skins:
   - {fileID: 11400000, guid: a3212ac9dc71dc545bee30aaa0db1a71, type: 2}
-  <currentSkinIndex>k__BackingField: -1
-  characterModel: {fileID: 0}
 --- !u!114 &3562591745377051742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2244,14 +1902,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCenter: {fileID: 0}
-  bodyObject: {fileID: 0}
-  characterModel: {fileID: 0}
-  childLocator: {fileID: 0}
-  entityLocator: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  modelLocator: {fileID: 0}
-  printHeight: 0
-  printTime: 0
 --- !u!114 &8882451696920920878
 MonoBehaviour:
   m_ObjectHideFlags: 0

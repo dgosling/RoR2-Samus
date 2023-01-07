@@ -160,7 +160,9 @@ MonoBehaviour:
     type: 3}
   ghostTransformAnchor: {fileID: 0}
   startSound: 
+  cannotBeDeleted: 0
   flightSoundLoop: {fileID: 0}
+  canImpactOnTrigger: 0
   allowPrediction: 1
   owner: {fileID: 0}
   procCoefficient: 1
@@ -207,8 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desiredForwardSpeed: 0
   lifetime: 5
+  lifetimeExpiredEffect: {fileID: 0}
+  desiredForwardSpeed: 0
   updateAfterFiring: 0
   enableVelocityOverLifetime: 0
   velocityOverLifetime:
@@ -232,28 +235,42 @@ MonoBehaviour:
   m_Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionSoundString: 
   falloffModel: 1
   blastRadius: 5
   blastDamageCoefficient: 2
   blastProcCoefficient: 1
   blastAttackerFiltering: 0
   bonusBlastForce: {x: 0, y: 600, z: 0}
+  canRejectForce: 1
+  projectileHealthComponent: {fileID: 0}
+  explosionEffect: {fileID: 0}
+  explosionSoundString: 
   fireChildren: 0
   childrenProjectilePrefab: {fileID: 0}
   childrenCount: 0
   childrenDamageCoefficient: 0
   minAngleOffset: {x: 0, y: 0, z: 0}
   maxAngleOffset: {x: 0, y: 0, z: 0}
+  minRollDegrees: 0
+  rangeRollDegrees: 0
+  minPitchDegrees: 0
+  rangePitchDegrees: 0
   useLocalSpaceForChildren: 0
-  projectileHealthComponent: {fileID: 0}
-  explosionEffect: {fileID: 0}
+  applyDot: 0
+  dotIndex: -1
+  dotDuration: 0
+  dotDamageMultiplier: 1
+  applyMaxStacksFromAttacker: 0
+  maxStacksFromAttacker: 4294967295
+  calculateTotalDamage: 0
+  totalDamageMultiplier: 0
   impactEffect: {fileID: 0}
   lifetimeExpiredSoundString: 
   lifetimeExpiredSound: {fileID: 0}
   offsetForLifetimeExpiredSound: 1
   destroyOnEnemy: 0
   destroyOnWorld: 0
+  impactOnWorld: 1
   timerAfterImpact: 1
   lifetime: 5
   lifetimeAfterImpact: 1
@@ -276,6 +293,8 @@ MonoBehaviour:
   force: 0
   damageColorIndex: 0
   damageType: 0
+  useDotMaxStacksFromAttacker: 0
+  dotMaxStacksFromAttacker: 4294967295
 --- !u!114 &5903899803144538104
 MonoBehaviour:
   m_ObjectHideFlags: 0

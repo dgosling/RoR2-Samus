@@ -107,7 +107,7 @@ namespace SamusMod.Modules
             #endregion
             #region primary
             LanguageAPI.Add(prefix + "PRIMARY_BEAM_NAME", "Power Beam");
-            LanguageAPI.Add(prefix + "PRIMARY_BEAM_DESCRIPTION", "Click to do <style=cIsDamage>" + StaticValues.shootDamageCoefficient + "</style> and hold to charge a beam that does <style=cIsDamage>" + 100f * StaticValues.shootDamageCoefficient + "% to " + 100 * StaticValues.cshootDamageCoefficient + "% damage.</style>");
+            LanguageAPI.Add(prefix + "PRIMARY_BEAM_DESCRIPTION", "Click to do <style=cIsDamage>" +100f* StaticValues.shootDamageCoefficient  + "%</style> and hold to charge a beam that does <style=cIsDamage>" + 100f * StaticValues.shootDamageCoefficient + "% to " + 100 * StaticValues.cshootDamageCoefficient + "% damage.</style>");
             LanguageAPI.Add(prefix + "PRIMARY_AUTOBEAM_NAME", "Auto-Fire Beam");
             LanguageAPI.Add(prefix + "PRIMARY_AUTOBEAM_DESCRIPTION", "Hold down button to auto-fire the basic beam as fast as possible.");
 
@@ -130,10 +130,10 @@ namespace SamusMod.Modules
             desc = "Exit out of Morph Ball Mode.";
             LanguageAPI.Add(prefix+"UTILITY_MORPH_EXIT_NAME", "Exit Morph Ball Mode");
             LanguageAPI.Add(prefix+"UTILITY_MORPH_EXIT_DESCRIPTION", desc);
-            desc = "Drop a Morph Bomb for <style=cIsDamage>" + (StaticValues.baseDamage * 3) * 100 + "</style>";
+            desc = "Drop a Morph Bomb for <style=cIsDamage>" + 300 + "% damage.</style>";
             LanguageAPI.Add(prefix+"PRIMARY_MORPH_BOMB_NAME", "Morph Bomb");
             LanguageAPI.Add(prefix+"PRIMARY_MORPH_BOMB_DESCRIPTION", desc);
-            desc = "Drop a Power Bomb for <style=cIsDamage>" + (StaticValues.baseDamage * 10) * 100 + "</style>";
+            desc = "Drop a Power Bomb for <style=cIsDamage>" + 1000 + "% damage.</style>";
             LanguageAPI.Add(prefix+"SECONDARY_MORPH_PBOMB_NAME", "Power Bomb");
             LanguageAPI.Add(prefix+"SECONDARY_MORPH_PBOMB_DESCRIPTION", desc);
             #endregion

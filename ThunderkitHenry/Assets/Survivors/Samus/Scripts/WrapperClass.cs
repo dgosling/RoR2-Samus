@@ -42,5 +42,26 @@ public static class EmoteAPICompatibility
                 }
             }
         }
+      /*  public static void CustomEmotesAPI_animChanged(string newAnimation, BoneMapper mapper)
+        {
+            if(mapper.name == "DGSamusHUM2")
+            {
+                if (newAnimation == "none")
+                {
+                    if (!mapper.model.GetComponent<CharacterModel>().baseRendererInfos[1].renderer.gameObject.activeSelf)
+                    {
+                        mapper.model.GetComponent<CharacterModel>().baseRendererInfos[1].renderer.gameObject.SetActive(true);
+                    }
+                }
+                if (newAnimation != "none")
+                {
+
+                    if(mapper.model.GetComponent<CharacterModel>().baseRendererInfos[1].renderer.gameObject.activeSelf)
+                    {
+                        mapper.model.GetComponent<CharacterModel>().baseRendererInfos[1].renderer.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }*/
     }
 }

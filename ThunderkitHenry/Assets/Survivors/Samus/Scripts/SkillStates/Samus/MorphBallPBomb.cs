@@ -17,7 +17,7 @@ namespace SamusMod.SkillStates.Samus
         private bool hasFired;
         private ChildLocator childLocator;
 
-        public float damageCoef = 10f;
+        public float damageCoef = 10f*Modules.Config.pPowerBombMult;
 
 
         public override void OnEnter()

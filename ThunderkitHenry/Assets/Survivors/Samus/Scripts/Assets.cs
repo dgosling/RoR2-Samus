@@ -19,11 +19,11 @@ namespace SamusMod.Modules
     internal static class Assets
     {
 		//The file name of your asset bundle
-		internal const string assetBundleName = "SamusAssets";
+		internal const string assetBundleName = "samusassets";
 		internal const string VRAssetBundleName = "SamusVRBundle";
 		
 		//Should be the same name as your SerializableContentPack in the asset bundle
-		internal const string contentPackName = "SamusContentPack";
+		internal const string contentPackName = "SamusR2ApiSCP";
 
 		//Name of the your soundbank file, if any.
 		internal const string soundBankName = "Samus"; //HenryBank
@@ -52,7 +52,7 @@ namespace SamusMod.Modules
 		internal static AssetBundle mainAssetBundle = null;
 		internal static ContentPack mainContentPack = null;
 		
-			internal static SerializableContentPack serialContentPack = null;
+			internal static R2API.ScriptableObjects.R2APISerializableContentPack serialContentPack = null;
 		internal static GameObject Tracker;
 		
 		internal static List<EffectDef> effectDefs = new List<EffectDef>();
@@ -127,12 +127,14 @@ namespace SamusMod.Modules
 			}
 			//contentPack.FindAsset("projectilePrefabs", "SamusBeam", out object ree);
 			beam = mainContentPack.projectilePrefabs[1];
-            if (beam)
-            {
+			if (beam)
+			{
 				GameObject refer = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/mageicebolt");
 				AkEvent akEvent = beam.AddComponent<AkEvent>();
 				akEvent = refer.GetComponent<AkEvent>();
 			}
+			//else
+			//	SamusPlugin.logger.LogError("Didn't Load Beam Prefab From ContentPack!");
 			beamghost = beam.GetComponent<RoR2.Projectile.ProjectileController>().ghostPrefab;
 			bomb = mainContentPack.projectilePrefabs[2];
 			if (bomb)
@@ -172,7 +174,7 @@ namespace SamusMod.Modules
                 HUDHandler = mainAssetBundle.LoadAsset<GameObject>("hudHandler");
 
             }
-
+			
         }
 
 		// Loads the AssetBundle, which includes the Content Pack.
@@ -207,12 +209,13 @@ namespace SamusMod.Modules
 		// mod and initializes a new content pack based on the SerializableContentPack.
 		internal static void LoadContentPack()
         {
-			serialContentPack = mainAssetBundle.LoadAsset<SerializableContentPack>(contentPackName);
-			mainContentPack = serialContentPack.CreateContentPack();
+			serialContentPack = mainAssetBundle.LoadAsset<R2API.ScriptableObjects.R2APISerializableContentPack>(contentPackName);
+			mainContentPack = serialContentPack.GetOrCreateContentPack();
 
 			//AddEntityStateTypes();
-			CreateEffectDefs();
+			//CreateEffectDefs();
 			ContentPackProvider.contentPack = mainContentPack;
+			//PopulateAssets();
 		}
 
 
@@ -285,6 +288,11 @@ namespace SamusMod.Modules
 				}
 			}
 		}
+    }
+
+	public class NewSerializeableContentPack : SerializableContentPack
+    {
+
     }
 
 	public class ContentPackProvider : IContentPackProvider

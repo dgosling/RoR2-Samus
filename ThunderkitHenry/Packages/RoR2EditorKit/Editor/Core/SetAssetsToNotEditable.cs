@@ -1,11 +1,11 @@
 ﻿using RoR2EditorKit.Common;
 using RoR2EditorKit.Settings;
-using UnityEditor;
-using UnityEngine;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using ThunderKit.Core.Data;
+using UnityEditor;
+using UnityEngine;
 
 namespace RoR2EditorKit.Core
 {
@@ -15,7 +15,7 @@ namespace RoR2EditorKit.Core
         [InitializeOnLoadMethod]
         private static void Init()
         {
-            if(IsRoR2EKInPackages() && !Settings.madeRoR2EKAssetsNonEditable)
+            if (IsRoR2EKInPackages() && !Settings.madeRoR2EKAssetsNonEditable)
             {
                 MakeAssetsUneditable();
             }
@@ -23,7 +23,7 @@ namespace RoR2EditorKit.Core
 
         private static bool IsRoR2EKInPackages()
         {
-            string iconPath = AssetDatabase.GetAssetPath(Constants.Icon);
+            string iconPath = Constants.AssetGUIDS.GetPath(Constants.AssetGUIDS.iconGUID);
             return iconPath.StartsWith(Constants.PackageFolderPath);
         }
 
@@ -31,7 +31,7 @@ namespace RoR2EditorKit.Core
         {
 
             AssetDatabase.SaveAssets();
-            var iconPath = AssetDatabase.GetAssetPath(Constants.Icon);
+            var iconPath = Constants.AssetGUIDS.GetPath(Constants.AssetGUIDS.iconGUID);
             var assetsFolder = Path.GetDirectoryName(iconPath);
             var folderAsset = AssetDatabase.LoadAssetAtPath<Object>(assetsFolder);
 
@@ -43,7 +43,7 @@ namespace RoR2EditorKit.Core
 
             stringBuilder.Add($"Turned the following {explicitAssetPaths.Count} assets to notEditable.");
 
-            foreach(string assetPath in explicitAssetPaths)
+            foreach (string assetPath in explicitAssetPaths)
             {
                 Object asset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
                 if (!asset)
@@ -54,8 +54,9 @@ namespace RoR2EditorKit.Core
                 stringBuilder.Add(asset.name);
             }
             Debug.Log(string.Join("\n", stringBuilder));
-            Settings.madeRoR2EKAssetsNonEditable = true;
-            new SerializedObject(Settings).ApplyModifiedProperties();
+            SerializedObject serializedObject = new SerializedObject(Settings);
+            serializedObject.FindProperty(nameof(RoR2EditorKitSettings.madeRoR2EKAssetsNonEditable)).boolValue = true;
+            serializedObject.ApplyModifiedProperties();
             AssetDatabase.SaveAssets();
         }
 

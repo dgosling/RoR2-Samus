@@ -1,123 +1,99 @@
-# RoR2EditorKit
+# RoR2EditorKit - Editor Utilities, Inspectors and More for Risk of Rain2
 
-The Risk of Rain 2 Editor Kit (Abreviated as ROR2EK) is a Thunderkit Extension designed specifically for helping mod creators create content for Risk of Rain 2.
+## About
 
-The main goal of ROR2EK is to bring a friendly, easy to use editor experience for creating content, ranging from items, all the way to prefabs.
+RoR2EditorKit is a *Thunderkit Extension* for developing mods inside the UnityEditor, providing a myriad of Inspectors, Property Drawers, Editor Windows and more.
 
-## Features:
+At it's core, RoR2EditorKit should not have any classes or systems that depend on runtime usage, RoR2EditorKit works exclusively for speeding up the modding enviroment.
 
----
+## Manual Installation
 
-## Inspectors
+To Download RoR2EditorKit to your project, it is recommended that you either add it via the ThunderKit extension store, or adding it via Unity's PackageManager (Downloading a specific tagged version is recommended).
 
-RoR2EditorKit comes bundled with inspectors that overwrite the default view of specific Components and ScriptableObjects in RoR2. These inspectors work with the new UIToolkit system and can be extended from to create your own inspectors for types.
+Once installed, it is heavily reccommended to open the ThunderkitSettings window to modify certain settings that RoR2EditorKit will use while helping you develop the mod.
 
-Most inspectors will notify users when they're not following the naming conventions of objects that hoopo games uses, or when there are common mistakes in the inspected object. These naming convention messages can be disabled in the settings window.
+* RoR2EditorKitSettings: Settings of the extension itself
+ * Token Prefix: A prefix for your mod, it's used to generate unique tokens.
+ * Main Manifest: The manifest of your mod, used in a myriad of tools to know the assetbundle or the main DLL.
 
-Currently, RoR2EK comes bundled with 7 Inspectors.
+## Extending RoR2EditorKit's Functionality.
 
-* ObjectScaleCurve: Ticking "Use overall curve only" will hide the other 3 animation curves
-* HGButton: Creates an inspector for using the HGButton class, which is used in a variety of UI on RoR2
-* ChildLocator: Modifies the entries of the ChildLocator to use only one line instead of two per element.
-* CharacterBody: Makes the base and level stats foldable, so you can hide or expand them at will
-* BuffDef: Hides the "Icon Path" field and implements utility messages.
-* Entity State Configuration: Easily select an entity state from the target type, when selected, the inspector will automatically populate the serialized fields array with the necesary fields to serialize.
+* In case you need to extend RoR2EditorKit's functionality for your own purposes (Such as a custom inspector for a mod you're working on), you can look into this wiki page that explains how to extend the editor's functionality using RoR2EditorKit's systems.
 
-![](https://i.gyazo.com/6e7e1d8aa698c43dfeca231e5bcbe7e7.png)
-###### EntityStateConfiguration inspector.
+[link](https://github.com/risk-of-thunder/RoR2EditorKit/wiki/Extending-the-Editor's-Functionality-with-RoR2EditorKit's-Systems.)
 
-![](https://i.gyazo.com/f8660459ed2e3a02939f44d10485093e.png)
-###### BuffDef inspector, notice the Info message on naming conventions and the warning regarding EliteDefs.
+## Contributing
 
-All the inspectors of ROR2EK can be toggled ON or OFF via a toggle switch on the Editor header GUI
+Contributing to RoR2EditorKit is as simple as creating a fork, and cloning the project. the main folder (RoR2EditorKit) is a unity project itself. Simply opening it with the unity version ror2 uses will allow you to edit the project to your heart's content.
 
----
-
-### Property Drawers
-
-RoR2EK comes with property drawers for specific types and type attributes for Risk of Rain 2, the main example is the SerializableEntityStateType and SerializableSystemType drawer.
-
-![](https://cdn.discordapp.com/attachments/575431803523956746/903754837940916234/unknown.png)
-
-ROR2EK also comes with the following property drawers:
-* EnumMask: Used by almost all flag enums, the EnumMask property drawer will allow you to actually set the flags properly.
-* PrefabReference: Used by the SkinDef as an example, the Prefab Reference drawer makes it possible to use the SkinDef scriptable object properly
-* SkillFamily: Simply hides the unlockableName field of the skill family.
-
----
-
-### MaterialEditor
-
-ROR2EK comes bundled with a special MaterialEditor, the material editor itself is used for handling the difficult to work with Shaders from Risk of Rain 2. It helps via either letting you modify important aspects that arent available by default, or by hiding entire sections if the shader keyword is not enabled.
-
-Currently, ROR2EK comes bundled with 3 Material Editors
-* HGStandard
-* HGSnowTopped
-* HGCloudRemap
-
-All of these material editors work with either the real hopoo shaders, or with stubbed versions.
-
-![](https://i.gyazo.com/172f157cefaefbfb619611b836a8f8fe.png)
-###### (Notice how the PrintBehavior, Screenspace Dithering, Fresnell Emission, Splatmapping, flowmap and limb removal are hidden when their keywords are not enabled)
-
----
-
-### Other:
-
-* ScriptableCreators: A lot of MenuItems to create a myriad of hidden SkillDefs.
-
-## Credits
-
-* Coding: Nebby, Passive Picasso (Twiner), KingEnderBrine, KevinFromHPCustomerService
-* Models & Sprite: Nebby
-* Mod Icon: SOM
+A more detailed Contribution guideline can be found [here](https://github.com/risk-of-thunder/RoR2EditorKit/blob/main/CONTRIBUTING.md)
 
 ## Changelog
 
-(Old Changelogs can be found [here](https://github.com/risk-of-thunder/RoR2EditorKit/blob/main/RoR2EditorKit/Assets/RoR2EditorKit/OldChangelogs.md))
+(Old changelogs can be found [here](https://github.com/risk-of-thunder/RoR2EditorKit/blob/main/OldChangelogs.md))
 
-### '2.1.0'
+### '3.5.2'
 
-* Actually added ValidateUXMLPath to the expended inspector.
-* Added IMGUToVisualElementInspector editor. Used to transform an IMGUI inspector into a VisualElement inspector.
-* Fixed StageLanguageFiles not working properly
-* Fixed StageLanguageFiles not copying the results to the manifest's staging paths.
-* Improved StageLanguageFiles' logging capabilities.
-* RoR2EK assets can no longer be edited if the package is installed under the "Packages" folder.
-* Split Utils.CS into 5 classes
-	* Added AssetDatabaseUtils
-	* Added ExtensionUtils
-	* Added IOUtils
-	* Added MarkdownUtils
-	* Added ScriptableObjectUtils
-* Removed SkillFamilyVariant property drawer
+* RoR2EditorScripts changes:
+	* Fixed the R2APIMigrationWizard and ModCreatorWizard failing to find the split R2API assemblies.
 
-### '2.0.2'
+### '3.5.1'
 
-* Fixed an issue where ExtendedInspectors would not display properly due to incorrect USS paths.
-* Added ValidateUXMLPath to ExtendedInspector, used to validate the UXML's file path, override this if youre making an ExtendedInspector for a package that depends on RoR2EK's systems.
-* Added ValidateUXMLPath to ExtendedEditorWindow
-* Hopefully fixed the issue where RoR2EK assets can be edited.
+* RoR2EditorScripts changes:
+	* Fixed missing binding paths on R2APIMigrationWizard
 
-### '2.0.1'
+### '3.5.0'
 
-* Fixed an issue where ExtendedInspectors would not work due to incorrect path management.
+* Core Changes:
+	* ExtendedMaterialEditor now attempts to get the action for a material, if it doesnt find any, it'll use the default inspector.
+	* ObjectEditingWindow's TargetType is now just a getter, obtaining the target type directly from the SerializedObject.
 
-### '2.0.0'
+* RoR2EditorScripts changes:
+	* Made the EntityStateConfiguration inspector able to draw fields as enums, courtesy of KingEnderBrine
+		* This is done by using the field as an int, and marking it with the EnumMask attribute.
+	* Fixed a bug where the CharacterBody template would have unfitting entity states assigned.
+	* Added 3 new Template options to CharacterBody template, courtesy of HeyImNoop
+		* Grounded is now the original prefab template.
+		* Flying uses a Wisp as a template.
+		* Stationary uses an Alpha construct as a template
+		* Boss uses a StoneTitan as a template.
+	* Major improvements and fixes to the MapNodeGroup inspector.
+		* Painter should now work properly
+		* Added a button to update hull masks
+		* Added a button that shifts nodes upwards, for creating Air nodes from ground nodes.
+		* Added a button that shifts nodes downards, for creating ground nodes from Air nodes
+		* Increased visibility of the Scene GUI
+		* Removed "Add Node on Cam Pos" keybind
+	* Updated ModCreatorWizard window to support R2API's Split assemblies update.
+		* Now will scan for all assemblies in the AppDomain, and add all the R2API submodules it finds as dependencies.
+		* Automatically adds said dependencies to your Manifest, main class, and assembly definition.
+	* Added R2APIMigrationWizard
+		* Scans for all assemblies in the app domain to find the R2API submodules loaded in the editor.
+		* Used for migrating a mod that uses the old R2API system to the split assemblies system.
+		* Replaces the single BepInDependency attribute for multiple attributes, depending on the amount of assemblies it finds.
+		* Replaces the assemblyDefinition and Manifest's dependencies from the single dll to the multiple dll's, depending on the amount of assemblies and manifests it finds.
 
-* Updated to unity version 2019.4.26f1
-* Updated to Survivors of The Void
-* Added a plethora of Util Methods to Util.CS, including Extensions
-* Removed UnlockableDef creation as it's been fixed
-* Added "VisualElementPropertyDrawer"
-* Renamed "ExtendedPropertyDrawer" to "IMGUIPropertyDrawer"
-* Rewrote ExtendedInspector sistem to use VisualElements
-* Rewrote CharacterBody inspector
-* Rewrote BuffDef inspector
-* Rewrote ExtendedEditorWindow to use VisualElements
-* Added EliteDef inspector
-* Added EquipmentDef inspector
-* Added NetworkStateMachine inspector
-* Added SkillLocator inspector
-* Removed Entirety of AssetCreator systems
-* Removed SerializableContentPack window
+### '3.4.0'
+
+* RoR2EditorScripts Changes:
+	* Added a Scaling Tool window, used to roughly see how big something is compared to ror2 bodies and stages.
+	* Changed the EntityStateConfiguration inspector to use the old IMGUI version instead of visual elements.
+		* All improvements made are also in the IMGUI inspector.
+		* EntityStateConfiguration inspector no longer tries to serialize fields marked as constant
+	* Added a Gizmo for visualizing the scale of a HitBox
+
+### '3.3.1'
+
+* Core Changes:
+	* Added SerializableShaderWrapper
+		* Serializes shaders by serializing their shader.name and their GUID's
+	* The material editor now works properly by using the SerializableShaderWrapper
+	* Added new utilities to the AssetDatabase utils class
+	* Added AssetRipper's Shader asset post processors.
+		* This in turn should fix unity destroying YAML shader assets.
+
+* RoR2EditorScripts changes:
+	* Stage Creator wizard now prefixes the scene's name with the token prefix
+	* Fixed an issue where having mutliple inspectors would break the Skill Locator inspector.
+	* Fixed an issue where the CanBeRandomlyTriggered bool for EquipmentDefs wouldnt show
+	* Exposed HGCloudRemap's Internal Simple Blend Mode property

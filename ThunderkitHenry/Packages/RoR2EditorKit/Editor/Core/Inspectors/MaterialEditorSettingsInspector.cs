@@ -1,37 +1,53 @@
 ﻿using RoR2EditorKit.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RoR2EditorKit.Utilities;
 using UnityEditor;
 using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace RoR2EditorKit.Core.Inspectors
 {
     //This is also fucking stupid
     [CustomEditor(typeof(MaterialEditorSettings))]
-    public class MaterialEditorSettingsInspector : Editor
+    internal sealed class MaterialEditorSettingsInspector : Editor
     {
         public override VisualElement CreateInspectorGUI()
         {
             return StaticInspectorGUI(serializedObject);
         }
 
-        public static VisualElement StaticInspectorGUI(SerializedObject serializedObject)
+        internal static VisualElement StaticInspectorGUI(SerializedObject serializedObject, bool forSettingsWindow = false)
         {
-            VisualElement ve = new VisualElement();
-            ve.Add(new PropertyField(serializedObject.FindProperty(nameof(MaterialEditorSettings.EnableMaterialEditor))));
+            VisualElement mainContainer = new VisualElement();
+            VisualElement shaderContainer = new VisualElement();
+
+            var enabledProp = serializedObject.FindProperty(nameof(MaterialEditorSettings.EnableMaterialEditor));
+            var propertyField = new PropertyField(enabledProp);
+            propertyField.RegisterCallback<ChangeEvent<bool>>((evt) => shaderContainer.SetDisplay(evt.newValue));
+            if (forSettingsWindow)
+            {
+                propertyField.AddToClassList("thunderkit-field-input");
+            }
+            mainContainer.Add(propertyField);
 
             SerializedProperty settings = serializedObject.FindProperty(nameof(MaterialEditorSettings.shaderStringPairs));
-
             foreach (SerializedProperty prop in settings)
             {
-                ve.Add(new PropertyField(prop));
+                var propField = new PropertyField(prop);
+
+                if (forSettingsWindow)
+                    propField.AddToClassList("thunderkit-field-input");
+
+                shaderContainer.Add(propField);
             }
-            return ve;
+
+            mainContainer.Add(shaderContainer);
+            if (forSettingsWindow)
+            {
+                mainContainer.AddToClassList("thunderkit-field");
+                mainContainer.style.flexDirection = FlexDirection.Column;
+            }
+
+            return mainContainer;
         }
     }
 }

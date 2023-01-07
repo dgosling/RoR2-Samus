@@ -7,7 +7,7 @@ using UnityEngine;
 namespace RoR2EditorKit.RoR2Related.PropertyDrawers
 {
 
-    public class SerializableSystemTypeTreeView : TreeListControl
+    public sealed class SerializableSystemTypeTreeView : TreeListControl
     {
         public TreeListItem LastDoubleClickedItem;
 
@@ -67,18 +67,22 @@ namespace RoR2EditorKit.RoR2Related.PropertyDrawers
                 attachPoint = RootItem.AddItem(assemblyName, false, true, new SystemTypeTreeInfo(assemblyName));
                 AddHandlerEvents(attachPoint);
             }
+            var typeNamespace = type.Namespace;
 
-            var namespaces = type.Namespace.Split('.');
-            foreach (var ns in namespaces)
+            if (typeNamespace != null)
             {
-                var next = attachPoint.FindItemByName(ns);
-                if (next == null)
+                var namespaces = typeNamespace.Split('.');
+                foreach (var ns in namespaces)
                 {
-                    attachPoint = attachPoint.AddItem(ns, false, false, new SystemTypeTreeInfo(ns));
-                    AddHandlerEvents(attachPoint);
+                    var next = attachPoint.FindItemByName(ns);
+                    if (next == null)
+                    {
+                        attachPoint = attachPoint.AddItem(ns, false, false, new SystemTypeTreeInfo(ns));
+                        AddHandlerEvents(attachPoint);
+                    }
+                    else
+                        attachPoint = next;
                 }
-                else
-                    attachPoint = next;
             }
             var t = attachPoint.AddItem(type.Name, true, false, new SystemTypeTreeInfo(type));
             AddHandlerEvents(t);

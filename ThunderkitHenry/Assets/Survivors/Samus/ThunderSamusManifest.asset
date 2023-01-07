@@ -54,8 +54,13 @@ MonoBehaviour:
   Version: 2.1.4
   Dependencies:
   - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
-  - {fileID: 11400000, guid: 7fb5b3d290bed6011ed7e8daf230df89, type: 2}
   - {fileID: 11400000, guid: 5f1a252b392e3ef4682cdba3ecc3e2f5, type: 2}
+  - {fileID: 11400000, guid: 1f1d261aeee91427ddd08b6378ec4e5a, type: 2}
+  - {fileID: 11400000, guid: 184f0fdf3edcd6bad171410f4e0fd947, type: 2}
+  - {fileID: 11400000, guid: 014c4e162aebc6b9c7c87be504a1bd10, type: 2}
+  - {fileID: 11400000, guid: 00a41822104d45d4226f7dbd048fdaae, type: 2}
+  - {fileID: 11400000, guid: a644a53693d44639c70550096ce74b93, type: 2}
+  - {fileID: 11400000, guid: 2f0230b12529cadf82e6b0db93950626, type: 2}
 --- !u!114 &114431642618062350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,6 +78,6 @@ MonoBehaviour:
   assetBundles:
   - assetBundleName: SamusAssets
     assets:
-    - {fileID: 11400000, guid: 0c49fd193109f474485c4f9101c7bb71, type: 2}
+    - {fileID: 11400000, guid: 6da7f7f89aadec24cba43c9bf72678da, type: 2}
     - {fileID: 102900000, guid: af7038412ff065d4f89d0263e99e3ec8, type: 3}
     - {fileID: 102900000, guid: 66e3570d91f5eaf41962b79281029797, type: 3}

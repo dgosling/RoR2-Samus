@@ -7,26 +7,28 @@ namespace SamusMod.Modules
     // but that's in the CharacterBody component instead.
     internal static class StaticValues
     {
+
         public static float baseDamage = 15f;
 
         //Beam
-        public const float shootDamageCoefficient = 1f;
-        public const float cshootDamageCoefficient = 6f;
-        public const float beamSpeed = 240f;
-        public const float cbeamSpeed = 160f;
+
+        public static float shootDamageCoefficient = 1f * Config.pBeamMult;
+        public static float cshootDamageCoefficient = 6f*Config.pBeamMult;
+        public static float beamSpeed = 240f;
+        public static float cbeamSpeed = 160f;
 
         //missile
-        public const float missileDamageCoefficient = 5f;
-        public const float missileSpeed = 150f;
+        public static float missileDamageCoefficient = 5f*Config.pMissileMult;
+        public static float missileSpeed = 150f;
 
         //smissile
-        public const float smissileDamageCoefficient = 26.25f;
-        public const float smissileSpeed = 75f;
+        public static float smissileDamageCoefficient = 26.25f*Config.pSMissileMult;
+        public static float smissileSpeed = 75f;
 
         //roll
-        public const float dashDamageCoefficient = 5f;
-        public const float rollSpeedCoefficientIni = 2.5f;
-        public const float rollSpeedCoefficientFin = 3.5f;
+        public static float dashDamageCoefficient = 5f*Config.pRollMult;
+        public static float rollSpeedCoefficientIni = 2.5f;
+        public static float rollSpeedCoefficientFin = 3.5f;
     }
 
     internal static class Sounds

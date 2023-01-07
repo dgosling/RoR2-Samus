@@ -13,7 +13,9 @@
         "BepInEx.dll",
         "RoR2.dll",
         "R2API.dll",
-        "VRAPI.dll"
+        "VRAPI.dll",
+        "Unity.TextMeshPro.dll",
+        "UnityEngine.UI.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

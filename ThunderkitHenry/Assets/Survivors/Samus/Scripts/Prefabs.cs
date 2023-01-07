@@ -30,7 +30,30 @@ namespace SamusMod.Modules
             //This is if you want to use a custom crosshair or other stuff.
 
             bodyPrefabs[0].GetComponent<CharacterBody>()._defaultCrosshairPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair");
-            
+            if (Config.customStatsBool)
+            {
+   
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseAcceleration = Config.bAcceleration;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseArmor = Config.bArmor;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseAttackSpeed = Config.bAttackSpeed;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseCrit = Config.bCrit;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseDamage = Config.bDamage;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseJumpPower = Config.bJumpPower;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseMaxHealth = Config.bMaxHealth;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseMaxShield= Config.bMaxShield;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseMoveSpeed= Config.bMoveSpeed;
+                bodyPrefabs[0].GetComponent<CharacterBody>().baseRegen = Config.bRegen;
+                bodyPrefabs[0].GetComponent<CharacterBody>().levelArmor = Config.lArmor;
+                bodyPrefabs[0].GetComponent<CharacterBody>().levelAttackSpeed= Config.lAttackSpeed;
+                bodyPrefabs[0].GetComponent<CharacterBody>().levelCrit= Config.lCrit;
+                bodyPrefabs[0].GetComponent<CharacterBody>().levelDamage= Config.lDamage;
+                bodyPrefabs[0].GetComponent<CharacterBody>().levelJumpPower= Config.lJumpPower;
+                bodyPrefabs[0].GetComponent<CharacterBody>().levelMaxHealth= Config.lMaxHealth;
+                bodyPrefabs[0].GetComponent<CharacterBody>().levelMaxShield= Config.lMaxShield;
+                bodyPrefabs[0].GetComponent<CharacterBody>().levelRegen= Config.lRegen;
+
+
+            }
             //AddMaterialControllers();
         }
 

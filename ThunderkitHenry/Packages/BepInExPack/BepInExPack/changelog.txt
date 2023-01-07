@@ -1,4 +1,3 @@
-Latest Changelog
-
 RoR2 BepInExPack specific changes :
-Fix the BepInEx GUI sometimes not being visible at all / full white
+  -  Fix for DynamicBones log spam.
+  -  Fix for log spam on some deaths.
