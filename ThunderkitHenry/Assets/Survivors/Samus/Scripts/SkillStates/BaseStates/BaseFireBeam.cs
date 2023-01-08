@@ -4,6 +4,7 @@ using UnityEngine;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
+using SamusMod.Modules;
 
 namespace SamusMod.SkillStates.BaseStates
 {
@@ -200,7 +201,7 @@ namespace SamusMod.SkillStates.BaseStates
                             aimVector = aimRay.direction,
                             minSpread = 0,
                             maxSpread = 0,
-                            damage = this.damageStat,
+                            damage = this.damageStat*Config.pBeamMult,
                             force = num2,
                             tracerEffectPrefab = this.tracerPrefab,
                             muzzleName = this.muzzleName,

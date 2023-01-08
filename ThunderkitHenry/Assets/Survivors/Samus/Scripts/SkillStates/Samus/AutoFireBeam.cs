@@ -2,7 +2,7 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-
+using SamusMod.Modules;
 
 namespace SamusMod.SkillStates.Samus
 {
@@ -59,7 +59,7 @@ namespace SamusMod.SkillStates.Samus
                     aimVector = aimRay.direction,
                     minSpread = 0,
                     maxSpread = 0,
-                    damage = damageStat,
+                    damage = damageStat*Config.pBeamMult,
                     force = num,
                     tracerEffectPrefab = projectilePrefab,
                     muzzleName = muzzleName,
