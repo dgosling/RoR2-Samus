@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: matBomb
   m_Shader: {fileID: 4800000, guid: d9d9a1ad1a2e4714b88450e7f75bff45, type: 3}
-  m_ShaderKeywords: DISABLEREMAP _EMISSION
+  m_ShaderKeywords: 'DISABLEREMAP '
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

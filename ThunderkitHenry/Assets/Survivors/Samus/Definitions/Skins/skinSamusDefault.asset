@@ -23,18 +23,21 @@ MonoBehaviour:
   - renderer: {fileID: 3537059423324311585, guid: b03e94c8e8483ee4e85a98bc0b75c1c1,
       type: 3}
     defaultMaterial: {fileID: 2100000, guid: 3ee894a6bcfd8df44bcfb061b3f69538, type: 2}
-    defaultShadowCastingMode: 0
+    defaultShadowCastingMode: 1
     ignoreOverlays: 0
+    hideOnDeath: 0
   - renderer: {fileID: 7063728656958233413, guid: b03e94c8e8483ee4e85a98bc0b75c1c1,
       type: 3}
     defaultMaterial: {fileID: 2100000, guid: 99bc19651a80fb2488e1fa29b658d4a0, type: 2}
-    defaultShadowCastingMode: 0
+    defaultShadowCastingMode: 1
     ignoreOverlays: 0
+    hideOnDeath: 0
   - renderer: {fileID: 3636858839345816927, guid: b03e94c8e8483ee4e85a98bc0b75c1c1,
       type: 3}
     defaultMaterial: {fileID: 2100000, guid: 99bc19651a80fb2488e1fa29b658d4a0, type: 2}
-    defaultShadowCastingMode: 0
+    defaultShadowCastingMode: 1
     ignoreOverlays: 0
+    hideOnDeath: 0
   gameObjectActivations: []
   meshReplacements: []
   projectileGhostReplacements: []
