@@ -336,7 +336,7 @@
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.Entries">
             <summary>
-            All config entries inside 
+            All config entries inside
             </summary>
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.ConfigDefinitions">
@@ -347,7 +347,7 @@
         <member name="M:BepInEx.Configuration.ConfigFile.GetConfigEntries">
             <summary>
             Create an array with all config entries inside of this config file. Should be only used for metadata purposes.
-            If you want to access and modify an existing setting then use <see cref="M:BepInEx.Configuration.ConfigFile.AddSetting``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)"/> 
+            If you want to access and modify an existing setting then use <see cref="M:BepInEx.Configuration.ConfigFile.AddSetting``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)"/>
             instead with no description.
             </summary>
         </member>
@@ -358,7 +358,7 @@
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.SaveOnConfigSet">
             <summary>
-            If enabled, writes the config to disk every time a value is set. 
+            If enabled, writes the config to disk every time a value is set.
             If disabled, you have to manually use <see cref="M:BepInEx.Configuration.ConfigFile.Save"/> or the changes will be lost!
             </summary>
         </member>
@@ -538,11 +538,11 @@
             <inheritdoc />
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.Item(System.String,System.String)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="section"></param>
-            <param name="key"></param>
+             </summary>
+             <param name="section"></param>
+             <param name="key"></param>
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.Keys">
             <summary>
@@ -1508,6 +1508,11 @@
             </summary>
         </member>
         <member name="P:BepInEx.Paths.BepInExConfigPath">
+            <summary>
+            	The path to the global BepInEx configuration file.
+            </summary>
+        </member>
+        <member name="P:BepInEx.Paths.BepInExDontModifyConfigPath">
             <summary>
             	The path to the global BepInEx configuration file.
             </summary>

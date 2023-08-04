@@ -19,10 +19,10 @@ MonoBehaviour:
   Author: MetrosexualFruitcake
   Name: CustomEmotesAPI
   Description: API for adding emotes to survivors
-  Version: 1.9.4
+  Version: 2.1.5
   Dependencies: 
-  - {fileID: 11400000, guid: e8166746ca0c6d98ee8c97fe787f2b80, type: 2}
   - {fileID: 11400000, guid: 7fb5b3d290bed6011ed7e8daf230df89, type: 2}
+  - {fileID: 11400000, guid: e8166746ca0c6d98ee8c97fe787f2b80, type: 2}
   - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:

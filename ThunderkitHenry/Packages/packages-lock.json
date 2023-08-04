@@ -145,8 +145,26 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "riskofthunder-bepinex_gui": {
+      "version": "file:BepInEx_GUI",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-fixplugintypesserialization": {
+      "version": "file:FixPluginTypesSerialization",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "riskofthunder-hookgenpatcher": {
       "version": "file:HookGenPatcher",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-r2api_addressables": {
+      "version": "file:R2API_Addressables",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -271,6 +289,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "riskofthunder-r2api_skins": {
+      "version": "file:R2API_Skins",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "riskofthunder-r2api_sound": {
       "version": "file:R2API_Sound",
       "depth": 0,
@@ -285,6 +309,12 @@
     },
     "riskofthunder-r2api_unlockable": {
       "version": "file:R2API_Unlockable",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "riskofthunder-ror2bepinexpack": {
+      "version": "file:RoR2BepInExPack",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

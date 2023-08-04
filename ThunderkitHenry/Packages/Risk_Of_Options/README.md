@@ -1,5 +1,5 @@
 # RiskOfOptions
-![Animated icon made by UnsavedTrash#0001 on discord](https://thumbs.gfycat.com/LimitedFlashyCowbird-size_restricted.gif)
+![Animated icon made by UnsavedTrash#0001 on discord](https://cdn.rune580.dev/roo/images/roo-full.gif)
 
 An API to provide a user interface in game to interact with BepInEx ConfigEntry's.
 
@@ -130,11 +130,28 @@ ModSettingsManager.SetModIcon(icon);
 
 # Contact
 
-Discord: Rune#0001
+Discord: @rune
 
 Github: Rune580
 
 # Changelog
+    2.7.0:
+      All numeric InputFields now properly use InvariantCulture, for example numbers are formatted as `1,000,000.20`.
+        - RiskOfOptions exposes an option to change this behavior in-game.
+      RiskOfOptions option menu.
+      Experimental support for Prefabs as mod icons.
+        - The root object's RectTransform must have a width and height of 45.
+      Animated icon has been updated.
+
+    2.6.1:
+      Forgot to include some assets that are required for the color picker.
+
+    2.6.0:
+      Added Method for setting mod descriptions with a language token.
+      Added event when the mod options panel is closed.
+      Slight behaviour change for color wheel, (I did this like a year ago and forgot to push it out in an update, so here you go.)
+      Any other commits that happened between last year and now.
+
     2.5.3:
       Merged PR by Bubbet https://github.com/Rune580/RiskOfOptions/pull/28
         - Abstracts references to bepinexconfig out.

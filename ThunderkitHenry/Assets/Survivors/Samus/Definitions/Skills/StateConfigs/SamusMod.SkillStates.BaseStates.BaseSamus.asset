@@ -25,3 +25,11 @@ MonoBehaviour:
       fieldValue:
         stringValue: 
         objectValue: {fileID: 11400000, guid: f5178990860b5c244830a9aeb386d3fc, type: 2}
+    - fieldName: backupMagCount
+      fieldValue:
+        stringValue: 0
+        objectValue: {fileID: 0}
+    - fieldName: baseBonusSecStock
+      fieldValue:
+        stringValue: 0
+        objectValue: {fileID: 0}

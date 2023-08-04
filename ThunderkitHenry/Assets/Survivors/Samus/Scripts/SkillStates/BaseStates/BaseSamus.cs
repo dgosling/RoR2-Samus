@@ -73,6 +73,7 @@ namespace SamusMod.SkillStates.BaseStates
         //private int cacheBackup;
 
         // Start is called before the first frame update
+
         public override void OnEnter()
         {
 
@@ -106,7 +107,7 @@ namespace SamusMod.SkillStates.BaseStates
             powerBombInit = false;
             //noPowerBomb = true;
             Body = characterBody;
-
+    
             if (VRAPI.VR.enabled)
             {
                 VrCheck = VRAPI.Utils.IsUsingMotionControls(Body);
@@ -124,19 +125,20 @@ namespace SamusMod.SkillStates.BaseStates
                 }
 
             }
-            skillLocator.secondary.Reset();
-            skillLocator.special.Reset();
+            //skillLocator.secondary.Reset();
+            //skillLocator.special.Reset();
             //maxtime = skillLocator.secondary.maxStock * skillLocator.secondary.finalRechargeInterval;
             
             base.OnEnter();
         }
+
+
+
         public override void Update()
         {
             base.Update();
             // RoR2.DotController.onDotInflictedServerGlobal += DotController_onDotInflictedServerGlobal;
-
-
-
+           
             
             if (DotController.FindDotController(gameObject) != null)
             {
@@ -248,6 +250,7 @@ namespace SamusMod.SkillStates.BaseStates
                 this.velocity = this.characterMotor.velocity;
                 this.direction = this.inputBank.moveVector;
                 camera = this.cameraTargetParams.cameraPivotTransform.rotation.eulerAngles;
+
                 //if (this.characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine) > 0)
                 //{
                 //    this.skillLocator.primary.maxStock = this.characterBody.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine) + 3;

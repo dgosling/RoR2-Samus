@@ -4,6 +4,45 @@
         <name>R2API.Director</name>
     </assembly>
     <members>
+        <member name="T:R2API.AddressableDCCSPool">
+            <summary>
+            A <see cref="T:R2API.AddressableDCCSPool"/> is a version of a <see cref="T:RoR2.DccsPool"/> that can be created from the editor itself, it allows you to create complex DccsPools using R2API's <see cref="T:R2API.AddressReferencedAssets.AddressReferencedAsset"/> system and your own existing spawn cards
+            <br>You should also see <see cref="T:R2API.AddressableDirectorCardCategorySelection"/></br>
+            </summary>
+        </member>
+        <member name="T:R2API.AddressableDCCSPool.PoolEntry">
+            <summary>
+            Represents a version of <see cref="T:RoR2.DccsPool.PoolEntry"/> that uses <see cref="T:R2API.AddressableDirectorCardCategorySelection"/> for representing a pool entry
+            </summary>
+        </member>
+        <member name="T:R2API.AddressableDCCSPool.ConditionalPoolEntry">
+            <summary>
+            Represents a conditional version of a <see cref="T:R2API.AddressableDCCSPool.PoolEntry"/>
+            <br>Contains a <see cref="F:R2API.AddressableDCCSPool.ConditionalPoolEntry.requiredExpansions"/> array that's populated using <see cref="T:R2API.AddressReferencedAssets.AddressReferencedExpansionDef"/></br>
+            </summary>
+        </member>
+        <member name="T:R2API.AddressableDCCSPool.Category">
+            <summary>
+            Represents a category of DirectorCardCategorySelections for this pool
+            </summary>
+        </member>
+        <member name="T:R2API.AddressableDirectorCard">
+            <summary>
+            Represents a <see cref="T:RoR2.DirectorCard"/> that can be created from using <see cref="!:"/>
+            </summary>
+        </member>
+        <member name="T:R2API.AddressableDirectorCardCategorySelection">
+            <summary>
+            A <see cref="T:R2API.AddressableDirectorCardCategorySelection"/> is a version of a <see cref="T:RoR2.DirectorCardCategorySelection"/> that can be used for creating a custom and complex <see cref="T:RoR2.DirectorCardCategorySelection"/> for stages, using R2API's <see cref="T:R2API.AddressReferencedAssets.AddressReferencedAsset"/> system and your own existing spawn cards
+            <para>All the values from this category selection will be added to the <see cref="T:RoR2.DirectorCardCategorySelection"/> specified in <see cref="F:R2API.AddressableDirectorCardCategorySelection.targetCardCategorySelection"/></para>
+            <br>You should also see <see cref="T:R2API.AddressableDCCSPool"/></br>
+            </summary>
+        </member>
+        <member name="T:R2API.AddressableDirectorCardCategorySelection.Category">
+            <summary>
+            Represents a category of spawn cards
+            </summary>
+        </member>
         <member name="T:R2API.DirectorAPI">
             <summary>
             API for modifying the monster and scene directors.
@@ -621,6 +660,16 @@
             <param name="monsterCard"></param>
             <param name="addToFamilies"></param>
         </member>
+        <member name="M:R2API.DirectorAPI.Helpers.AddNewMonster(R2API.DirectorAPI.DirectorCardHolder,System.Boolean,System.Predicate{RoR2.DirectorCardCategorySelection})">
+            <summary>
+            Adds a new monster to all stages.
+            Also add to each existing monster families if second parameter is true.
+            If a valid predicate is provided the monster will only be added to the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="monsterCard"></param>
+            <param name="addToFamilies"></param>
+            <param name="predicate"></param>
+        </member>
         <member name="M:R2API.DirectorAPI.Helpers.AddNewMonster(RoR2.DccsPool,System.Collections.Generic.List{R2API.DirectorAPI.DirectorCardHolder},R2API.DirectorAPI.DirectorCardHolder,System.Boolean)">
             <summary>
             Adds a new monster to a pool of monsters that can spawn in a given stage (see <see cref="E:R2API.DirectorAPI.MonsterActions"/>).
@@ -629,6 +678,17 @@
             <param name="mixEnemyArtifactMonsters"></param>
             <param name="monsterCardHolder"></param>
             <param name="addToFamilies">Whether to also add to each existing monster family</param>
+        </member>
+        <member name="M:R2API.DirectorAPI.Helpers.AddNewMonster(RoR2.DccsPool,System.Collections.Generic.List{R2API.DirectorAPI.DirectorCardHolder},R2API.DirectorAPI.DirectorCardHolder,System.Boolean,System.Predicate{RoR2.DirectorCardCategorySelection})">
+            <summary>
+            Adds a new monster to a pool of monsters that can spawn in a given stage (see <see cref="E:R2API.DirectorAPI.MonsterActions"/>).
+            If a valid (non null) predicate is provided the monster will only be added to the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="dccsPool"></param>
+            <param name="mixEnemyArtifactMonsters"></param>
+            <param name="monsterCardHolder"></param>
+            <param name="addToFamilies">Whether to also add to each existing monster family</param>
+            <param name="predicate"></param>
         </member>
         <member name="M:R2API.DirectorAPI.Helpers.AddNewMonsterToStage(RoR2.DirectorCard,R2API.DirectorAPI.MonsterCategory,R2API.DirectorAPI.Stage,System.String)">
             <summary>
@@ -651,6 +711,19 @@
             <param name="stage"></param>
             <param name="customStageName"></param>
         </member>
+        <member name="M:R2API.DirectorAPI.Helpers.AddNewMonsterToStage(R2API.DirectorAPI.DirectorCardHolder,System.Boolean,System.Predicate{RoR2.DirectorCardCategorySelection},R2API.DirectorAPI.Stage,System.String)">
+            <summary>
+            Adds a new monster to a specific stage.
+            Also add to each existing monster families if second parameter is true.
+            For custom stages use Stage.Custom and enter the name of the stage in customStageName.
+            If a valid (non null) predicate is provided the monster will only be added to the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="monsterCard"></param>
+            <param name="addToFamilies"></param>
+            <param name="predicate"></param>
+            <param name="stage"></param>
+            <param name="customStageName"></param>
+        </member>
         <member name="M:R2API.DirectorAPI.Helpers.AddNewMonsterToStagesWhere(R2API.DirectorAPI.DirectorCardHolder,System.Boolean,System.Predicate{R2API.DirectorAPI.StageInfo})">
             <summary>
             Adds a new monster to matching stages.
@@ -660,6 +733,18 @@
             <param name="monsterCard"></param>
             <param name="addToFamilies"></param>
             <param name="matchStage"></param>
+        </member>
+        <member name="M:R2API.DirectorAPI.Helpers.AddNewMonsterToStagesWhere(R2API.DirectorAPI.DirectorCardHolder,System.Boolean,System.Predicate{R2API.DirectorAPI.StageInfo},System.Predicate{RoR2.DirectorCardCategorySelection})">
+            <summary>
+            Adds a new monster to matching stages.
+            Also add to each existing monster families if second parameter is true.
+            For custom stages use Stage.Custom and enter the name of the stage in customStageName.
+            If a valid (non null) predicate is provided the monster will only be added to the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="monsterCard"></param>
+            <param name="addToFamilies"></param>
+            <param name="matchStage"></param>
+            <param name="predicate"></param>
         </member>
         <member name="M:R2API.DirectorAPI.Helpers.AddNewInteractable(RoR2.DirectorCard,R2API.DirectorAPI.InteractableCategory)">
             <summary>
@@ -673,6 +758,14 @@
             Adds a new interactable to all stages.
             </summary>
             <param name="interactableCardHolder"></param>
+        </member>
+        <member name="M:R2API.DirectorAPI.Helpers.AddNewInteractable(R2API.DirectorAPI.DirectorCardHolder,System.Predicate{RoR2.DirectorCardCategorySelection})">
+            <summary>
+            Adds a new interactable to all stages.
+            If a valid (non null) predicate is provided the interactable will only be added to the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="interactableCardHolder"></param>
+            <param name="predicate"></param>
         </member>
         <member name="M:R2API.DirectorAPI.Helpers.AddNewInteractableToStage(RoR2.DirectorCard,R2API.DirectorAPI.InteractableCategory,R2API.DirectorAPI.Stage,System.String)">
             <summary>
@@ -693,11 +786,31 @@
             <param name="stage">The stage to add the interactable to</param>
             <param name="customStageName">The name of the custom stage</param>
         </member>
+        <member name="M:R2API.DirectorAPI.Helpers.AddNewInteractableToStage(R2API.DirectorAPI.DirectorCardHolder,System.Predicate{RoR2.DirectorCardCategorySelection},R2API.DirectorAPI.Stage,System.String)">
+            <summary>
+            Adds a new interactable to a specific stage.
+            For custom stages use Stage.Custom and enter the name of the stage in customStageName.
+            If a valid (non null) predicate is provided the interactable will only be added to the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="interactableCardHolder">The DirectorCardHolder, should have its Card and InteractableCategory members correctly filled</param>
+            <param name="predicate"></param>
+            <param name="stage">The stage to add the interactable to</param>
+            <param name="customStageName">The name of the custom stage</param>
+        </member>
         <member name="M:R2API.DirectorAPI.Helpers.RemoveExistingMonster(System.String)">
             <summary>
             Removes a monster from spawns on all stages.
             </summary>
             <param name="monsterName">The name of the monster card to remove</param>
+        </member>
+        <member name="M:R2API.DirectorAPI.Helpers.RemoveExistingMonster(System.String,System.Boolean,System.Predicate{RoR2.DirectorCardCategorySelection})">
+            <summary>
+            Removes a monster from spawns on all stages.
+            If a valid (non null) predicate is provided the monster will only be removed from the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="monsterName">The name of the monster card to remove</param>
+            <param name="removeFromFamilies">Whether or not it the monster should be removed from familiy DCCSs</param>
+            <param name="predicate">If a valid (non null) predicate is provided the monster will only be removed from the given DirectorCardCategorySelection if the predicate return true.</param>
         </member>
         <member name="M:R2API.DirectorAPI.Helpers.RemoveExistingMonsterFromStage(System.String,R2API.DirectorAPI.Stage,System.String)">
             <summary>
@@ -708,11 +821,31 @@
             <param name="stage">The stage to remove on</param>
             <param name="customStageName">The name of the custom stage</param>
         </member>
+        <member name="M:R2API.DirectorAPI.Helpers.RemoveExistingMonsterFromStage(System.String,System.Boolean,System.Predicate{RoR2.DirectorCardCategorySelection},R2API.DirectorAPI.Stage,System.String)">
+            <summary>
+            Removes a monster from spawns on a specific stage.
+            For custom stages use Stage.Custom and enter the name of the stage in customStageName.
+            If a valid (non null) predicate is provided the monster will only be removed from the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="monsterName">The name of the monster card to remove</param>
+            <param name="removeFromFamilies">Whether or not it the monster should be removed from familiy DCCSs</param>
+            <param name="predicate">If a valid (non null) predicate is provided the monster will only be removed from the given DirectorCardCategorySelection if the predicate return true.</param>
+            <param name="stage">The stage to remove on</param>
+            <param name="customStageName">The name of the custom stage</param>
+        </member>
         <member name="M:R2API.DirectorAPI.Helpers.RemoveExistingInteractable(System.String)">
             <summary>
             Remove an interactable from spawns on all stages.
             </summary>
             <param name="interactableName">Name of the interactable to remove</param>
+        </member>
+        <member name="M:R2API.DirectorAPI.Helpers.RemoveExistingInteractable(System.String,System.Predicate{RoR2.DirectorCardCategorySelection})">
+            <summary>
+            Remove an interactable from spawns on all stages.
+            If a valid (non null) predicate is provided the interactable will only be removed from the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="interactableName">Name of the interactable to remove</param>
+            <param name="predicate">If a valid (non null) predicate is provided the interactable will only be removed from the given DirectorCardCategorySelection if the predicate return true.</param>
         </member>
         <member name="M:R2API.DirectorAPI.Helpers.RemoveExistingInteractableFromStage(System.String,R2API.DirectorAPI.Stage,System.String)">
             <summary>
@@ -720,6 +853,17 @@
             For custom stages use Stage.Custom and enter the name of the stage in customStageName.
             </summary>
             <param name="interactableName">The name of the interactable to remove</param>
+            <param name="stage">The stage to remove on</param>
+            <param name="customStageName">The name of the custom stage</param>
+        </member>
+        <member name="M:R2API.DirectorAPI.Helpers.RemoveExistingInteractableFromStage(System.String,System.Predicate{RoR2.DirectorCardCategorySelection},R2API.DirectorAPI.Stage,System.String)">
+            <summary>
+            Remove an interactable from spawns on a specific stage.
+            For custom stages use Stage.Custom and enter the name of the stage in customStageName.
+            If a valid (non null) predicate is provided the interactable will only be removed from the given DirectorCardCategorySelection if the predicate return true.
+            </summary>
+            <param name="interactableName">The name of the interactable to remove</param>
+            <param name="predicate"></param>
             <param name="stage">The stage to remove on</param>
             <param name="customStageName">The name of the custom stage</param>
         </member>

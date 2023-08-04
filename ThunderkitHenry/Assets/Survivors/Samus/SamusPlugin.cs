@@ -13,6 +13,7 @@ using SamusMod.Modules;
 using System.Reflection;
 using MonoMod.RuntimeDetour;
 using MonoMod.RuntimeDetour.HookGen;
+using EntityStates;
 
 [module: UnverifiableCode]
 
@@ -56,7 +57,7 @@ namespace SamusMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.dgosling.Samus";
         public const string MODNAME = "Samus";
-        public const string MODVERSION = "2.2.1";
+        public const string MODVERSION = "2.2.2";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "DG";
@@ -119,9 +120,10 @@ namespace SamusMod
         private void Hook()
         {
             On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
-            On.RoR2.GenericSkill.SetBonusStockFromBody += GenericSkill_SetBonusStockFromBody;
+           // On.RoR2.GenericSkill.SetBonusStockFromBody += GenericSkill_SetBonusStockFromBody;
             On.RoR2.DamageTrail.DoDamage += DamageTrail_DoDamage;
-          //  On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1 += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1;
+            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+          On.RoR2.DotController.InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1 += DotController_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterMotor.FixedUpdate += CharacterMotor_FixedUpdate;
             On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
@@ -144,8 +146,63 @@ namespace SamusMod
             //On.RoR2.PlayerCharacterMasterController.SetBody += Components.ExtraPlayerCharacterMasterController.SetBodyOverrideHook;
         }
 
+        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        {
 
+            orig(self);
+            if (self && self.inventory && self.skillLocator&& self.baseNameToken == "DG_SAMUS_NAME")
+            {
+                var sl = self.skillLocator;
+                if (sl.secondary&&!SkillStates.BaseStates.BaseSamus.morphBall)
+                {
+                    int temp = sl.secondary.bonusStockFromBody - self.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine);
+                    int temp2 = self.inventory.GetItemCount(RoR2Content.Items.SecondarySkillMagazine);
+                    sl.secondary.SetBonusStockFromBody((temp2 * 5)+temp);
 
+                }
+
+            }
+            
+
+        }
+        private void GenericSkill_SetBonusStockFromBody(On.RoR2.GenericSkill.orig_SetBonusStockFromBody orig, GenericSkill self, int newBonusStockFromBody)
+        {
+            if (self)
+            {
+                if (self.characterBody.skillLocator.secondary == self && self.characterBody.baseNameToken == "DG_SAMUS_NAME")
+                {
+                    //if (SamusMod.States.SamusMain.morphBall == true)
+                    //{
+                    //    float test = self.characterBody.skillLocator.primary.stock%3;
+                    //    if (test == 0)
+                    //    {
+                    //        newBonusStockFromBody = (self.characterBody.skillLocator.primary.maxStock / 3);
+                    //    }
+                    //    else
+                    //    {
+                    //        newBonusStockFromBody = Mathf.FloorToInt(self.characterBody.skillLocator.primary.maxStock / 3);
+                    //    }
+                    //    orig(self, newBonusStockFromBody);
+                    //}
+                    //else
+                    //{
+                    if (!SamusMod.SkillStates.BaseStates.BaseSamus.morphBall)
+                    {
+
+                        newBonusStockFromBody *= 5;
+                        orig(self, newBonusStockFromBody);
+                    }
+                    else if (SkillStates.BaseStates.BaseSamus.morphBall)
+                    {
+                        newBonusStockFromBody = (Mathf.FloorToInt(self.characterBody.skillLocator.primary.maxStock / 3)) - 1;
+                        orig(self, newBonusStockFromBody);
+                    }
+
+                }
+                else
+                    orig(self, newBonusStockFromBody);
+            }
+        }
         private void DotController_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1(On.RoR2.DotController.orig_InflictDot_GameObject_GameObject_DotIndex_float_float_Nullable1 orig, GameObject victimObject, GameObject attackerObject, DotController.DotIndex dotIndex, float duration, float damageMultiplier, uint? maxStacksFromAttacker)
         {
             if ((victimObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME" || attackerObject.gameObject.GetComponent<CharacterBody>().baseNameToken == "DG_SAMUS_NAME") && dotIndex == DotController.DotIndex.PercentBurn)
@@ -264,43 +321,7 @@ namespace SamusMod
             orig(self);
         }
 
-        private void GenericSkill_SetBonusStockFromBody(On.RoR2.GenericSkill.orig_SetBonusStockFromBody orig, GenericSkill self, int newBonusStockFromBody)
-        {
-            if (self)
-            {
-                if (self.characterBody.skillLocator.secondary == self && self.characterBody.baseNameToken == "DG_SAMUS_NAME")
-                {
-                    //if (SamusMod.States.SamusMain.morphBall == true)
-                    //{
-                    //    float test = self.characterBody.skillLocator.primary.stock%3;
-                    //    if (test == 0)
-                    //    {
-                    //        newBonusStockFromBody = (self.characterBody.skillLocator.primary.maxStock / 3);
-                    //    }
-                    //    else
-                    //    {
-                    //        newBonusStockFromBody = Mathf.FloorToInt(self.characterBody.skillLocator.primary.maxStock / 3);
-                    //    }
-                    //    orig(self, newBonusStockFromBody);
-                    //}
-                    //else
-                    //{
-                    if (!SamusMod.SkillStates.BaseStates.BaseSamus.morphBall)
-                    {
-                        newBonusStockFromBody *= 5;
-                        orig(self, newBonusStockFromBody);
-                    }
-                    else if (SkillStates.BaseStates.BaseSamus.morphBall)
-                    {
-                        newBonusStockFromBody = (Mathf.FloorToInt( self.characterBody.skillLocator.primary.maxStock/3))-1;
-                        orig(self,newBonusStockFromBody);
-                    }
 
-                }
-                else
-                    orig(self, newBonusStockFromBody);
-            }
-        }
 
         private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
         {

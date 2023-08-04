@@ -19,10 +19,10 @@ MonoBehaviour:
   Author: RiskofThunder
   Name: R2API_Core
   Description: Core R2API module
-  Version: 5.0.4
+  Version: 5.0.10
   Dependencies: 
-  - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
   - {fileID: 11400000, guid: bff73382628f698c89c1d9ae43c8f350, type: 2}
+  - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

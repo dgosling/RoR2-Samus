@@ -1,6 +1,6 @@
 {
     "name": "CustomEmotesAPI",
-    "version_number": "1.9.4",
+    "version_number": "2.1.5",
     "website_url": "https://github.com/ToastedOven/CustomEmotesAPI/",
     "description": "API for adding emotes to survivors",
     "dependencies": [

@@ -35,13 +35,13 @@
             <summary>Added to base health regen. HEALTH_REGEN ~ (BASE_REGEN + baseRegenAdd) * (REGEN_MULT + regenMultAdd).</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseMoveSpeedAdd">
-            <summary>Added to base move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd / MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
+            <summary>Added to base move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd) / (MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.moveSpeedMultAdd">
-            <summary>Added to the direct multiplier to move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd / MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
+            <summary>Added to the direct multiplier to move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd) / (MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.moveSpeedReductionMultAdd">
-            <summary>Added reduction multiplier to move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd / MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
+            <summary>Added reduction multiplier to move speed. MOVE_SPEED ~ (BASE_MOVE_SPEED + baseMoveSpeedAdd) * (MOVE_SPEED_MULT + moveSpeedMultAdd) / (MOVE_SPEED_REDUCTION_MULT + moveSpeedReductionMultAdd)</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.jumpPowerMultAdd">
             <summary>Added to the direct multiplier to jump power. JUMP_POWER ~ (BASE_JUMP_POWER + baseJumpPowerAdd) * (JUMP_POWER_MULT + jumpPowerMultAdd)</summary>
@@ -53,10 +53,13 @@
             <summary>Added to base damage. DAMAGE ~ (BASE_DAMAGE + baseDamageAdd) * (DAMAGE_MULT + damageMultAdd).</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.baseAttackSpeedAdd">
-            <summary>Added to attack speed. ATTACK_SPEED ~ (BASE_ATTACK_SPEED + baseAttackSpeedAdd) * (ATTACK_SPEED_MULT + attackSpeedMultAdd).</summary>
+            <summary>Added to attack speed. ATTACK_SPEED ~ (BASE_ATTACK_SPEED + baseAttackSpeedAdd) * (ATTACK_SPEED_MULT + attackSpeedMultAdd) / (ATTACK_SPEED_REDUCTION_MULT + attackSpeedReductionMultAdd).</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.attackSpeedMultAdd">
-            <summary>Added to the direct multiplier to attack speed. ATTACK_SPEED ~ (BASE_ATTACK_SPEED + baseAttackSpeedAdd) * (ATTACK_SPEED_MULT + attackSpeedMultAdd).</summary>
+            <summary>Added to the direct multiplier to attack speed. ATTACK_SPEED ~ (BASE_ATTACK_SPEED + baseAttackSpeedAdd) * (ATTACK_SPEED_MULT + attackSpeedMultAdd) / (ATTACK_SPEED_REDUCTION_MULT + attackSpeedReductionMultAdd).</summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.attackSpeedReductionMultAdd">
+            <summary>Added reduction multiplier to attack speed. ATTACK_SPEED ~ (BASE_ATTACK_SPEED + baseAttackSpeedAdd) * (ATTACK_SPEED_MULT + attackSpeedMultAdd) / (ATTACK_SPEED_REDUCTION_MULT + attackSpeedReductionMultAdd).</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.critAdd">
             <summary>Added to crit chance. CRIT_CHANCE ~ BASE_CRIT_CHANCE + critAdd.</summary>
@@ -92,13 +95,19 @@
             <summary>Added to base jump power. JUMP_POWER ~ (BASE_JUMP_POWER + baseJumpPowerAdd)* (JUMP_POWER_MULT + jumpPowerMultAdd)</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.levelMultAdd">
-            <summary>Added to the direct multiplier to level scaling. EFFECTIVE LEVEL ~ (BASE LEVEL * (BASE_LEVEL_SCALING + levelMultAdd)</summary>
+            <summary>Added to the direct multiplier to level scaling. EFFECTIVE LEVEL ~ (BASE LEVEL + levelFlatAdd * (BASE_LEVEL_SCALING + levelMultAdd)</summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.moveSpeedRootCount">
             <summary>Amount of Root effects currently applied. MOVE_SPEED ~ (moveSpeedRootCount > 0) ? 0 : MOVE_SPEED </summary>
         </member>
         <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.critDamageMultAdd">
             <summary>Added to the direct multiplier to crit damage. CRIT_DAMAGE ~ DAMAGE * (BASE_CRIT_MULT + critDamageMultAdd) </summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.levelFlatAdd">
+            <summary>Added to the body's current level. EFFECTIVE LEVEL ~ (BASE LEVEL + levelFlatAdd * (BASE_LEVEL_SCALING + levelMultAdd) </summary>
+        </member>
+        <member name="F:R2API.RecalculateStatsAPI.StatHookEventArgs.sprintSpeedAdd">
+            <summary>Added to the direct multiplier to sprinting speed. SPRINT SPEED ~ MOVE_SPEED * (BASE_SPRINT_MULT + sprintSpeedAdd) </summary>
         </member>
         <member name="T:R2API.RecalculateStatsAPI.StatHookEventHandler">
             <summary>

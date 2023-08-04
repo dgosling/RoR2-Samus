@@ -19,10 +19,10 @@ MonoBehaviour:
   Author: RiskofThunder
   Name: R2API_ContentManagement
   Description: API for adding content to the game
-  Version: 1.0.1
+  Version: 1.0.2
   Dependencies: 
-  - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
   - {fileID: 11400000, guid: bff73382628f698c89c1d9ae43c8f350, type: 2}
+  - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
   - {fileID: 11400000, guid: 184f0fdf3edcd6bad171410f4e0fd947, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:

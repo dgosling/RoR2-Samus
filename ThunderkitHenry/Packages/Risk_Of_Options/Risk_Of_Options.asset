@@ -19,7 +19,7 @@ MonoBehaviour:
   Author: Rune580
   Name: Risk_Of_Options
   Description: A convenient API for adding BepInEx ConfigEntry's to a option menu
-  Version: 2.5.3
+  Version: 2.7.0
   Dependencies: 
   - {fileID: 11400000, guid: 2d4d09ec817c24698d35dc9bf0704fdc, type: 2}
 --- !u!114 &11400000

@@ -9,9 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/[Tt]hunderkit/
 /[Pp]ackages/Risk of Rain 2/
-/[Aa]ssets/ThunderKitSettings/Logs/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -21,6 +19,7 @@
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
+/[Aa]ssets/TextMesh*Pro/
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
@@ -78,6 +77,13 @@ crashlytics-build.properties
 # Custom removals
 /[Aa]ssets/[Ee]ditor/PrefabReferencePropertyDrawer.cs
 /[Aa]ssets/[Ee]ditor/PrefabReferencePropertyDrawer.cs.meta
-
+/[Pp]ackages/[Rr]isk of Rain 2/*.dll
+/[Pp]ackages/[Rr]isk of Rain 2/[Pp]lugins/*.dll
 /Assets/WeaverKit/*
 /Library/ArtifactDB
+/[Tt]hunderkit/
+/[Aa]ssets/[Tt]hunderKitSettings/Logs/
+/[Aa]ssets/[Pp]lugins/NGTools/
+/[Pp]ackages/*
+!/Packages/packages-lock.json
+!/Packages/manifest.json
