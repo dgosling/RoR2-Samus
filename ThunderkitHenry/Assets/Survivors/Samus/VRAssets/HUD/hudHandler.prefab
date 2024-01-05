@@ -554,6 +554,7 @@ MonoBehaviour:
   bossBar: {fileID: 0}
   bossIni: 0
   debugColor: {r: 0, g: 0, b: 0, a: 0}
+  loaded: 0
 --- !u!114 &5775680183363072757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +668,7 @@ MonoBehaviour:
   helmetIntf: {fileID: 5775680183363072757}
   ballIntf: {fileID: 8762703210085139394}
   bossEnergyIntf: {fileID: 1274388059182237630}
+  currInit: 0
   inMorphBall: 0
   bossHealthBarRoot: {fileID: 0}
 --- !u!1 &8527416252664502790

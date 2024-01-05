@@ -111,8 +111,9 @@ namespace SamusMod.SkillStates.BaseStates
             if (VRAPI.VR.enabled)
             {
                 VrCheck = VRAPI.Utils.IsUsingMotionControls(Body);
-                if (VrCheck == true)
+                if (VrCheck)
                 {
+
                     SamusMod.Modules.VRStuff.setupVR(Body);
 
                     Camera.main.nearClipPlane = 0.05f;
@@ -121,7 +122,11 @@ namespace SamusMod.SkillStates.BaseStates
                     //Debug.Log("dom: " + VRAPI.MotionControls.dominantHand);
                     //Debug.Log("ndom: " + VRAPI.MotionControls.nonDominantHand);
                     if (Modules.Config.enableHud.Value)
-                        Modules.VRStuff.SamusHUD.initSamusHUD(Body);
+                    {
+                       
+                            Modules.VRStuff.SamusHUD.initSamusHUD(Body);
+                    }
+                        
                 }
 
             }
@@ -179,7 +184,7 @@ namespace SamusMod.SkillStates.BaseStates
             base.FixedUpdate();
 
 
-            this.characterBody.skillLocator.FindSkill("");
+            //this.characterBody.skillLocator.FindSkill("");
             effectiveAuth = characterBody.master.hasEffectiveAuthority;
             if (this.Animator)
             {
@@ -360,6 +365,7 @@ namespace SamusMod.SkillStates.BaseStates
         public override void OnExit()
         {
             base.OnExit();
+
             //Modules.VRStuff.SamusHUD.bossEnergyIntf.reset();
             Destroy(Modules.VRStuff.hudHandle);
         }

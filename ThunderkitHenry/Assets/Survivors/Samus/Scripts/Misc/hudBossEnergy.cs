@@ -22,6 +22,7 @@ namespace SamusMod.Misc
         hudColors hudColors;
         hudColors.EnergyBarColors EnergyBarColors;
         public Color debugColor;
+        public bool loaded = false;
         // hudEnergyBar.CalculateMode calculateMode;
         // float healthP;
         // Start is called before the first frame update
@@ -33,6 +34,7 @@ namespace SamusMod.Misc
             curEnergy = 0f;
             maxEnergy = 0f;
             visible = false;
+
             //hudColors = new hudColors(true);
             //EnergyBarColors = hudColors.getVisorEnergyBarColors();
             root = gameObject.transform.Find("bossHud").gameObject;
@@ -54,7 +56,7 @@ namespace SamusMod.Misc
 
             //bossBar.SetFilledDrainSpeed(0f); //test
 
-
+            loaded = true;
 
         }
 
@@ -174,7 +176,12 @@ namespace SamusMod.Misc
             visible = false;
             bossIni = false;
         }
-        public float GetCurrentHealth() { return bossBar.GetSetEnergy(); }
+        public float GetCurrentHealth() 
+        {
+            if(bossBar)
+                return bossBar.GetSetEnergy();
+            else return 0f;
+        }
         public float GetMaxEnergy() { return maxEnergy; }
         //public hudEnergyBar.CalculateMode GetCalculateMode() { return calculateMode; }
         //public void SetCalculateMode(hudEnergyBar.CalculateMode calculate) { calculateMode = calculate; }

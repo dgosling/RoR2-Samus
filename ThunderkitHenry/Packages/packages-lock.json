@@ -14,13 +14,13 @@
       "hash": "930d0c66e70d514cfcba88c85f46dbb1312d34db"
     },
     "com.passivepicasso.thunderkit": {
-      "version": "https://github.com/PassivePicasso/ThunderKit.git#6.0.1",
+      "version": "https://github.com/PassivePicasso/ThunderKit.git",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.16.1"
       },
-      "hash": "f16eae2d2c2e77ef61d3584793bd45eca8aa22e7"
+      "hash": "39f7d7c528fe6687bc223653dfb462808a3a3b8b"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -330,7 +330,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "38a3716970e589ecc20e2292c13352bc0efaa1c5"
+      "hash": "ebe4d6e4a27e4b766b33e5bdd3ab6c7d17518dfb"
     },
     "rune580-risk_of_options": {
       "version": "file:Risk_Of_Options",

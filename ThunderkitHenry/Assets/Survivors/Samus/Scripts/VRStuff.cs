@@ -4,11 +4,12 @@ using UnityEngine;
 using RoR2;
 using VRAPI;
 using SamusMod.Misc;
+using System.Runtime.CompilerServices;
 namespace SamusMod.Modules
 {
 
 
-    public class VRStuff : MonoBehaviour
+    public  class VRStuff 
     {
         public static Ray domRay;
         public static Ray nonDomRay;
@@ -16,6 +17,7 @@ namespace SamusMod.Modules
         public static Camera hudCamera;
         public static GameObject hudHandle;
         private static Misc.SamusHUD samusHUD;
+
 
         internal static SamusHUD SamusHUD { get => samusHUD; set => samusHUD = value; }
 
@@ -28,6 +30,7 @@ namespace SamusMod.Modules
             if (Config.enableHud.Value)
             {
                 hudCamera = Camera.current;
+
                 hudHandle = GameObject.Instantiate<GameObject>(Assets.HUDHandler);
                 //hudHandle.transform.Find("combatVisor").localPosition = new Vector3(0, 0, -1.5f);
                 SetAllChildrenLayer(hudHandle.transform, LayerIndex.ui.intVal);

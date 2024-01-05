@@ -32,6 +32,7 @@ namespace SamusMod.Misc
         hudColors.EnergyBarColors energyBar, combatEnergyBar, ballEnergyBar;
         float tempHealth;
         float cachedBossHealth;
+        public bool currInit = false;
         EHudState curState;
         //EHudState nextState;
         // EHudState setState;
@@ -90,6 +91,7 @@ namespace SamusMod.Misc
                 baseFrame[1]*temp,
                 baseFrame[2]*temp
             };
+            updateHudState();
         }
         float playerHealth = 0f;
         float maxPlayerHealth = 100f;
@@ -182,6 +184,7 @@ namespace SamusMod.Misc
         //    R2API.Utils.ChatMessage.Send("Changed frame to right colors!");
 
         //}
+        
         void checkInits(float dt)
         {
             int check = 4;
@@ -214,6 +217,8 @@ namespace SamusMod.Misc
             if (character.skillLocator.utility.skillNameToken == "DG_SAMUS_UTILITY_DASH_NAME")
             {
                 curState = EHudState.Combat;
+                hudcolors = combatHudColors;
+                energyBar = combatEnergyBar;
                 return;
             }
 
@@ -281,13 +286,16 @@ namespace SamusMod.Misc
             }
             if (bossEnergyIntf)
             {
-                bossHealthBarRoot = gameObject.transform.parent.Find("HUDSimple(Clone)").GetComponent<RoR2.UI.HUD>().mainUIPanel.transform.Find("SpringCanvas/TopCenterCluster/BossHealthBarRoot").gameObject;
+                //bossHealthBarRoot = gameObject.transform.parent.Find("HUDSimple(Clone)").GetComponent<RoR2.UI.HUD>().mainUIPanel.transform.Find("SpringCanvas/TopCenterCluster/BossHealthBarRoot").gameObject;
                 bossInfo = bossHealthBarRoot.GetComponent<RoR2.UI.HUDBossHealthBarController>().currentBossGroup;
 
                 //GameObject temp = Camera.current.GetComponent<CameraRigController>().hud.mainUIPanel.transform.Find("SpringCanvas/TopCenterCluster/BossHealthBarRoot").gameObject;
 
-                if (bossInfo != null)
+                if (bossInfo != null&&bossEnergyIntf.loaded)
                 {
+                  //  SamusPlugin.logger.LogInfo("bossInfo: " + bossInfo);
+                 //   SamusPlugin.logger.LogInfo("bossEntergyIntf: " + bossEnergyIntf);
+                  //  SamusPlugin.logger.LogInfo("currentHealth: " + bossEnergyIntf.GetCurrentHealth());
                     bossAlpha = bossEnergyIntf.GetCurrentHealth() > 0f ? 1 : 0;
                     RoR2.UI.HUDBossHealthBarController tempBossHealth = bossHealthBarRoot.GetComponent<RoR2.UI.HUDBossHealthBarController>();
 
@@ -746,20 +754,23 @@ namespace SamusMod.Misc
         public void initSamusHUD(CharacterBody characterbody)
         {
             character = characterbody;
+
             threatIntf.SetHudType(hudTypes.combat);
             threatIntf.SetThreatDistance(100f);
             tempHealth = character.healthComponent.fullCombinedHealth;
             curState = EHudState.Combat;
+            
             //nextState = EHudState.None;
             // setState = EHudState.None;
-            if (!hudcolors.init)
-                updateHudState();
+            
+            updateHudState();
             //InitializeFrameGluePermanent();
             //InitializeDamageLight();
             UpdateEnergy(0f, true);
             energyLow = false;
             UpdateMissile(0f, true);
             UpdateBallMode(true);
+            currInit = true;
             //CheckFrameColors();
         }
 
