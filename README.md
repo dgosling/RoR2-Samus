@@ -12,7 +12,7 @@ Samus is an agile survivor with a charge beam, homing missiles, a super missile,
 [![](https://i.imgur.com/cQ6cTRU.png)]()
 
 # Contact
-- If you want to report any bugs, you can contact me on discord: bouquet_system
+- If you want to report any bugs, you can contact me on discord: fauna_system
 
 # Donation
 [Donate/Buy me a coffee here.](https://www.buymeacoffee.com/dgosling)
